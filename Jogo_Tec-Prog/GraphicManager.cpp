@@ -40,7 +40,11 @@ namespace Managers {
 		window->clear();
 	}
 	GraphicManager::~GraphicManager() {
-
+		for (auto& pair : textures) {
+			delete pair.second;
+		}
+		if (window)
+			delete window;
 	}
 	bool GraphicManager::isWindowOpen() {
 		return window->isOpen();

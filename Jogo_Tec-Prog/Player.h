@@ -1,5 +1,5 @@
 #pragma once
-#include "Entity.h"
+#include "MovingEntity.h"
 
 namespace Entities {
 	namespace Characters {
@@ -7,12 +7,10 @@ namespace Entities {
 		#define PLAYER_SIZE_Y 150.0f
 		#define PLAYER_SPEED_X 0.1f
 		#define PLAYER_SPEED_Y 0.1f
-		class Player : public Entity
+		class Player : public MovingEntity
 		{
 		private:
 			const bool isPlayer1;
-			Math::CoordF speed;
-			
 		public:
 			Player(Math::CoordF pos = Math::CoordF(0, 0), std::string text = nullptr, bool isPlayer1 = true);
 			~Player();

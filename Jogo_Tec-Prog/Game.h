@@ -1,10 +1,10 @@
 #pragma once
-#include "Player.h"
+#include "EntitiesList.h"
 class Game
 {
 private:
 	Managers::GraphicManager* pGraphic;
-	Entities::Characters::Player p1;
+	EntitiesList EL;
 
 public:
 	Game();
