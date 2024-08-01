@@ -1,5 +1,5 @@
 #pragma once
-#include "GraphicManager.h"
+#include "Body.h"
 
 namespace Entities {
 	enum ID {
@@ -15,10 +15,9 @@ namespace Entities {
 		Math::CoordF position;
 		Math::CoordF size;
 		ID id;
-		std::string textPath;
-		Managers::GraphicManager* pGraphic;
+		Body body;
 	public:
-		Entity(Math::CoordF pos = Math::CoordF(0, 0), Math::CoordF size = Math::CoordF(0, 0), std::string text = nullptr, ID id = empty);
+		Entity(Math::CoordF pos = Math::CoordF(0, 0), Math::CoordF size = Math::CoordF(0, 0), ID id = empty);
 		~Entity();
 		void setPosition(Math::CoordF pos);
 		Math::CoordF getPosition() const;

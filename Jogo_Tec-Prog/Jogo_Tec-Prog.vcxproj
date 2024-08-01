@@ -133,6 +133,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Body.cpp" />
     <ClCompile Include="EntitiesList.cpp" />
     <ClCompile Include="GraphicManager.cpp" />
     <ClCompile Include="MovingEntity.cpp" />
@@ -146,6 +147,7 @@
     <Image Include="zoro.png" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Body.h" />
     <ClInclude Include="EntitiesList.h" />
     <ClInclude Include="GraphicManager.h" />
     <ClInclude Include="List.h" />

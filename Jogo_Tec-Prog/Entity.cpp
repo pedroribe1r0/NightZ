@@ -1,10 +1,9 @@
 #include "Entity.h"
 
 namespace Entities {
-	Entity::Entity(Math::CoordF pos, Math::CoordF size, std::string text , ID id) : position(pos), size(size), id(id), textPath(text){
-		pGraphic = Managers::GraphicManager::getInstance();
-		pGraphic->loadTexture(textPath);
-		
+	Entity::Entity(Math::CoordF pos, Math::CoordF size , ID id) : position(pos), size(size), id(id){
+		body.setSize(size);
+		body.update(position);
 	}
 	Entity::~Entity() {
 
