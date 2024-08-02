@@ -38,10 +38,12 @@ namespace Managers {
 	}
 
 	void GraphicManager::display() {
-		window->display();
+		if(isWindowOpen())
+			window->display();
 	}
 	void GraphicManager::clear() {
-		window->clear();
+		if(isWindowOpen())
+			window->clear();
 	}
 	GraphicManager::~GraphicManager() {
 		for (auto& pair : textures) {
@@ -54,7 +56,8 @@ namespace Managers {
 		return window->isOpen();
 	}
 	void GraphicManager::closeWindow() {
-		window->close();
+		if(isWindowOpen())
+			window->close();
 	}
 	void GraphicManager::centerView(Math::CoordF pos) {
 		camera.setCenter(sf::Vector2f(pos.x, pos.y));

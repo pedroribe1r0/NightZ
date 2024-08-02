@@ -3,7 +3,7 @@
 namespace Entities {
 	namespace Characters {
 		Player::Player(Math::CoordF pos, bool isPlayer1) : 
-		MovingEntity(pos, Math::CoordF(PLAYER_SIZE_X, PLAYER_SIZE_Y), player, Math::CoordF(PLAYER_SPEED_X, PLAYER_SPEED_Y)), 
+		Character(pos, Math::CoordF(PLAYER_SIZE_X, PLAYER_SIZE_Y), player, Math::CoordF(PLAYER_SPEED_X, PLAYER_SPEED_Y), PLAYER_HP, PLAYER_STAMINA), 
 		isPlayer1(isPlayer1)
 		{
 			if (isPlayer1)
@@ -32,6 +32,10 @@ namespace Entities {
 				position.y += speed.y;
 			}
 			body.update(position);
+		}
+
+		void Player::attack() {
+			/*to do*/
 		}
 	}
 }

@@ -9,6 +9,5 @@ public:
 	~EntitiesList();
 	void update(float dt);
 	void render();
-
 };
 

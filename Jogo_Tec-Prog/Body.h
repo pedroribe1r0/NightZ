@@ -15,7 +15,6 @@ namespace Entities {
 		void render();
 		void update(Math::CoordF position);
 		void setSize(Math::CoordF size);
-
 	};
 }
 

@@ -1,5 +1,5 @@
 #pragma once
-#include "MovingEntity.h"
+#include "Character.h"
 
 namespace Entities {
 	namespace Characters {
@@ -9,7 +9,9 @@ namespace Entities {
 		#define PLAYER_SPEED_Y 0.1f
 		#define PLAYER_1_TEXTURE "luffy.png"
 		#define PLAYER_2_TEXTURE "zoro.png"
-		class Player : public MovingEntity
+		#define PLAYER_HP 100
+		#define PLAYER_STAMINA 20
+		class Player : public Character
 		{
 		private:
 			const bool isPlayer1;
@@ -18,6 +20,7 @@ namespace Entities {
 			~Player();
 			void update(float dt);
 			void render();
+			void attack();
 		};
 	}
 }
