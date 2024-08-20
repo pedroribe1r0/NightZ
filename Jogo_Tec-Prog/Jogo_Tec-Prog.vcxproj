@@ -133,11 +133,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Body.cpp" />
     <ClCompile Include="Character.cpp" />
+    <ClCompile Include="CollisionManager.cpp" />
+    <ClCompile Include="Ente.cpp" />
     <ClCompile Include="EntitiesList.cpp" />
     <ClCompile Include="GraphicManager.cpp" />
     <ClCompile Include="MovingEntity.cpp" />
+    <ClCompile Include="Obstacle.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -148,12 +150,14 @@
     <Image Include="zoro.png" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Body.h" />
     <ClInclude Include="Character.h" />
+    <ClInclude Include="CollisionManager.h" />
+    <ClInclude Include="Ente.h" />
     <ClInclude Include="EntitiesList.h" />
     <ClInclude Include="GraphicManager.h" />
     <ClInclude Include="List.h" />
     <ClInclude Include="MovingEntity.h" />
+    <ClInclude Include="Obstacle.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Coord.h" />
     <ClInclude Include="Entity.h" />

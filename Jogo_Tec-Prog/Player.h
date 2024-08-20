@@ -15,12 +15,14 @@ namespace Entities {
 		{
 		private:
 			const bool isPlayer1;
+			int points;
 		public:
 			Player(Math::CoordF pos = Math::CoordF(0, 0), bool isPlayer1 = true);
 			~Player();
 			void update(float dt);
 			void render();
 			void attack();
+			void operator++();
 		};
 	}
 }

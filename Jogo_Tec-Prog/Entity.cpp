@@ -1,9 +1,10 @@
 #include "Entity.h"
 
 namespace Entities {
-	Entity::Entity(Math::CoordF pos, Math::CoordF size , ID id) : position(pos), size(size), id(id){
-		body.setSize(size);
-		body.update(position);
+	Entity::Entity(Math::CoordF pos, Math::CoordF size , ID id) : Ente(id), position(pos), size(size){
+		body->setOrigin(sf::Vector2f(size.x/2, size.y/2));
+		body->setSize(sf::Vector2f(size.x, size.y));
+		body->setPosition(sf::Vector2f(pos.x, pos.y));
 	}
 	Entity::~Entity() {
 
@@ -16,8 +17,5 @@ namespace Entities {
 	}
 	Math::CoordF Entity::getSize() const{
 		return size;
-	}
-	ID Entity::getID() const{
-		return id;
 	}
 }

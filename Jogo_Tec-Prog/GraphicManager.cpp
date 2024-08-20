@@ -76,10 +76,15 @@ namespace Managers {
 	}
 	void GraphicManager::updateDeltaTime() {
 		dt = clock.getElapsedTime().asSeconds();
+		clock.restart();
 	}
 
 	Math::CoordU GraphicManager::getWindowSize() const{
 		sf::Vector2u size = window->getSize();
 		return Math::CoordU(size.x, size.y);
+	}
+
+	float GraphicManager::getDeltaTime() const {
+		return dt;
 	}
 }

@@ -67,18 +67,7 @@ public:
 			tail = aux;
 		}
 	}
-	T* operator[](int pos) {
-		Node<T>* aux = head;
-		for (int i = 0; i <= pos; i++) {
-			if (aux == NULL) {
-				std::cout << "acesso de posição não definida" << std::endl;
-				return NULL;
-			}
-			aux = aux->next;
-		}
-		return aux->getData();
-	}
-	int getSize() {
+	int getSize() const{
 		Node<T>* aux = head;
 		int i = 0;
 		while (aux != NULL) {
@@ -87,6 +76,11 @@ public:
 		}
 		return i;
 	}
+	Node<T>* begin() {
+		return head;
+	}
+
+	typedef Node<T>* iterator;
 protected:
 	Node<T>* head;
 	Node<T>* tail;

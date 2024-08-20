@@ -25,4 +25,7 @@ namespace Entities {
 	void MovingEntity::stop() {
 		isMoving = false;
 	}
+	bool MovingEntity::isFacingLeft() const {
+		return facingLeft;
+	}
 }

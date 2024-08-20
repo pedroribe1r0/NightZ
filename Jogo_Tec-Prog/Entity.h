@@ -1,30 +1,22 @@
 #pragma once
-#include "Body.h"
+#include "Ente.h"
 
 namespace Entities {
-	enum ID {
-		empty = 0,
-		player,
-		platform,
-		projectile
-	};
 
-	class Entity
+	class Entity : public Ente
 	{
 	protected:
 		Math::CoordF position;
 		Math::CoordF size;
-		ID id;
-		Body body;
 	public:
-		Entity(Math::CoordF pos = Math::CoordF(0, 0), Math::CoordF size = Math::CoordF(0, 0), ID id = empty);
-		~Entity();
+		Entity(Math::CoordF pos = Math::CoordF(0, 0), Math::CoordF size = Math::CoordF(0, 0), ID id = ID::empty);
+		virtual ~Entity();
 		void setPosition(Math::CoordF pos);
 		Math::CoordF getPosition() const;
 		Math::CoordF getSize() const;
-		ID getID() const;
 		virtual void render() = 0;
 		virtual void update(float dt) = 0;
+		virtual void collide(Entity* ent, Math::CoordF intersection) = 0;
 	};
 }
 

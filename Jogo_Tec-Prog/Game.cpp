@@ -12,8 +12,9 @@ Game::~Game() {
 }
 void Game::run() {
 	while (pGraphic->isWindowOpen()) {
+		pGraphic->updateDeltaTime();
 		pGraphic->clear();
-		EL.update(0);
+		EL.update(pGraphic->getDeltaTime());
 		EL.render();
 		pGraphic->display();
 	}
