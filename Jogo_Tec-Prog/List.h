@@ -137,7 +137,7 @@ public:
         while (aux != NULL && aux->getData() != data) {
             aux = aux->getNext();
         }
-        if (aux->getData() == data) {
+        if (aux->getData() == data && aux != nullptr) {
             if (aux == head) {
                 head = head->getNext();
                 delete aux;
@@ -148,8 +148,8 @@ public:
                 delete aux;
             }
             else {
-                aux->getPrev()->getNext() = aux->getNext();
-                aux->getNext()->getPrev() = aux->getPrev();
+                aux->getPrev()->setNext(aux->getNext());
+                aux->getNext()->setPrev(aux->getPrev());
                 delete aux;
             }
         }
