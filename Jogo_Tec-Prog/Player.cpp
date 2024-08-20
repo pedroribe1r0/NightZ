@@ -20,16 +20,16 @@ namespace Entities {
 
 		void Player::update(float dt) {
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-				position.x -= speed.x;
+				position.x -= speed.x * dt;
 			}
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-				position.x += speed.x;
+				position.x += speed.x * dt;
 			}
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
-				position.y -= speed.y;
+				position.y -= speed.y * dt;
 			}
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-				position.y += speed.y;
+				position.y += speed.y * dt;
 			}
 			body->setPosition(sf::Vector2f(position.x, position.y));
 		}

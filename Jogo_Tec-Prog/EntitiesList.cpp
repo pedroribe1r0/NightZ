@@ -5,34 +5,26 @@ EntitiesList::~EntitiesList() {
 
 }
 void EntitiesList::update(float dt) {
-	List<Entities::Entity>::iterator aux = entitiesList.begin();
-	while (aux != NULL) {
-		aux->getData()->update(dt);
-		aux = aux->next;
+	List<Entities::Entity>::iterator it = entitiesList.begin();
+	while (it != entitiesList.end()) {
+		(*it)->update(dt);
+		it.operator++();
 	}
 }
+	
 void EntitiesList::render() {
-	List<Entities::Entity>::iterator aux = entitiesList.begin();
-	while (aux != NULL) {
-		aux->getData()->render();
-		aux = aux->next;
+	List<Entities::Entity>::iterator it = entitiesList.begin();
+	while (it != entitiesList.end()) {
+		(*it)->render();
+		it.operator++();
 	}
 }
 
 void EntitiesList::setData(Entities::Entity* pEnt) {
-	entitiesList.setData(pEnt);
+	entitiesList.push_back(pEnt);
 }
 void EntitiesList::removeData(Entities::Entity* pEnt) {
-	List<Entities::Entity>::iterator aux = entitiesList.begin();
-	while (aux != NULL && aux->getData() != pEnt) {
-		aux = aux->next;
-	}
-	if (aux != NULL) {
-		aux->prev->next = aux->next;
-		aux->next->prev = aux->prev;
-		delete aux;
-		aux = NULL;
-	}
+	entitiesList.removeNode(pEnt);
 }
 int EntitiesList::getSize() const {
 	return entitiesList.getSize();

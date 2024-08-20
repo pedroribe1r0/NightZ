@@ -5,8 +5,8 @@ namespace Entities {
 	namespace Characters {
 		#define PLAYER_SIZE_X 200.0f
 		#define PLAYER_SIZE_Y 150.0f
-		#define PLAYER_SPEED_X 0.1f
-		#define PLAYER_SPEED_Y 0.1f
+		#define PLAYER_SPEED_X 100.0f
+		#define PLAYER_SPEED_Y 100.0f
 		#define PLAYER_1_TEXTURE "luffy.png"
 		#define PLAYER_2_TEXTURE "zoro.png"
 		#define PLAYER_HP 100
