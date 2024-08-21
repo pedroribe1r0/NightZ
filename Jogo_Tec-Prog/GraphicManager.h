@@ -37,6 +37,7 @@ namespace Managers {
 		void updateDeltaTime();
 		float getDeltaTime() const;
 		Math::CoordU getWindowSize() const;
+		bool pollEvent(sf::Event& e);
 	};
 }
 

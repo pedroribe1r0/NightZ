@@ -3,10 +3,10 @@
 
 namespace Entities {
 	namespace Characters {
-		#define PLAYER_SIZE_X 200.0f
-		#define PLAYER_SIZE_Y 150.0f
-		#define PLAYER_SPEED_X 100.0f
-		#define PLAYER_SPEED_Y 100.0f
+		#define PLAYER_SIZE_X 50.0f
+		#define PLAYER_SIZE_Y 50.0f
+		#define PLAYER_SPEED_X 200.0f
+		#define PLAYER_SPEED_Y 200.0f
 		#define PLAYER_1_TEXTURE "luffy.png"
 		#define PLAYER_2_TEXTURE "zoro.png"
 		#define PLAYER_HP 100
@@ -23,6 +23,7 @@ namespace Entities {
 			void render();
 			void attack();
 			void operator++();
+			void collide(Entity* ent, Math::CoordF intersection);
 		};
 	}
 }

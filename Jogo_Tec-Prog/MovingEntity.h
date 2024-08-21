@@ -19,7 +19,9 @@ namespace Entities {
 		void stop();
 		virtual void render() = 0;
 		virtual void update(float dt) = 0;
-		void collide(Entity* ent, Math::CoordF intersection){}
+		virtual void collide(Entity* ent, Math::CoordF intersection) = 0;
+		void moveOnCollision(Entity* ent, Math::CoordF intersection);
+		void execute(float dt);
 	};
 }
 

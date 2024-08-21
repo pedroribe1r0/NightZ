@@ -137,8 +137,11 @@
     <ClCompile Include="CollisionManager.cpp" />
     <ClCompile Include="Ente.cpp" />
     <ClCompile Include="EntitiesList.cpp" />
+    <ClCompile Include="EventsManager.cpp" />
     <ClCompile Include="GraphicManager.cpp" />
+    <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="MovingEntity.cpp" />
+    <ClCompile Include="Observer.cpp" />
     <ClCompile Include="Obstacle.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Entity.cpp" />
@@ -154,9 +157,12 @@
     <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="Ente.h" />
     <ClInclude Include="EntitiesList.h" />
+    <ClInclude Include="EventsManager.h" />
     <ClInclude Include="GraphicManager.h" />
+    <ClInclude Include="InputManager.h" />
     <ClInclude Include="List.h" />
     <ClInclude Include="MovingEntity.h" />
+    <ClInclude Include="Observer.h" />
     <ClInclude Include="Obstacle.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Coord.h" />

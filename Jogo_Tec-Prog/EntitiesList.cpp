@@ -20,6 +20,14 @@ void EntitiesList::render() {
 	}
 }
 
+void EntitiesList::execute(float dt) {
+	List<Entities::Entity>::iterator it = entitiesList.begin();
+	while (it != entitiesList.end()) {
+		(*it)->execute(dt);
+		it.operator++();
+	}
+}
+
 void EntitiesList::setData(Entities::Entity* pEnt) {
 	entitiesList.push_back(pEnt);
 }
@@ -28,4 +36,10 @@ void EntitiesList::removeData(Entities::Entity* pEnt) {
 }
 int EntitiesList::getSize() const {
 	return entitiesList.getSize();
+}
+List<Entities::Entity>::iterator EntitiesList::begin() {
+	return entitiesList.begin();
+}
+List<Entities::Entity>::iterator EntitiesList::end() {
+	return entitiesList.end();
 }

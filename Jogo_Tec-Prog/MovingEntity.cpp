@@ -28,4 +28,29 @@ namespace Entities {
 	bool MovingEntity::isFacingLeft() const {
 		return facingLeft;
 	}
+	void MovingEntity::execute(float dt) {
+		position.y += GRAVIDADE * dt;
+		update(dt);
+	}
+	void MovingEntity::moveOnCollision(Entity* ent, Math::CoordF intersection) {
+		Math::CoordF otherPos = ent->getPosition();
+
+		if (intersection.x > intersection.y) { // Colision on x direction
+			if (position.x < otherPos.x)
+				position.x += intersection.x;
+			else
+				position.x -= intersection.x;
+			//speed.x = 0.0f;
+		}
+
+		else { // Colision on y direction
+			if (position.y < otherPos.y)
+				position.y += intersection.y;
+
+			else
+				position.y -= intersection.y;
+
+			//speed.y = 0.0f;
+		}
+	}
 }

@@ -11,9 +11,10 @@ namespace Entities {
 		public:
 			Obstacle(Math::CoordF pos = Math::CoordF(0, 0), Math::CoordF size = Math::CoordF(0, 0), bool dangerous = false, int damadge = 0);
 			~Obstacle();
-			void collide(Entities::Characters::Character* pCharacter);
+			void collide(Entity* ent, Math::CoordF intersection);
 			void render();
 			void update(float dt);
+			void execute(float dt);
 		};
 	}
 }

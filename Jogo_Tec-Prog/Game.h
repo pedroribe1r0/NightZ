@@ -1,11 +1,13 @@
 #pragma once
-#include "EntitiesList.h"
+#include "EventsManager.h"
 class Game
 {
 private:
+	Managers::EventsManager* pEvent;
 	Managers::GraphicManager* pGraphic;
-	EntitiesList EL;
-
+	Managers::CollisionManager* pColision;
+	EntitiesList staticEntities;
+	EntitiesList movingEntities;
 public:
 	Game();
 	~Game();

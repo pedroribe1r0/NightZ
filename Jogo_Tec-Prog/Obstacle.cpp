@@ -9,13 +9,11 @@ namespace Entities {
 		Obstacle::~Obstacle() {
 
 		}
-		void Obstacle::collide(Entities::Characters::Character* pCharacter) {
-			pCharacter->takeDamadge(damadge);
-			//to do
-		}
 		void Obstacle::update(float dt){}
+		void Obstacle::execute(float dt){}
 		void Obstacle::render() {
 			pGraphic->render(body);
 		}
+		void Obstacle::collide(Entity* ent, Math::CoordF intersection){}
 	}
 }

@@ -12,10 +12,11 @@ namespace Entities {
 		public:
 			Character(Math::CoordF pos = Math::CoordF(0, 0), Math::CoordF size = Math::CoordF(0, 0), ID id = ID::empty, Math::CoordF speed = Math::CoordF(0, 0), int hp = 0, int stamina = 0);
 			virtual ~Character();
-			void takeDamadge(int damadge);
+			void takeDamage(int damage);
 			virtual void attack() = 0;
 			virtual void update(float dt) = 0;
 			virtual void render() = 0;
+			virtual void collide(Entity* ent, Math::CoordF intersection) = 0;
 		};
 	}
 }
