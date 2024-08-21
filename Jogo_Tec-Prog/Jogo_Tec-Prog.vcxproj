@@ -147,6 +147,7 @@
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Jogo_Tec-Prog.cpp" />
+    <ClCompile Include="PlayerObserver.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="luffy.png" />
@@ -168,6 +169,7 @@
     <ClInclude Include="Coord.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="PlayerObserver.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

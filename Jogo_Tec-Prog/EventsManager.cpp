@@ -7,7 +7,7 @@ namespace Managers {
 	EventsManager::EventsManager() {
 		pGraphic = Managers::GraphicManager::getInstance();
 
-		//pInput = Managers::InputManager::getInstance();
+		pInput = Managers::InputManager::getInstance();
 	}
 
 	EventsManager::~EventsManager() {
@@ -26,10 +26,10 @@ namespace Managers {
 		while (pGraphic->pollEvent(e)) {
 			if (e.type == sf::Event::Closed)
 				pGraphic->closeWindow();
-			//if (e.type == sf::Event::KeyPressed)
-				//pInput->handleKeyPressed(e.key.code);
-			//if(e.type == sf::Event::KeyReleased)
-				//pInput->handleKeyReleased(e.key.code);
+			if (e.type == sf::Event::KeyPressed)
+				pInput->handleKeyPressed(e.key.code);
+			if(e.type == sf::Event::KeyReleased)
+				pInput->handleKeyReleased(e.key.code);
 		}
 	}
 }

@@ -10,7 +10,7 @@ namespace Entities {
 		bool canMove;
 		//animacao
 	public:
-		MovingEntity(Math::CoordF pos = Math::CoordF(0, 0), Math::CoordF size = Math::CoordF(0, 0), ID id = ID::empty, Math::CoordF speed = Math::CoordF(0,0));
+		MovingEntity(Math::CoordF pos = Math::CoordF(0, 0), Math::CoordF size = Math::CoordF(0, 0), ID id = ID::empty);
 		virtual ~MovingEntity();
 		void setCanMove(bool cM);
 		bool getCanMove() const;
@@ -20,8 +20,7 @@ namespace Entities {
 		virtual void render() = 0;
 		virtual void update(float dt) = 0;
 		virtual void collide(Entity* ent, Math::CoordF intersection) = 0;
-		void moveOnCollision(Entity* ent, Math::CoordF intersection);
-		void execute(float dt);
+		
 	};
 }
 
