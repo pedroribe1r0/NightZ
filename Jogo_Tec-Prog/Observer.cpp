@@ -8,5 +8,7 @@ namespace Observers {
 		pInput->addObserver(this);
 	}
 
-	Observer::~Observer() {}
+	Observer::~Observer() {
+		pInput->removeObserver(this);
+	}
 }

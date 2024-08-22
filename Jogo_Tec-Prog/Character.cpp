@@ -32,7 +32,7 @@ namespace Entities {
 		void Character::execute(float dt) {
 			if (speed.y <= 500.0) {
 				speed.y += GRAVIDADE * dt;
-			}
+			}//corrigir cair sem pular
 			update(dt);
 		}
 
