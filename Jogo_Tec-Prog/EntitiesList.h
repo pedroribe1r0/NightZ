@@ -15,6 +15,7 @@ public:
 	void render();
 	void setData(Entities::Entity* pEnt);
 	void removeData(Entities::Entity* pEnt);
+	void deleteData(Entities::Entity* pEnt);
 	int getSize() const;
 	List<Entities::Entity>::iterator begin();
 	List<Entities::Entity>::iterator end();

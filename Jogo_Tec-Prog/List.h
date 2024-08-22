@@ -13,7 +13,7 @@ public:
         Node() : data(nullptr), next(nullptr), prev(nullptr) {}
 
         ~Node() {
-            delete data;
+            //delete data;
             data = nullptr;
             next = nullptr;
             prev = nullptr;
@@ -126,6 +126,7 @@ public:
         Node<T>* current = head;
         while (current != nullptr) {
             Node<T>* next = current->getNext();
+            delete current->getData();
             delete current;
             current = next;
         }
@@ -137,19 +138,42 @@ public:
         while (aux != NULL && aux->getData() != data) {
             aux = aux->getNext();
         }
-        if (aux->getData() == data && aux != nullptr) {
+        if (aux != nullptr && aux->getData() == data) {
             if (aux == head) {
                 head = head->getNext();
                 delete aux;
             }
-            else if (aux == tail) {
+            else if (aux != nullptr && aux == tail) {
                 tail = tail->getPrev();
-                T* data = aux->getData();
                 delete aux;
             }
-            else {
+            else if(aux != nullptr){
                 aux->getPrev()->setNext(aux->getNext());
                 aux->getNext()->setPrev(aux->getPrev());
+                delete aux;
+            }
+        }
+    }
+    void deleteNode(T* data) {
+        Node<T>* aux = head;
+        while (aux != NULL && aux->getData() != data) {
+            aux = aux->getNext();
+        }
+        if (aux != nullptr && aux->getData() == data) {
+            if (aux == head) {
+                head = head->getNext();
+                delete aux->getData();
+                delete aux;
+            }
+            else if (aux != nullptr && aux == tail) {
+                tail = tail->getPrev();
+                delete aux->getData();
+                delete aux;
+            }
+            else if(aux != nullptr) {
+                aux->getPrev()->setNext(aux->getNext());
+                aux->getNext()->setPrev(aux->getPrev());
+                delete aux->getData();
                 delete aux;
             }
         }

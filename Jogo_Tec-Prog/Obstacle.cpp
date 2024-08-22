@@ -14,6 +14,6 @@ namespace Entities {
 		void Obstacle::render() {
 			pGraphic->render(body);
 		}
-		void Obstacle::collide(Entity* ent, Math::CoordF intersection){}
+		void Obstacle::collide(Entity* ent, Math::CoordF intersection, float dt){}
 	}
 }

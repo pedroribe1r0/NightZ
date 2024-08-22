@@ -18,14 +18,22 @@ namespace Entities {
 			if (rand() % 5 == 0) {
 				jump();
 			}
-			if (fabs(position.x - pPlayer1->getPosition().x) < fabs(position.x - pPlayer2->getPosition().x)) {
+			if (pPlayer1 && pPlayer2) {
+				if (fabs(position.x - pPlayer1->getPosition().x) < fabs(position.x - pPlayer2->getPosition().x)) {
+					chasePlayer(pPlayer1, ZOMBIE_SPEED);
+				}
+				else {
+					chasePlayer(pPlayer2, ZOMBIE_SPEED);
+				}
+			}
+			else if (pPlayer1) {
 				chasePlayer(pPlayer1, ZOMBIE_SPEED);
 			}
-			else {
+			else if (pPlayer2) {
 				chasePlayer(pPlayer2, ZOMBIE_SPEED);
 			}
 		}
-		void Zombie::collide(Entity* ent, Math::CoordF intersection) {
+		void Zombie::collide(Entity* ent, Math::CoordF intersection, float dt) {
 			switch (ent->getID()) {
 			case ID::obstacle:
 				moveOnCollision(ent, intersection);
@@ -36,7 +44,7 @@ namespace Entities {
 			case player: {
 				Player* p = dynamic_cast<Player*>(ent);
 				if (p) {
-					p->takeDamage(meleeDamage);
+					p->takeDamage(meleeDamage * dt);
 				}
 				moveOnCollision(ent, intersection);
 				break;

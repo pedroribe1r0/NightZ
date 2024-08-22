@@ -1,5 +1,4 @@
 #include "MovingEntity.h"
-
 namespace Entities {
 	MovingEntity::MovingEntity(Math::CoordF pos, Math::CoordF size, ID id) : Entity(pos, size, id), speed(0){
 		isMoving = false;

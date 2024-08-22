@@ -13,7 +13,7 @@ namespace Entities {
 			~Enemy();
 			void setPlayer1(Player* p1);
 			void setPlayer2(Player* p2);
-			virtual void collide(Entity* ent, Math::CoordF intersection) = 0;
+			virtual void collide(Entity* ent, Math::CoordF intersection, float dt) = 0;
 			virtual void update(float dt) = 0;
 			virtual void attack() = 0;
 			void chasePlayer(Player* p, float speed);

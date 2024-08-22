@@ -1,4 +1,5 @@
 #include "Entity.h"
+#include "EntitiesList.h"
 
 namespace Entities {
 	Entity::Entity(Math::CoordF pos, Math::CoordF size , ID id) : Ente(id), position(pos), size(size){

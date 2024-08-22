@@ -1,8 +1,8 @@
 #pragma once
 #include "Ente.h"
-
+class EntitiesList;
 namespace Entities {
-	#define GRAVIDADE 400.0
+	#define GRAVIDADE 600.0
 
 	class Entity : public Ente
 	{
@@ -18,7 +18,7 @@ namespace Entities {
 		virtual void execute(float dt) = 0;
 		void render();
 		virtual void update(float dt) = 0;
-		virtual void collide(Entity* ent, Math::CoordF intersection) = 0;
+		virtual void collide(Entity* ent, Math::CoordF intersection, float dt) = 0;
 	};
 }
 

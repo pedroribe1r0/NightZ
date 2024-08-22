@@ -13,7 +13,7 @@ namespace Managers {
 
         ~CollisionManager();
 
-        void collide();
+        void collide(float dt = 0);
 
         void clear();
     };

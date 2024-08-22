@@ -1,5 +1,6 @@
 #include "Player.h"
 #include "PlayerObserver.h"
+#include "MachineGun.h"
 
 namespace Entities {
 	namespace Characters {
@@ -9,6 +10,7 @@ namespace Entities {
 			points(0)
 		{
 			pObserver = new Observers::PlayerObserver(this);
+			//gun
 			if (isPlayer1)
 				//body->setTexture(pGraphic->loadTexture(PLAYER_1_TEXTURE));
 				body->setFillColor(sf::Color::Magenta);
@@ -36,14 +38,14 @@ namespace Entities {
 		}
 
 		void Player::attack() {
-			/*to do*/
+			
 		}
 
 		void Player::operator++() {
 			points++;
 		}
 
-		void Player::collide(Entity* ent, Math::CoordF intersection) {
+		void Player::collide(Entity* ent, Math::CoordF intersection, float dt) {
 			switch (ent->getID()) {
 			case ID::obstacle:
 				moveOnCollision(ent, intersection);

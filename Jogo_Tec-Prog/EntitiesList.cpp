@@ -32,6 +32,9 @@ void EntitiesList::setData(Entities::Entity* pEnt) {
 	entitiesList.push_back(pEnt);
 }
 void EntitiesList::removeData(Entities::Entity* pEnt) {
+	
+}
+void EntitiesList::deleteData(Entities::Entity* pEnt) {
 	entitiesList.removeNode(pEnt);
 }
 int EntitiesList::getSize() const {

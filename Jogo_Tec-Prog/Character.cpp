@@ -5,7 +5,8 @@ namespace Entities {
 		Character::Character(Math::CoordF pos, Math::CoordF size, ID id, int hp) : 
 			MovingEntity(pos, size, id), 
 			hp(hp),
-			canJump(false){}
+			canJump(false),
+			isAlive(true){}
 
 		Character::~Character() {}
 		void Character::takeDamage(int damage) {
@@ -29,7 +30,7 @@ namespace Entities {
 		}
 
 		void Character::execute(float dt) {
-			if (speed.y <= 500.0) {
+			if (speed.y <= 800.0) {
 				speed.y += GRAVIDADE * dt;
 			}
 			update(dt);
