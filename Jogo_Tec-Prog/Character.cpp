@@ -2,19 +2,21 @@
 
 namespace Entities {
 	namespace Characters {
-		Character::Character(Math::CoordF pos, Math::CoordF size, ID id, int hp) : 
+		Character::Character(Math::CoordF pos, Math::CoordF size, ID id, float hp) : 
 			MovingEntity(pos, size, id), 
 			hp(hp),
 			canJump(false),
 			isAlive(true){}
 
 		Character::~Character() {}
-		void Character::takeDamage(int damage) {
-			int newLife = hp - damage;
-			if (newLife >= 0)
+		void Character::takeDamage(float damage) {
+			float newLife = hp - damage;
+			if (newLife > 0)
 				hp = newLife;
-			else
+			else {
 				hp = 0;
+				isAlive = false;
+			}
 		}
 		void Character::jump() {
 			if (canJump) {
@@ -27,6 +29,10 @@ namespace Entities {
 		}
 		bool Character::getCanJump() const{
 			return canJump;
+		}
+
+		bool Character::getIsAlive() const {
+			return isAlive;
 		}
 
 		void Character::execute(float dt) {

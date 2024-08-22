@@ -15,7 +15,9 @@ void EntitiesList::update(float dt) {
 void EntitiesList::render() {
 	List<Entities::Entity>::iterator it = entitiesList.begin();
 	while (it != entitiesList.end()) {
-		(*it)->render();
+		if ((*it)->getIsActive()) {
+			(*it)->render();
+		}
 		it.operator++();
 	}
 }
@@ -23,7 +25,14 @@ void EntitiesList::render() {
 void EntitiesList::execute(float dt) {
 	List<Entities::Entity>::iterator it = entitiesList.begin();
 	while (it != entitiesList.end()) {
-		(*it)->execute(dt);
+		if ((*it)->getIsActive()) {
+			(*it)->execute(dt);
+		}if ((*it)->getID() == player || (*it)->getID() == enemy) {
+			Entities::Characters::Character* pChar = dynamic_cast<Entities::Characters::Character*>(*it);
+			if (!pChar->getIsAlive()) {
+				deleteData(pChar);
+			}
+		}
 		it.operator++();
 	}
 }

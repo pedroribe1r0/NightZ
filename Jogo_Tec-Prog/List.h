@@ -135,22 +135,38 @@ public:
 
     void removeNode(T* data) {
         Node<T>* aux = head;
-        while (aux != NULL && aux->getData() != data) {
+
+        // Encontra o nó com os dados especificados
+        while (aux != nullptr && aux->getData() != data) {
             aux = aux->getNext();
         }
-        if (aux != nullptr && aux->getData() == data) {
+
+        // Se o nó foi encontrado
+        if (aux != nullptr) {
             if (aux == head) {
-                head = head->getNext();
-                delete aux;
+                head = aux->getNext(); // Atualiza o head
+                if (head != nullptr) {
+                    head->setPrev(nullptr); // Se houver novo head, remove referência ao nó antigo
+                }
             }
-            else if (aux != nullptr && aux == tail) {
-                tail = tail->getPrev();
-                delete aux;
+            else if (aux == tail) {
+                tail = aux->getPrev(); // Atualiza o tail
+                if (tail != nullptr) {
+                    tail->setNext(nullptr); // Se houver novo tail, remove referência ao nó antigo
+                }
             }
-            else if(aux != nullptr){
-                aux->getPrev()->setNext(aux->getNext());
-                aux->getNext()->setPrev(aux->getPrev());
-                delete aux;
+            else {
+                aux->getPrev()->setNext(aux->getNext()); // Atualiza ponteiro do nó anterior
+                aux->getNext()->setPrev(aux->getPrev()); // Atualiza ponteiro do nó seguinte
+            }
+
+            // Libera a memória do nó removido
+            delete aux;
+
+            // Caso tenha removido o único elemento, defina head e tail como nullptr
+            if (head == nullptr || tail == nullptr) {
+                head = nullptr;
+                tail = nullptr;
             }
         }
     }

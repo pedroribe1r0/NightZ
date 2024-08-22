@@ -36,9 +36,9 @@ namespace Observers {
 				pPlayer->move(true);
 			}
 		}
-		/*else if (key == attack) {
+		else if (key == attack) {
 			pPlayer->attack();
-		}*/
+		}
 	}
 	void PlayerObserver::notifyKeyReleased(sf::Keyboard::Key key) {
 		if (key == right && !sf::Keyboard::isKeyPressed(left)) {
@@ -50,6 +50,9 @@ namespace Observers {
 			if (pPlayer->getCanMove()) {
 				pPlayer->stop();
 			}
+		}
+		else if (key == attack) {
+			pPlayer->stopAttacking();
 		}
 	}
 	void PlayerObserver::setPlayer(Entities::Characters::Player* pPlayer) {

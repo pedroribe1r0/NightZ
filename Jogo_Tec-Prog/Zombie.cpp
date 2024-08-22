@@ -49,6 +49,13 @@ namespace Entities {
 				moveOnCollision(ent, intersection);
 				break;
 			}
+			case bullet: {
+				if (ent->getPosition().x > position.x)
+					speed.x -= 20.0 * dt;
+				else
+					speed.x += 20.0 * dt;
+				break;
+			}
 			default:
 				break;
 			}

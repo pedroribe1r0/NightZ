@@ -4,8 +4,8 @@
 namespace Entities {
 	#define MACHINE_GUN_SIZE_X 20.0
 	#define MACHINE_GUN_SIZE_Y 10.0
-	#define BULLET_RANGE 100.0
-	#define BULLET_DAMAGE 10.0
+	#define BULLET_RANGE 200.0
+	#define BULLET_DAMAGE 100.0
 	class MachineGun : public Entity
 	{
 	private:
@@ -23,8 +23,9 @@ namespace Entities {
 		};
 		Bullet* bullet;
 		Entities::Characters::Player* user;
+		EntitiesList* list;
 	public:
-		MachineGun(Math::CoordF pos = Math::CoordF(0, 0), Entities::Characters::Player* user = nullptr);
+		MachineGun(EntitiesList* list = nullptr, Entities::Characters::Player* user = nullptr);
 		~MachineGun();
 		void shoot();
 		void stopShoot();

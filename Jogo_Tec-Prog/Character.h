@@ -8,14 +8,14 @@ namespace Entities {
 		class Character : public MovingEntity
 		{
 		protected:
-			int hp;
+			float hp;
 			bool canJump;
 			bool isAlive;
 			/*To do*/
 		public:
-			Character(Math::CoordF pos = Math::CoordF(0, 0), Math::CoordF size = Math::CoordF(0, 0), ID id = ID::empty, int hp = 0);
+			Character(Math::CoordF pos = Math::CoordF(0, 0), Math::CoordF size = Math::CoordF(0, 0), ID id = ID::empty, float hp = 0);
 			virtual ~Character();
-			void takeDamage(int damage);
+			void takeDamage(float damage);
 			void jump();
 			virtual void attack() = 0;
 			virtual void update(float dt) = 0;
@@ -24,6 +24,7 @@ namespace Entities {
 			void setCanJump(bool cj);
 			void execute(float dt);
 			void moveOnCollision(Entity* ent, Math::CoordF intersection);
+			bool getIsAlive() const;
 		};
 	}
 }

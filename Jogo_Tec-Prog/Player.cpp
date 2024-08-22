@@ -4,13 +4,13 @@
 
 namespace Entities {
 	namespace Characters {
-		Player::Player(Math::CoordF pos, bool isPlayer1) :
+		Player::Player(Math::CoordF pos, bool isPlayer1, EntitiesList* list) :
 			Character(pos, Math::CoordF(PLAYER_SIZE_X, PLAYER_SIZE_Y), player, PLAYER_HP),
 			isPlayer1(isPlayer1),
 			points(0)
 		{
 			pObserver = new Observers::PlayerObserver(this);
-			//gun
+			gun = new MachineGun(list, this);
 			if (isPlayer1)
 				//body->setTexture(pGraphic->loadTexture(PLAYER_1_TEXTURE));
 				body->setFillColor(sf::Color::Magenta);
@@ -38,7 +38,11 @@ namespace Entities {
 		}
 
 		void Player::attack() {
-			
+			gun->shoot();
+		}
+
+		void Player::stopAttacking() {
+			gun->stopShoot();
 		}
 
 		void Player::operator++() {

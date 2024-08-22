@@ -6,6 +6,7 @@ enum ID {
 	player,
 	enemy,
 	weapon,
+	bullet,
 	obstacle,
 	projectile
 };

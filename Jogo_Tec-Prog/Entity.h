@@ -9,6 +9,7 @@ namespace Entities {
 	protected:
 		Math::CoordF position;
 		Math::CoordF size;
+		bool isActive;
 	public:
 		Entity(Math::CoordF pos = Math::CoordF(0, 0), Math::CoordF size = Math::CoordF(0, 0), ID id = ID::empty);
 		virtual ~Entity();
@@ -19,6 +20,8 @@ namespace Entities {
 		void render();
 		virtual void update(float dt) = 0;
 		virtual void collide(Entity* ent, Math::CoordF intersection, float dt) = 0;
+		bool getIsActive() const;
+		void setIsActive(bool ac);
 	};
 }
 
