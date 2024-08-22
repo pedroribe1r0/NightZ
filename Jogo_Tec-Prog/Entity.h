@@ -2,7 +2,7 @@
 #include "Ente.h"
 
 namespace Entities {
-	#define GRAVIDADE 300.0
+	#define GRAVIDADE 400.0
 
 	class Entity : public Ente
 	{
@@ -16,7 +16,7 @@ namespace Entities {
 		Math::CoordF getPosition() const;
 		Math::CoordF getSize() const;
 		virtual void execute(float dt) = 0;
-		virtual void render() = 0;
+		void render();
 		virtual void update(float dt) = 0;
 		virtual void collide(Entity* ent, Math::CoordF intersection) = 0;
 	};

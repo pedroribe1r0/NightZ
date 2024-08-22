@@ -41,12 +41,12 @@ namespace Observers {
 		}*/
 	}
 	void PlayerObserver::notifyKeyReleased(sf::Keyboard::Key key) {
-		if (key == right) {
+		if (key == right && !sf::Keyboard::isKeyPressed(left)) {
 			if (pPlayer->getCanMove()) {
 				pPlayer->stop();
 			}
 		}
-		else if (key == left) {
+		else if (key == left && !sf::Keyboard::isKeyPressed(right)) {
 			if (pPlayer->getCanMove()) {
 				pPlayer->stop();
 			}

@@ -18,4 +18,7 @@ namespace Entities {
 	Math::CoordF Entity::getSize() const{
 		return size;
 	}
+	void Entity::render() {
+		pGraphic->render(body);
+	}
 }

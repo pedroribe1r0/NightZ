@@ -4,7 +4,7 @@
 namespace Entities {
 	namespace Characters {
 		Player::Player(Math::CoordF pos, bool isPlayer1) :
-			Character(pos, Math::CoordF(PLAYER_SIZE_X, PLAYER_SIZE_Y), player, PLAYER_HP, PLAYER_STAMINA),
+			Character(pos, Math::CoordF(PLAYER_SIZE_X, PLAYER_SIZE_Y), player, PLAYER_HP),
 			isPlayer1(isPlayer1),
 			points(0)
 		{
@@ -18,10 +18,6 @@ namespace Entities {
 		}
 
 		Player::~Player() {}
-
-		void Player::render() {
-			pGraphic->render(body);
-		}
 
 		bool Player::getIsPlayer1() const{
 			return isPlayer1;
@@ -37,9 +33,6 @@ namespace Entities {
 			else {
 				speed.x = 0;
 			}
-			position.x += speed.x * dt;
-			position.y += speed.y * dt;
-			body->setPosition(sf::Vector2f(position.x, position.y));
 		}
 
 		void Player::attack() {
@@ -56,6 +49,9 @@ namespace Entities {
 				moveOnCollision(ent, intersection);
 				break;
 			case player:
+				moveOnCollision(ent, intersection);
+				break;
+			case enemy:
 				moveOnCollision(ent, intersection);
 				break;
 			default:

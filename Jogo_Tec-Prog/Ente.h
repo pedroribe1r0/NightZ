@@ -4,6 +4,7 @@
 enum ID {
 	empty = 0,
 	player,
+	enemy,
 	obstacle,
 	projectile
 };

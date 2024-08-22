@@ -1,6 +1,6 @@
 #pragma once
 #include "List.h"
-#include "Player.h"
+#include "Zombie.h"
 #include "Obstacle.h"
 
 class EntitiesList

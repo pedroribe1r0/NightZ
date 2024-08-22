@@ -2,10 +2,9 @@
 
 namespace Entities {
 	namespace Characters {
-		Character::Character(Math::CoordF pos, Math::CoordF size, ID id, int hp, int stamina) : 
+		Character::Character(Math::CoordF pos, Math::CoordF size, ID id, int hp) : 
 			MovingEntity(pos, size, id), 
-			hp(hp), 
-			stamina(stamina),
+			hp(hp),
 			canJump(false){}
 
 		Character::~Character() {}
@@ -32,13 +31,15 @@ namespace Entities {
 		void Character::execute(float dt) {
 			if (speed.y <= 500.0) {
 				speed.y += GRAVIDADE * dt;
-			}//corrigir cair sem pular
+			}
 			update(dt);
-		}
+			position.x += speed.x * dt;
+			position.y += speed.y * dt;
+			body->setPosition(sf::Vector2f(position.x, position.y));
+		}//corrigir double jump no ar
 
 		void Character::moveOnCollision(Entity* ent, Math::CoordF intersection) {
 			Math::CoordF otherPos = ent->getPosition();
-
 			if (intersection.x > intersection.y) { // Colision on x direction
 				if (position.x < otherPos.x)
 					position.x += intersection.x;
@@ -50,6 +51,7 @@ namespace Entities {
 				
 				if (position.y < otherPos.y) {
 					canJump = true;
+					speed.y = 0;
 					position.y += intersection.y;
 				}
 				else 

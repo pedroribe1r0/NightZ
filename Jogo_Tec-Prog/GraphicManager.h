@@ -4,7 +4,8 @@
 #include <iostream>
 #include <unordered_map>
 #include <string>
-
+#include <stdlib.h>
+#include <time.h>
 //Inspirado no Gerenciador Grafico do Monitor Matheus Augusto Burda (Burda Canal)
 
 namespace Managers {
