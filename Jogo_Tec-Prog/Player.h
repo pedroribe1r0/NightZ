@@ -21,6 +21,7 @@ namespace Entities {
 			const bool isPlayer1;
 			int points;
 			MachineGun* gun;
+			EntitiesList* list;
 		public:
 			Player(Math::CoordF pos = Math::CoordF(0, 0), bool isPlayer1 = true, EntitiesList* list = nullptr);
 			~Player();

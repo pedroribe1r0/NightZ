@@ -27,7 +27,8 @@ void EntitiesList::execute(float dt) {
 	while (it != entitiesList.end()) {
 		if ((*it)->getIsActive()) {
 			(*it)->execute(dt);
-		}if ((*it)->getID() == player || (*it)->getID() == enemy) {
+		}
+		if ((*it)->getID() == player || (*it)->getID() == enemy) {
 			Entities::Characters::Character* pChar = dynamic_cast<Entities::Characters::Character*>(*it);
 			if (!pChar->getIsAlive()) {
 				deleteData(pChar);
@@ -41,10 +42,10 @@ void EntitiesList::setData(Entities::Entity* pEnt) {
 	entitiesList.push_back(pEnt);
 }
 void EntitiesList::removeData(Entities::Entity* pEnt) {
-	
+	entitiesList.removeNode(pEnt);
 }
 void EntitiesList::deleteData(Entities::Entity* pEnt) {
-	entitiesList.removeNode(pEnt);
+	entitiesList.deleteNode(pEnt);
 }
 int EntitiesList::getSize() const {
 	return entitiesList.getSize();

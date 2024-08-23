@@ -150,6 +150,8 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Jogo_Tec-Prog.cpp" />
     <ClCompile Include="PlayerObserver.cpp" />
+    <ClCompile Include="Projectile.cpp" />
+    <ClCompile Include="Thrower.cpp" />
     <ClCompile Include="Zombie.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -175,6 +177,8 @@
     <ClInclude Include="Entity.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="PlayerObserver.h" />
+    <ClInclude Include="Projectile.h" />
+    <ClInclude Include="Thrower.h" />
     <ClInclude Include="Zombie.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

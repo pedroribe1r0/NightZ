@@ -16,7 +16,7 @@ namespace Entities {
 			virtual void collide(Entity* ent, Math::CoordF intersection, float dt) = 0;
 			virtual void update(float dt) = 0;
 			virtual void attack() = 0;
-			void chasePlayer(Player* p, float speed);
+			void chasePlayer(Player* p);
 		};
 	}
 }

@@ -52,7 +52,7 @@ namespace Entities {
 		}
 	}
 	MachineGun::~MachineGun() {
-
+		list->deleteData(bullet);
 	}
 	void MachineGun::execute(float dt) {
 		update(dt);

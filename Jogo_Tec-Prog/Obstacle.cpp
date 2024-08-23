@@ -2,9 +2,10 @@
 
 namespace Entities {
 	namespace Obstacles {
-		Obstacle::Obstacle(Math::CoordF pos, Math::CoordF size, bool dangerous, int damadge) : Entity(pos, size, ID::obstacle), dangerous(dangerous), damadge(damadge){
+		Obstacle::Obstacle(Math::CoordF pos, Math::CoordF size, bool dangerous, int damadge) : Entity(pos, size, ID::obstacle), dangerous(dangerous), damage(damage){
 			//setar textura
-			body->setFillColor(sf::Color::Red);
+			if(body)
+				body->setFillColor(sf::Color::Red);
 		}
 		Obstacle::~Obstacle() {
 

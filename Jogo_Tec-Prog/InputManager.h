@@ -1,6 +1,6 @@
 #pragma once
 #include "PlayerObserver.h"
-
+//O codigo usado de base foi feito por Matheus Augusto Burda(Burda Canal no Youtube)
 namespace Managers {
 	class InputManager
 	{

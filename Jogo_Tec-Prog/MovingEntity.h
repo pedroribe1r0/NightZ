@@ -17,6 +17,7 @@ namespace Entities {
 		bool isFacingLeft() const;
 		void move(bool left);
 		void stop();
+		virtual void execute(float dt) = 0;
 		virtual void update(float dt) = 0;
 		virtual void collide(Entity* ent, Math::CoordF intersection, float dt) = 0;
 	};

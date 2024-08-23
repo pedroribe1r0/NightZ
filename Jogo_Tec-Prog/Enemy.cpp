@@ -17,13 +17,14 @@ namespace Entities {
 		void Enemy::setPlayer2(Player* p2) {
 			pPlayer2 = p2;
 		}
-		void Enemy::chasePlayer(Player* p, float speed) {
+		void Enemy::chasePlayer(Player* p) {
 			if (p->getPosition().x > position.x) {
-				this->speed.x = speed;
+				move(false);
 			}
 			else {
-				this->speed.x = -speed;
+				move(true);
 			}
+			
 		}
 	}
 }

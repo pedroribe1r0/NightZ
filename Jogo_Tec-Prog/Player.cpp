@@ -7,19 +7,25 @@ namespace Entities {
 		Player::Player(Math::CoordF pos, bool isPlayer1, EntitiesList* list) :
 			Character(pos, Math::CoordF(PLAYER_SIZE_X, PLAYER_SIZE_Y), player, PLAYER_HP),
 			isPlayer1(isPlayer1),
-			points(0)
+			points(0),
+			list(list)
 		{
 			pObserver = new Observers::PlayerObserver(this);
 			gun = new MachineGun(list, this);
-			if (isPlayer1)
-				//body->setTexture(pGraphic->loadTexture(PLAYER_1_TEXTURE));
-				body->setFillColor(sf::Color::Magenta);
-			else
-				//body->setTexture(pGraphic->loadTexture(PLAYER_2_TEXTURE));
-				body->setFillColor(sf::Color::Blue);
+			if (body) {
+				if (isPlayer1)
+					//body->setTexture(pGraphic->loadTexture(PLAYER_1_TEXTURE));
+					body->setFillColor(sf::Color::Magenta);
+				else
+					//body->setTexture(pGraphic->loadTexture(PLAYER_2_TEXTURE));
+					body->setFillColor(sf::Color::Blue);
+			}
 		}
 
-		Player::~Player() {}
+		Player::~Player() {
+			list->deleteData(gun);
+			delete pObserver;
+		}
 
 		bool Player::getIsPlayer1() const{
 			return isPlayer1;
