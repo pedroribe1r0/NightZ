@@ -27,11 +27,10 @@ namespace Entities {
 				list->removeData(gun);
 				delete gun;
 			}*/
+			position = Math::CoordF(0,0);
+			
 			if (gun) {
 				gun->setIsActive(false);
-			}
-			if (list) {
-				list->notifyPlayerDeath(isPlayer1);
 			}
 			if (pObserver)
 				delete pObserver;

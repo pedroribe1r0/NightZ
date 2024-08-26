@@ -16,7 +16,6 @@ public:
 	void setData(Entities::Entity* pEnt);
 	void removeData(Entities::Entity* pEnt);
 	int getSize() const;
-	void notifyPlayerDeath(bool isPlayer1);
 	List<Entities::Entity>::iterator begin();
 	List<Entities::Entity>::iterator end();
 };
