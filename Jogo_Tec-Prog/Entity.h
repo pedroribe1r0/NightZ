@@ -2,7 +2,7 @@
 #include "Ente.h"
 class EntitiesList;
 namespace Entities {
-	#define GRAVIDADE 600.0
+	#define GRAVIDADE 600.0f
 
 	class Entity : public Ente
 	{

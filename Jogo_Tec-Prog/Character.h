@@ -4,11 +4,13 @@ class EntitiesList;
 
 namespace Entities {
 	namespace Characters {
-		#define JUMP -300.0
+		#define JUMP -300.0f
+		#define TIME_DMG_ANIMATION 0.2f
 		class Character : public MovingEntity
 		{
 		protected:
 			float hp;
+			float timeDamageAnimation;
 			bool canJump;
 			bool isAlive;
 			/*To do*/

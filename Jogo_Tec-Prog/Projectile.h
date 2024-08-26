@@ -2,10 +2,11 @@
 #include "Thrower.h"
 
 namespace Entities {
-	#define PROJECTILE_SIZE_X 10
-	#define PROJECTILE_SIZE_Y 5
-	#define PROJECTILE_DAMAGE 20.0
-	#define PROJECTILE_SPEED 200.0
+	#define PROJECTILE_SIZE_X 10.0f
+	#define PROJECTILE_SIZE_Y 10.0f
+	#define PROJECTILE_DAMAGE 20.0f
+	#define PROJECTILE_SPEED 200.0f
+	#define THROW_SPEED -300.0f
 	class Projectile : public MovingEntity
 	{
 	private:
@@ -22,7 +23,7 @@ namespace Entities {
 		float getRange() const;
 		void execute(float dt);
 		void update(float dt);
-		void updateRange(Characters::Player* p);
+		//void updateRange(Characters::Player* p);
 		void collide(Entity* ent, Math::CoordF intersection, float dt);
 	};
 }

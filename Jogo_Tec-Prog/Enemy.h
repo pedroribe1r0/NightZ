@@ -7,9 +7,9 @@ namespace Entities {
 		protected:
 			Player* pPlayer1;
 			Player* pPlayer2;
-			int meleeDamage;
+			float meleeDamage;
 		public:
-			Enemy(Math::CoordF pos = Math::CoordF(0, 0), Math::CoordF size = Math::CoordF(0, 0), ID id = ID::empty, int hp = 0, Player* p1 = nullptr, Player* p2 = nullptr);
+			Enemy(Math::CoordF pos = Math::CoordF(0, 0), Math::CoordF size = Math::CoordF(0, 0), ID id = ID::empty, float hp = 0, Player* p1 = nullptr, Player* p2 = nullptr);
 			virtual ~Enemy();
 			void setPlayer1(Player* p1);
 			void setPlayer2(Player* p2);

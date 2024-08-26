@@ -23,8 +23,9 @@ namespace Entities {
 			position.y = user->getPosition().y;
 			isActive = true;
 			canShoot = false;
-			speed.y = -300;
+			speed.y = THROW_SPEED;
 			move(left);
+			user->resetCooldown();
 		}
 	}
 	bool Projectile::getCanShoot() const {
@@ -56,16 +57,18 @@ namespace Entities {
 			speed.x = 0;
 		}
 	}
-	void Projectile::updateRange(Characters::Player* p) {
+	/*void Projectile::updateRange(Characters::Player* p) {
 		float s = p->getPosition().y + p->getSize().x / 2;
 		float s0 = user->getPosition().y;
-		if ((s - s0) > 0) {
-			range = PROJECTILE_SPEED * sqrt((s - s0) * 2 / GRAVIDADE);
+		float maxPosY = s0 - ((THROW_SPEED * THROW_SPEED) / (2 * GRAVIDADE));
+		if (s >= maxPosY) {
+			range = (s0 + PROJECTILE_SPEED * ((-THROW_SPEED / (2 * GRAVIDADE)) + sqrt((s - maxPosY) * 2 / GRAVIDADE)));
 		}
-		else
+		else {
 			range = 0;
+		}
 		
-	}
+	}*/
 	void Projectile::collide(Entity* ent, Math::CoordF intersection, float dt) {
 		if (ent->getID() == player) {
 			Entities::Characters::Player* pPlayer = dynamic_cast<Entities::Characters::Player*>(ent);

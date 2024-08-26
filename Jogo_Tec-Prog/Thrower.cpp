@@ -9,8 +9,9 @@ namespace Entities {
 			list->setData(p);
 			meleeDamage = THROWER_DAMAGE;
 			if (body) {
-				body->setFillColor(sf::Color::Yellow);
+				//body->setFillColor(sf::Color::White);
 			}
+			cooldown = 2.0f;
 		}
 		Thrower::~Thrower() {
 			/*if (p) {
@@ -22,46 +23,54 @@ namespace Entities {
 		void Thrower::attack() {
 			
 		}
+		void Thrower::takeDistance(Player* p) {
+			if (p->getPosition().x > position.x) {
+				move(true);
+			}
+			else {
+				move(false);
+			}
+		}
+		void Thrower::resetCooldown() {
+			cooldown = 0;
+		}
 		void Thrower::update(float dt) {
 			stop();
+			if (!p->getIsActive()) {
+				cooldown += dt;
+			}
 			Player* near = nullptr;
 			if (pPlayer1 && pPlayer2) {
 				near = pPlayer2;
-				if (fabs(position.x - pPlayer1->getPosition().x) < fabs(position.x - pPlayer2->getPosition().x)) {
+				if (fabs(position.x - pPlayer1->getPosition().x) < fabs(position.x - pPlayer2->getPosition().x)) { //identificar o player mais proximo
 					near = pPlayer1;
 				}
-				p->updateRange(near);
-				
-				if (fabs(position.x - near->getPosition().x) <= 200) {
-					p->shoot(facingLeft);
-				}
-				else
-					chasePlayer(near);
 			}
 			else if (pPlayer1) {
-				p->updateRange(pPlayer1);
-				facingLeft = false;
-				if (position.x - pPlayer1->getPosition().x) {
-					facingLeft = true;
-				}
-				if (fabs(position.x - pPlayer1->getPosition().x) <= 200) {
-					p->shoot(facingLeft);
-				}
-				else
-					chasePlayer(pPlayer1);
-				
+				near = pPlayer1;
 			}
 			else if (pPlayer2) {
-				p->updateRange(pPlayer2);
+				near = pPlayer2;
+			}
+			if (near) {
+				//p->updateRange(near);
+				float distance = position.x - near->getPosition().x;
 				facingLeft = false;
-				if (position.x - pPlayer2->getPosition().x) {
+				if (distance > 0) { //verificar pra qual lado atirar, mesmo que nao precise se mover
 					facingLeft = true;
 				}
-				if (fabs(position.x - pPlayer2->getPosition().x) <= 200) {
+				if (fabs(distance) > 190 && fabs(distance) < 200 && cooldown >= THROWER_COOLDOWN) { //verificar se esta dentro do range e se o cooldown esta maior q o tempo estipulado
 					p->shoot(facingLeft);
 				}
-				else
-					chasePlayer(pPlayer2);
+				else if (fabs(distance) < 191) {
+					if(cooldown >= THROWER_COOLDOWN)
+						p->shoot(facingLeft);
+					takeDistance(near);
+				}
+					
+				else if (fabs(distance) >= 199) //verificar se o motivo do loop foi nao ter cooldown ou estar longe
+					chasePlayer(near);
+				
 			}
 			if (isMoving) {
 				if (facingLeft)

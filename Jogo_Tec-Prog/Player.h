@@ -13,7 +13,7 @@ namespace Entities {
 		#define PLAYER_SPEED 200.0f
 		#define PLAYER_1_TEXTURE "luffy.png"
 		#define PLAYER_2_TEXTURE "zoro.png"
-		#define PLAYER_HP 100.0
+		#define PLAYER_HP 100.0f
 		class Player : public Character
 		{
 		private:

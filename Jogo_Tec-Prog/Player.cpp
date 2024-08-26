@@ -15,10 +15,10 @@ namespace Entities {
 			if (body) {
 				if (isPlayer1)
 					//body->setTexture(pGraphic->loadTexture(PLAYER_1_TEXTURE));
-					body->setFillColor(sf::Color::Magenta);
+					body->setFillColor(sf::Color::White);
 				else
 					//body->setTexture(pGraphic->loadTexture(PLAYER_2_TEXTURE));
-					body->setFillColor(sf::Color::Blue);
+					body->setFillColor(sf::Color::White);
 			}
 		}
 

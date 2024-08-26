@@ -6,7 +6,7 @@ namespace Entities {
 		Zombie::Zombie(Math::CoordF pos, Player* p1, Player* p2) : Enemy(pos, Math::CoordF(ZOMBIE_SIZE_X, ZOMBIE_SIZE_Y), enemy, ZOMBIE_HP, p1, p2){
 			meleeDamage = ZOMBIE_DAMAGE;
 			if (body) {
-				body->setFillColor(sf::Color::White);
+				//body->setFillColor(sf::Color::White);
 			}
 		}
 		Zombie::~Zombie() {

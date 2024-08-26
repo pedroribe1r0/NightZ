@@ -2,7 +2,7 @@
 
 namespace Entities {
 	namespace Characters {
-		Enemy::Enemy(Math::CoordF pos, Math::CoordF size , ID id, int hp, Player* p1, Player* p2) : Character(pos, size, id ,hp){
+		Enemy::Enemy(Math::CoordF pos, Math::CoordF size , ID id, float hp, Player* p1, Player* p2) : Character(pos, size, id ,hp){
 			pPlayer1 = p1;
 			pPlayer2 = p2;
 			meleeDamage = 0;
@@ -24,7 +24,6 @@ namespace Entities {
 			else {
 				move(true);
 			}
-			
 		}
 	}
 }
