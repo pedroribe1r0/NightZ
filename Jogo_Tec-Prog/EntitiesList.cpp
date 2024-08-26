@@ -37,7 +37,6 @@ void EntitiesList::execute(float dt) {
 		it.operator++();
 	}
 }
-
 void EntitiesList::setData(Entities::Entity* pEnt) {
 	entitiesList.push_back(pEnt);
 }

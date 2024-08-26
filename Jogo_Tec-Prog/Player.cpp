@@ -31,6 +31,7 @@ namespace Entities {
 			
 			if (gun) {
 				gun->setIsActive(false);
+				gun->stopShoot();
 			}
 			if (pObserver)
 				delete pObserver;
