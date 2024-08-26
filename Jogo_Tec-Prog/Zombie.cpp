@@ -21,6 +21,7 @@ namespace Entities {
 			if (rand() % 5 == 0) {
 				jump();
 			}
+			
 			if (pPlayer1 && pPlayer2) {
 				if (fabs(position.x - pPlayer1->getPosition().x) < fabs(position.x - pPlayer2->getPosition().x)) {
 					chasePlayer(pPlayer1);
@@ -31,6 +32,7 @@ namespace Entities {
 			}
 			else if (pPlayer1) {
 				chasePlayer(pPlayer1);
+				
 			}
 			else if (pPlayer2) {
 				chasePlayer(pPlayer2);

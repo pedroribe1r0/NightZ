@@ -10,7 +10,7 @@ namespace Entities {
 			int meleeDamage;
 		public:
 			Enemy(Math::CoordF pos = Math::CoordF(0, 0), Math::CoordF size = Math::CoordF(0, 0), ID id = ID::empty, int hp = 0, Player* p1 = nullptr, Player* p2 = nullptr);
-			~Enemy();
+			virtual ~Enemy();
 			void setPlayer1(Player* p1);
 			void setPlayer2(Player* p2);
 			virtual void collide(Entity* ent, Math::CoordF intersection, float dt) = 0;

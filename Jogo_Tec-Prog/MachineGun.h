@@ -27,6 +27,7 @@ namespace Entities {
 	public:
 		MachineGun(EntitiesList* list = nullptr, Entities::Characters::Player* user = nullptr);
 		~MachineGun();
+		Bullet* getBullet();
 		void shoot();
 		void stopShoot();
 		void collide(Entity* ent, Math::CoordF intersection, float dt);

@@ -28,7 +28,7 @@ namespace Entities {
 	void MachineGun::Bullet::collide(Entity* ent, Math::CoordF intersection, float dt) {
 		if (ent->getID() == enemy) {
 			Entities::Characters::Character* pChar = dynamic_cast<Entities::Characters::Character*>(ent);
-			if (pChar && isActive) {
+			if (pChar) {
 				pChar->takeDamage(damage * dt);
 			}
 		}
@@ -52,7 +52,13 @@ namespace Entities {
 		}
 	}
 	MachineGun::~MachineGun() {
-		list->deleteData(bullet);
+		/*if (bullet) {
+			list->removeData(bullet);
+			delete bullet;
+		}*/
+	}
+	MachineGun::Bullet* MachineGun::getBullet() {
+		return bullet;
 	}
 	void MachineGun::execute(float dt) {
 		update(dt);

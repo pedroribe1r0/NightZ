@@ -27,7 +27,7 @@ namespace Managers {
                 intersect.x = fabs(centerDistance.x) - (ent1->getSize().x / 2.0f + ent2->getSize().x / 2.0f);
                 intersect.y = fabs(centerDistance.y) - (ent1->getSize().y / 2.0f + ent2->getSize().y / 2.0f);
 
-                if (intersect.x < 0.0f && intersect.y < 0.0f) { // Condition to collide...
+                if (intersect.x < 0.0f && intersect.y < 0.0f && ent2->getIsActive()) { // Condition to collide...
                     ent2->collide(ent1, intersect, dt);
                     //ent1->collide(ent2, intersect, dt);
                 }
@@ -54,7 +54,7 @@ namespace Managers {
                 intersect.x = fabs(centerDistance.x) - (ent1->getSize().x / 2.0f + ent2->getSize().x / 2.0f);
                 intersect.y = fabs(centerDistance.y) - (ent1->getSize().y / 2.0f + ent2->getSize().y / 2.0f);
 
-                if (intersect.x < 0.0f && intersect.y < 0.0f) { // Condition to collide...
+                if (intersect.x < 0.0f && intersect.y < 0.0f && ent2->getIsActive() && ent1->getIsActive()) { // Condition to collide...
                     ent2->collide(ent1, intersect/2, dt);
                     ent1->collide(ent2, intersect/2, dt);
                 }

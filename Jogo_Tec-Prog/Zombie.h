@@ -6,7 +6,7 @@ namespace Entities {
 		#define ZOMBIE_SIZE_X 30.0
 		#define ZOMBIE_SIZE_Y 60.0
 		#define ZOMBIE_HP 100.0
-		#define ZOMBIE_DAMAGE 10.0
+		#define ZOMBIE_DAMAGE 50.0
 		#define ZOMBIE_SPEED 80.0
 		class Zombie : public Enemy
 		{

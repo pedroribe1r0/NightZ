@@ -67,7 +67,7 @@ namespace Entities {
 		
 	}
 	void Projectile::collide(Entity* ent, Math::CoordF intersection, float dt) {
-		if (isActive && ent->getID() == player) {
+		if (ent->getID() == player) {
 			Entities::Characters::Player* pPlayer = dynamic_cast<Entities::Characters::Player*>(ent);
 			pPlayer->takeDamage(PROJECTILE_DAMAGE);
 			isActive = false;

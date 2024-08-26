@@ -126,11 +126,13 @@ public:
         Node<T>* current = head;
         while (current != nullptr) {
             Node<T>* next = current->getNext();
-            delete current->getData();
-            delete current;
-            current = next;
+            if (current->getData()) {
+                delete current->getData(); // Deleta os dados armazenados no nó
+            }
+            delete current; // Deleta o nó em si
+            current = next; // Atualiza current para o próximo nó
         }
-        head = tail = nullptr;
+        head = tail = nullptr; // Reseta head e tail para nullptr
     }
 
     void removeNode(T* data) {
@@ -167,30 +169,6 @@ public:
             if (head == nullptr || tail == nullptr) {
                 head = nullptr;
                 tail = nullptr;
-            }
-        }
-    }
-    void deleteNode(T* data) {
-        Node<T>* aux = head;
-        while (aux != NULL && aux->getData() != data) {
-            aux = aux->getNext();
-        }
-        if (aux != nullptr && aux->getData() == data) {
-            if (aux == head) {
-                head = head->getNext();
-                delete aux->getData();
-                delete aux;
-            }
-            else if (aux != nullptr && aux == tail) {
-                tail = tail->getPrev();
-                delete aux->getData();
-                delete aux;
-            }
-            else if(aux != nullptr) {
-                aux->getPrev()->setNext(aux->getNext());
-                aux->getNext()->setPrev(aux->getPrev());
-                delete aux->getData();
-                delete aux;
             }
         }
     }

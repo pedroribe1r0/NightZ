@@ -23,8 +23,18 @@ namespace Entities {
 		}
 
 		Player::~Player() {
-			list->deleteData(gun);
-			delete pObserver;
+			/*if (gun) {
+				list->removeData(gun);
+				delete gun;
+			}*/
+			if (gun) {
+				gun->setIsActive(false);
+			}
+			if (list) {
+				list->notifyPlayerDeath(isPlayer1);
+			}
+			if (pObserver)
+				delete pObserver;
 		}
 
 		bool Player::getIsPlayer1() const{

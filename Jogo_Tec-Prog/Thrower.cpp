@@ -13,21 +13,55 @@ namespace Entities {
 			}
 		}
 		Thrower::~Thrower() {
-			list->deleteData(p);
+			/*if (p) {
+				list->removeData(p);
+				delete p;
+				p = nullptr; // Certifique-se de que `p` não será mais usado.
+			}*/
 		}
 		void Thrower::attack() {
 			
 		}
 		void Thrower::update(float dt) {
 			stop();
-			p->updateRange(pPlayer1);
-			if (pPlayer1) {
+			Player* near = nullptr;
+			if (pPlayer1 && pPlayer2) {
+				near = pPlayer2;
+				if (fabs(position.x - pPlayer1->getPosition().x) < fabs(position.x - pPlayer2->getPosition().x)) {
+					near = pPlayer1;
+				}
+				p->updateRange(near);
+				
+				if (fabs(position.x - near->getPosition().x) <= 200) {
+					p->shoot(facingLeft);
+				}
+				else
+					chasePlayer(near);
+			}
+			else if (pPlayer1) {
+				p->updateRange(pPlayer1);
+				facingLeft = false;
+				if (position.x - pPlayer1->getPosition().x) {
+					facingLeft = true;
+				}
 				if (fabs(position.x - pPlayer1->getPosition().x) <= 200) {
 					p->shoot(facingLeft);
-					//corrigir o lado do tiro antes de sair do range
 				}
 				else
 					chasePlayer(pPlayer1);
+				
+			}
+			else if (pPlayer2) {
+				p->updateRange(pPlayer2);
+				facingLeft = false;
+				if (position.x - pPlayer2->getPosition().x) {
+					facingLeft = true;
+				}
+				if (fabs(position.x - pPlayer2->getPosition().x) <= 200) {
+					p->shoot(facingLeft);
+				}
+				else
+					chasePlayer(pPlayer2);
 			}
 			if (isMoving) {
 				if (facingLeft)

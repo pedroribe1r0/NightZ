@@ -31,21 +31,32 @@ void EntitiesList::execute(float dt) {
 		if ((*it)->getID() == player || (*it)->getID() == enemy) {
 			Entities::Characters::Character* pChar = dynamic_cast<Entities::Characters::Character*>(*it);
 			if (!pChar->getIsAlive()) {
-				deleteData(pChar);
+				removeData(pChar);
 			}
 		}
 		it.operator++();
 	}
 }
-
+void EntitiesList::notifyPlayerDeath(bool isPlayer1) {
+	List<Entities::Entity>::iterator it = entitiesList.begin();
+	while (it != entitiesList.end()) {
+		if ((*it)->getID() == enemy) {
+			Entities::Characters::Enemy* pE = dynamic_cast<Entities::Characters::Enemy*>(*it);
+			if (isPlayer1)
+				pE->setPlayer1(nullptr);
+			else {
+				pE->setPlayer2(nullptr);
+			}
+		}
+		it.operator++();
+	}
+}
 void EntitiesList::setData(Entities::Entity* pEnt) {
 	entitiesList.push_back(pEnt);
 }
 void EntitiesList::removeData(Entities::Entity* pEnt) {
 	entitiesList.removeNode(pEnt);
-}
-void EntitiesList::deleteData(Entities::Entity* pEnt) {
-	entitiesList.deleteNode(pEnt);
+	delete pEnt;
 }
 int EntitiesList::getSize() const {
 	return entitiesList.getSize();
