@@ -40,12 +40,14 @@ void EntitiesList::execute(float dt) {
 void EntitiesList::notifyPlayerDeath(bool isPlayer1) {
 	List<Entities::Entity>::iterator it = entitiesList.begin();
 	while (it != entitiesList.end()) {
-		if ((*it)->getID() == enemy) {
-			Entities::Characters::Enemy* pE = dynamic_cast<Entities::Characters::Enemy*>(*it);
-			if (isPlayer1)
-				pE->setPlayer1(nullptr);
-			else {
-				pE->setPlayer2(nullptr);
+		if (*it) {
+			if ((*it)->getID() == enemy) {
+				Entities::Characters::Enemy* pE = dynamic_cast<Entities::Characters::Enemy*>(*it);
+				if (isPlayer1)
+					pE->setPlayer1(nullptr);
+				else {
+					pE->setPlayer2(nullptr);
+				}
 			}
 		}
 		it.operator++();

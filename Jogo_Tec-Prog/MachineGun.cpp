@@ -73,10 +73,12 @@ namespace Entities {
 		position.y = user->getPosition().y;
 	}
 	void MachineGun::shoot() {
-		bullet->setIsActive(true);
+		if(bullet)
+			bullet->setIsActive(true);
 	}
 	void MachineGun::stopShoot() {
-		bullet->setIsActive(false);
+		if(bullet)
+			bullet->setIsActive(false);
 	}
 	void MachineGun::collide(Entity* ent, Math::CoordF intersection, float dt) {}
 }

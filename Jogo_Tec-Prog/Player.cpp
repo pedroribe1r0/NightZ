@@ -29,6 +29,7 @@ namespace Entities {
 			}*/
 			if (gun) {
 				gun->setIsActive(false);
+				gun->stopShoot();
 			}
 			if (list) {
 				list->notifyPlayerDeath(isPlayer1);
