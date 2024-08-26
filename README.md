@@ -1,0 +1,1 @@
+Um jogo de plataforma com temática zumbi baseado em hordas, feito por Pedro Ribeiro de Almeida e Matheus José Pereira, ambos alunos de Engenharia de Computação, como trabalho final da disciplina de Técnicas de Programação
