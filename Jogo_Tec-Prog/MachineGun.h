@@ -5,7 +5,7 @@ namespace Entities {
 	#define MACHINE_GUN_SIZE_X 20.0f
 	#define MACHINE_GUN_SIZE_Y 10.0f
 	#define BULLET_RANGE 200.0f
-	#define BULLET_DAMAGE 100.0f
+	#define BULLET_DAMAGE 60.0f
 	class MachineGun : public Entity
 	{
 	private:

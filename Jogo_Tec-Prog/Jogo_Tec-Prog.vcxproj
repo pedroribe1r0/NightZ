@@ -151,10 +151,21 @@
     <ClCompile Include="Jogo_Tec-Prog.cpp" />
     <ClCompile Include="PlayerObserver.cpp" />
     <ClCompile Include="Projectile.cpp" />
+    <ClCompile Include="Boss.cpp" />
     <ClCompile Include="Thrower.cpp" />
     <ClCompile Include="Zombie.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="1_1.png" />
+    <Image Include="1_2.png" />
+    <Image Include="2_1.png" />
+    <Image Include="2_2.png" />
+    <Image Include="3_1.png" />
+    <Image Include="3_2.png" />
+    <Image Include="4_1.png" />
+    <Image Include="4_2.png" />
+    <Image Include="5_1.png" />
+    <Image Include="5_2.png" />
     <Image Include="luffy.png" />
     <Image Include="zoro.png" />
   </ItemGroup>
@@ -178,6 +189,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="PlayerObserver.h" />
     <ClInclude Include="Projectile.h" />
+    <ClInclude Include="Boss.h" />
     <ClInclude Include="Thrower.h" />
     <ClInclude Include="Zombie.h" />
   </ItemGroup>

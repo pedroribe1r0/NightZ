@@ -5,8 +5,8 @@ namespace Entities {
 		class Enemy : public Character
 		{
 		protected:
-			Player* pPlayer1;
-			Player* pPlayer2;
+			static Player* pPlayer1;
+			static Player* pPlayer2;
 			float meleeDamage;
 		public:
 			Enemy(Math::CoordF pos = Math::CoordF(0, 0), Math::CoordF size = Math::CoordF(0, 0), ID id = ID::empty, float hp = 0, Player* p1 = nullptr, Player* p2 = nullptr);

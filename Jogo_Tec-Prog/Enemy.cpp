@@ -2,14 +2,18 @@
 
 namespace Entities {
 	namespace Characters {
+		Player* Enemy::pPlayer1 = nullptr;
+		Player* Enemy::pPlayer2 = nullptr;
 		Enemy::Enemy(Math::CoordF pos, Math::CoordF size , ID id, float hp, Player* p1, Player* p2) : Character(pos, size, id ,hp){
-			pPlayer1 = p1;
-			pPlayer2 = p2;
+			if (!pPlayer1) {
+				pPlayer1 = p1;
+			}
+			if (!pPlayer2) {
+				pPlayer2 = p2;
+			}
 			meleeDamage = 0;
 		}
 		Enemy::~Enemy() {
-			pPlayer1 = nullptr;
-			pPlayer2 = nullptr;
 		}
 		void Enemy::setPlayer1(Player* p1) {
 			pPlayer1 = p1;

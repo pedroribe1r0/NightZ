@@ -8,7 +8,7 @@ namespace Entities {
 			Character(pos, Math::CoordF(PLAYER_SIZE_X, PLAYER_SIZE_Y), player, PLAYER_HP),
 			isPlayer1(isPlayer1),
 			points(0),
-			list(list)
+			paralizeTimer(0)
 		{
 			pObserver = new Observers::PlayerObserver(this);
 			gun = new MachineGun(list, this);
@@ -42,6 +42,12 @@ namespace Entities {
 		}
 
 		void Player::update(float dt) {
+			if (!canMove) {
+				paralizeTimer += dt;
+				if (paralizeTimer >= PARALIZE_TIME) {
+					canMove = true;
+				}
+			}
 			if (isMoving) {
 				if (facingLeft)
 					speed.x = -PLAYER_SPEED;
@@ -80,6 +86,9 @@ namespace Entities {
 				break;
 			}
 
+		}
+		void Player::resetParalizeTime() {
+			paralizeTimer = 0;
 		}
 	}
 }

@@ -1,10 +1,10 @@
 #include "MachineGun.h"
 
 namespace Entities {
-	MachineGun::Bullet::Bullet(Math::CoordF pos, MachineGun* gun): Entity(pos, Math::CoordF(BULLET_RANGE, 4.0), ID::bullet), gun(gun){
+	MachineGun::Bullet::Bullet(Math::CoordF pos, MachineGun* gun): Entity(pos, Math::CoordF(BULLET_RANGE, 30.0), ID::bullet), gun(gun){
 		damage = BULLET_DAMAGE;
 		if (body) {
-			body->setFillColor(sf::Color::Green);
+			body->setTexture(pGraphic->loadTexture("4_1.png"));
 			//texture
 		}
 		position.y = gun->getPosition().y;
