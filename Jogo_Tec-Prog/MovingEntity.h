@@ -8,7 +8,9 @@ namespace Entities {
 		bool facingLeft;
 		bool isMoving;
 		bool canMove;
-		//animacao
+
+		GraphicalElements::Animation sprite;
+
 	public:
 		MovingEntity(Math::CoordF pos = Math::CoordF(0, 0), Math::CoordF size = Math::CoordF(0, 0), ID id = ID::empty);
 		virtual ~MovingEntity();
@@ -20,6 +22,6 @@ namespace Entities {
 		virtual void execute(float dt) = 0;
 		virtual void update(float dt) = 0;
 		virtual void collide(Entity* ent, Math::CoordF intersection, float dt) = 0;
+		void render();
 	};
 }
-

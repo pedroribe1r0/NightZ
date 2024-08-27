@@ -1,8 +1,5 @@
-
 #pragma once
-#include "GraphicManager.h"
-#include "Coord.h"
-#include <SFML/Graphics.hpp>
+#include "SingleFrameAnimation.h"
 
 namespace GraphicalElements {
 
@@ -30,7 +27,7 @@ namespace GraphicalElements {
 				texture(pGraphic->loadTexture(path)),
 				totalTime(0.0f),
 				rectSize() {
-				if (texture = NULL) {
+				if (texture == NULL) {
 					std::cout << "ERROR: loading texture failed on SingleAnimation::SingleAnimation()." << std::endl;
 					exit(1);
 				}

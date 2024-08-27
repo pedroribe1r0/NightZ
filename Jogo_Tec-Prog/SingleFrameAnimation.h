@@ -1,7 +1,5 @@
 #pragma once
-#include <SFML/Graphics.hpp>
-#include "Coord.h"
-#include "Animation.h"
+#include "GraphicManager.h"
 
 namespace GraphicalElements {
 	class SingleFrameAnimation

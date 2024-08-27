@@ -1,5 +1,6 @@
 #pragma once
-#include "GraphicManager.h"
+#include "SingleFrameAnimation.h"
+
 
 enum ID {
 	empty = 0,
@@ -15,9 +16,8 @@ class Ente
 {
 protected:
 	ID id;
-	sf::RectangleShape* body;
-	
 	static Managers::GraphicManager* pGraphic;
+
 public:
 	Ente(ID id = ID::empty);
 	virtual ~Ente();

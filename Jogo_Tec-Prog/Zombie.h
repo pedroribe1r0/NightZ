@@ -3,6 +3,7 @@
 
 namespace Entities {
 	namespace Characters {
+		class Animation;
 		#define ZOMBIE_SIZE_X 30.0f
 		#define ZOMBIE_SIZE_Y 60.0f
 		#define ZOMBIE_HP 100.0f
