@@ -30,6 +30,7 @@ namespace Entities {
 		}
 
 		Player::~Player() {
+			position = Math::CoordF(-10, 0);
 			if (isPlayer1)
 				Enemy::setPlayer1(nullptr);
 			else
