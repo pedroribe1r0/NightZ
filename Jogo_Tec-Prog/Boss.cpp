@@ -2,7 +2,7 @@
 
 namespace Entities {
 	namespace Characters {
-		Boss::Boss(Math::CoordF pos, Player* p1, Player* p2) : Enemy(pos, Math::CoordF(BOSS_SIZE_X, BOSS_SIZE_Y), enemy, BOSS_HP, p1, p2){
+		Boss::Boss(Math::CoordF pos) : Enemy(pos, Math::CoordF(BOSS_SIZE_X, BOSS_SIZE_Y), enemy, BOSS_HP){
 			meleeDamage = BOSS_DAMAGE;
 			attackRange = BOSS_ATTACK_RANGE;
 			attackDamage = BOSS_ATTACK_DAMAGE;
@@ -88,7 +88,8 @@ namespace Entities {
 				else {
 					distance1 = position.x - pPlayer1->getPosition().x + size.x / 2 + pPlayer1->getSize().x / 2;
 				}
-				if (pPlayer1->getPosition().y + pPlayer1->getSize().y / 2 == position.y + size.y / 2) {
+				float dy = pPlayer1->getPosition().y + pPlayer1->getSize().y / 2 - (position.y + size.y/2);
+				if (dy < 80 && dy > -80) {
 					if ((facingLeft && distance1 > 0) || (!facingLeft && distance1 <= 0)) {
 						cout << fabs(distance1) << endl;
 						if (fabs(distance1) <= attackRange) {
@@ -118,8 +119,7 @@ namespace Entities {
 		}
 		void Boss::paralizePlayer(Player* p) {
 			if (p) {
-				p->setCanMove(false);
-				p->resetParalizeTime();
+				p->setIsParalized();
 			}
 		}
 	}

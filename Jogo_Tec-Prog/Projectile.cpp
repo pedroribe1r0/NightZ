@@ -1,7 +1,7 @@
 #include "Projectile.h"
 
 namespace Entities {
-	Projectile::Projectile(Characters::Thrower* user) : MovingEntity(Math::CoordF(0,0), Math::CoordF(PROJECTILE_SIZE_X, PROJECTILE_SIZE_Y), projectile), user(user){
+	Projectile::Projectile(Characters::Character* user) : MovingEntity(Math::CoordF(0,0), Math::CoordF(PROJECTILE_SIZE_X, PROJECTILE_SIZE_Y), projectile), user(user), fireTimer(0){
 		canShoot = true;
 		damage = PROJECTILE_DAMAGE;
 		range = 0;
@@ -13,20 +13,21 @@ namespace Entities {
 	Projectile::~Projectile() {
 
 	}
-	void Projectile::shoot(bool left) {
+	bool Projectile::shoot(bool left) {
 		if (canShoot) {
 			if (left) {
 				position.x = user->getPosition().x -user->getSize().x / 2;
 			}
 			else
 				position.x = user->getPosition().x +user->getSize().x / 2;
-			position.y = user->getPosition().y;
+			position.y = user->getPosition().y - 20;
 			isActive = true;
 			canShoot = false;
-			speed.y = THROW_SPEED;
+			speed.y = 0;
 			move(left);
-			user->resetCooldown();
+			return true;
 		}
+		return false;
 	}
 	bool Projectile::getCanShoot() const {
 		return canShoot;
@@ -39,7 +40,15 @@ namespace Entities {
 	}
 	void Projectile::execute(float dt) {
 		if (speed.y <= 800.0) {
-			speed.y += GRAVIDADE * dt;
+			speed.y += GRAVIDADE/10 * dt;
+		}
+		if (!canShoot) {
+			fireTimer += dt;
+			if (fireTimer >= TIME_MAX) {
+				isActive = false;
+				canShoot = true;
+				fireTimer = 0;
+			}
 		}
 		update(dt);
 		position.x += speed.x * dt;
@@ -70,15 +79,29 @@ namespace Entities {
 		
 	}*/
 	void Projectile::collide(Entity* ent, Math::CoordF intersection, float dt) {
-		if (ent->getID() == player) {
-			Entities::Characters::Player* pPlayer = dynamic_cast<Entities::Characters::Player*>(ent);
-			pPlayer->takeDamage(PROJECTILE_DAMAGE);
-			isActive = false;
-			canShoot = true;
+		if (user->getID() == enemy) {
+			if (ent->getID() == player) {
+				Entities::Characters::Character* pChar = dynamic_cast<Entities::Characters::Character*>(ent);
+				pChar->takeDamage(PROJECTILE_DAMAGE);
+				isActive = false;
+				canShoot = true;
+			}
+			if (ent->getID() == obstacle) {
+				isActive = false;
+				canShoot = true;
+			}
 		}
-		if (ent->getID() == obstacle) {
-			isActive = false;
-			canShoot = true;
+		else if (user->getID() == player) {
+			if (ent->getID() == enemy) {
+				Entities::Characters::Character* pChar = dynamic_cast<Entities::Characters::Character*>(ent);
+				pChar->takeDamage(PROJECTILE_DAMAGE);
+				isActive = false;
+				canShoot = true;
+			}
+			if (ent->getID() == obstacle) {
+				isActive = false;
+				canShoot = true;
+			}
 		}
 		
 	}

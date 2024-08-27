@@ -4,7 +4,7 @@
 
 namespace Entities {
 	namespace Characters {
-		Thrower::Thrower(Math::CoordF pos,EntitiesList* list, Player* pPlayer1, Player* pPlayer2) : Enemy(pos,Math::CoordF(THROWER_SIZE_X, THROWER_SIZE_Y),enemy, THROWER_HP, pPlayer1, pPlayer2) {
+		Thrower::Thrower(Math::CoordF pos, EntitiesList* list) : Enemy(pos,Math::CoordF(THROWER_SIZE_X, THROWER_SIZE_Y),enemy, THROWER_HP) {
 			p = new Projectile(this);
 			list->setData(p);
 			meleeDamage = THROWER_DAMAGE;
@@ -30,9 +30,6 @@ namespace Entities {
 			else {
 				move(false);
 			}
-		}
-		void Thrower::resetCooldown() {
-			cooldown = 0;
 		}
 		void Thrower::update(float dt) {
 			stop();
@@ -60,11 +57,15 @@ namespace Entities {
 					facingLeft = true;
 				}
 				if (fabs(distance) > 190 && fabs(distance) < 200 && cooldown >= THROWER_COOLDOWN) { //verificar se esta dentro do range e se o cooldown esta maior q o tempo estipulado
-					p->shoot(facingLeft);
+					if (p->shoot(facingLeft)) {
+						cooldown = 0;
+					}
 				}
 				else if (fabs(distance) < 191) {
 					if(cooldown >= THROWER_COOLDOWN)
-						p->shoot(facingLeft);
+						if (p->shoot(facingLeft)) {
+							cooldown = 0;
+						}
 					takeDistance(near);
 				}
 					
