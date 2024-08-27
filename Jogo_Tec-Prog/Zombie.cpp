@@ -1,5 +1,4 @@
 #include "Zombie.h"
-#include "Animation.h"
 
 namespace Entities {
 	namespace Characters {
@@ -9,8 +8,6 @@ namespace Entities {
 			if (body) {
 				//body->setFillColor(sf::Color::White);
 			}
-
-			sprite.addNewAnimation(GraphicalElements::Animation_ID::walk, "./assets/Zombie/Zombie_Walk.png", 9);
 
 		}
 		Zombie::~Zombie() {
@@ -27,7 +24,6 @@ namespace Entities {
 			}
 			
 			if (pPlayer1 && pPlayer2) {
-				sprite.update(GraphicalElements::Animation_ID::walk, true, position, dt);
 				if (fabs(position.x - pPlayer1->getPosition().x) < fabs(position.x - pPlayer2->getPosition().x)) {
 					chasePlayer(pPlayer1);
 				}

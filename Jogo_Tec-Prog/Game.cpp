@@ -5,12 +5,12 @@ Game::Game() {
 	Entities::Characters::Player* p1 = new Entities::Characters::Player(Math::CoordF(200,200), true, &movingEntities);
 	//Entities::Characters::Player* p2 = new Entities::Characters::Player(Math::CoordF(850, 200), false, &movingEntities);
 	//Entities::Characters::Zombie* z1 = new Entities::Characters::Zombie(Math::CoordF(650, 200));
-	Entities::Characters::Thrower* t1 = new Entities::Characters::Thrower(Math::CoordF(800, 200), &movingEntities);
-	//Entities::Characters::Boss* b1 = new Entities::Characters::Boss(Math::CoordF(600, 200));
+	//Entities::Characters::Thrower* t1 = new Entities::Characters::Thrower(Math::CoordF(800, 200), &movingEntities);
+	Entities::Characters::Boss* b1 = new Entities::Characters::Boss(Math::CoordF(600, 200));
 	Entities::Characters::Enemy::setPlayer1(p1);
 	movingEntities.setData(p1);
 	movingEntities.setData(b1);
-	movingEntities.setData(p2);
+	//movingEntities.setData(p2);
 	//movingEntities.setData(t1);
 	//movingEntities.setData(z1);
 	Entities::Obstacles::Obstacle* floor = new Entities::Obstacles::Obstacle(Math::CoordF(600, 720), Math::CoordF(1200, 10), false, 0);

@@ -28,8 +28,4 @@ namespace Entities {
 	bool MovingEntity::isFacingLeft() const {
 		return facingLeft;
 	}
-
-	void MovingEntity::render() {
-		sprite.render();
-	}
 }

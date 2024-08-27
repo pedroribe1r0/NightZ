@@ -17,7 +17,7 @@ namespace Entities {
 		Math::CoordF getPosition() const;
 		Math::CoordF getSize() const;
 		virtual void execute(float dt) = 0;
-		virtual void render() = 0;
+		virtual void render();
 		virtual void update(float dt) = 0;
 		virtual void collide(Entity* ent, Math::CoordF intersection, float dt) = 0;
 		bool getIsActive() const;
