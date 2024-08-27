@@ -1,6 +1,6 @@
 #include "Player.h"
 #include "PlayerObserver.h"
-#include "MachineGun.h"
+#include "Projectile.h"
 
 namespace Entities {
 	namespace Characters {
@@ -8,10 +8,17 @@ namespace Entities {
 			Character(pos, Math::CoordF(PLAYER_SIZE_X, PLAYER_SIZE_Y), player, PLAYER_HP),
 			isPlayer1(isPlayer1),
 			points(0),
-			paralizeTimer(0)
+			paralizeTimer(0),
+			bulletVector(N_BULLETS),
+			shootCooldown(0.2),
+			isShooting(false)
 		{
+			for (int i = 0; i < N_BULLETS; i++) {
+				Projectile* p = new Projectile(this);
+				bulletVector[i] = p;
+				list->setData(p);
+			}
 			pObserver = new Observers::PlayerObserver(this);
-			gun = new MachineGun(list, this);
 			if (body) {
 				if (isPlayer1)
 					//body->setTexture(pGraphic->loadTexture(PLAYER_1_TEXTURE));
@@ -23,16 +30,6 @@ namespace Entities {
 		}
 
 		Player::~Player() {
-			/*if (gun) {
-				list->removeData(gun);
-				delete gun;
-			}*/
-			position = Math::CoordF(0,0);
-			
-			if (gun) {
-				gun->setIsActive(false);
-				gun->stopShoot();
-			}
 			if (isPlayer1)
 				Enemy::setPlayer1(nullptr);
 			else
@@ -53,6 +50,18 @@ namespace Entities {
 					canMove = true;
 				}
 			}
+			shootCooldown += dt;
+			if (isShooting) {
+				if (shootCooldown >= SHOOT_COOLDOWN) {
+					shootCooldown = 0;
+					for (int i = 0; i < N_BULLETS; i++) {
+						if (bulletVector[i]->getCanShoot()) {
+							bulletVector[i]->shoot(facingLeft);
+							break;
+						}
+					}
+				}
+			}
 			if (isMoving) {
 				if (facingLeft)
 					speed.x = -PLAYER_SPEED;
@@ -65,15 +74,20 @@ namespace Entities {
 		}
 
 		void Player::attack() {
-			gun->shoot();
+			isShooting = true;
 		}
 
 		void Player::stopAttacking() {
-			gun->stopShoot();
+			isShooting = false;
 		}
 
 		void Player::operator++() {
 			points++;
+		}
+
+		void Player::setIsParalized() {
+			canMove = false;
+			paralizeTimer = 0;
 		}
 
 		void Player::collide(Entity* ent, Math::CoordF intersection, float dt) {
@@ -91,9 +105,6 @@ namespace Entities {
 				break;
 			}
 
-		}
-		void Player::resetParalizeTime() {
-			paralizeTimer = 0;
 		}
 	}
 }

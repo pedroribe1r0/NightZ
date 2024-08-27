@@ -31,9 +31,6 @@ namespace Entities {
 				move(false);
 			}
 		}
-		void Thrower::resetCooldown() {
-			cooldown = 0;
-		}
 		void Thrower::update(float dt) {
 			stop();
 			if (!p->getIsActive()) {
@@ -60,11 +57,15 @@ namespace Entities {
 					facingLeft = true;
 				}
 				if (fabs(distance) > 190 && fabs(distance) < 200 && cooldown >= THROWER_COOLDOWN) { //verificar se esta dentro do range e se o cooldown esta maior q o tempo estipulado
-					p->shoot(facingLeft);
+					if (p->shoot(facingLeft)) {
+						cooldown = 0;
+					}
 				}
 				else if (fabs(distance) < 191) {
 					if(cooldown >= THROWER_COOLDOWN)
-						p->shoot(facingLeft);
+						if (p->shoot(facingLeft)) {
+							cooldown = 0;
+						}
 					takeDistance(near);
 				}
 					

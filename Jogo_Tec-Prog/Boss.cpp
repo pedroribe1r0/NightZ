@@ -119,8 +119,7 @@ namespace Entities {
 		}
 		void Boss::paralizePlayer(Player* p) {
 			if (p) {
-				p->setCanMove(false);
-				p->resetParalizeTime();
+				p->setIsParalized();
 			}
 		}
 	}

@@ -141,7 +141,6 @@
     <ClCompile Include="EventsManager.cpp" />
     <ClCompile Include="GraphicManager.cpp" />
     <ClCompile Include="InputManager.cpp" />
-    <ClCompile Include="MachineGun.cpp" />
     <ClCompile Include="MovingEntity.cpp" />
     <ClCompile Include="Observer.cpp" />
     <ClCompile Include="Obstacle.cpp" />
@@ -179,7 +178,6 @@
     <ClInclude Include="GraphicManager.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="List.h" />
-    <ClInclude Include="MachineGun.h" />
     <ClInclude Include="MovingEntity.h" />
     <ClInclude Include="Observer.h" />
     <ClInclude Include="Obstacle.h" />

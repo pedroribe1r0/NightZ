@@ -22,7 +22,6 @@ namespace Entities {
 			void attack();
 			void update(float dt);
 			void collide(Entity* ent, Math::CoordF intersection, float dt);
-			void resetCooldown();
 			void takeDistance(Player* p);
 		};
 	}
