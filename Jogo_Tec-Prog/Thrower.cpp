@@ -4,7 +4,7 @@
 
 namespace Entities {
 	namespace Characters {
-		Thrower::Thrower(Math::CoordF pos,EntitiesList* list, Player* pPlayer1, Player* pPlayer2) : Enemy(pos,Math::CoordF(THROWER_SIZE_X, THROWER_SIZE_Y),enemy, THROWER_HP, pPlayer1, pPlayer2) {
+		Thrower::Thrower(Math::CoordF pos, EntitiesList* list) : Enemy(pos,Math::CoordF(THROWER_SIZE_X, THROWER_SIZE_Y),enemy, THROWER_HP) {
 			p = new Projectile(this);
 			list->setData(p);
 			meleeDamage = THROWER_DAMAGE;

@@ -17,7 +17,7 @@ namespace Entities {
 			Projectile* p;
 			float cooldown;
 		public:
-			Thrower(Math::CoordF pos = Math::CoordF(0, 0), EntitiesList* list = nullptr, Player* pPlayer1 = nullptr, Player* pPlayer2 = nullptr);
+			Thrower(Math::CoordF pos = Math::CoordF(0, 0), EntitiesList* list = nullptr);
 			~Thrower();
 			void attack();
 			void update(float dt);

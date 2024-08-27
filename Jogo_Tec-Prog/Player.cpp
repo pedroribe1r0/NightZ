@@ -33,6 +33,11 @@ namespace Entities {
 				gun->setIsActive(false);
 				gun->stopShoot();
 			}
+			if (isPlayer1)
+				Enemy::setPlayer1(nullptr);
+			else
+				Enemy::setPlayer2(nullptr);
+
 			if (pObserver)
 				delete pObserver;
 		}

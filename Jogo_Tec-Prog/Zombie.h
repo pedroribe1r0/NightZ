@@ -11,7 +11,7 @@ namespace Entities {
 		class Zombie : public Enemy
 		{
 		public:
-			Zombie(Math::CoordF pos = Math::CoordF(0, 0), Player* p1 = nullptr, Player* p2 = nullptr);
+			Zombie(Math::CoordF pos = Math::CoordF(0, 0));
 			~Zombie();
 			void attack();
 			void update(float dt);
