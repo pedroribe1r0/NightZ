@@ -8,15 +8,15 @@ namespace Observers {
 namespace Entities {
 	class Projectile;
 	namespace Characters {
-		#define PLAYER_SIZE_X 30.0f
-		#define PLAYER_SIZE_Y 60.0f
+		#define PLAYER_SIZE_X 32.0f
+		#define PLAYER_SIZE_Y 88.0f
 		#define PLAYER_SPEED 200.0f
 		#define PARALIZE_TIME 0.5f
 		#define PLAYER_1_TEXTURE "luffy.png"
 		#define PLAYER_2_TEXTURE "zoro.png"
 		#define PLAYER_HP 100.0f
 		#define N_BULLETS 20
-		#define SHOOT_COOLDOWN 0.2f
+		#define SHOOT_COOLDOWN 1.1f
 		class Player : public Character
 		{
 		private:
@@ -37,6 +37,7 @@ namespace Entities {
 			void collide(Entity* ent, Math::CoordF intersection, float dt);
 			bool getIsPlayer1() const;
 			void setIsParalized();
+			void setTextures();
 		};
 	}
 }

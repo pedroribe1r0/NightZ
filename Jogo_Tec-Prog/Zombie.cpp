@@ -5,16 +5,18 @@ namespace Entities {
 
 		Zombie::Zombie(Math::CoordF pos) : Enemy(pos, Math::CoordF(ZOMBIE_SIZE_X, ZOMBIE_SIZE_Y), enemy, ZOMBIE_HP){
 			meleeDamage = ZOMBIE_DAMAGE;
-			if (body) {
-				//body->setFillColor(sf::Color::White);
-			}
-
+			setTextures();
 		}
 		Zombie::~Zombie() {
 
 		}
 		void Zombie::attack() {
 
+		}
+		void Zombie::setTextures() {
+			sprite = new GraphicalElements::Animation(body, Math::CoordF(2.8, 2.8));
+			sprite->addNewAnimation(GraphicalElements::Animation_ID::walk, "Zombie _Walk.png", 9);
+			sprite->addNewAnimation(GraphicalElements::Animation_ID::dmg, "Zombie _Hit.png", 4);
 		}
 		void Zombie::update(float dt) {
 			stop();
@@ -47,6 +49,21 @@ namespace Entities {
 			else {
 				speed.x = 0;
 			}
+			position.x += speed.x * dt;
+			position.y += speed.y * dt;
+			if (takingDamage) {
+				sprite->update(GraphicalElements::Animation_ID::dmg, facingLeft, position, dt);
+				timeDamageAnimation += dt;
+				if (timeDamageAnimation >= TIME_DMG_ANIMATION) {
+					timeDamageAnimation = 0;
+					takingDamage = false;
+				}
+			}
+			else if (isMoving) {
+				sprite->update(GraphicalElements::Animation_ID::walk, facingLeft, position, dt);
+			}
+			else
+				sprite->update(GraphicalElements::Animation_ID::walk, facingLeft, position, dt);
 		}
 		void Zombie::collide(Entity* ent, Math::CoordF intersection, float dt) {
 			switch (ent->getID()) {

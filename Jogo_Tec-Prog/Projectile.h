@@ -2,8 +2,8 @@
 #include "Thrower.h"
 
 namespace Entities {
-	#define PROJECTILE_SIZE_X 10.0f
-	#define PROJECTILE_SIZE_Y 10.0f
+	#define PROJECTILE_SIZE_X 5.0f
+	#define PROJECTILE_SIZE_Y 5.0f
 	#define PROJECTILE_DAMAGE 20.0f
 	#define PROJECTILE_SPEED 500.0f
 	#define THROW_SPEED -300.0f
@@ -27,6 +27,7 @@ namespace Entities {
 		void update(float dt);
 		//void updateRange(Characters::Player* p);
 		void collide(Entity* ent, Math::CoordF intersection, float dt);
+		void setTextures();
 	};
 }
 

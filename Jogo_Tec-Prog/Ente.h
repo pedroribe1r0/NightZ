@@ -1,5 +1,5 @@
 #pragma once
-#include "GraphicManager.h"
+#include "Animation.h"
 
 
 enum ID {

@@ -133,6 +133,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="CollisionManager.cpp" />
     <ClCompile Include="Enemy.cpp" />
@@ -155,20 +156,26 @@
     <ClCompile Include="Zombie.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="1_1.png" />
-    <Image Include="1_2.png" />
-    <Image Include="2_1.png" />
-    <Image Include="2_2.png" />
-    <Image Include="3_1.png" />
-    <Image Include="3_2.png" />
-    <Image Include="4_1.png" />
-    <Image Include="4_2.png" />
-    <Image Include="5_1.png" />
-    <Image Include="5_2.png" />
+    <Image Include="6_1.png" />
+    <Image Include="Char_knife_idle.png" />
+    <Image Include="Char_knife_jump.png" />
+    <Image Include="Char_knife_shoot.png" />
+    <Image Include="Char_knife_take_damage.png" />
+    <Image Include="Char_knife_walk.png" />
     <Image Include="luffy.png" />
+    <Image Include="SpittingZombie - Attack.png" />
+    <Image Include="SpittingZombie - Death.png" />
+    <Image Include="SpittingZombie - Hit.png" />
+    <Image Include="SpittingZombie - Idle.png" />
+    <Image Include="SpittingZombie - Projectile.png" />
+    <Image Include="SpittingZombie - Walk.png" />
+    <Image Include="Zombie _Hit.png" />
+    <Image Include="Zombie _Idle.png" />
+    <Image Include="Zombie _Walk.png" />
     <Image Include="zoro.png" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Animation.h" />
     <ClInclude Include="Character.h" />
     <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="Enemy.h" />

@@ -26,6 +26,7 @@ namespace Entities {
 			void update(float dt);
 			void attack();
 			void paralizePlayer(Player* p);
+			//void setTextures();
 		};
 	}
 }

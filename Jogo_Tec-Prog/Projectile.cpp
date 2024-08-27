@@ -6,21 +6,34 @@ namespace Entities {
 		damage = PROJECTILE_DAMAGE;
 		range = 0;
 		isActive = false;
-		if (body) {
-			body->setFillColor(sf::Color::Blue);
-		}
+		setTextures();
 	}
 	Projectile::~Projectile() {
 
 	}
+	void Projectile::setTextures() {
+		sprite = new GraphicalElements::Animation(body, Math::CoordF(1,1));
+		if (user->getID() == player) {
+			sprite->addNewAnimation(GraphicalElements::Animation_ID::idle, "6_1.png", 6);
+			body->setFillColor(sf::Color(197, 179, 88));
+		}
+		else {
+			sprite->addNewAnimation(GraphicalElements::Animation_ID::idle, "SpittingZombie - Projectile.png", 6);
+		}
+	}
 	bool Projectile::shoot(bool left) {
 		if (canShoot) {
 			if (left) {
-				position.x = user->getPosition().x -user->getSize().x / 2;
+				position.x = user->getPosition().x -user->getSize().x / 2 - 15;
 			}
 			else
-				position.x = user->getPosition().x +user->getSize().x / 2;
-			position.y = user->getPosition().y - 20;
+				position.x = user->getPosition().x +user->getSize().x / 2 + 15;
+			if (user->getID() == player) {
+				position.y = user->getPosition().y - 5;
+			}
+			else {
+				position.y = user->getPosition().y - 20;
+			}
 			isActive = true;
 			canShoot = false;
 			speed.y = 0;
@@ -40,8 +53,11 @@ namespace Entities {
 	}
 	void Projectile::execute(float dt) {
 		if (speed.y <= 800.0) {
-			speed.y += GRAVIDADE/10 * dt;
+			speed.y += GRAVIDADE / 10 * dt;
 		}
+		update(dt);
+	}
+	void Projectile::update(float dt) {
 		if (!canShoot) {
 			fireTimer += dt;
 			if (fireTimer >= TIME_MAX) {
@@ -50,12 +66,6 @@ namespace Entities {
 				fireTimer = 0;
 			}
 		}
-		update(dt);
-		position.x += speed.x * dt;
-		position.y += speed.y * dt;
-		body->setPosition(sf::Vector2f(position.x, position.y));
-	}
-	void Projectile::update(float dt) {
 		if (isMoving) {
 			if (facingLeft)
 				speed.x = -PROJECTILE_SPEED;
@@ -65,6 +75,9 @@ namespace Entities {
 		else {
 			speed.x = 0;
 		}
+		position.x += speed.x * dt;
+		position.y += speed.y * dt;
+		sprite->update(GraphicalElements::Animation_ID::idle, facingLeft, position, dt);
 	}
 	/*void Projectile::updateRange(Characters::Player* p) {
 		float s = p->getPosition().y + p->getSize().x / 2;

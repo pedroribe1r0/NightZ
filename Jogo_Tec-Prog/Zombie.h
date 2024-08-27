@@ -4,8 +4,8 @@
 namespace Entities {
 	namespace Characters {
 		class Animation;
-		#define ZOMBIE_SIZE_X 30.0f
-		#define ZOMBIE_SIZE_Y 60.0f
+		#define ZOMBIE_SIZE_X 15.0f
+		#define ZOMBIE_SIZE_Y 85.0f
 		#define ZOMBIE_HP 100.0f
 		#define ZOMBIE_DAMAGE 20.0f
 		#define ZOMBIE_SPEED 80.0f
@@ -17,6 +17,7 @@ namespace Entities {
 			void attack();
 			void update(float dt);
 			void collide(Entity* ent, Math::CoordF intersection, float dt);
+			void setTextures();
 		};
 	}
 }

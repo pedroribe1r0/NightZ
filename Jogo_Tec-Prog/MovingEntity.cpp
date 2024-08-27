@@ -5,8 +5,13 @@ namespace Entities {
 		isMoving = false;
 		facingLeft = false;
 		canMove = true;
+		sprite = nullptr;
 	}
-	MovingEntity::~MovingEntity() {}
+	MovingEntity::~MovingEntity() {
+		if (sprite) {
+			delete sprite;
+		}
+	}
 	void MovingEntity::setCanMove(bool cM) {
 		canMove = cM;
 	}

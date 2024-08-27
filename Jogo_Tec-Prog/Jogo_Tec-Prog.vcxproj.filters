@@ -75,6 +75,9 @@
     <ClCompile Include="Boss.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="luffy.png">
@@ -83,34 +86,49 @@
     <Image Include="zoro.png">
       <Filter>Arquivos de Recurso</Filter>
     </Image>
-    <Image Include="4_1.png">
+    <Image Include="Char_knife_idle.png">
       <Filter>Arquivos de Recurso</Filter>
     </Image>
-    <Image Include="1_1.png">
+    <Image Include="Char_knife_jump.png">
       <Filter>Arquivos de Recurso</Filter>
     </Image>
-    <Image Include="1_2.png">
+    <Image Include="Char_knife_shoot.png">
       <Filter>Arquivos de Recurso</Filter>
     </Image>
-    <Image Include="2_1.png">
+    <Image Include="Char_knife_walk.png">
       <Filter>Arquivos de Recurso</Filter>
     </Image>
-    <Image Include="2_2.png">
+    <Image Include="Zombie _Idle.png">
       <Filter>Arquivos de Recurso</Filter>
     </Image>
-    <Image Include="3_1.png">
+    <Image Include="Zombie _Walk.png">
       <Filter>Arquivos de Recurso</Filter>
     </Image>
-    <Image Include="3_2.png">
+    <Image Include="6_1.png">
       <Filter>Arquivos de Recurso</Filter>
     </Image>
-    <Image Include="4_2.png">
+    <Image Include="Char_knife_take_damage.png">
       <Filter>Arquivos de Recurso</Filter>
     </Image>
-    <Image Include="5_1.png">
+    <Image Include="Zombie _Hit.png">
       <Filter>Arquivos de Recurso</Filter>
     </Image>
-    <Image Include="5_2.png">
+    <Image Include="SpittingZombie - Projectile.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="SpittingZombie - Attack.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="SpittingZombie - Death.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="SpittingZombie - Hit.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="SpittingZombie - Idle.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="SpittingZombie - Walk.png">
       <Filter>Arquivos de Recurso</Filter>
     </Image>
   </ItemGroup>
@@ -176,6 +194,9 @@
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
     <ClInclude Include="Boss.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
   </ItemGroup>

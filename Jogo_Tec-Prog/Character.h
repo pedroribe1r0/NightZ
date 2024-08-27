@@ -5,7 +5,7 @@ class EntitiesList;
 namespace Entities {
 	namespace Characters {
 		#define JUMP -300.0f
-		#define TIME_DMG_ANIMATION 0.2f
+		#define TIME_DMG_ANIMATION 0.8f
 		class Character : public MovingEntity
 		{
 		protected:
@@ -13,6 +13,7 @@ namespace Entities {
 			float timeDamageAnimation;
 			bool canJump;
 			bool isAlive;
+			bool takingDamage;
 			/*To do*/
 		public:
 			Character(Math::CoordF pos = Math::CoordF(0, 0), Math::CoordF size = Math::CoordF(0, 0), ID id = ID::empty, float hp = 0);
@@ -27,6 +28,7 @@ namespace Entities {
 			void execute(float dt);
 			void moveOnCollision(Entity* ent, Math::CoordF intersection);
 			bool getIsAlive() const;
+			virtual void setTextures() = 0;
 		};
 	}
 }
