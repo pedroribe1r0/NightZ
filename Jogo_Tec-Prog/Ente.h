@@ -17,6 +17,7 @@ class Ente
 protected:
 	ID id;
 	static Managers::GraphicManager* pGraphic;
+	sf::RectangleShape* body;
 
 public:
 	Ente(ID id = ID::empty);

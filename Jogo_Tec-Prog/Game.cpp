@@ -9,8 +9,8 @@ Game::Game() {
 	//Entities::Characters::Boss* b1 = new Entities::Characters::Boss(Math::CoordF(600, 200));
 	Entities::Characters::Enemy::setPlayer1(p1);
 	movingEntities.setData(p1);
-	//movingEntities.setData(b1);
-	//movingEntities.setData(p2);
+	movingEntities.setData(b1);
+	movingEntities.setData(p2);
 	//movingEntities.setData(t1);
 	//movingEntities.setData(z1);
 	Entities::Obstacles::Obstacle* floor = new Entities::Obstacles::Obstacle(Math::CoordF(600, 720), Math::CoordF(1200, 10), false, 0);
