@@ -3,7 +3,6 @@
 namespace Entities {
 	Projectile::Projectile(Characters::Character* user) : MovingEntity(Math::CoordF(0,0), Math::CoordF(PROJECTILE_SIZE_X, PROJECTILE_SIZE_Y), projectile), user(user), fireTimer(0){
 		canShoot = true;
-		damage = PROJECTILE_DAMAGE;
 		range = 0;
 		isActive = false;
 		setTextures();
@@ -95,7 +94,7 @@ namespace Entities {
 		if (user->getID() == enemy) {
 			if (ent->getID() == player) {
 				Entities::Characters::Character* pChar = dynamic_cast<Entities::Characters::Character*>(ent);
-				pChar->takeDamage(PROJECTILE_DAMAGE);
+				pChar->takeDamage(THROWER_PROJECTILE_DAMAGE);
 				isActive = false;
 				canShoot = true;
 			}
@@ -107,7 +106,7 @@ namespace Entities {
 		else if (user->getID() == player) {
 			if (ent->getID() == enemy) {
 				Entities::Characters::Character* pChar = dynamic_cast<Entities::Characters::Character*>(ent);
-				pChar->takeDamage(PROJECTILE_DAMAGE);
+				pChar->takeDamage(PLAYER_PROJECTILE_DAMAGE);
 				isActive = false;
 				canShoot = true;
 			}

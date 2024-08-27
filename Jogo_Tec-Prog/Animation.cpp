@@ -1,9 +1,10 @@
 #include "Animation.h"
 
 namespace GraphicalElements {
-	const float Animation::SingleAnimation::switchTime = 0.1;
-	//switchTime attack = 0.15
-
+	const float Animation::SingleAnimation::switchTime = 0.15;
+	const float Animation::SingleAnimation::attackPlayerSwitchTime = 0.07;
+	//switchTime zombie attack = 0.15
+	//switchTime player attack = 0.05
 	Managers::GraphicManager* Animation::pGraphic = Managers::GraphicManager::getInstance();
 
 	Animation::Animation(sf::RectangleShape* body, Math::CoordF scale) :
@@ -42,7 +43,7 @@ namespace GraphicalElements {
 			animationMap[currentID]->reset();
 		}
 
-		animationMap[currentID]->update(dt, isFacingLeft);
+		animationMap[currentID]->update(dt, isFacingLeft, id);
 
 		body->setPosition(sf::Vector2f(position.x, position.y));
 		body->setTextureRect(animationMap[currentID]->getSize());

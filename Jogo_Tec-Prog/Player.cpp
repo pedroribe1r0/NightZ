@@ -11,7 +11,8 @@ namespace Entities {
 			paralizeTimer(0),
 			bulletVector(N_BULLETS),
 			shootCooldown(0.2),
-			isShooting(false)
+			isShooting(false),
+			canShoot(true)
 		{
 			for (int i = 0; i < N_BULLETS; i++) {
 				Projectile* p = new Projectile(this);
@@ -26,8 +27,9 @@ namespace Entities {
 			sprite = new GraphicalElements::Animation(body, Math::CoordF(1.8, 1.8));
 			sprite->addNewAnimation(GraphicalElements::Animation_ID::walk, "Char_knife_walk.png", 16);
 			sprite->addNewAnimation(GraphicalElements::Animation_ID::idle, "Char_knife_idle.png", 8);
-			sprite->addNewAnimation(GraphicalElements::Animation_ID::attack, "Char_knife_shoot.png", 17);
+			sprite->addNewAnimation(GraphicalElements::Animation_ID::shoot, "Char_knife_shoot.png", 17);
 			sprite->addNewAnimation(GraphicalElements::Animation_ID::dmg, "Char_knife_take_damage.png", 8);
+			sprite->addNewAnimation(GraphicalElements::Animation_ID::death, "Char_knife_take_damage.png", 8);
 		}
 
 		Player::~Player() {
@@ -66,15 +68,20 @@ namespace Entities {
 
 			if (isShooting) {
 				shootCooldown += dt;
-				sprite->update(GraphicalElements::Animation_ID::attack, facingLeft, position, dt);
-				if (shootCooldown >= SHOOT_COOLDOWN && shootCooldown < SHOOT_COOLDOWN + 0.5f) {
-					shootCooldown = 0;
+				sprite->update(GraphicalElements::Animation_ID::shoot, facingLeft, position, dt);
+				if (shootCooldown >= SHOOT_COOLDOWN && shootCooldown < SHOOT_COOLDOWN + 0.5f && canShoot) {
 					for (int i = 0; i < N_BULLETS; i++) {
 						if (bulletVector[i]->getCanShoot()) {
 							bulletVector[i]->shoot(facingLeft);
+							canShoot = false;
 							break;
 						}
 					}
+				}
+				if (shootCooldown >= 1.19) {
+					shootCooldown = 0;
+					isShooting = false;
+					canShoot = true;
 				}
 			}
 			else if (takingDamage) {
@@ -95,10 +102,6 @@ namespace Entities {
 
 		void Player::attack() {
 			isShooting = true;
-		}
-
-		void Player::stopAttacking() {
-			isShooting = false;
 		}
 
 		void Player::operator++() {

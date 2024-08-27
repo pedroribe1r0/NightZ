@@ -157,6 +157,11 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="6_1.png" />
+    <Image Include="BigZombie - Attack.png" />
+    <Image Include="BigZombie - Death.png" />
+    <Image Include="BigZombie - Hit.png" />
+    <Image Include="BigZombie - Idle.png" />
+    <Image Include="BigZombie - Walk.png" />
     <Image Include="Char_knife_idle.png" />
     <Image Include="Char_knife_jump.png" />
     <Image Include="Char_knife_shoot.png" />
@@ -172,6 +177,7 @@
     <Image Include="Zombie _Hit.png" />
     <Image Include="Zombie _Idle.png" />
     <Image Include="Zombie _Walk.png" />
+    <Image Include="Zombie_Death.png" />
     <Image Include="zoro.png" />
   </ItemGroup>
   <ItemGroup>

@@ -24,6 +24,7 @@ namespace Entities {
 			sprite->addNewAnimation(GraphicalElements::Animation_ID::dmg, "SpittingZombie - Hit.png", 5);
 			sprite->addNewAnimation(GraphicalElements::Animation_ID::attack, "SpittingZombie - Attack.png", 19);
 			sprite->addNewAnimation(GraphicalElements::Animation_ID::idle, "SpittingZombie - Idle.png", 20);
+			sprite->addNewAnimation(GraphicalElements::Animation_ID::death, "SpittingZombie - Death.png", 19);
 		}
 		void Thrower::takeDistance(Player* p) {
 			if (p->getPosition().x > position.x) {
@@ -57,21 +58,20 @@ namespace Entities {
 					facingLeft = true;
 				}
 				if (fabs(distance) > 150 && fabs(distance) < 300 && cooldown >= THROWER_COOLDOWN) {//verificar se esta dentro do range e se o cooldown esta maior q o tempo estipulado
-					if (!isAttacking) {
+					if (!isAttacking && !p->getIsActive()) {
 						attack();
 					}
 				}
-				else if (fabs(distance) < 191) {
+				else if (fabs(distance) < 191 && !isAttacking) {
 					takeDistance(near);
 				}
 					
-				else if (fabs(distance) >= 199) //verificar se o motivo do loop foi nao ter cooldown ou estar longe
+				else if (fabs(distance) >= 199 && !isAttacking) //verificar se o motivo do loop foi nao ter cooldown ou estar longe
 					chasePlayer(near);
 			}
 			if (isAttacking) {
 				sprite->update(GraphicalElements::Animation_ID::attack, facingLeft, position, dt);
 				attackTime += dt;
-				cout << attackTime << " " << THROWER_ATTACK_TIME << endl;
 				if (attackTime > 1.0f && attackTime < 1.05f) {
 					p->shoot(facingLeft);
 				}

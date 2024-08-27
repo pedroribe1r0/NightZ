@@ -9,8 +9,9 @@ namespace Entities {
 		#define BOSS_ATTACK_DAMAGE 90.0f
 		#define BOSS_SPEED 25.0f
 		#define BOSS_ATTACK_RANGE 100.0f
-		#define BOSS_COOLDOWN 8.0f
-		#define ATTACK_TIME 0.4f
+		#define BOSS_COOLDOWN 4.0f
+		#define ATTACK_TIME 3.3f
+		#define HIT_TIME 1.35f
 		class Boss : public Enemy
 		{
 		private:
@@ -18,6 +19,7 @@ namespace Entities {
 			float attackDamage;
 			float cooldownTimer;
 			float attackTime;
+			bool canAttack;
 			bool isAttacking;
 		public:
 			Boss(Math::CoordF pos = Math::CoordF(0, 0));
@@ -26,7 +28,7 @@ namespace Entities {
 			void update(float dt);
 			void attack();
 			void paralizePlayer(Player* p);
-			//void setTextures();
+			void setTextures();
 		};
 	}
 }

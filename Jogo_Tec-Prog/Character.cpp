@@ -8,6 +8,8 @@ namespace Entities {
 			canJump(false),
 			isAlive(true),
 			timeDamageAnimation(0),
+			isDying(false),
+			deathTimeCounter(0),
 			takingDamage(false){}
 
 		Character::~Character() {}
@@ -18,7 +20,8 @@ namespace Entities {
 				hp = newLife;
 			else {
 				hp = 0;
-				isAlive = false;
+				isDying = true;
+				size = Math::CoordF(0, 0);
 			}
 		}
 		void Character::jump() {
@@ -39,31 +42,40 @@ namespace Entities {
 		}
 
 		void Character::execute(float dt) {
-			if (speed.y <= 800.0) {
-				speed.y += GRAVIDADE * dt;
+			if (isDying) {
+				deathTimeCounter += dt;
+				sprite->update(GraphicalElements::Animation_ID::death, facingLeft, position, dt);
+				if (deathTimeCounter >= DEATH_TIME)
+					isAlive = false;
 			}
-			update(dt);
-			//body->setPosition(sf::Vector2f(position.x, position.y));
+			else {
+				if (speed.y <= 800.0) {
+					speed.y += GRAVIDADE * dt;
+				}
+				update(dt);
+			}
 		}//corrigir double jump no ar
 
 		void Character::moveOnCollision(Entity* ent, Math::CoordF intersection) {
-			Math::CoordF otherPos = ent->getPosition();
-			if (intersection.x > intersection.y) { // Colision on x direction
-				if (position.x < otherPos.x)
-					position.x += intersection.x;
-				else
-					position.x -= intersection.x;	
-			}
-
-			else { // Colision on y direction
-				
-				if (position.y < otherPos.y) {
-					canJump = true;
-					speed.y = 0;
-					position.y += intersection.y;
+			if (!isDying) {
+				Math::CoordF otherPos = ent->getPosition();
+				if (intersection.x > intersection.y) { // Colision on x direction
+					if (position.x < otherPos.x)
+						position.x += intersection.x;
+					else
+						position.x -= intersection.x;
 				}
-				else 
-					position.y -= intersection.y;
+
+				else { // Colision on y direction
+
+					if (position.y < otherPos.y) {
+						canJump = true;
+						speed.y = 0;
+						position.y += intersection.y;
+					}
+					else
+						position.y -= intersection.y;
+				}
 			}
 		}
 	}

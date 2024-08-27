@@ -17,6 +17,7 @@ namespace Entities {
 			sprite = new GraphicalElements::Animation(body, Math::CoordF(2.8, 2.8));
 			sprite->addNewAnimation(GraphicalElements::Animation_ID::walk, "Zombie _Walk.png", 9);
 			sprite->addNewAnimation(GraphicalElements::Animation_ID::dmg, "Zombie _Hit.png", 4);
+			sprite->addNewAnimation(GraphicalElements::Animation_ID::death, "Zombie_Death.png", 15);
 		}
 		void Zombie::update(float dt) {
 			stop();

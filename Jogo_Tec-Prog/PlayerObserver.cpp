@@ -51,9 +51,6 @@ namespace Observers {
 				pPlayer->stop();
 			}
 		}
-		else if (key == attack) {
-			pPlayer->stopAttacking();
-		}
 	}
 	void PlayerObserver::setPlayer(Entities::Characters::Player* pPlayer) {
 		if (pPlayer)

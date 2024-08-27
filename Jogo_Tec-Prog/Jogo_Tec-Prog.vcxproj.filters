@@ -131,6 +131,24 @@
     <Image Include="SpittingZombie - Walk.png">
       <Filter>Arquivos de Recurso</Filter>
     </Image>
+    <Image Include="BigZombie - Attack.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="BigZombie - Death.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="BigZombie - Hit.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="BigZombie - Idle.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="BigZombie - Walk.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Zombie_Death.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Coord.h">

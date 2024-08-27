@@ -6,14 +6,17 @@ namespace Entities {
 	namespace Characters {
 		#define JUMP -300.0f
 		#define TIME_DMG_ANIMATION 0.8f
+		#define DEATH_TIME 2.25f
 		class Character : public MovingEntity
 		{
 		protected:
 			float hp;
 			float timeDamageAnimation;
+			float deathTimeCounter;
 			bool canJump;
 			bool isAlive;
 			bool takingDamage;
+			bool isDying;
 			/*To do*/
 		public:
 			Character(Math::CoordF pos = Math::CoordF(0, 0), Math::CoordF size = Math::CoordF(0, 0), ID id = ID::empty, float hp = 0);

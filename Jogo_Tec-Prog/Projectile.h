@@ -4,7 +4,8 @@
 namespace Entities {
 	#define PROJECTILE_SIZE_X 5.0f
 	#define PROJECTILE_SIZE_Y 5.0f
-	#define PROJECTILE_DAMAGE 20.0f
+	#define PLAYER_PROJECTILE_DAMAGE 70.0f
+	#define THROWER_PROJECTILE_DAMAGE 20.0f
 	#define PROJECTILE_SPEED 500.0f
 	#define THROW_SPEED -300.0f
 	#define TIME_MAX 4.0f
@@ -13,7 +14,6 @@ namespace Entities {
 	private:
 		bool canShoot;
 		float range;
-		float damage;
 		float fireTimer;
 		Characters::Character* user;
 	public:

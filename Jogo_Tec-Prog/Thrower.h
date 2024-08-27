@@ -7,7 +7,7 @@ namespace Entities {
 	namespace Characters {
 		#define THROWER_SIZE_X 30.0f
 		#define THROWER_SIZE_Y 85.0f
-		#define THROWER_HP 80.0f
+		#define THROWER_HP 90.0f
 		#define THROWER_DAMAGE 5.0f
 		#define THROWER_SPEED 50.0f
 		#define THROWER_COOLDOWN 3.0f

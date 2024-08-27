@@ -8,7 +8,9 @@ namespace GraphicalElements {
 		idle = 1,
 		attack = 2,
 		jump = 3,
-		dmg = 4
+		dmg = 4,
+		shoot = 5,
+		death = 6
 	};
 
 	class Animation {
@@ -21,6 +23,7 @@ namespace GraphicalElements {
 			float totalTime;
 			sf::IntRect rectSize;
 			static const float switchTime;
+			static const float attackPlayerSwitchTime;
 
 		public:
 			SingleAnimation(const char* path, const unsigned int imageCount) :
@@ -41,17 +44,27 @@ namespace GraphicalElements {
 
 			~SingleAnimation() {}
 
-			void update(float dt, bool isFacingLeft) {
+			void update(float dt, bool isFacingLeft, Animation_ID id) {
 				totalTime += dt;
 
-				if (totalTime >= switchTime) {
-					totalTime -= switchTime;
-					currentImage++;
+				if (id != shoot) {
+					if (totalTime >= switchTime) {
+						totalTime -= switchTime;
+						currentImage++;
 
-					if (currentImage >= imageCount)
-						currentImage = 0;
+						if (currentImage >= imageCount)
+							currentImage = 0;
+					}
 				}
+				else {
+					if (totalTime >= attackPlayerSwitchTime) {
+						totalTime -= attackPlayerSwitchTime;
+						currentImage++;
 
+						if (currentImage >= imageCount)
+							currentImage = 0;
+					}
+				}
 				if (isFacingLeft) {
 					rectSize.left = (currentImage + 1) * abs(rectSize.width);
 					rectSize.width = -abs(rectSize.width);
