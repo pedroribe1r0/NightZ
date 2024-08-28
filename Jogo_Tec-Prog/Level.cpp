@@ -22,14 +22,14 @@ namespace Levels {
 	}
 	void Level::createBackground() {
 		background.addLayer("layer11.png", 0.0f, GraphicalElements::LID::empty);
-		background.addLayer("layer10.png", 0.0000005f, GraphicalElements::LID::empty);
-		background.addLayer("layer9.png", 0.000001f, GraphicalElements::LID::empty);
-		background.addLayer("layer8.png", 0.00003f, GraphicalElements::LID::empty);
-		background.addLayer("layer7.png", 0.0006f, GraphicalElements::LID::empty);
-		background.addLayer("layer6.png", 0.007f, GraphicalElements::LID::empty);
-		background.addLayer("layer5.png", 0.008f, GraphicalElements::LID::empty);
-		background.addLayer("layer4.png", 0.009, GraphicalElements::LID::empty);
-		background.addLayer("layer3.png", 0.05f, GraphicalElements::LID::empty);
+		background.addLayer("layer10.png", 0.00000005f, GraphicalElements::LID::empty);
+		background.addLayer("layer9.png", 0.0000001f, GraphicalElements::LID::empty);
+		background.addLayer("layer8.png", 0.000003f, GraphicalElements::LID::empty);
+		background.addLayer("layer7.png", 0.00006f, GraphicalElements::LID::empty);
+		background.addLayer("layer6.png", 0.0007f, GraphicalElements::LID::empty);
+		background.addLayer("layer5.png", 0.0008f, GraphicalElements::LID::empty);
+		background.addLayer("layer4.png", 0.0009, GraphicalElements::LID::empty);
+		background.addLayer("layer3.png", 0.005f, GraphicalElements::LID::empty);
 		background.addLayer("layer2.png", 0.06f, GraphicalElements::LID::empty);
 		background.addLayer("layer1.png", 0.08f, GraphicalElements::LID::empty);
 		background.addLayer("layer0.png", 0.1f, GraphicalElements::LID::floor);
@@ -105,17 +105,17 @@ namespace Levels {
 		List<Entities::Entity>::iterator it = movingEntities->begin();
 		int i = 0;
 		while (it != movingEntities->end()) {
-			if ((*it)->getID() == enemy && i > enemiesCounter) {
+			if (((*it)->getID() == enemy || (*it)->getID() == boss) && i > enemiesCounter) {
 				ent = (*it);
 				break;
 			}
-			else if ((*it)->getID() == enemy)
+			else if (((*it)->getID() == enemy || (*it)->getID() == boss))
 				i++;
 			++it;
 		}
 		if (ent) {
 			cout << ent->getSize().x << endl;
-			if (ent->getID() == enemy) {
+			if (ent->getID() == enemy || ent->getID() == boss) {
 				Entities::Characters::Enemy* e = dynamic_cast<Entities::Characters::Enemy*>(ent);
 				Entities::Characters::Player* p1 = e->getPlayer1();
 				Entities::Characters::Player* p2 = e->getPlayer2();
@@ -133,7 +133,7 @@ namespace Levels {
 					else {
 						randSpot = rand() % 10;
 					}
-				}*/
+				}*/ 
 				if (p1) {
 					if (p1->getPosition().x < -80) {
 						randSpot = rand() % 5;
@@ -156,9 +156,6 @@ namespace Levels {
 						randSpot = rand() % 10;
 					}
 				}*/
-				cout << randSpot << endl;
-				if(p1)
-					cout << p1->getPosition().x << " " << p1->getPosition().y << endl;
 				e->setPosition(spots[randSpot]);
 				e->setIsActive(true);
 				enemiesCounter++;

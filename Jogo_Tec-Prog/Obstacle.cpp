@@ -2,9 +2,14 @@
 
 namespace Entities {
 	namespace Obstacles {
-		Obstacle::Obstacle(Math::CoordF pos, Math::CoordF size, bool dangerous, int damadge) : Entity(pos, size, ID::obstacle), dangerous(dangerous), damage(damage){
-			body->setTexture(pGraphic->loadTexture("Tree_1_512b.png"));
-		
+		Obstacle::Obstacle(Math::CoordF pos, Math::CoordF size, bool dangerous, int damadge, const char* textPath) : Entity(pos, size, ID::obstacle), dangerous(dangerous), damage(damage){
+			//body = new sf::Sprite();
+			//body->setPosition(sf::Vector2f(pos.x, pos.y));
+			if (body) {
+				if (textPath) {
+					body->setTexture(pGraphic->loadTexture(textPath));
+				}
+			}
 		}
 		Obstacle::~Obstacle() {
 

@@ -170,6 +170,8 @@
     <Image Include="BigZombie - Hit.png" />
     <Image Include="BigZombie - Idle.png" />
     <Image Include="BigZombie - Walk.png" />
+    <Image Include="branch.png" />
+    <Image Include="bush.png" />
     <Image Include="Char_knife_idle.png" />
     <Image Include="Char_knife_jump.png" />
     <Image Include="Char_knife_run.png" />
@@ -190,7 +192,6 @@
     <Image Include="layer7.png" />
     <Image Include="layer8.png" />
     <Image Include="layer9.png" />
-    <Image Include="luffy.png" />
     <Image Include="p2_idle.png" />
     <Image Include="p2_run.png" />
     <Image Include="p2_shoot.png" />
@@ -202,6 +203,10 @@
     <Image Include="SpittingZombie - Idle.png" />
     <Image Include="SpittingZombie - Projectile.png" />
     <Image Include="SpittingZombie - Walk.png" />
+    <Image Include="tree.png" />
+    <Image Include="tree1.png" />
+    <Image Include="tree2.png" />
+    <Image Include="treetest.png" />
     <Image Include="Tree_1_512b.png" />
     <Image Include="Tree_2_512b.png" />
     <Image Include="Zombie _Hit.png" />

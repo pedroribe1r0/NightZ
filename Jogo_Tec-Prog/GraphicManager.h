@@ -11,8 +11,8 @@
 //O codigo usado de base foi feito por Matheus Augusto Burda(Burda Canal no Youtube)
 
 namespace Managers {
-	#define WIDTH 1280
-	#define HEIGHT 720
+	#define WIDTH 1920
+	#define HEIGHT 1080
 	class GraphicManager
 	{
 	private:

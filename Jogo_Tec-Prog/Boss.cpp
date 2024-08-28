@@ -23,6 +23,9 @@ namespace Entities {
 			case enemy:
 				//moveOnCollision(ent, intersection);
 				break;
+			case boss:
+				moveOnCollision(ent, intersection);
+				break;
 			case player: {
 				Player* p = dynamic_cast<Player*>(ent);
 				if (p && !isDying) {

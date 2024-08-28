@@ -7,7 +7,6 @@ namespace Managers {
 	private:
 		GraphicManager* pGraphic;
 		InputManager* pInput;
-
 		//singleton
 		static EventsManager* pEvent;
 		EventsManager();

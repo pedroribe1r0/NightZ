@@ -18,6 +18,7 @@ namespace Entities {
 		class Player : public Character
 		{
 		private:
+			Player* otherPlayer;
 			Observers::PlayerObserver* pObserver;
 			const bool isPlayer1;
 			int points;
@@ -28,7 +29,7 @@ namespace Entities {
 			bool isRunning;
 			std::vector<Projectile*> bulletVector;
 		public:
-			Player(Math::CoordF pos = Math::CoordF(0, 0), bool isPlayer1 = true, EntitiesList* list = nullptr);
+			Player(Math::CoordF pos = Math::CoordF(0, 0), bool isPlayer1 = true, EntitiesList* list = nullptr, Player* other = nullptr);
 			~Player();
 			void update(float dt);
 			void damage();

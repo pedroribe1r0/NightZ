@@ -39,7 +39,7 @@ namespace Managers {
         /* Collide moving entities with moving entities - diagonally */
         List<Entities::Entity>::iterator itM1 = movingEntities->begin();
         i = 0;
-        while (itM1 != staticEntities->end()) {
+        while (itM1 != movingEntities->end()) {
             List<Entities::Entity>::iterator itM2 = movingEntities->begin();
             for (int j = 0; j < i + 1; j++) {
                 ++itM2;

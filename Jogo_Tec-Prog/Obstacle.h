@@ -8,8 +8,9 @@ namespace Entities {
 		private:
 			bool dangerous;
 			int damage;
+		//	sf::Sprite* body;
 		public:
-			Obstacle(Math::CoordF pos = Math::CoordF(0, 0), Math::CoordF size = Math::CoordF(0, 0), bool dangerous = false, int damage = 0);
+			Obstacle(Math::CoordF pos = Math::CoordF(0, 0), Math::CoordF size = Math::CoordF(0, 0), bool dangerous = false, int damage = 0, const char* textPath = nullptr);
 			~Obstacle();
 			void collide(Entity* ent, Math::CoordF intersection, float dt);
 			void render();

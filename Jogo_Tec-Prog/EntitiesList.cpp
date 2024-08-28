@@ -28,7 +28,7 @@ void EntitiesList::execute(float dt) {
 		if ((*it)->getIsActive()) {
 			(*it)->execute(dt);
 		}
-		if ((*it)->getID() == player || (*it)->getID() == enemy) {
+		if ((*it)->getID() == player || (*it)->getID() == enemy || (*it)->getID() == boss) {
 			Entities::Characters::Character* pChar = dynamic_cast<Entities::Characters::Character*>(*it);
 			if (!pChar->getIsAlive()) {
 				removeData(pChar);

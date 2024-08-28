@@ -4,7 +4,7 @@
 
 namespace Entities {
 	namespace Characters {
-		Player::Player(Math::CoordF pos, bool isPlayer1, EntitiesList* list) :
+		Player::Player(Math::CoordF pos, bool isPlayer1, EntitiesList* list, Player* other) :
 			Character(pos, Math::CoordF(PLAYER_SIZE_X, PLAYER_SIZE_Y), player, PLAYER_HP),
 			isPlayer1(isPlayer1),
 			points(0),
@@ -13,7 +13,8 @@ namespace Entities {
 			shootCooldown(0.2),
 			isShooting(false),
 			canShoot(true),
-			isRunning(false)
+			isRunning(false),
+			otherPlayer(other)
 		{
 			for (int i = 0; i < N_BULLETS; i++) {
 				Projectile* p = new Projectile(this);
@@ -122,7 +123,14 @@ namespace Entities {
 				sprite->update(GraphicalElements::Animation_ID::idle, facingLeft, position, dt);
 			}
 
-			pGraphic->centerView(Math::CoordF(position.x, pGraphic->getWindowSize().y / 2));
+			if (isPlayer1) {
+				pGraphic->centerView(Math::CoordF(position.x, pGraphic->getWindowSize().y / 2));
+				if (otherPlayer) {
+					if (fabs(otherPlayer->getPosition().x - position.x) > 960) {
+						otherPlayer->setPosition(Math::CoordF((position.x + 50.0f), position.y));
+					}
+				}
+			}
 		}
 		void Player::run() {
 			isRunning = true;
