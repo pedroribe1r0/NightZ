@@ -104,12 +104,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>SFML_DINAMIC;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\pralm\Documents\SFML-2.6.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\pralm\Documents\SFML-2.6.1\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\pralm\Documents\SFML-2.6.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\pralm\Documents\SFML-2.6.1\lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-audio-d.lib;sfml-network-d.lib;sfml-system-d.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -121,19 +121,20 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>SFML_DINAMIC;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\pralm\Documents\SFML-2.6.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\pralm\Documents\SFML-2.6.1\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\pralm\Documents\SFML-2.6.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\pralm\Documents\SFML-2.6.1\lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>sfml-graphics.lib;sfml-window.lib;sfml-audio.lib;sfml-network.lib;sfml-system.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="Background.cpp" />
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="CollisionManager.cpp" />
     <ClCompile Include="Enemy.cpp" />
@@ -142,6 +143,7 @@
     <ClCompile Include="EventsManager.cpp" />
     <ClCompile Include="GraphicManager.cpp" />
     <ClCompile Include="InputManager.cpp" />
+    <ClCompile Include="Layer.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="MovingEntity.cpp" />
     <ClCompile Include="Observer.cpp" />
@@ -176,6 +178,18 @@
     <Image Include="Char_knife_walk.png" />
     <Image Include="floor.png" />
     <Image Include="grass.png" />
+    <Image Include="layer0.png" />
+    <Image Include="layer1.png" />
+    <Image Include="layer10.png" />
+    <Image Include="layer11.png" />
+    <Image Include="layer2.png" />
+    <Image Include="layer3.png" />
+    <Image Include="layer4.png" />
+    <Image Include="layer5.png" />
+    <Image Include="layer6.png" />
+    <Image Include="layer7.png" />
+    <Image Include="layer8.png" />
+    <Image Include="layer9.png" />
     <Image Include="luffy.png" />
     <Image Include="p2_idle.png" />
     <Image Include="p2_run.png" />
@@ -199,6 +213,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
+    <ClInclude Include="Background.h" />
     <ClInclude Include="Character.h" />
     <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="Enemy.h" />
@@ -207,6 +222,7 @@
     <ClInclude Include="EventsManager.h" />
     <ClInclude Include="GraphicManager.h" />
     <ClInclude Include="InputManager.h" />
+    <ClInclude Include="Layer.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="List.h" />
     <ClInclude Include="MovingEntity.h" />

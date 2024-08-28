@@ -12,8 +12,6 @@ namespace Entities {
 		#define PLAYER_SIZE_Y 88.0f
 		#define PLAYER_SPEED 150.0f
 		#define PARALIZE_TIME 0.5f
-		#define PLAYER_1_TEXTURE "luffy.png"
-		#define PLAYER_2_TEXTURE "zoro.png"
 		#define PLAYER_HP 100.0f
 		#define N_BULLETS 5
 		#define SHOOT_COOLDOWN 0.63f

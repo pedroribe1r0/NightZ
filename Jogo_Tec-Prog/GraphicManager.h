@@ -43,6 +43,7 @@ namespace Managers {
 		float getDeltaTime() const;
 		Math::CoordU getWindowSize() const;
 		bool pollEvent(sf::Event& e);
+		sf::Vector2f getCenterView() const;
 	};
 }
 

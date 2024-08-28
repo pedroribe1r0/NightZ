@@ -19,6 +19,20 @@ namespace Levels {
 		delete staticEntities;
 		delete pColision;
 	}
+	void Level::createBackground() {
+		background.addLayer("layer11.png", 0.0f, GraphicalElements::LID::empty);
+		background.addLayer("layer10.png", 0.0000005f, GraphicalElements::LID::empty);
+		background.addLayer("layer9.png", 0.000001f, GraphicalElements::LID::empty);
+		background.addLayer("layer8.png", 0.00003f, GraphicalElements::LID::empty);
+		background.addLayer("layer7.png", 0.0006f, GraphicalElements::LID::empty);
+		background.addLayer("layer6.png", 0.007f, GraphicalElements::LID::empty);
+		background.addLayer("layer5.png", 0.008f, GraphicalElements::LID::empty);
+		background.addLayer("layer4.png", 0.009, GraphicalElements::LID::empty);
+		background.addLayer("layer3.png", 0.05f, GraphicalElements::LID::empty);
+		background.addLayer("layer2.png", 0.06f, GraphicalElements::LID::empty);
+		background.addLayer("layer1.png", 0.08f, GraphicalElements::LID::empty);
+		background.addLayer("layer0.png", 0.1f, GraphicalElements::LID::floor);
+	}
 	void Level::manageCollisions(float dt) {
 		pColision->collide(dt);
 	}
