@@ -151,8 +151,10 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Jogo_Tec-Prog.cpp" />
     <ClCompile Include="PlayerObserver.cpp" />
+    <ClCompile Include="PortalLevel.cpp" />
     <ClCompile Include="Projectile.cpp" />
     <ClCompile Include="Boss.cpp" />
+    <ClCompile Include="CoinFlip.cpp" />
     <ClCompile Include="Thrower.cpp" />
     <ClCompile Include="Zombie.cpp" />
   </ItemGroup>
@@ -209,8 +211,10 @@
     <ClInclude Include="Entity.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="PlayerObserver.h" />
+    <ClInclude Include="PortalLevel.h" />
     <ClInclude Include="Projectile.h" />
     <ClInclude Include="Boss.h" />
+    <ClInclude Include="CoinFlip.h" />
     <ClInclude Include="Thrower.h" />
     <ClInclude Include="Zombie.h" />
   </ItemGroup>

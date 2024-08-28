@@ -1,8 +1,8 @@
-#include "Game.h"
+#include "PortalLevel.h"
 
 int main()
 {
-	Game game;
+	Levels::CoinFlip c;
 	return 0;
 }
 

@@ -1,7 +1,6 @@
 #include "Game.h"
 
 Game::Game() {
-	int numEnemies = 10;
 	Entities::Characters::Player* p1 = new Entities::Characters::Player(Math::CoordF(200,200), true, &movingEntities);
 	Entities::Characters::Player* p2 = new Entities::Characters::Player(Math::CoordF(850, 200), false, &movingEntities);
 	//Entities::Characters::Zombie* z1 = new Entities::Characters::Zombie(Math::CoordF(650, 200));

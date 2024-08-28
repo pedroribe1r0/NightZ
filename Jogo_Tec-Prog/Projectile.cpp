@@ -24,10 +24,10 @@ namespace Entities {
 	bool Projectile::shoot(bool left) {
 		if (canShoot) {
 			if (left) {
-				position.x = user->getPosition().x -user->getSize().x / 2 - 15;
+				position.x = user->getPosition().x -user->getSize().x / 2 - 30;
 			}
 			else
-				position.x = user->getPosition().x +user->getSize().x / 2 + 15;
+				position.x = user->getPosition().x +user->getSize().x / 2 + 30;
 			if (user->getID() == player) {
 				position.y = user->getPosition().y - 5;
 			}
