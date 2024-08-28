@@ -72,7 +72,7 @@ namespace Entities {
 			if (isAttacking) {
 				sprite->update(GraphicalElements::Animation_ID::attack, facingLeft, position, dt);
 				attackTime += dt;
-				if (attackTime > 1.0f && attackTime < 1.05f) {
+				if (attackTime >= 0.9f && attackTime < 0.95f) {
 					p->shoot(facingLeft);
 				}
 				else if (attackTime >= THROWER_ATTACK_TIME) {

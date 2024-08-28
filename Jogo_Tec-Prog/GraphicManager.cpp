@@ -36,7 +36,9 @@ namespace Managers {
 	void GraphicManager::render(sf::RectangleShape* body) {
 		window->draw(*body);
 	}
-
+	void GraphicManager::render(sf::Sprite* sprite) {
+		window->draw(*sprite);
+	}
 	void GraphicManager::display() {
 		if(isWindowOpen())
 			window->display();

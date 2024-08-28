@@ -6,10 +6,10 @@ enum ID {
 	empty = 0,
 	player,
 	enemy,
-	weapon,
-	bullet,
 	obstacle,
-	projectile
+	projectile,
+	level1,
+	level2
 };
 
 class Ente

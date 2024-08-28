@@ -21,13 +21,16 @@ namespace Entities {
 			sprite->addNewAnimation(GraphicalElements::Animation_ID::attack, "Zombie_Attack.png", 17);
 			sprite->addNewAnimation(GraphicalElements::Animation_ID::death, "Zombie_Death.png", 15);
 		}
+		void Zombie::increaseSpeed(float speed) {
+			zombieSpeed = speed;
+		}
 		void Zombie::update(float dt) {
 			stop();
 			srand(time(NULL));
 			if (rand() % 5 == 0) {
 				jump();
 			}
-			zombieSpeed = ZOMBIE_SPEED + (100 - hp);
+			increaseSpeed(ZOMBIE_SPEED + (100 - hp));
 			if (pPlayer1 && pPlayer2) {
 				if (fabs(position.x - pPlayer1->getPosition().x) < fabs(position.x - pPlayer2->getPosition().x)) {
 					chasePlayer(pPlayer1);

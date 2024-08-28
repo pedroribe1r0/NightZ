@@ -40,8 +40,8 @@ namespace GraphicalElements {
 			currentID = id;
 			animationMap[currentID]->reset();
 		}
-
-		animationMap[currentID]->update(dt, isFacingLeft, id);
+		if(animationMap[currentID])
+			animationMap[currentID]->update(dt, isFacingLeft, id);
 
 		body->setPosition(sf::Vector2f(position.x, position.y));
 		body->setTextureRect(animationMap[currentID]->getSize());

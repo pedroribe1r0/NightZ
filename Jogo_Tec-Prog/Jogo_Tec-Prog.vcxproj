@@ -172,7 +172,10 @@
     <Image Include="Char_knife_shoot.png" />
     <Image Include="Char_knife_take_damage.png" />
     <Image Include="Char_knife_walk.png" />
+    <Image Include="floor.png" />
+    <Image Include="grass.png" />
     <Image Include="luffy.png" />
+    <Image Include="p2_idle.png" />
     <Image Include="SpittingZombie - Attack.png" />
     <Image Include="SpittingZombie - Death.png" />
     <Image Include="SpittingZombie - Hit.png" />

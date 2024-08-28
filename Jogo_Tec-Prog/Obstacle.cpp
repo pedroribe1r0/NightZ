@@ -4,8 +4,8 @@ namespace Entities {
 	namespace Obstacles {
 		Obstacle::Obstacle(Math::CoordF pos, Math::CoordF size, bool dangerous, int damadge) : Entity(pos, size, ID::obstacle), dangerous(dangerous), damage(damage){
 			//setar textura
-			if(body)
-				body->setFillColor(sf::Color::Red);
+			if (body)
+				body->setTexture(pGraphic->loadTexture("grass.png"));
 		}
 		Obstacle::~Obstacle() {
 

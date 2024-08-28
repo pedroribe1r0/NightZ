@@ -20,6 +20,7 @@ namespace Entities {
 			void update(float dt);
 			void collide(Entity* ent, Math::CoordF intersection, float dt);
 			void setTextures();
+			void increaseSpeed(float speed);
 		};
 	}
 }

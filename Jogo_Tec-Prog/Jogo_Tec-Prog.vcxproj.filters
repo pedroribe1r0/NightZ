@@ -167,6 +167,15 @@
     <Image Include="Char_knife_run.png">
       <Filter>Arquivos de Recurso</Filter>
     </Image>
+    <Image Include="p2_idle.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="floor.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="grass.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Coord.h">

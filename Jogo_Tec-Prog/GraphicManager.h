@@ -11,7 +11,7 @@
 //O codigo usado de base foi feito por Matheus Augusto Burda(Burda Canal no Youtube)
 
 namespace Managers {
-	#define WIDTH 1200
+	#define WIDTH 1280
 	#define HEIGHT 720
 	class GraphicManager
 	{
@@ -30,6 +30,7 @@ namespace Managers {
 
 		//void render(std::string textPath, Math::CoordF position, Math::CoordF size);
 		void render(sf::RectangleShape* body);
+		void render(sf::Sprite* sprite);
 		void display();
 		void clear();
 		~GraphicManager();

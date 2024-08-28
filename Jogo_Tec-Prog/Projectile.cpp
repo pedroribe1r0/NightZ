@@ -58,7 +58,7 @@ namespace Entities {
 		update(dt);
 	}
 	void Projectile::update(float dt) {
-		if (!canShoot) {
+		if (isActive) {
 			fireTimer += dt;
 			if (fireTimer >= TIME_MAX) {
 				isActive = false;
@@ -98,10 +98,12 @@ namespace Entities {
 				pChar->takeDamage(THROWER_PROJECTILE_DAMAGE);
 				isActive = false;
 				canShoot = true;
+				fireTimer = 0;
 			}
 			if (ent->getID() == obstacle) {
 				isActive = false;
 				canShoot = true;
+				fireTimer = 0;
 			}
 		}
 		else if (user->getID() == player) {
@@ -110,10 +112,12 @@ namespace Entities {
 				pChar->takeDamage(PLAYER_PROJECTILE_DAMAGE);
 				isActive = false;
 				canShoot = true;
+				fireTimer = 0;
 			}
 			if (ent->getID() == obstacle) {
 				isActive = false;
 				canShoot = true;
+				fireTimer = 0;
 			}
 		}
 		
