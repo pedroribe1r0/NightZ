@@ -11,10 +11,12 @@ namespace Entities {
 		#define ZOMBIE_SPEED 60.0f
 		class Zombie : public Enemy
 		{
+		private:
+			float zombieSpeed;
 		public:
 			Zombie(Math::CoordF pos = Math::CoordF(0, 0));
 			~Zombie();
-			void attack();
+			void damage();
 			void update(float dt);
 			void collide(Entity* ent, Math::CoordF intersection, float dt);
 			void setTextures();

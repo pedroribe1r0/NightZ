@@ -6,17 +6,19 @@ namespace Entities {
 		Zombie::Zombie(Math::CoordF pos) : Enemy(pos, Math::CoordF(ZOMBIE_SIZE_X, ZOMBIE_SIZE_Y), enemy, ZOMBIE_HP){
 			meleeDamage = ZOMBIE_DAMAGE;
 			setTextures();
+			zombieSpeed = ZOMBIE_SPEED;
 		}
 		Zombie::~Zombie() {
 
 		}
-		void Zombie::attack() {
+		void Zombie::damage() {
 
 		}
 		void Zombie::setTextures() {
 			sprite = new GraphicalElements::Animation(body, Math::CoordF(2.8, 2.8));
 			sprite->addNewAnimation(GraphicalElements::Animation_ID::walk, "Zombie _Walk.png", 9);
 			sprite->addNewAnimation(GraphicalElements::Animation_ID::dmg, "Zombie _Hit.png", 4);
+			sprite->addNewAnimation(GraphicalElements::Animation_ID::attack, "Zombie_Attack.png", 17);
 			sprite->addNewAnimation(GraphicalElements::Animation_ID::death, "Zombie_Death.png", 15);
 		}
 		void Zombie::update(float dt) {
@@ -25,7 +27,7 @@ namespace Entities {
 			if (rand() % 5 == 0) {
 				jump();
 			}
-			
+			zombieSpeed = ZOMBIE_SPEED + (100 - hp);
 			if (pPlayer1 && pPlayer2) {
 				if (fabs(position.x - pPlayer1->getPosition().x) < fabs(position.x - pPlayer2->getPosition().x)) {
 					chasePlayer(pPlayer1);
@@ -43,15 +45,16 @@ namespace Entities {
 			}
 			if (isMoving) {
 				if (facingLeft)
-					speed.x = -ZOMBIE_SPEED;
+					speed.x = -zombieSpeed;
 				else
-					speed.x = ZOMBIE_SPEED;
+					speed.x = zombieSpeed;
 			}
 			else {
 				speed.x = 0;
 			}
 			position.x += speed.x * dt;
 			position.y += speed.y * dt;
+
 			if (takingDamage) {
 				sprite->update(GraphicalElements::Animation_ID::dmg, facingLeft, position, dt);
 				timeDamageAnimation += dt;
@@ -60,11 +63,14 @@ namespace Entities {
 					takingDamage = false;
 				}
 			}
+			else if (zombieSpeed > ZOMBIE_SPEED) {
+				sprite->update(GraphicalElements::Animation_ID::attack, facingLeft, position, dt);
+			}
 			else if (isMoving) {
 				sprite->update(GraphicalElements::Animation_ID::walk, facingLeft, position, dt);
 			}
 			else
-				sprite->update(GraphicalElements::Animation_ID::walk, facingLeft, position, dt);
+				sprite->update(GraphicalElements::Animation_ID::idle, facingLeft, position, dt);
 		}
 		void Zombie::collide(Entity* ent, Math::CoordF intersection, float dt) {
 			switch (ent->getID()) {
@@ -76,7 +82,7 @@ namespace Entities {
 				break;
 			case player: {
 				Player* p = dynamic_cast<Player*>(ent);
-				if (p) {
+				if (p && !isDying) {
 					p->takeDamage(meleeDamage * dt);
 				}
 				moveOnCollision(ent, intersection);

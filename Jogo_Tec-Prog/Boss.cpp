@@ -21,14 +21,14 @@ namespace Entities {
 				moveOnCollision(ent, intersection);
 				break;
 			case enemy:
-				moveOnCollision(ent, intersection);
+				//moveOnCollision(ent, intersection);
 				break;
 			case player: {
 				Player* p = dynamic_cast<Player*>(ent);
-				if (p) {
+				if (p && !isDying) {
 					p->takeDamage(meleeDamage * dt);
 				}
-				moveOnCollision(ent, intersection);
+				//moveOnCollision(ent, intersection);
 				break;
 			}
 			default:
@@ -43,7 +43,7 @@ namespace Entities {
 				stop();
 				sprite->update(GraphicalElements::Animation_ID::attack, facingLeft, position, dt);
 				if (attackTime >= HIT_TIME && attackTime < HIT_TIME + 0.5 && canAttack) {
-					attack();
+					damage();
 					canAttack = false;
 				}
 				if (attackTime >= ATTACK_TIME) {
@@ -55,22 +55,31 @@ namespace Entities {
 			}
 			else {
 				cooldownTimer += dt;
-				if (cooldownTimer >= BOSS_COOLDOWN) {
-					isAttacking = true;
-				}
 				if (pPlayer1 && pPlayer2) {
 					if (fabs(position.x - pPlayer1->getPosition().x) < fabs(position.x - pPlayer2->getPosition().x)) {
+						if (cooldownTimer >= BOSS_COOLDOWN && fabs(position.x - pPlayer1->getPosition().x) <= BOSS_ATTACK_RANGE) {
+							isAttacking = true;
+						}
 						chasePlayer(pPlayer1);
 					}
 					else {
+						if (cooldownTimer >= BOSS_COOLDOWN && fabs(position.x - pPlayer2->getPosition().x) <= BOSS_ATTACK_RANGE) {
+							isAttacking = true;
+						}
 						chasePlayer(pPlayer2);
 					}
 				}
 				else if (pPlayer1) {
+					if (cooldownTimer >= BOSS_COOLDOWN && fabs(position.x - pPlayer1->getPosition().x) <= BOSS_ATTACK_RANGE) {
+						isAttacking = true;
+					}
 					chasePlayer(pPlayer1);
 
 				}
 				else if (pPlayer2) {
+					if (cooldownTimer >= BOSS_COOLDOWN && fabs(position.x - pPlayer2->getPosition().x) <= BOSS_ATTACK_RANGE) {
+						isAttacking = true;
+					}
 					chasePlayer(pPlayer2);
 				}
 				if (takingDamage) {
@@ -109,8 +118,7 @@ namespace Entities {
 			sprite->addNewAnimation(GraphicalElements::Animation_ID::idle, "BigZombie - Idle.png", 13);
 			sprite->addNewAnimation(GraphicalElements::Animation_ID::death, "BigZombie - Death.png", 16);
 		}
-		void Boss::attack() {
-			//animacao
+		void Boss::damage() {
 			if (pPlayer1) {
 				float distance1 = 0;
 				if (facingLeft) {

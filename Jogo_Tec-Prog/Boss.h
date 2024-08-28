@@ -8,7 +8,7 @@ namespace Entities {
 		#define BOSS_DAMAGE 50.0f
 		#define BOSS_ATTACK_DAMAGE 90.0f
 		#define BOSS_SPEED 25.0f
-		#define BOSS_ATTACK_RANGE 100.0f
+		#define BOSS_ATTACK_RANGE 150.0f
 		#define BOSS_COOLDOWN 4.0f
 		#define ATTACK_TIME 3.3f
 		#define HIT_TIME 1.35f
@@ -26,7 +26,7 @@ namespace Entities {
 			~Boss();
 			void collide(Entity* ent, Math::CoordF intersection, float dt);
 			void update(float dt);
-			void attack();
+			void damage();
 			void paralizePlayer(Player* p);
 			void setTextures();
 		};

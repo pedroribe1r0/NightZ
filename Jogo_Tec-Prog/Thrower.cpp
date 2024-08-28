@@ -14,7 +14,7 @@ namespace Entities {
 		}
 		Thrower::~Thrower() {
 		}
-		void Thrower::attack() {
+		void Thrower::damage() {
 			isAttacking = true;
 			cooldown = 0;
 		}
@@ -59,7 +59,7 @@ namespace Entities {
 				}
 				if (fabs(distance) > 150 && fabs(distance) < 300 && cooldown >= THROWER_COOLDOWN) {//verificar se esta dentro do range e se o cooldown esta maior q o tempo estipulado
 					if (!isAttacking && !p->getIsActive()) {
-						attack();
+						damage();
 					}
 				}
 				else if (fabs(distance) < 191 && !isAttacking) {
@@ -117,7 +117,7 @@ namespace Entities {
 				break;
 			case player: {
 				Player* p = dynamic_cast<Player*>(ent);
-				if (p) {
+				if (p && !isDying) {
 					p->takeDamage(meleeDamage * dt);
 				}
 				moveOnCollision(ent, intersection);

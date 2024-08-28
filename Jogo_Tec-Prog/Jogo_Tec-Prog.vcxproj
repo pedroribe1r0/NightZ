@@ -142,6 +142,7 @@
     <ClCompile Include="EventsManager.cpp" />
     <ClCompile Include="GraphicManager.cpp" />
     <ClCompile Include="InputManager.cpp" />
+    <ClCompile Include="Level.cpp" />
     <ClCompile Include="MovingEntity.cpp" />
     <ClCompile Include="Observer.cpp" />
     <ClCompile Include="Obstacle.cpp" />
@@ -156,7 +157,10 @@
     <ClCompile Include="Zombie.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="10_1.png" />
     <Image Include="6_1.png" />
+    <Image Include="7_1.png" />
+    <Image Include="9_1.png" />
     <Image Include="BigZombie - Attack.png" />
     <Image Include="BigZombie - Death.png" />
     <Image Include="BigZombie - Hit.png" />
@@ -164,6 +168,7 @@
     <Image Include="BigZombie - Walk.png" />
     <Image Include="Char_knife_idle.png" />
     <Image Include="Char_knife_jump.png" />
+    <Image Include="Char_knife_run.png" />
     <Image Include="Char_knife_shoot.png" />
     <Image Include="Char_knife_take_damage.png" />
     <Image Include="Char_knife_walk.png" />
@@ -177,6 +182,7 @@
     <Image Include="Zombie _Hit.png" />
     <Image Include="Zombie _Idle.png" />
     <Image Include="Zombie _Walk.png" />
+    <Image Include="Zombie_Attack.png" />
     <Image Include="Zombie_Death.png" />
     <Image Include="zoro.png" />
   </ItemGroup>
@@ -190,6 +196,7 @@
     <ClInclude Include="EventsManager.h" />
     <ClInclude Include="GraphicManager.h" />
     <ClInclude Include="InputManager.h" />
+    <ClInclude Include="Level.h" />
     <ClInclude Include="List.h" />
     <ClInclude Include="MovingEntity.h" />
     <ClInclude Include="Observer.h" />

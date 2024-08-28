@@ -8,12 +8,14 @@ namespace Observers {
 				right = sf::Keyboard::D;
 				left = sf::Keyboard::A;
 				attack = sf::Keyboard::F;
+				run = sf::Keyboard::LShift;
 			}
 			else {
 				jump = sf::Keyboard::I;
 				right = sf::Keyboard::L;
 				left = sf::Keyboard::J;
 				attack = sf::Keyboard::H;
+				run = sf::Keyboard::LShift;
 			}
 		}
 	}
@@ -26,18 +28,21 @@ namespace Observers {
 				pPlayer->jump();
 			}
 		}
-		else if (key == right) {
+		if (key == right) {
 			if (pPlayer->getCanMove()) {
 				pPlayer->move(false);
 			}
 		}
-		else if (key == left) {
+		if (key == left) {
 			if (pPlayer->getCanMove()) {
 				pPlayer->move(true);
 			}
 		}
-		else if (key == attack) {
-			pPlayer->attack();
+		if (key == attack) {
+			pPlayer->damage();
+		}
+		if (key == run) {
+			pPlayer->run();
 		}
 	}
 	void PlayerObserver::notifyKeyReleased(sf::Keyboard::Key key) {
@@ -46,10 +51,13 @@ namespace Observers {
 				pPlayer->stop();
 			}
 		}
-		else if (key == left && !sf::Keyboard::isKeyPressed(right)) {
+		if (key == left && !sf::Keyboard::isKeyPressed(right)) {
 			if (pPlayer->getCanMove()) {
 				pPlayer->stop();
 			}
+		}
+		if (key == run) {
+			pPlayer->stopRunning();
 		}
 	}
 	void PlayerObserver::setPlayer(Entities::Characters::Player* pPlayer) {

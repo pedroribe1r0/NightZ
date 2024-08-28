@@ -11,12 +11,13 @@ namespace Entities {
 
 	}
 	void Projectile::setTextures() {
-		sprite = new GraphicalElements::Animation(body, Math::CoordF(1,1));
 		if (user->getID() == player) {
+			sprite = new GraphicalElements::Animation(body, Math::CoordF(1.5, 1.5));
 			sprite->addNewAnimation(GraphicalElements::Animation_ID::idle, "6_1.png", 6);
 			body->setFillColor(sf::Color(197, 179, 88));
 		}
 		else {
+			sprite = new GraphicalElements::Animation(body, Math::CoordF(2.5, 2.5));
 			sprite->addNewAnimation(GraphicalElements::Animation_ID::idle, "SpittingZombie - Projectile.png", 6);
 		}
 	}

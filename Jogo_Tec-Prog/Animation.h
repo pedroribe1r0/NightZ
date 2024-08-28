@@ -10,7 +10,8 @@ namespace GraphicalElements {
 		jump = 3,
 		dmg = 4,
 		shoot = 5,
-		death = 6
+		death = 6,
+		run = 7
 	};
 
 	class Animation {

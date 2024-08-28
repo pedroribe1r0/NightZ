@@ -15,7 +15,7 @@ namespace Entities {
 		#define PLAYER_1_TEXTURE "luffy.png"
 		#define PLAYER_2_TEXTURE "zoro.png"
 		#define PLAYER_HP 100.0f
-		#define N_BULLETS 20
+		#define N_BULLETS 5
 		#define SHOOT_COOLDOWN 0.63f
 		class Player : public Character
 		{
@@ -27,17 +27,20 @@ namespace Entities {
 			float shootCooldown;
 			bool isShooting;
 			bool canShoot;
+			bool isRunning;
 			std::vector<Projectile*> bulletVector;
 		public:
 			Player(Math::CoordF pos = Math::CoordF(0, 0), bool isPlayer1 = true, EntitiesList* list = nullptr);
 			~Player();
 			void update(float dt);
-			void attack();
+			void damage();
 			void operator++();
 			void collide(Entity* ent, Math::CoordF intersection, float dt);
 			bool getIsPlayer1() const;
 			void setIsParalized();
 			void setTextures();
+			void run();
+			void stopRunning();
 		};
 	}
 }

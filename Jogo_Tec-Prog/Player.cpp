@@ -12,7 +12,8 @@ namespace Entities {
 			bulletVector(N_BULLETS),
 			shootCooldown(0.2),
 			isShooting(false),
-			canShoot(true)
+			canShoot(true),
+			isRunning(false)
 		{
 			for (int i = 0; i < N_BULLETS; i++) {
 				Projectile* p = new Projectile(this);
@@ -30,6 +31,7 @@ namespace Entities {
 			sprite->addNewAnimation(GraphicalElements::Animation_ID::shoot, "Char_knife_shoot.png", 17);
 			sprite->addNewAnimation(GraphicalElements::Animation_ID::dmg, "Char_knife_take_damage.png", 8);
 			sprite->addNewAnimation(GraphicalElements::Animation_ID::death, "Char_knife_take_damage.png", 8);
+			sprite->addNewAnimation(GraphicalElements::Animation_ID::run, "Char_knife_run.png", 8);
 		}
 
 		Player::~Player() {
@@ -55,10 +57,18 @@ namespace Entities {
 				}
 			}
 			if (isMoving) {
-				if (facingLeft)
-					speed.x = -PLAYER_SPEED;
-				else
-					speed.x = PLAYER_SPEED;
+				if (isRunning) {
+					if (facingLeft)
+						speed.x = -PLAYER_SPEED * 1.5;
+					else
+						speed.x = PLAYER_SPEED * 1.5;
+				}
+				else {
+					if (facingLeft)
+						speed.x = -PLAYER_SPEED;
+					else
+						speed.x = PLAYER_SPEED;
+				}
 			}
 			else {
 				speed.x = 0;
@@ -92,6 +102,9 @@ namespace Entities {
 					takingDamage = false;
 				}
 			}
+			else if (isRunning && isMoving) {
+				sprite->update(GraphicalElements::Animation_ID::run, facingLeft, position, dt);
+			}
 			else if (isMoving) {
 				sprite->update(GraphicalElements::Animation_ID::walk, facingLeft, position, dt);
 			}
@@ -99,8 +112,13 @@ namespace Entities {
 				sprite->update(GraphicalElements::Animation_ID::idle, facingLeft, position, dt);
 			}
 		}
-
-		void Player::attack() {
+		void Player::run() {
+			isRunning = true;
+		}
+		void Player::stopRunning() {
+			isRunning = false;
+		}
+		void Player::damage() {
 			isShooting = true;
 		}
 

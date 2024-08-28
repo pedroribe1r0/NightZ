@@ -10,6 +10,7 @@ namespace Observers {
 		sf::Keyboard::Key left;
 		sf::Keyboard::Key jump;
 		sf::Keyboard::Key attack;
+		sf::Keyboard::Key run;
 	public:
 		PlayerObserver(Entities::Characters::Player* pPlayer = nullptr);
 		~PlayerObserver();

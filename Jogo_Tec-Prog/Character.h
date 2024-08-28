@@ -23,7 +23,7 @@ namespace Entities {
 			virtual ~Character();
 			void takeDamage(float damage);
 			void jump();
-			virtual void attack() = 0;
+			virtual void damage() = 0;
 			virtual void update(float dt) = 0;
 			virtual void collide(Entity* ent, Math::CoordF intersection, float dt) = 0;
 			bool getCanJump() const;

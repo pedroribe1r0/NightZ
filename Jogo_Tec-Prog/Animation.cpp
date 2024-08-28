@@ -3,8 +3,6 @@
 namespace GraphicalElements {
 	const float Animation::SingleAnimation::switchTime = 0.15;
 	const float Animation::SingleAnimation::attackPlayerSwitchTime = 0.07;
-	//switchTime zombie attack = 0.15
-	//switchTime player attack = 0.05
 	Managers::GraphicManager* Animation::pGraphic = Managers::GraphicManager::getInstance();
 
 	Animation::Animation(sf::RectangleShape* body, Math::CoordF scale) :
