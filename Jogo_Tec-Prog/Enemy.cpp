@@ -10,6 +10,12 @@ namespace Entities {
 			}
 				
 		}
+		Player* Enemy::getPlayer1() {
+			return pPlayer1;
+		}
+		Player* Enemy::getPlayer2() {
+			return pPlayer2;
+		}
 		void Enemy::setPlayer2(Player* p2) {
 			if (p2)
 				pPlayer2 = p2;

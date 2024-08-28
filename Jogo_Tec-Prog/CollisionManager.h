@@ -14,8 +14,6 @@ namespace Managers {
         ~CollisionManager();
 
         void collide(float dt = 0);
-
-        void clear();
     };
 }
 

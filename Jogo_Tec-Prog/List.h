@@ -133,6 +133,7 @@ public:
             current = next; // Atualiza current para o próximo nó
         }
         head = tail = nullptr; // Reseta head e tail para nullptr
+        size = 0;
     }
 
     void removeNode(T* data) {
@@ -164,6 +165,8 @@ public:
 
             // Libera a memória do nó removido
             delete aux;
+            size--;
+            
 
             // Caso tenha removido o único elemento, defina head e tail como nullptr
             if (head == nullptr || tail == nullptr) {

@@ -116,6 +116,8 @@ namespace Entities {
 			else {
 				sprite->update(GraphicalElements::Animation_ID::idle, facingLeft, position, dt);
 			}
+
+			pGraphic->centerView(Math::CoordF(position.x, pGraphic->getWindowSize().y / 2));
 		}
 		void Player::run() {
 			isRunning = true;

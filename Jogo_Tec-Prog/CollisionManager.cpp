@@ -64,8 +64,4 @@ namespace Managers {
             ++itM1;
         }
     }
-
-    void CollisionManager::clear() {
-
-    }
 }

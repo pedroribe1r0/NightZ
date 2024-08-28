@@ -37,6 +37,19 @@ void EntitiesList::execute(float dt) {
 		it.operator++();
 	}
 }
+Entities::Entity* EntitiesList::pickRandon() {
+	srand(time(NULL));
+	int index = rand() % getSize();
+	std::cout << entitiesList.getSize() << endl;
+	List<Entities::Entity>::iterator it = entitiesList.begin();
+	for (int i = 0; i < index; i++) {
+		++it;
+	}
+	if (*it) {
+		return (*it);
+	}
+	return nullptr;
+}
 void EntitiesList::setData(Entities::Entity* pEnt) {
 	entitiesList.push_back(pEnt);
 }

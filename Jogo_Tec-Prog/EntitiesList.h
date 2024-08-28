@@ -16,6 +16,7 @@ public:
 	void setData(Entities::Entity* pEnt);
 	void removeData(Entities::Entity* pEnt);
 	int getSize() const;
+	Entities::Entity* pickRandon();
 	List<Entities::Entity>::iterator begin();
 	List<Entities::Entity>::iterator end();
 };

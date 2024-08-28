@@ -6,7 +6,7 @@ namespace Entities {
 			meleeDamage = BOSS_DAMAGE;
 			attackRange = BOSS_ATTACK_RANGE;
 			attackDamage = BOSS_ATTACK_DAMAGE;
-			cooldownTimer = 0;
+			cooldownTimer = BOSS_COOLDOWN;
 			attackTime = ATTACK_TIME;
 			isAttacking = false;
 			canAttack = true;
@@ -57,30 +57,29 @@ namespace Entities {
 				cooldownTimer += dt;
 				if (pPlayer1 && pPlayer2) {
 					if (fabs(position.x - pPlayer1->getPosition().x) < fabs(position.x - pPlayer2->getPosition().x)) {
-						if (cooldownTimer >= BOSS_COOLDOWN && fabs(position.x - pPlayer1->getPosition().x) <= BOSS_ATTACK_RANGE) {
+						if (cooldownTimer >= BOSS_COOLDOWN && fabs(position.x - pPlayer1->getPosition().x) <= (BOSS_ATTACK_RANGE + size.x + pPlayer1->getSize().x)) {
 							isAttacking = true;
 						}
 						chasePlayer(pPlayer1);
 					}
 					else {
-						if (cooldownTimer >= BOSS_COOLDOWN && fabs(position.x - pPlayer2->getPosition().x) <= BOSS_ATTACK_RANGE) {
+						if (cooldownTimer >= BOSS_COOLDOWN && fabs(position.x - pPlayer1->getPosition().x) <= (BOSS_ATTACK_RANGE + size.x + pPlayer2->getSize().x)) {
 							isAttacking = true;
 						}
 						chasePlayer(pPlayer2);
 					}
 				}
 				else if (pPlayer1) {
-					if (cooldownTimer >= BOSS_COOLDOWN && fabs(position.x - pPlayer1->getPosition().x) <= BOSS_ATTACK_RANGE) {
+					chasePlayer(pPlayer1);
+					if (cooldownTimer >= BOSS_COOLDOWN && fabs(position.x - pPlayer1->getPosition().x) <= (BOSS_ATTACK_RANGE + size.x + pPlayer1->getSize().x)) {
 						isAttacking = true;
 					}
-					chasePlayer(pPlayer1);
-
 				}
 				else if (pPlayer2) {
-					if (cooldownTimer >= BOSS_COOLDOWN && fabs(position.x - pPlayer2->getPosition().x) <= BOSS_ATTACK_RANGE) {
+					chasePlayer(pPlayer2);
+					if (cooldownTimer >= BOSS_COOLDOWN && fabs(position.x - pPlayer2->getPosition().x) <= (BOSS_ATTACK_RANGE + size.x + pPlayer2->getSize().x)) {
 						isAttacking = true;
 					}
-					chasePlayer(pPlayer2);
 				}
 				if (takingDamage) {
 					sprite->update(GraphicalElements::Animation_ID::dmg, facingLeft, position, dt);
