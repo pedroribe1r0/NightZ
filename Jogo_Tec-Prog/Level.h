@@ -1,5 +1,7 @@
 #pragma once
 #include "EventsManager.h"
+#include "Background.h"
+
 namespace Levels {
 	class Level : public Ente
 	{
@@ -12,6 +14,7 @@ namespace Levels {
 		int enemiesCounter;
 		float spawnTime;
 		Math::CoordF spots[10];
+		GraphicalElements::Parallax::Background background;
 	public:
 		Level();
 		~Level();
@@ -22,6 +25,7 @@ namespace Levels {
 		void createBosses();
 		void spawnEnemies();
 		void setRandSpots();
+		void createBackground();
 	};
 }
 

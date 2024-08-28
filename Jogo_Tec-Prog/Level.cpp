@@ -13,11 +13,26 @@ namespace Levels {
 		createBosses();
 		createThrowers();
 		createZombies();
+		createBackground();
 	}
 	Level::~Level() {
 		delete movingEntities;
 		delete staticEntities;
 		delete pColision;
+	}
+	void Level::createBackground() {
+		background.addLayer("layer0.png", 0.0f);
+		background.addLayer("layer1.png", 0.05f);
+		background.addLayer("layer2.png", 0.10f);
+		background.addLayer("layer3.png", 0.15f);
+		background.addLayer("layer4.png", 0.20f);
+		background.addLayer("layer5.png", 0.25f);
+		background.addLayer("layer6.png", 0.30f);
+		background.addLayer("layer7.png", 0.35f);
+		background.addLayer("layer8.png", 0.40f);
+		background.addLayer("layer9.png", 0.45f);
+		background.addLayer("layer10.png", 0.50f);
+		background.addLayer("layer11.png", 0.55f);
 	}
 	void Level::manageCollisions(float dt) {
 		pColision->collide(dt);

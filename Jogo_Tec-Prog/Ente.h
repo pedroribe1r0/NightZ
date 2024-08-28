@@ -9,7 +9,8 @@ enum ID {
 	obstacle,
 	projectile,
 	level1,
-	level2
+	level2,
+	background
 };
 
 class Ente
