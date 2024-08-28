@@ -1,5 +1,4 @@
 #pragma once
-#include "Ente.h"
 #include "Layer.h"
 
 namespace GraphicalElements {
@@ -8,13 +7,15 @@ namespace GraphicalElements {
 		private:
 			sf::Vector2f prevCameraPos;
 			std::vector<Layer*> layers;
+			Layer* grass;
 		public:
 			Background();
 			~Background();
 			void render();
-			void addLayer(const char* texturePath, const float speed);
-			void updatePosition();
+			void addLayer(const char* texturePath, const float speed, LID id);
+			void update(float dt);
 			void run();
+			void renderFloor();
 		};
 	}
 }

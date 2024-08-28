@@ -3,7 +3,7 @@
 namespace GraphicalElements {
 	namespace Parallax {
 		Background::Background() :
-			Ente(background), prevCameraPos(pGraphic->centerView(0.0f))/*getCamera()->getCenter())*/, layers()
+			Ente(background), prevCameraPos(pGraphic->getCenterView()), layers(), grass(nullptr)
 		{
 			
 		}
@@ -17,26 +17,32 @@ namespace GraphicalElements {
 				}
 			}
 			layers.clear();
+			delete grass;
+			grass = nullptr;
 		}
 
 		void Background::render() {
 			for (int i = 0; i < layers.size(); i++) {
 				Layer* layer = layers.at(i);
-				//layer->renderLayer();
+				if (layer->getID() != floor) {
+					layer->renderLayer();
+				}
 			}
 		}
 
-		void Background::addLayer(const char* texturePath, const float speed) {
-			Layer* layer = new Layer(pGraphic->getWindowSize()/*(sf::Vector2f)pGraphic->getWindow()->getSize()) */ , pGraphic->loadTexture(texturePath), speed);
+		void Background::addLayer(const char* texturePath, const float speed, LID id) {
+			Layer* layer = new Layer(pGraphic->loadTexture(texturePath), speed, id);
 			if (layer == nullptr) {
 				std::cout << "ERROR: GraphicalElements::Parallax::Background: not possible to create layer" << std::endl;
 				exit(1);
 			}
+			if (layer->getID() == floor)
+				grass = layer;
 			layers.push_back(layer);
 		}
 		
-		void Background::updatePosition() {
-			sf::Vector2f cameraPos = /* pGraphic->getCamera()->getCenter()*/;
+		void Background::update(float dt) {
+			sf::Vector2f cameraPos = pGraphic->getCenterView();
 			sf::Vector2f ds = cameraPos - prevCameraPos;
 			prevCameraPos = cameraPos;
 			for (int i = 0; i < layers.size(); i++) {
@@ -44,8 +50,11 @@ namespace GraphicalElements {
 			}
 		}
 		void Background::run() {
-			updatePosition();
+			update(0);
 			render();
+		}
+		void Background::renderFloor() {
+			grass->renderLayer();
 		}
 	}
 }

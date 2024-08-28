@@ -33,6 +33,10 @@ namespace Managers {
 		window->draw(body);
 	}*/
 
+	sf::Vector2f GraphicManager::getCenterView() const {
+		return camera.getCenter();
+	}
+
 	void GraphicManager::render(sf::RectangleShape* body) {
 		window->draw(*body);
 	}

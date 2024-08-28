@@ -87,6 +87,12 @@
     <ClCompile Include="PortalLevel.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
+    <ClCompile Include="Background.cpp">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
+    <ClCompile Include="Layer.cpp">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="luffy.png">
@@ -182,6 +188,42 @@
     <Image Include="grass.png">
       <Filter>Arquivos de Recurso</Filter>
     </Image>
+    <Image Include="layer0.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="layer1.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="layer2.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="layer3.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="layer4.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="layer5.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="layer6.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="layer7.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="layer8.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="layer9.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="layer10.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="layer11.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Coord.h">
@@ -257,6 +299,12 @@
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
     <ClInclude Include="PortalLevel.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="Background.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="Layer.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
   </ItemGroup>
