@@ -6,9 +6,9 @@ namespace Levels {
 	public:
 		PortalLevel();
 		~PortalLevel();
-		void execute();
+		void run();
 		void render();
-		void update(float dt);
+		void execute(float dt);
 	};
 }
 

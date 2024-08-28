@@ -27,6 +27,6 @@ public:
 	void setID(ID id);
 	ID getID() const;
 	virtual void render() = 0;
-	virtual void update(float dt) = 0;
+	virtual void execute(float dt) = 0;
 };
 

@@ -13,7 +13,7 @@ namespace GraphicalElements {
 			~Background();
 			void render();
 			void addLayer(const char* texturePath, const float speed, LID id);
-			void update(float dt);
+			void execute(float dt);
 			void run();
 			void renderFloor();
 		};

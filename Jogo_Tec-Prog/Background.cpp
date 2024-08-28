@@ -41,7 +41,7 @@ namespace GraphicalElements {
 			layers.push_back(layer);
 		}
 		
-		void Background::update(float dt) {
+		void Background::execute(float dt) {
 			sf::Vector2f cameraPos = pGraphic->getCenterView();
 			sf::Vector2f ds = cameraPos - prevCameraPos;
 			prevCameraPos = cameraPos;
@@ -50,7 +50,7 @@ namespace GraphicalElements {
 			}
 		}
 		void Background::run() {
-			update(0);
+			execute(0);
 			render();
 		}
 		void Background::renderFloor() {

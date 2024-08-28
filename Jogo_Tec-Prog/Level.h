@@ -18,7 +18,8 @@ namespace Levels {
 	public:
 		Level();
 		~Level();
-		virtual void execute() = 0;
+		virtual void run() = 0;
+		virtual void execute(float dt) = 0;
 		void manageCollisions(float dt);
 		void createThrowers();
 		void createZombies();

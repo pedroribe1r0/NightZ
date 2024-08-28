@@ -13,6 +13,7 @@ namespace Levels {
 		createBosses();
 		createThrowers();
 		createZombies();
+		createBackground();
 	}
 	Level::~Level() {
 		delete movingEntities;

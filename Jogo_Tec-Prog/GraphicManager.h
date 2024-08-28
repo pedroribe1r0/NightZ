@@ -37,7 +37,6 @@ namespace Managers {
 		bool isWindowOpen() const;
 		void closeWindow();
 		void centerView(Math::CoordF pos);
-		Math::CoordF getCenterView() const;
 		sf::Texture* loadTexture(std::string path);
 		void updateDeltaTime();
 		float getDeltaTime() const;

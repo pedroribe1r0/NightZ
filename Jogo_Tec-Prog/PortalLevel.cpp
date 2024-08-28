@@ -8,7 +8,7 @@ namespace Levels {
 		movingEntities->setData(p1);
 		staticEntities->setData(obs1);
 		staticEntities->setData(obs2);
-		execute();
+		run();
 	}
 	PortalLevel::~PortalLevel() {
 
@@ -18,17 +18,17 @@ namespace Levels {
 		movingEntities->render();
 		staticEntities->render();
 	}
-	void PortalLevel::update(float dt) {
+	void PortalLevel::execute(float dt) {
 		movingEntities->execute(dt);
 		staticEntities->execute(dt);
 	}
-	void PortalLevel::execute() {
+	void PortalLevel::run() {
 		while (pGraphic->isWindowOpen()) {
 			pGraphic->clear();
 			pGraphic->updateDeltaTime();
 			pColision->collide(pGraphic->getDeltaTime());
 			pEvent->pollEvents();
-			update(pGraphic->getDeltaTime());
+			execute(pGraphic->getDeltaTime());
 			render();
 			pGraphic->display();
 		}
