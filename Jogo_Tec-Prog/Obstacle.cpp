@@ -3,7 +3,7 @@
 namespace Entities {
 	namespace Obstacles {
 		Obstacle::Obstacle(Math::CoordF pos, Math::CoordF size, bool dangerous, int damadge) : Entity(pos, size, ID::obstacle), dangerous(dangerous), damage(damage){
-			//setar textura
+			body->setTexture(pGraphic->loadTexture("Tree_1_512b.png"));
 		
 		}
 		Obstacle::~Obstacle() {

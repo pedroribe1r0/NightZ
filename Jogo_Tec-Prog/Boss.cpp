@@ -2,7 +2,7 @@
 
 namespace Entities {
 	namespace Characters {
-		Boss::Boss(Math::CoordF pos) : Enemy(pos, Math::CoordF(BOSS_SIZE_X, BOSS_SIZE_Y), enemy, BOSS_HP){
+		Boss::Boss(Math::CoordF pos) : Enemy(pos, Math::CoordF(BOSS_SIZE_X, BOSS_SIZE_Y), boss, BOSS_HP){
 			meleeDamage = BOSS_DAMAGE;
 			attackRange = BOSS_ATTACK_RANGE;
 			attackDamage = BOSS_ATTACK_DAMAGE;

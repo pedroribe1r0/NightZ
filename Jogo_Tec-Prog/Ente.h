@@ -6,6 +6,7 @@ enum ID {
 	empty = 0,
 	player,
 	enemy,
+	boss,
 	obstacle,
 	projectile,
 	level1,

@@ -27,7 +27,7 @@ namespace Entities {
 		void Player::setTextures() {
 			sprite = new GraphicalElements::Animation(body, Math::CoordF(1.8, 1.8));
 			if (isPlayer1) {
-				sprite->addNewAnimation(GraphicalElements::Animation_ID::walk, "Char_knife_walk.png",16);
+				sprite->addNewAnimation(GraphicalElements::Animation_ID::walk, "Char_knife_walk.png", 16);
 				sprite->addNewAnimation(GraphicalElements::Animation_ID::idle, "Char_knife_idle.png", 8);
 				sprite->addNewAnimation(GraphicalElements::Animation_ID::shoot, "Char_knife_shoot.png", 17);
 				sprite->addNewAnimation(GraphicalElements::Animation_ID::dmg, "Char_knife_take_damage.png", 8);
@@ -36,6 +36,11 @@ namespace Entities {
 			}
 			else {
 				sprite->addNewAnimation(GraphicalElements::Animation_ID::idle, "p2_idle.png", 8);
+				sprite->addNewAnimation(GraphicalElements::Animation_ID::walk, "p2_walk.png", 16);
+				sprite->addNewAnimation(GraphicalElements::Animation_ID::shoot, "p2_shoot.png", 17);
+				sprite->addNewAnimation(GraphicalElements::Animation_ID::dmg, "p2_takedamage.png", 8);
+				sprite->addNewAnimation(GraphicalElements::Animation_ID::death, "p2_takedamage.png", 8);
+				sprite->addNewAnimation(GraphicalElements::Animation_ID::run, "p2_run.png", 8);
 			}
 		}
 
@@ -149,6 +154,8 @@ namespace Entities {
 			case enemy:
 				moveOnCollision(ent, intersection);
 				break;
+			case boss:
+				moveOnCollision(ent, intersection);
 			default:
 				break;
 			}

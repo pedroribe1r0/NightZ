@@ -182,6 +182,24 @@
     <Image Include="grass.png">
       <Filter>Arquivos de Recurso</Filter>
     </Image>
+    <Image Include="p2_run.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="p2_shoot.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="p2_takedamage.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="p2_walk.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Tree_1_512b.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Tree_2_512b.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Coord.h">

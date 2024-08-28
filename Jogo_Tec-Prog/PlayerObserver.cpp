@@ -15,7 +15,7 @@ namespace Observers {
 				right = sf::Keyboard::L;
 				left = sf::Keyboard::J;
 				attack = sf::Keyboard::H;
-				run = sf::Keyboard::LShift;
+				run = sf::Keyboard::RShift;
 			}
 		}
 	}

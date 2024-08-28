@@ -23,16 +23,16 @@ namespace Levels {
 		pColision->collide(dt);
 	}
 	void Level::setRandSpots() {
-		spots[0] = Math::CoordF(-2490, 360);
+		spots[0] = Math::CoordF(-1140, 360);
 		spots[1] = Math::CoordF(-1640, 600);
 		spots[2] = Math::CoordF(-840, 600);
 		spots[3] = Math::CoordF(-1840, 600);
 		spots[4] = Math::CoordF(-1140, 600);
-		spots[5] = Math::CoordF(2490, 360);
+		spots[5] = Math::CoordF(3200, 360);
 		spots[6] = Math::CoordF(1640, 600);
-		spots[7] = Math::CoordF(840, 600);
-		spots[8] = Math::CoordF(1840, 600);
-		spots[9] = Math::CoordF(1140, 600);
+		spots[7] = Math::CoordF(2600, 600);
+		spots[8] = Math::CoordF(2300, 600);
+		spots[9] = Math::CoordF(3000, 600);
 	}
 	void Level::createThrowers() {
 		srand(time(NULL));

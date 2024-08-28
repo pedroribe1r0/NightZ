@@ -4,8 +4,10 @@ namespace Levels {
 	CoinFlip::CoinFlip() {
 		Entities::Characters::Player* p1 = new Entities::Characters::Player(Math::CoordF(200, 600), true, movingEntities);
 		Entities::Obstacles::Obstacle* obs1 = new Entities::Obstacles::Obstacle(Math::CoordF(640, 710), Math::CoordF(5280, 10), false, 0);
+		Entities::Obstacles::Obstacle* obs2 = new Entities::Obstacles::Obstacle(Math::CoordF(0, 460), Math::CoordF(400, 600), false, 0);
 		movingEntities->setData(p1);
 		staticEntities->setData(obs1);
+		staticEntities->setData(obs2);
 		Entities::Characters::Enemy::setPlayer1(p1);
 		execute();
 	}

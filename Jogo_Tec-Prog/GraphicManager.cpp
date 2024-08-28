@@ -93,4 +93,7 @@ namespace Managers {
 	bool GraphicManager::pollEvent(sf::Event& e) {
 		return window->pollEvent(e);
 	}
+	Math::CoordF GraphicManager::getCenterView() const {
+		return Math::CoordF(camera.getCenter().x, camera.getCenter().y);
+	}
 }
