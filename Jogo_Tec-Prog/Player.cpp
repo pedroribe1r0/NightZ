@@ -14,7 +14,8 @@ namespace Entities {
 			isShooting(false),
 			canShoot(true),
 			isRunning(false),
-			otherPlayer(other)
+			otherPlayer(other),
+			slow(1.0f)
 		{
 			for (int i = 0; i < N_BULLETS; i++) {
 				Projectile* p = new Projectile(this);
@@ -52,8 +53,20 @@ namespace Entities {
 			else
 				Enemy::setPlayer2(nullptr);
 
+			if (otherPlayer) {
+				otherPlayer->setOther(nullptr);
+			}
+
 			if (pObserver)
 				delete pObserver;
+		}
+
+		void Player::setSlow(bool s) {
+			if (s) {
+				slow = 0.5;
+			}
+			else
+				slow = 1;
 		}
 
 		bool Player::getIsPlayer1() const{
@@ -70,15 +83,15 @@ namespace Entities {
 			if (isMoving) {
 				if (isRunning) {
 					if (facingLeft)
-						speed.x = -PLAYER_SPEED * 1.5;
+						speed.x = -PLAYER_SPEED * 1.5 * slow;
 					else
-						speed.x = PLAYER_SPEED * 1.5;
+						speed.x = PLAYER_SPEED * 1.5 * slow;
 				}
 				else {
 					if (facingLeft)
-						speed.x = -PLAYER_SPEED;
+						speed.x = -PLAYER_SPEED * slow;
 					else
-						speed.x = PLAYER_SPEED;
+						speed.x = PLAYER_SPEED * slow;
 				}
 			}
 			else {
@@ -131,6 +144,19 @@ namespace Entities {
 					}
 				}
 			}
+			else {
+				if (otherPlayer) {
+					if (!otherPlayer->getIsActive()) {
+						pGraphic->centerView(Math::CoordF(position.x, pGraphic->getWindowSize().y / 2));
+					}
+				}
+				else {
+					pGraphic->centerView(Math::CoordF(position.x, pGraphic->getWindowSize().y / 2));
+				}
+			}
+		}
+		void Player::setOther(Player* p) {
+			otherPlayer = p;
 		}
 		void Player::run() {
 			isRunning = true;
@@ -150,7 +176,6 @@ namespace Entities {
 			canMove = false;
 			paralizeTimer = 0;
 		}
-
 		void Player::collide(Entity* ent, Math::CoordF intersection, float dt) {
 			switch (ent->getID()) {
 			case ID::obstacle:

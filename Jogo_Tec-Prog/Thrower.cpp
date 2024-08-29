@@ -9,14 +9,11 @@ namespace Entities {
 			list->setData(p);
 			meleeDamage = THROWER_DAMAGE;
 			setTextures();
-			cooldown = 2.0f;
-			
 		}
 		Thrower::~Thrower() {
 		}
 		void Thrower::damage() {
 			isAttacking = true;
-			cooldown = 0;
 		}
 		void Thrower::setTextures() {
 			sprite = new GraphicalElements::Animation(body, Math::CoordF(2.8, 2.8));
@@ -36,7 +33,6 @@ namespace Entities {
 		}
 		void Thrower::update(float dt) {
 			stop();
-			cooldown += dt;
 
 			Player* near = nullptr;
 			if (pPlayer1 && pPlayer2) {
@@ -57,7 +53,7 @@ namespace Entities {
 				if (distance > 0) { //verificar pra qual lado atirar, mesmo que nao precise se mover
 					facingLeft = true;
 				}
-				if (fabs(distance) > 150 && fabs(distance) < 300 && cooldown >= THROWER_COOLDOWN) {//verificar se esta dentro do range e se o cooldown esta maior q o tempo estipulado
+				if (fabs(distance) > 150 && fabs(distance) < 300) {//verificar se esta dentro do range e se o cooldown esta maior q o tempo estipulado
 					if (!isAttacking && !p->getIsActive()) {
 						damage();
 					}
@@ -70,6 +66,7 @@ namespace Entities {
 					chasePlayer(near);
 			}
 			if (isAttacking) {
+				stop();
 				sprite->update(GraphicalElements::Animation_ID::attack, facingLeft, position, dt);
 				attackTime += dt;
 				if (attackTime >= 0.9f && attackTime < 0.95f) {

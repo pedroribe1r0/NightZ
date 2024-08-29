@@ -38,14 +38,16 @@ namespace GraphicalElements {
 	void Animation::update(Animation_ID id, bool isFacingLeft, Math::CoordF position, float dt) {
 		if (currentID != id) {
 			currentID = id;
-			animationMap[currentID]->reset();
+			if(animationMap[currentID])
+				animationMap[currentID]->reset();
 		}
-		if(animationMap[currentID])
+		if (animationMap[currentID]) {
 			animationMap[currentID]->update(dt, isFacingLeft, id);
-
-		body->setPosition(sf::Vector2f(position.x, position.y));
-		body->setTextureRect(animationMap[currentID]->getSize());
-		body->setTexture(animationMap[currentID]->getTexture());
+			body->setPosition(sf::Vector2f(position.x, position.y));
+			body->setTextureRect(animationMap[currentID]->getSize());
+			body->setTexture(animationMap[currentID]->getTexture());
+		}
+			
 	}
 
 	void Animation::render() {

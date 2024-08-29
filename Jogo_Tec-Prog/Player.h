@@ -27,6 +27,7 @@ namespace Entities {
 			bool isShooting;
 			bool canShoot;
 			bool isRunning;
+			float slow;
 			std::vector<Projectile*> bulletVector;
 		public:
 			Player(Math::CoordF pos = Math::CoordF(0, 0), bool isPlayer1 = true, EntitiesList* list = nullptr, Player* other = nullptr);
@@ -40,6 +41,8 @@ namespace Entities {
 			void setTextures();
 			void run();
 			void stopRunning();
+			void setOther(Player* p);
+			void setSlow(bool s);
 		};
 	}
 }

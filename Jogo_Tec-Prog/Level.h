@@ -20,6 +20,7 @@ namespace Levels {
 		~Level();
 		virtual void run() = 0;
 		virtual void execute(float dt) = 0;
+		virtual void createLevel() = 0;
 		void manageCollisions(float dt);
 		void createThrowers();
 		void createZombies();
@@ -27,6 +28,7 @@ namespace Levels {
 		void spawnEnemies();
 		void setRandSpots();
 		void createBackground();
+		void createPlayers(bool Player2);
 	};
 }
 

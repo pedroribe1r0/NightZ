@@ -7,7 +7,7 @@ namespace Entities {
 			attackRange = BOSS_ATTACK_RANGE;
 			attackDamage = BOSS_ATTACK_DAMAGE;
 			cooldownTimer = BOSS_COOLDOWN;
-			attackTime = ATTACK_TIME;
+			attackTime = 0;
 			isAttacking = false;
 			canAttack = true;
 			setTextures();
@@ -60,7 +60,7 @@ namespace Entities {
 				cooldownTimer += dt;
 				if (pPlayer1 && pPlayer2) {
 					if (fabs(position.x - pPlayer1->getPosition().x) < fabs(position.x - pPlayer2->getPosition().x)) {
-						if (cooldownTimer >= BOSS_COOLDOWN && fabs(position.x - pPlayer1->getPosition().x) <= (BOSS_ATTACK_RANGE + size.x + pPlayer1->getSize().x)) {
+						if (cooldownTimer >= BOSS_COOLDOWN && fabs(position.x - pPlayer1->getPosition().x) <= (BOSS_ATTACK_RANGE + pPlayer1->getSize().x)) {
 							isAttacking = true;
 						}
 						chasePlayer(pPlayer1);

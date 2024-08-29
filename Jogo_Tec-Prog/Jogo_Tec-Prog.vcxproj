@@ -143,6 +143,7 @@
     <ClCompile Include="EventsManager.cpp" />
     <ClCompile Include="GraphicManager.cpp" />
     <ClCompile Include="InputManager.cpp" />
+    <ClCompile Include="Jumper.cpp" />
     <ClCompile Include="Layer.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="MovingEntity.cpp" />
@@ -157,6 +158,7 @@
     <ClCompile Include="Projectile.cpp" />
     <ClCompile Include="Boss.cpp" />
     <ClCompile Include="CoinFlip.cpp" />
+    <ClCompile Include="Simple.cpp" />
     <ClCompile Include="Thrower.cpp" />
     <ClCompile Include="Zombie.cpp" />
   </ItemGroup>
@@ -197,6 +199,7 @@
     <Image Include="p2_shoot.png" />
     <Image Include="p2_takedamage.png" />
     <Image Include="p2_walk.png" />
+    <Image Include="portal.png" />
     <Image Include="SpittingZombie - Attack.png" />
     <Image Include="SpittingZombie - Death.png" />
     <Image Include="SpittingZombie - Hit.png" />
@@ -227,6 +230,7 @@
     <ClInclude Include="EventsManager.h" />
     <ClInclude Include="GraphicManager.h" />
     <ClInclude Include="InputManager.h" />
+    <ClInclude Include="Jumper.h" />
     <ClInclude Include="Layer.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="List.h" />
@@ -242,6 +246,7 @@
     <ClInclude Include="Projectile.h" />
     <ClInclude Include="Boss.h" />
     <ClInclude Include="CoinFlip.h" />
+    <ClInclude Include="Simple.h" />
     <ClInclude Include="Thrower.h" />
     <ClInclude Include="Zombie.h" />
   </ItemGroup>

@@ -26,11 +26,13 @@ namespace Entities {
 		Enemy::~Enemy() {
 		}
 		void Enemy::chasePlayer(Player* p) {
-			if (p->getPosition().x > position.x) {
-				move(false);
-			}
-			else {
-				move(true);
+			if (fabs(p->getPosition().x - position.x) < MAX_DISTANCE) {
+				if (p->getPosition().x > position.x) {
+					move(false);
+				}
+				else {
+					move(true);
+				}
 			}
 		}
 	}

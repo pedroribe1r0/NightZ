@@ -2,6 +2,7 @@
 #include "Player.h"
 namespace Entities {
 	namespace Characters {
+		#define MAX_DISTANCE 900.0f
 		class Enemy : public Character
 		{
 		protected:

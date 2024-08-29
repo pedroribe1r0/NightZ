@@ -4,6 +4,7 @@ namespace Levels {
 	Managers::EventsManager* Level::pEvent = Managers::EventsManager::getInstance();
 
 	Level::Level() {
+		srand(time(NULL));
 		movingEntities = new EntitiesList();
 		staticEntities = new EntitiesList();
 		pColision = new Managers::CollisionManager(movingEntities, staticEntities);
@@ -38,19 +39,34 @@ namespace Levels {
 		pColision->collide(dt);
 	}
 	void Level::setRandSpots() {
-		spots[0] = Math::CoordF(-1140, 360);
-		spots[1] = Math::CoordF(-1640, 600);
-		spots[2] = Math::CoordF(-840, 600);
-		spots[3] = Math::CoordF(-1840, 600);
-		spots[4] = Math::CoordF(-1140, 600);
-		spots[5] = Math::CoordF(3200, 360);
-		spots[6] = Math::CoordF(1640, 600);
-		spots[7] = Math::CoordF(2600, 600);
-		spots[8] = Math::CoordF(2300, 600);
-		spots[9] = Math::CoordF(3000, 600);
+		spots[0] = Math::CoordF(-1740, 900);
+		spots[1] = Math::CoordF(-2240, 900);
+		spots[2] = Math::CoordF(-1440, 900);
+		spots[3] = Math::CoordF(-600, 900);
+		spots[4] = Math::CoordF(-1140, 900);
+		spots[5] = Math::CoordF(3800, 900);
+		spots[6] = Math::CoordF(2240, 900);
+		spots[7] = Math::CoordF(4000, 900);
+		spots[8] = Math::CoordF(2900, 900);
+		spots[9] = Math::CoordF(2400, 900);
+	}
+	void Level::createPlayers(bool Player2) {
+		if (Player2) {
+			Entities::Characters::Player* p2 = new Entities::Characters::Player(Math::CoordF(800, 980), false, movingEntities);
+			Entities::Characters::Player* p1 = new Entities::Characters::Player(Math::CoordF(900, 980), true, movingEntities, p2);
+			p2->setOther(p1);
+			movingEntities->setData(p2);
+			movingEntities->setData(p1);
+			Entities::Characters::Enemy::setPlayer1(p1);
+			Entities::Characters::Enemy::setPlayer2(p2);
+		}
+		else {
+			Entities::Characters::Player* p1 = new Entities::Characters::Player(Math::CoordF(800, 1860), true, movingEntities);
+			movingEntities->setData(p1);
+			Entities::Characters::Enemy::setPlayer1(p1);
+		}
 	}
 	void Level::createThrowers() {
-		srand(time(NULL));
 		int cont = 0;
 		for (int i = 0; i < 30; i++) {
 			if ((rand() % 10)) {
@@ -66,7 +82,6 @@ namespace Levels {
 		
 	}
 	void Level::createZombies() {
-		srand(time(NULL));
 		int cont = 0;
 		for (int i = 0; i < 30; i++) {
 			if ((rand() % 10)) {
@@ -81,7 +96,6 @@ namespace Levels {
 		cout << cont << endl;
 	}
 	void Level::createBosses() {
-		srand(time(NULL));
 		int cont = 0;
 		for (int i = 0; i < 30; i++) {
 			if ((rand() % 10)) {
@@ -97,11 +111,13 @@ namespace Levels {
 	}
 
 	void Level::spawnEnemies() {
-		/*Entities::Entity* ent = movingEntities->pickRandon();
-		while (ent->getID() != enemy) {
+		
+		Entities::Entity* ent = movingEntities->pickRandon();
+		while (ent->getID() != enemy && ent->getID() != boss) {
 			ent = movingEntities->pickRandon();
-		}*/
-		Entities::Entity* ent = nullptr;
+		}
+		
+		/*Entities::Entity* ent = nullptr;
 		List<Entities::Entity>::iterator it = movingEntities->begin();
 		int i = 0;
 		while (it != movingEntities->end()) {
@@ -112,9 +128,8 @@ namespace Levels {
 			else if (((*it)->getID() == enemy || (*it)->getID() == boss))
 				i++;
 			++it;
-		}
+		}*/
 		if (ent) {
-			cout << ent->getSize().x << endl;
 			if (ent->getID() == enemy || ent->getID() == boss) {
 				Entities::Characters::Enemy* e = dynamic_cast<Entities::Characters::Enemy*>(ent);
 				Entities::Characters::Player* p1 = e->getPlayer1();
@@ -156,8 +171,8 @@ namespace Levels {
 						randSpot = rand() % 10;
 					}
 				}*/
-				e->setPosition(spots[randSpot]);
 				e->setIsActive(true);
+				e->setPosition(spots[randSpot]);
 				enemiesCounter++;
 			}
 		}

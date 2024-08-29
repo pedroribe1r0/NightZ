@@ -17,6 +17,7 @@ namespace Observers {
 		void notifyKeyPressed(sf::Keyboard::Key key);
 		void notifyKeyReleased(sf::Keyboard::Key key);
 		void setPlayer(Entities::Characters::Player* pPlayer = nullptr);
+		void createLevel();
 	};
 }
 

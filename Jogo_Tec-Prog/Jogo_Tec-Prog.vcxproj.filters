@@ -13,85 +13,136 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Arquivos de Origem\Entities">
+      <UniqueIdentifier>{91c6644c-785d-4c99-9e43-b430076d006a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Origem\Entities\Characters">
+      <UniqueIdentifier>{8b56c300-5e0e-4028-aa84-7d2829db9561}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Origem\Managers">
+      <UniqueIdentifier>{3c96230b-6ad9-46ac-a675-e34708f1eefa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Origem\Observers">
+      <UniqueIdentifier>{2d21ee35-1f41-4954-af74-b21cdcbc0bbe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Origem\Levels">
+      <UniqueIdentifier>{1c69aeb2-ddaf-40ab-b335-16f7ded9736f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Origem\Graphics">
+      <UniqueIdentifier>{e1d7e102-b5d8-4bd5-b105-af76759be55f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Cabeçalho\Entities">
+      <UniqueIdentifier>{170eb1d8-ab18-4531-bd6a-56c653dc5360}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Cabeçalho\Entities\Characters">
+      <UniqueIdentifier>{aa6b9788-367d-4c17-95b5-56ee0f68e04f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Cabeçalho\Managers">
+      <UniqueIdentifier>{b850c035-5c65-4e76-9209-dd95d415563e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Cabeçalho\Observers">
+      <UniqueIdentifier>{0d8126ed-289e-4eef-9593-9db1960f2940}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Cabeçalho\Entities\Obstacles">
+      <UniqueIdentifier>{cd54013f-aa28-4c1b-b3fe-8b87ff1a165b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Origem\Entities\Obstacles">
+      <UniqueIdentifier>{d706ee94-edca-41cc-b0e1-f02f8ba65d48}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Cabeçalho\Graphics">
+      <UniqueIdentifier>{9f0b8c2a-cc66-4396-930b-a0127d4ea07e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Cabeçalho\Levels">
+      <UniqueIdentifier>{ef36c6b7-233e-4b12-b604-fcc7345ac3f1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Jogo_Tec-Prog.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
-    <ClCompile Include="Game.cpp">
-      <Filter>Arquivos de Origem</Filter>
-    </ClCompile>
-    <ClCompile Include="Entity.cpp">
-      <Filter>Arquivos de Origem</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Arquivos de Origem</Filter>
-    </ClCompile>
-    <ClCompile Include="GraphicManager.cpp">
-      <Filter>Arquivos de Origem</Filter>
-    </ClCompile>
     <ClCompile Include="EntitiesList.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
-    <ClCompile Include="MovingEntity.cpp">
-      <Filter>Arquivos de Origem</Filter>
-    </ClCompile>
-    <ClCompile Include="Character.cpp">
-      <Filter>Arquivos de Origem</Filter>
-    </ClCompile>
-    <ClCompile Include="Ente.cpp">
-      <Filter>Arquivos de Origem</Filter>
-    </ClCompile>
-    <ClCompile Include="Obstacle.cpp">
-      <Filter>Arquivos de Origem</Filter>
-    </ClCompile>
-    <ClCompile Include="CollisionManager.cpp">
-      <Filter>Arquivos de Origem</Filter>
-    </ClCompile>
-    <ClCompile Include="EventsManager.cpp">
-      <Filter>Arquivos de Origem</Filter>
-    </ClCompile>
-    <ClCompile Include="InputManager.cpp">
-      <Filter>Arquivos de Origem</Filter>
-    </ClCompile>
-    <ClCompile Include="Observer.cpp">
-      <Filter>Arquivos de Origem</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerObserver.cpp">
-      <Filter>Arquivos de Origem</Filter>
-    </ClCompile>
-    <ClCompile Include="Enemy.cpp">
-      <Filter>Arquivos de Origem</Filter>
-    </ClCompile>
-    <ClCompile Include="Zombie.cpp">
-      <Filter>Arquivos de Origem</Filter>
-    </ClCompile>
-    <ClCompile Include="Thrower.cpp">
-      <Filter>Arquivos de Origem</Filter>
-    </ClCompile>
-    <ClCompile Include="Projectile.cpp">
-      <Filter>Arquivos de Origem</Filter>
+    <ClCompile Include="Entity.cpp">
+      <Filter>Arquivos de Origem\Entities</Filter>
     </ClCompile>
     <ClCompile Include="Boss.cpp">
-      <Filter>Arquivos de Origem</Filter>
+      <Filter>Arquivos de Origem\Entities\Characters</Filter>
     </ClCompile>
-    <ClCompile Include="Animation.cpp">
-      <Filter>Arquivos de Origem</Filter>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Arquivos de Origem\Entities\Characters</Filter>
     </ClCompile>
-    <ClCompile Include="Level.cpp">
-      <Filter>Arquivos de Origem</Filter>
+    <ClCompile Include="Character.cpp">
+      <Filter>Arquivos de Origem\Entities\Characters</Filter>
     </ClCompile>
-    <ClCompile Include="CoinFlip.cpp">
-      <Filter>Arquivos de Origem</Filter>
+    <ClCompile Include="MovingEntity.cpp">
+      <Filter>Arquivos de Origem\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Arquivos de Origem\Entities\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="Zombie.cpp">
+      <Filter>Arquivos de Origem\Entities\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="Thrower.cpp">
+      <Filter>Arquivos de Origem\Entities\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="Projectile.cpp">
+      <Filter>Arquivos de Origem\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionManager.cpp">
+      <Filter>Arquivos de Origem\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="EventsManager.cpp">
+      <Filter>Arquivos de Origem\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>Arquivos de Origem\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicManager.cpp">
+      <Filter>Arquivos de Origem\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerObserver.cpp">
+      <Filter>Arquivos de Origem\Observers</Filter>
+    </ClCompile>
+    <ClCompile Include="Observer.cpp">
+      <Filter>Arquivos de Origem\Observers</Filter>
     </ClCompile>
     <ClCompile Include="PortalLevel.cpp">
-      <Filter>Arquivos de Origem</Filter>
+      <Filter>Arquivos de Origem\Levels</Filter>
+    </ClCompile>
+    <ClCompile Include="Level.cpp">
+      <Filter>Arquivos de Origem\Levels</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Arquivos de Origem\Levels</Filter>
+    </ClCompile>
+    <ClCompile Include="CoinFlip.cpp">
+      <Filter>Arquivos de Origem\Levels</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>Arquivos de Origem\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Layer.cpp">
+      <Filter>Arquivos de Origem\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Ente.cpp">
+      <Filter>Arquivos de Origem\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Background.cpp">
+      <Filter>Arquivos de Origem\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Obstacle.cpp">
+      <Filter>Arquivos de Origem\Entities\Obstacles</Filter>
+    </ClCompile>
+    <ClCompile Include="Simple.cpp">
+      <Filter>Arquivos de Origem\Entities\Obstacles</Filter>
+    </ClCompile>
+    <ClCompile Include="Jumper.cpp">
+      <Filter>Arquivos de Origem\Entities\Obstacles</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="luffy.png">
-      <Filter>Arquivos de Recurso</Filter>
-    </Image>
     <Image Include="zoro.png">
       <Filter>Arquivos de Recurso</Filter>
     </Image>
@@ -200,21 +251,66 @@
     <Image Include="Tree_2_512b.png">
       <Filter>Arquivos de Recurso</Filter>
     </Image>
+    <Image Include="branch.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="bush.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="layer0.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="layer1.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="layer10.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="layer11.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="layer2.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="layer3.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="layer4.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="layer5.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="layer6.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="layer7.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="layer8.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="layer9.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="tree.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="tree1.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="tree2.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="treetest.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="portal.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Coord.h">
-      <Filter>Arquivos de Cabeçalho</Filter>
-    </ClInclude>
-    <ClInclude Include="Game.h">
-      <Filter>Arquivos de Cabeçalho</Filter>
-    </ClInclude>
-    <ClInclude Include="Entity.h">
-      <Filter>Arquivos de Cabeçalho</Filter>
-    </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>Arquivos de Cabeçalho</Filter>
-    </ClInclude>
-    <ClInclude Include="GraphicManager.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
     <ClInclude Include="List.h">
@@ -223,59 +319,83 @@
     <ClInclude Include="EntitiesList.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
-    <ClInclude Include="MovingEntity.h">
-      <Filter>Arquivos de Cabeçalho</Filter>
-    </ClInclude>
-    <ClInclude Include="Character.h">
-      <Filter>Arquivos de Cabeçalho</Filter>
-    </ClInclude>
     <ClInclude Include="Ente.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
-    <ClInclude Include="Obstacle.h">
-      <Filter>Arquivos de Cabeçalho</Filter>
+    <ClInclude Include="Boss.h">
+      <Filter>Arquivos de Cabeçalho\Entities\Characters</Filter>
     </ClInclude>
-    <ClInclude Include="CollisionManager.h">
-      <Filter>Arquivos de Cabeçalho</Filter>
-    </ClInclude>
-    <ClInclude Include="EventsManager.h">
-      <Filter>Arquivos de Cabeçalho</Filter>
-    </ClInclude>
-    <ClInclude Include="InputManager.h">
-      <Filter>Arquivos de Cabeçalho</Filter>
-    </ClInclude>
-    <ClInclude Include="Observer.h">
-      <Filter>Arquivos de Cabeçalho</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerObserver.h">
-      <Filter>Arquivos de Cabeçalho</Filter>
+    <ClInclude Include="Character.h">
+      <Filter>Arquivos de Cabeçalho\Entities\Characters</Filter>
     </ClInclude>
     <ClInclude Include="Enemy.h">
-      <Filter>Arquivos de Cabeçalho</Filter>
+      <Filter>Arquivos de Cabeçalho\Entities\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.h">
+      <Filter>Arquivos de Cabeçalho\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="MovingEntity.h">
+      <Filter>Arquivos de Cabeçalho\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Arquivos de Cabeçalho\Entities\Characters</Filter>
     </ClInclude>
     <ClInclude Include="Zombie.h">
-      <Filter>Arquivos de Cabeçalho</Filter>
+      <Filter>Arquivos de Cabeçalho\Entities\Characters</Filter>
     </ClInclude>
     <ClInclude Include="Thrower.h">
-      <Filter>Arquivos de Cabeçalho</Filter>
+      <Filter>Arquivos de Cabeçalho\Entities\Characters</Filter>
     </ClInclude>
     <ClInclude Include="Projectile.h">
-      <Filter>Arquivos de Cabeçalho</Filter>
+      <Filter>Arquivos de Cabeçalho\Entities</Filter>
     </ClInclude>
-    <ClInclude Include="Boss.h">
-      <Filter>Arquivos de Cabeçalho</Filter>
+    <ClInclude Include="CollisionManager.h">
+      <Filter>Arquivos de Cabeçalho\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="EventsManager.h">
+      <Filter>Arquivos de Cabeçalho\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicManager.h">
+      <Filter>Arquivos de Cabeçalho\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>Arquivos de Cabeçalho\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Obstacle.h">
+      <Filter>Arquivos de Cabeçalho\Entities\Obstacles</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerObserver.h">
+      <Filter>Arquivos de Cabeçalho\Observers</Filter>
+    </ClInclude>
+    <ClInclude Include="Observer.h">
+      <Filter>Arquivos de Cabeçalho\Observers</Filter>
     </ClInclude>
     <ClInclude Include="Animation.h">
-      <Filter>Arquivos de Cabeçalho</Filter>
+      <Filter>Arquivos de Cabeçalho\Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="Level.h">
-      <Filter>Arquivos de Cabeçalho</Filter>
+    <ClInclude Include="Background.h">
+      <Filter>Arquivos de Cabeçalho\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Layer.h">
+      <Filter>Arquivos de Cabeçalho\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="CoinFlip.h">
-      <Filter>Arquivos de Cabeçalho</Filter>
+      <Filter>Arquivos de Cabeçalho\Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Arquivos de Cabeçalho\Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="Level.h">
+      <Filter>Arquivos de Cabeçalho\Levels</Filter>
     </ClInclude>
     <ClInclude Include="PortalLevel.h">
-      <Filter>Arquivos de Cabeçalho</Filter>
+      <Filter>Arquivos de Cabeçalho\Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="Simple.h">
+      <Filter>Arquivos de Cabeçalho\Entities\Obstacles</Filter>
+    </ClInclude>
+    <ClInclude Include="Jumper.h">
+      <Filter>Arquivos de Cabeçalho\Entities\Obstacles</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

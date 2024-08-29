@@ -10,13 +10,11 @@ namespace Entities {
 		#define THROWER_HP 90.0f
 		#define THROWER_DAMAGE 5.0f
 		#define THROWER_SPEED 50.0f
-		#define THROWER_COOLDOWN 3.0f
-		#define THROWER_ATTACK_TIME 3.0f
+		#define THROWER_ATTACK_TIME 2.85f
 		class Thrower : public Enemy
 		{
 		private:
 			Projectile* p;
-			float cooldown;
 			bool isAttacking;
 			float attackTime;
 		public:

@@ -20,6 +20,7 @@ namespace Entities {
 			sprite->addNewAnimation(GraphicalElements::Animation_ID::dmg, "Zombie _Hit.png", 4);
 			sprite->addNewAnimation(GraphicalElements::Animation_ID::attack, "Zombie_Attack.png", 17);
 			sprite->addNewAnimation(GraphicalElements::Animation_ID::death, "Zombie_Death.png", 15);
+			sprite->addNewAnimation(GraphicalElements::Animation_ID::idle, "Zombie _Idle.png", 9);
 		}
 		void Zombie::increaseSpeed(float speed) {
 			zombieSpeed = speed;
