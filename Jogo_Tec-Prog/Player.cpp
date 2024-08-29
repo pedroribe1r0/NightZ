@@ -15,7 +15,8 @@ namespace Entities {
 			canShoot(true),
 			isRunning(false),
 			otherPlayer(other),
-			slow(1.0f)
+			isHealing(false),
+			healingCounter(0)
 		{
 			for (int i = 0; i < N_BULLETS; i++) {
 				Projectile* p = new Projectile(this);
@@ -61,14 +62,6 @@ namespace Entities {
 				delete pObserver;
 		}
 
-		void Player::setSlow(bool s) {
-			if (s) {
-				slow = 0.5;
-			}
-			else
-				slow = 1;
-		}
-
 		bool Player::getIsPlayer1() const{
 			return isPlayer1;
 		}
@@ -83,15 +76,15 @@ namespace Entities {
 			if (isMoving) {
 				if (isRunning) {
 					if (facingLeft)
-						speed.x = -PLAYER_SPEED * 1.5 * slow;
+						speed.x = -PLAYER_SPEED * 1.5;
 					else
-						speed.x = PLAYER_SPEED * 1.5 * slow;
+						speed.x = PLAYER_SPEED * 1.5;
 				}
 				else {
 					if (facingLeft)
-						speed.x = -PLAYER_SPEED * slow;
+						speed.x = -PLAYER_SPEED;
 					else
-						speed.x = PLAYER_SPEED * slow;
+						speed.x = PLAYER_SPEED;
 				}
 			}
 			else {
@@ -135,6 +128,22 @@ namespace Entities {
 			else {
 				sprite->update(GraphicalElements::Animation_ID::idle, facingLeft, position, dt);
 			}
+			
+			if (isHealing) {
+				healingCounter += dt;
+				if (healingCounter >= EFFECT_TIME * 2) {
+					healingCounter = 0;
+				}
+				else if (healingCounter >= EFFECT_TIME) {
+					body->setFillColor(sf::Color::White);
+				}
+				else {
+					body->setFillColor(sf::Color(119, 221, 119));
+				}
+			}
+			else {
+				body->setFillColor(sf::Color::White);
+			}
 
 			if (isPlayer1) {
 				pGraphic->centerView(Math::CoordF(position.x, pGraphic->getWindowSize().y / 2));
@@ -154,6 +163,10 @@ namespace Entities {
 					pGraphic->centerView(Math::CoordF(position.x, pGraphic->getWindowSize().y / 2));
 				}
 			}
+			//cout << "hp: " << hp << endl;
+		}
+		void Player::stopHeal() {
+			isHealing = false;
 		}
 		void Player::setOther(Player* p) {
 			otherPlayer = p;
@@ -175,6 +188,10 @@ namespace Entities {
 		void Player::setIsParalized() {
 			canMove = false;
 			paralizeTimer = 0;
+		}
+		void Player::heal(float heal) {
+			hp += heal;
+			isHealing = true;
 		}
 		void Player::collide(Entity* ent, Math::CoordF intersection, float dt) {
 			switch (ent->getID()) {

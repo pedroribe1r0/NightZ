@@ -15,6 +15,7 @@ namespace Entities {
 		#define PLAYER_HP 100.0f
 		#define N_BULLETS 5
 		#define SHOOT_COOLDOWN 0.63f
+		#define EFFECT_TIME 0.6f
 		class Player : public Character
 		{
 		private:
@@ -24,10 +25,12 @@ namespace Entities {
 			int points;
 			float paralizeTimer;
 			float shootCooldown;
+			float burningCounter;
+			float healingCounter;
 			bool isShooting;
 			bool canShoot;
 			bool isRunning;
-			float slow;
+			bool isHealing;
 			std::vector<Projectile*> bulletVector;
 		public:
 			Player(Math::CoordF pos = Math::CoordF(0, 0), bool isPlayer1 = true, EntitiesList* list = nullptr, Player* other = nullptr);
@@ -42,7 +45,8 @@ namespace Entities {
 			void run();
 			void stopRunning();
 			void setOther(Player* p);
-			void setSlow(bool s);
+			void heal(float heal);
+			void stopHeal();
 		};
 	}
 }

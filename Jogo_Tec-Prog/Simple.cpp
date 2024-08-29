@@ -9,10 +9,10 @@ namespace Entities {
 
 		}
 		void Simple::update(float dt) {
-		//body->move(sf::Vector2f(0, -GRAVIDADE * dt));
+			position.y -= GRAVIDADE * dt;
 		}
 		void Simple::execute(float dt) {
-		//	body->move(sf::Vector2f(0, GRAVIDADE * dt));
+			position.y += GRAVIDADE * dt;
 			update(dt);
 		}
 		void Simple::block(Characters::Player* ent, float dt){}
