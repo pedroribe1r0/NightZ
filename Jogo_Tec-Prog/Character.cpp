@@ -56,7 +56,7 @@ namespace Entities {
 				}
 				update(dt);
 			}
-		}//corrigir double jump no ar
+		}
 
 		void Character::moveOnCollision(Entity* ent, Math::CoordF intersection) {
 			if (!isDying) {

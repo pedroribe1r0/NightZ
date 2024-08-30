@@ -202,6 +202,7 @@ namespace Entities {
 
 		void Player::operator++() {
 			points++;
+			cout << isPlayer1 << " " << points << endl;
 		}
 
 		void Player::setIsParalized() {
