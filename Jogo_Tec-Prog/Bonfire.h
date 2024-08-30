@@ -14,11 +14,10 @@ namespace Entities {
 			bool isHealing2;
 			static Entities::Characters::Player* p1;
 			static Entities::Characters::Player* p2;
-			GraphicalElements::Animation sprite;
 		public:
 			Bonfire(Math::CoordF pos = Math::CoordF(0, 0));
 			~Bonfire();
-			void setAnimation();
+			void setTextures();
 			void update(float dt);
 			void execute(float dt);
 			void block(Characters::Player* ent, float dt);

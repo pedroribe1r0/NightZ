@@ -7,13 +7,7 @@ namespace Levels {
 		run();
 	}
 	CoinFlip::~CoinFlip() {
-
-	}
-
-	void CoinFlip::createLevel() {
-		//-------------------------------------- Chao ------------------------------------//
 		
-		//------------------------------------ Arvores -----------------------------------//
 	}
 
 	void CoinFlip::render() {

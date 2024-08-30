@@ -15,7 +15,7 @@ Game::Game() {
 //	movingEntities.setData(t1);
 	//movingEntities.setData(z1);
 	Entities::Obstacles::Simple* floor = new Entities::Obstacles::Simple(Math::CoordF(960, 1050), Math::CoordF(1920, 10));
-	//Entities::Obstacles::Jumper* jump = new Entities::Obstacles::Jumper(Math::CoordF(600, 1030), Math::CoordF(50, 50));
+	Entities::Obstacles::Jumper* jump = new Entities::Obstacles::Jumper(Math::CoordF(600, 1010));
 	//Entities::Obstacles::Bonfire* fire = new Entities::Obstacles::Bonfire(Math::CoordF(600, 1020));
 	Entities::Obstacles::Portal* po1 = new Entities::Obstacles::Portal(Math::CoordF(300, 1000), true);
 	Entities::Obstacles::Portal* po2 = new Entities::Obstacles::Portal(Math::CoordF(900, 1000), false);
@@ -24,6 +24,7 @@ Game::Game() {
 	staticEntities.setData(floor);
 	staticEntities.setData(po1);
 	staticEntities.setData(po2);
+	staticEntities.setData(jump);
 	po1->connectPortal(po2);
 	po2->connectPortal(po1);
 	Entities::Obstacles::Bonfire::setPlayers(p1);

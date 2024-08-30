@@ -1,8 +1,8 @@
-#include "Game.h"
+#include "CoinFlip.h"
 
 int main()
 {
-	Game c;
+	Levels::CoinFlip c;
 	return 0;
 }
 

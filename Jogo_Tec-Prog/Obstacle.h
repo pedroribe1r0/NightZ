@@ -9,7 +9,7 @@ namespace Entities {
 			bool dangerous;
 			float damage;
 		public:
-			Obstacle(Math::CoordF pos = Math::CoordF(0, 0), Math::CoordF size = Math::CoordF(0, 0), bool dangerous = false, float damage = 0, const char* textPath = nullptr);
+			Obstacle(Math::CoordF pos = Math::CoordF(0, 0), Math::CoordF size = Math::CoordF(0, 0), bool dangerous = false, float damage = 0);
 			~Obstacle();
 			void collide(Entity* ent, Math::CoordF intersection, float dt);
 			virtual void update(float dt) = 0;

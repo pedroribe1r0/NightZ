@@ -178,12 +178,14 @@
     <Image Include="bonfirespsheet.png" />
     <Image Include="branch.png" />
     <Image Include="bush.png" />
+    <Image Include="bushplatform.png" />
     <Image Include="Char_knife_idle.png" />
     <Image Include="Char_knife_jump.png" />
     <Image Include="Char_knife_run.png" />
     <Image Include="Char_knife_shoot.png" />
     <Image Include="Char_knife_take_damage.png" />
     <Image Include="Char_knife_walk.png" />
+    <Image Include="Char_off_hand_dash_left.png" />
     <Image Include="floor.png" />
     <Image Include="grass.png" />
     <Image Include="layer0.png" />
@@ -198,6 +200,7 @@
     <Image Include="layer7.png" />
     <Image Include="layer8.png" />
     <Image Include="layer9.png" />
+    <Image Include="p2_dash.png" />
     <Image Include="p2_idle.png" />
     <Image Include="p2_run.png" />
     <Image Include="p2_shoot.png" />
@@ -211,6 +214,8 @@
     <Image Include="SpittingZombie - Idle.png" />
     <Image Include="SpittingZombie - Projectile.png" />
     <Image Include="SpittingZombie - Walk.png" />
+    <Image Include="tirestack.png" />
+    <Image Include="tirestack2.png" />
     <Image Include="tree.png" />
     <Image Include="tree1.png" />
     <Image Include="tree2.png" />

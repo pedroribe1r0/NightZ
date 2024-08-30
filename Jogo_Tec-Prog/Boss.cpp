@@ -66,7 +66,7 @@ namespace Entities {
 						chasePlayer(pPlayer1);
 					}
 					else {
-						if (cooldownTimer >= BOSS_COOLDOWN && fabs(position.x - pPlayer1->getPosition().x) <= (BOSS_ATTACK_RANGE + size.x + pPlayer2->getSize().x)) {
+						if (cooldownTimer >= BOSS_COOLDOWN && fabs(position.x - pPlayer1->getPosition().x) <= (BOSS_ATTACK_RANGE + pPlayer2->getSize().x)) {
 							isAttacking = true;
 						}
 						chasePlayer(pPlayer2);
@@ -148,7 +148,8 @@ namespace Entities {
 				else {
 					distance2 = position.x - pPlayer2->getPosition().x + size.x / 2 + pPlayer2->getSize().x / 2;
 				}
-				if (pPlayer2->getPosition().y + pPlayer2->getSize().y / 2 == position.y + size.y / 2) {
+				float dy = pPlayer2->getPosition().y + pPlayer2->getSize().y / 2 - (position.y + size.y / 2);
+				if (dy < 80 && dy > -80) {
 					if ((facingLeft && distance2 > 0) || (!facingLeft && distance2 < 0)) {
 						if (fabs(distance2) <= attackRange) {
 							paralizePlayer(pPlayer2);
@@ -156,7 +157,7 @@ namespace Entities {
 							pPlayer2->takeDamage(attackDamage);
 						}
 					}
-				}
+				}	
 			}
 		}
 		void Boss::paralizePlayer(Player* p) {

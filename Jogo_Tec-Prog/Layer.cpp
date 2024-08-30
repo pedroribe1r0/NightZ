@@ -45,8 +45,8 @@ namespace GraphicalElements {
 			auxBackground.setPosition(sf::Vector2f(auxBackgroundPosition.x, y));
 			const float dx = ds.x * 0.5f;
 			if (dx != 0.0f) {
-				const float rightPos = currentCameraPos.x + windowSize.x / 2.0005f;
-				const float leftPos = currentCameraPos.x - windowSize.x / 2.0005f;
+				const float rightPos = currentCameraPos.x + windowSize.x / 2.0008f;
+				const float leftPos = currentCameraPos.x - windowSize.x / 2.0008f;
 				if (speed != 0.0f) {
 					background.move(ds.x * -speed, 0.0f);
 					auxBackground.move(ds.x * -speed, 0.0f);

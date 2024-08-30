@@ -16,7 +16,10 @@ namespace Entities {
 			isRunning(false),
 			otherPlayer(other),
 			isHealing(false),
-			healingCounter(0)
+			healingCounter(0),
+			isTeleporting(false),
+			teleportingCounter(0),
+			teleportFaceLeft(false)
 		{
 			for (int i = 0; i < N_BULLETS; i++) {
 				Projectile* p = new Projectile(this);
@@ -36,15 +39,19 @@ namespace Entities {
 				sprite->addNewAnimation(GraphicalElements::Animation_ID::dmg, "Char_knife_take_damage.png", 8);
 				sprite->addNewAnimation(GraphicalElements::Animation_ID::death, "Char_knife_take_damage.png", 8);
 				sprite->addNewAnimation(GraphicalElements::Animation_ID::run, "Char_knife_run.png", 8);
+				sprite->addNewAnimation(GraphicalElements::Animation_ID::teleport, "Char_off_hand_dash_left.png", 3);
 			}
 			else {
+				sprite->addNewAnimation(GraphicalElements::Animation_ID::teleport, "p2_dash.png", 3);
 				sprite->addNewAnimation(GraphicalElements::Animation_ID::idle, "p2_idle.png", 8);
 				sprite->addNewAnimation(GraphicalElements::Animation_ID::walk, "p2_walk.png", 16);
 				sprite->addNewAnimation(GraphicalElements::Animation_ID::shoot, "p2_shoot.png", 17);
 				sprite->addNewAnimation(GraphicalElements::Animation_ID::dmg, "p2_takedamage.png", 8);
 				sprite->addNewAnimation(GraphicalElements::Animation_ID::death, "p2_takedamage.png", 8);
 				sprite->addNewAnimation(GraphicalElements::Animation_ID::run, "p2_run.png", 8);
+				
 			}
+			body->setOrigin(size.x / 2 + 16, size.y / 2 - 5); //numeracao na base do chute, mas funciona
 		}
 
 		Player::~Player() {
@@ -93,7 +100,15 @@ namespace Entities {
 			position.x += speed.x * dt;
 			position.y += speed.y * dt;
 
-			if (isShooting) {
+			if (isTeleporting) {
+				teleportingCounter += dt;
+				sprite->update(GraphicalElements::teleport, teleportFaceLeft, position, dt);
+				if (teleportingCounter >= 0.45) {
+					teleportingCounter = 0;
+					isTeleporting = false;
+				}
+			}
+			else if (isShooting) {
 				shootCooldown += dt;
 				sprite->update(GraphicalElements::Animation_ID::shoot, facingLeft, position, dt);
 				if (shootCooldown >= SHOOT_COOLDOWN && shootCooldown < SHOOT_COOLDOWN + 0.5f && canShoot) {
@@ -164,6 +179,10 @@ namespace Entities {
 				}
 			}
 			//cout << "hp: " << hp << endl;
+		}
+		void Player::setIsTeleporting(bool left) {
+			isTeleporting = true;
+			teleportFaceLeft = left;
 		}
 		void Player::stopHeal() {
 			isHealing = false;

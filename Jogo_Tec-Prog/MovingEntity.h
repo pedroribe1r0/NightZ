@@ -8,7 +8,6 @@ namespace Entities {
 		bool facingLeft;
 		bool isMoving;
 		bool canMove;
-		GraphicalElements::Animation* sprite;
 	public:
 		MovingEntity(Math::CoordF pos = Math::CoordF(0, 0), Math::CoordF size = Math::CoordF(0, 0), ID id = ID::empty);
 		virtual ~MovingEntity();

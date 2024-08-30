@@ -4,14 +4,15 @@ namespace Entities {
 	namespace Obstacles {
 		Characters::Player* Bonfire::p1 = nullptr;
 		Characters::Player* Bonfire::p2 = nullptr;
-		Bonfire::Bonfire(Math::CoordF pos) : Obstacle(pos, Math::CoordF(BONFIRE_SIZE_X, BONFIRE_SIZE_Y), true, BONFIRE_DAMAGE), sprite(body,Math::CoordF(0.15,0.15)), isHealing1(false), isHealing2(false), healRatio(5.0f){
-			setAnimation();
+		Bonfire::Bonfire(Math::CoordF pos) : Obstacle(pos, Math::CoordF(BONFIRE_SIZE_X, BONFIRE_SIZE_Y), true, BONFIRE_DAMAGE), isHealing1(false), isHealing2(false), healRatio(5.0f){
+			setTextures();
 		}
 		Bonfire::~Bonfire() {
 
 		}
-		void Bonfire::setAnimation() {
-			sprite.addNewAnimation(GraphicalElements::Animation_ID::idle, "bonfire.png", 12);
+		void Bonfire::setTextures() {
+			sprite = new GraphicalElements::Animation(body, Math::CoordF(0.15, 0.15));
+			sprite->addNewAnimation(GraphicalElements::Animation_ID::idle, "bonfire.png", 12);
 		}
 		void Bonfire::update(float dt) {
 			position.y -= GRAVIDADE * dt;
@@ -49,7 +50,7 @@ namespace Entities {
 				else
 					p2->stopHeal();
 			}
-			sprite.update(GraphicalElements::Animation_ID::idle, true, position, dt);
+			sprite->update(GraphicalElements::Animation_ID::idle, true, position, dt);
 		}
 		void Bonfire::block(Characters::Player* ent, float dt) {
 			if (ent->getIsPlayer1())

@@ -2,12 +2,7 @@
 
 namespace Entities {
 	namespace Obstacles {
-		Obstacle::Obstacle(Math::CoordF pos, Math::CoordF size, bool dangerous, float damage, const char* textPath) : Entity(pos, size, ID::obstacle), dangerous(dangerous), damage(damage){
-			if (body) {
-				if (textPath) {
-					body->setTexture(pGraphic->loadTexture(textPath));
-				}
-			}
+		Obstacle::Obstacle(Math::CoordF pos, Math::CoordF size, bool dangerous, float damage) : Entity(pos, size, ID::obstacle), dangerous(dangerous), damage(damage){
 		}
 		Obstacle::~Obstacle() {
 

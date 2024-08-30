@@ -9,7 +9,6 @@ namespace Levels {
 		void run();
 		void render();
 		void execute(float dt);
-		void createLevel();
 	};
 }
 

@@ -10,7 +10,6 @@ namespace Entities {
 		private:
 			Portal* connected;
 			bool facingRight;
-			GraphicalElements::Animation sprite;
 		public:
 			Portal(Math::CoordF pos = Math::CoordF(0, 0), bool right = false);
 			~Portal();
@@ -18,7 +17,7 @@ namespace Entities {
 			void execute(float dt);
 			void block(Characters::Player* ent, float dt);
 			void connectPortal(Portal* p);
-			void setAnimation();
+			void setTextures();
 			bool isFacingRight() const;
 		};
 	}

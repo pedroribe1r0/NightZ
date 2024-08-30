@@ -8,13 +8,14 @@ namespace Levels {
 		movingEntities = new EntitiesList();
 		staticEntities = new EntitiesList();
 		pColision = new Managers::CollisionManager(movingEntities, staticEntities);
-		enemiesCounter = 0;
 		spawnTime = 0;
 		setRandSpots();
 		createBosses();
 		createThrowers();
 		createZombies();
 		createBackground();
+		createJumpers();
+		
 	}
 	Level::~Level() {
 		delete movingEntities;
@@ -40,13 +41,13 @@ namespace Levels {
 	}
 	void Level::setRandSpots() {
 		spots[0] = Math::CoordF(-1740, 900);
-		spots[1] = Math::CoordF(-2240, 900);
-		spots[2] = Math::CoordF(-1440, 900);
+		spots[1] = Math::CoordF(-2240, 540);
+		spots[2] = Math::CoordF(-2460, 540);
 		spots[3] = Math::CoordF(-600, 900);
 		spots[4] = Math::CoordF(-1140, 900);
-		spots[5] = Math::CoordF(3800, 900);
+		spots[5] = Math::CoordF(3800, 540);
 		spots[6] = Math::CoordF(2240, 900);
-		spots[7] = Math::CoordF(4000, 900);
+		spots[7] = Math::CoordF(4000, 540);
 		spots[8] = Math::CoordF(2900, 900);
 		spots[9] = Math::CoordF(2400, 900);
 	}
@@ -135,20 +136,6 @@ namespace Levels {
 				Entities::Characters::Player* p1 = e->getPlayer1();
 				Entities::Characters::Player* p2 = e->getPlayer2();
 				int randSpot = 0;
-				/*if (p1 && p2) {
-					if ((p1->getPosition().x < 80 && p2->getPosition().x > 1360) || (p1->getPosition().x > 80 && p2->getPosition().x < 1360)) {
-						randSpot = rand() % 10;
-					}
-					else if (p1->getPosition().x < 80 && p2->getPosition().x < 80) {
-						randSpot = rand() % 5;
-					}
-					else if (p1->getPosition().x > 1360 && p2->getPosition().x > 1360) {
-						randSpot = rand() % 5 + 5;
-					}
-					else {
-						randSpot = rand() % 10;
-					}
-				}*/ 
 				if (p1) {
 					if (p1->getPosition().x < -80) {
 						randSpot = rand() % 5;
@@ -160,21 +147,84 @@ namespace Levels {
 						randSpot = rand() % 10;
 					}
 				}
-				/*else if (p2) {
-					if (p2->getPosition().x < 80) {
-						randSpot = rand() % 5;
-					}
-					else if (p2->getPosition().x > 1360) {
-						randSpot = rand() % 5 + 5;
-					}
-					else {
-						randSpot = rand() % 10;
-					}
-				}*/
 				e->setIsActive(true);
 				e->setPosition(spots[randSpot]);
-				enemiesCounter++;
 			}
+		}
+	}
+	void Level::createLevel() {
+		//-------------------------------------- Chao ------------------------------------//
+		Entities::Obstacles::Simple* floor = new Entities::Obstacles::Simple(Math::CoordF(960, 1030), Math::CoordF(7120, 10));
+		staticEntities->setData(floor);
+		//------------------------------------ Arvores -----------------------------------//
+		Entities::Obstacles::Simple* t1 = new Entities::Obstacles::Simple(Math::CoordF(0, 1080), Math::CoordF(250, 1080), "tree2.png", Math::CoordF(1, 2));
+		Entities::Obstacles::Simple* t2 = new Entities::Obstacles::Simple(Math::CoordF(1920, 1080), Math::CoordF(250, 1080), "tree2.png", Math::CoordF(1, 2));
+		Entities::Obstacles::Simple* t3 = new Entities::Obstacles::Simple(Math::CoordF(4520, 1080), Math::CoordF(250, 1080), "tree2.png", Math::CoordF(1, 2));
+		Entities::Obstacles::Simple* t4 = new Entities::Obstacles::Simple(Math::CoordF(-2600, 1080), Math::CoordF(250, 1080), "tree2.png", Math::CoordF(1, 2));
+		staticEntities->setData(t1);
+		staticEntities->setData(t2);
+		staticEntities->setData(t3);
+		staticEntities->setData(t4);
+		//---------------------------------------- Basic Portals ------------------------------------//
+		createPortals();
+		//---------------------------------- Galhos ---------------------------------------//
+		Entities::Obstacles::Simple* g1 = new Entities::Obstacles::Simple(Math::CoordF(480, 864), Math::CoordF(760, 50), "bushplatform.png", Math::CoordF(1, 1));
+		Entities::Obstacles::Simple* g2 = new Entities::Obstacles::Simple(Math::CoordF(1460, 648), Math::CoordF(760, 50), "bushplatform.png", Math::CoordF(1, 1));
+		Entities::Obstacles::Simple* g3 = new Entities::Obstacles::Simple(Math::CoordF(480, 432), Math::CoordF(760, 50), "bushplatform.png", Math::CoordF(1, 1));
+		Entities::Obstacles::Simple* g4 = new Entities::Obstacles::Simple(Math::CoordF(1460, 216), Math::CoordF(760, 50), "bushplatform.png", Math::CoordF(1, 1));
+		Entities::Obstacles::Simple* g5 = new Entities::Obstacles::Simple(Math::CoordF(-2120, 648), Math::CoordF(760, 50), "bushplatform.png", Math::CoordF(1, 1));
+		Entities::Obstacles::Simple* g6 = new Entities::Obstacles::Simple(Math::CoordF(4040, 648), Math::CoordF(760, 50), "bushplatform.png", Math::CoordF(1, 1));
+		staticEntities->setData(g1);
+		staticEntities->setData(g2);
+		staticEntities->setData(g3);
+		staticEntities->setData(g4);
+		staticEntities->setData(g5);
+		staticEntities->setData(g6);
+	}
+	void Level::createJumpers() {
+		Entities::Obstacles::Jumper* j1 = new Entities::Obstacles::Jumper(Math::CoordF(960, 990));
+		staticEntities->setData(j1);
+		Entities::Obstacles::Jumper* j2 = new Entities::Obstacles::Jumper(Math::CoordF(1120, 648 - JUMPER_SIZE_Y));
+		staticEntities->setData(j2);
+		Entities::Obstacles::Jumper* j3 = new Entities::Obstacles::Jumper(Math::CoordF(830, 864 - JUMPER_SIZE_Y));
+		staticEntities->setData(j3);
+		Entities::Obstacles::Jumper* j4 = new Entities::Obstacles::Jumper(Math::CoordF(830, 432 - JUMPER_SIZE_Y));
+		staticEntities->setData(j4);
+		Entities::Obstacles::Jumper* j5 = new Entities::Obstacles::Jumper(Math::CoordF(-1700, 990));
+		staticEntities->setData(j5);
+		Entities::Obstacles::Jumper* j6 = new Entities::Obstacles::Jumper(Math::CoordF(3620, 990));
+		staticEntities->setData(j6);
+		if (rand() % 2) {
+			Entities::Obstacles::Jumper* j7 = new Entities::Obstacles::Jumper(Math::CoordF(-1200, 990));
+			staticEntities->setData(j7);
+		}
+		if (rand() % 2) {
+			Entities::Obstacles::Jumper* j8 = new Entities::Obstacles::Jumper(Math::CoordF(3000, 990));
+			staticEntities->setData(j8);
+		}
+	}
+	void Level::createPortals() {
+		Entities::Obstacles::Portal* P1 = new Entities::Obstacles::Portal(Math::CoordF(125, 380), true);
+		Entities::Obstacles::Portal* P2 = new Entities::Obstacles::Portal(Math::CoordF(-125, 970), false);
+		Entities::Obstacles::Portal* P3 = new Entities::Obstacles::Portal(Math::CoordF(1795, 168), false);
+		Entities::Obstacles::Portal* P4 = new Entities::Obstacles::Portal(Math::CoordF(2045, 970), true);
+		P1->connectPortal(P2);
+		P3->connectPortal(P4);
+		staticEntities->setData(P1);
+		staticEntities->setData(P2);
+		staticEntities->setData(P3);
+		staticEntities->setData(P4);
+		if (rand() % 2) {
+			Entities::Obstacles::Portal* P5 = new Entities::Obstacles::Portal(Math::CoordF(-2475, 970), true);
+			P5->connectPortal(P2);
+			P2->connectPortal(P5);
+			staticEntities->setData(P5);
+		}
+		if (rand() % 2) {
+			Entities::Obstacles::Portal* P6 = new Entities::Obstacles::Portal(Math::CoordF(4395, 970), false);
+			P6->connectPortal(P4);
+			P4->connectPortal(P6);
+			staticEntities->setData(P6);
 		}
 	}
 }

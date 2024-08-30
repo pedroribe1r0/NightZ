@@ -31,7 +31,6 @@ namespace Entities {
 			void execute(float dt);
 			void moveOnCollision(Entity* ent, Math::CoordF intersection);
 			bool getIsAlive() const;
-			virtual void setTextures() = 0;
 			float getSpeedY() const;
 		};
 	}

@@ -8,8 +8,8 @@ namespace Observers {
 namespace Entities {
 	class Projectile;
 	namespace Characters {
-		#define PLAYER_SIZE_X 32.0f
-		#define PLAYER_SIZE_Y 88.0f
+		#define PLAYER_SIZE_X 28.0f
+		#define PLAYER_SIZE_Y 83.0f
 		#define PLAYER_SPEED 150.0f
 		#define PARALIZE_TIME 0.5f
 		#define PLAYER_HP 100.0f
@@ -27,10 +27,13 @@ namespace Entities {
 			float shootCooldown;
 			float burningCounter;
 			float healingCounter;
+			float teleportingCounter;
 			bool isShooting;
 			bool canShoot;
 			bool isRunning;
 			bool isHealing;
+			bool isTeleporting;
+			bool teleportFaceLeft;
 			std::vector<Projectile*> bulletVector;
 		public:
 			Player(Math::CoordF pos = Math::CoordF(0, 0), bool isPlayer1 = true, EntitiesList* list = nullptr, Player* other = nullptr);
@@ -47,6 +50,7 @@ namespace Entities {
 			void setOther(Player* p);
 			void heal(float heal);
 			void stopHeal();
+			void setIsTeleporting(bool left);
 		};
 	}
 }
