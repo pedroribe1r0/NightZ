@@ -17,8 +17,6 @@ namespace GraphicalElements {
 				}
 			}
 			layers.clear();
-			delete grass;
-			grass = nullptr;
 		}
 
 		void Background::render() {

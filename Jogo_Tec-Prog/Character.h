@@ -22,7 +22,7 @@ namespace Entities {
 			Character(Math::CoordF pos = Math::CoordF(0, 0), Math::CoordF size = Math::CoordF(0, 0), ID id = ID::empty, float hp = 0);
 			virtual ~Character();
 			void takeDamage(float damage);
-			void jump();
+			void jump(float mult = 1);
 			virtual void damage() = 0;
 			virtual void update(float dt) = 0;
 			virtual void collide(Entity* ent, Math::CoordF intersection, float dt) = 0;
@@ -31,7 +31,7 @@ namespace Entities {
 			void execute(float dt);
 			void moveOnCollision(Entity* ent, Math::CoordF intersection);
 			bool getIsAlive() const;
-			virtual void setTextures() = 0;
+			float getSpeedY() const;
 		};
 	}
 }

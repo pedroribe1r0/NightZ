@@ -24,10 +24,12 @@ namespace Entities {
 				size = Math::CoordF(0, 0);
 			}
 		}
-		void Character::jump() {
+		void Character::jump(float mult) {
+			if (mult < 0)
+				mult = 1;
 			if (canJump) {
 				canJump = false;
-				speed.y = JUMP;
+				speed.y = JUMP * mult;
 			}
 		}
 		void Character::setCanJump(bool cj) {
@@ -69,14 +71,20 @@ namespace Entities {
 				else { // Colision on y direction
 
 					if (position.y < otherPos.y) {
-						canJump = true;
-						speed.y = 0;
 						position.y += intersection.y;
+						if (speed.y > 0) {
+							canJump = true;
+							speed = 0;
+						}
+							
 					}
 					else
 						position.y -= intersection.y;
 				}
 			}
+		}
+		float Character::getSpeedY() const {
+			return speed.y;
 		}
 	}
 }

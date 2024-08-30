@@ -9,17 +9,14 @@ namespace Entities {
 			list->setData(p);
 			meleeDamage = THROWER_DAMAGE;
 			setTextures();
-			cooldown = 2.0f;
-			
 		}
 		Thrower::~Thrower() {
 		}
 		void Thrower::damage() {
 			isAttacking = true;
-			cooldown = 0;
 		}
 		void Thrower::setTextures() {
-			sprite = new GraphicalElements::Animation(body, Math::CoordF(2.8, 2.8));
+			sprite = new GraphicalElements::Animation(body, Math::CoordF(2.8f, 2.8f));
 			sprite->addNewAnimation(GraphicalElements::Animation_ID::walk, "SpittingZombie - Walk.png", 10);
 			sprite->addNewAnimation(GraphicalElements::Animation_ID::dmg, "SpittingZombie - Hit.png", 5);
 			sprite->addNewAnimation(GraphicalElements::Animation_ID::attack, "SpittingZombie - Attack.png", 19);
@@ -36,7 +33,6 @@ namespace Entities {
 		}
 		void Thrower::update(float dt) {
 			stop();
-			cooldown += dt;
 
 			Player* near = nullptr;
 			if (pPlayer1 && pPlayer2) {
@@ -57,7 +53,7 @@ namespace Entities {
 				if (distance > 0) { //verificar pra qual lado atirar, mesmo que nao precise se mover
 					facingLeft = true;
 				}
-				if (fabs(distance) > 150 && fabs(distance) < 300 && cooldown >= THROWER_COOLDOWN) {//verificar se esta dentro do range e se o cooldown esta maior q o tempo estipulado
+				if (fabs(distance) > 150 && fabs(distance) < 300) {//verificar se esta dentro do range e se o cooldown esta maior q o tempo estipulado
 					if (!isAttacking && !p->getIsActive()) {
 						damage();
 					}
@@ -70,6 +66,7 @@ namespace Entities {
 					chasePlayer(near);
 			}
 			if (isAttacking) {
+				stop();
 				sprite->update(GraphicalElements::Animation_ID::attack, facingLeft, position, dt);
 				attackTime += dt;
 				if (attackTime >= 0.9f && attackTime < 0.95f) {
@@ -106,28 +103,6 @@ namespace Entities {
 			}
 			position.x += speed.x * dt;
 			position.y += speed.y * dt;
-		}
-		void Thrower::collide(Entity* ent, Math::CoordF intersection, float dt) {
-			switch (ent->getID()) {
-			case ID::obstacle:
-				moveOnCollision(ent, intersection);
-				break;
-			case enemy:
-				moveOnCollision(ent, intersection);
-				break;
-			case boss:
-				moveOnCollision(ent, intersection);
-			case player: {
-				Player* p = dynamic_cast<Player*>(ent);
-				if (p && !isDying) {
-					p->takeDamage(meleeDamage * dt);
-				}
-				moveOnCollision(ent, intersection);
-				break;
-			}
-			default:
-				break;
-			}
 		}
 	}
 }

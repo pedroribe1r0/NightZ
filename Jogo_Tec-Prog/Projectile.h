@@ -25,6 +25,7 @@ namespace Entities {
 		float getRange() const;
 		void execute(float dt);
 		void update(float dt);
+		Characters::Character* getUser() const;
 		//void updateRange(Characters::Player* p);
 		void collide(Entity* ent, Math::CoordF intersection, float dt);
 		void setTextures();

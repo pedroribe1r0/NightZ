@@ -8,7 +8,9 @@ namespace Entities {
 		body->setPosition(sf::Vector2f(pos.x, pos.y));
 	}
 	Entity::~Entity() {
-
+		if (sprite) {
+			delete sprite;
+		}
 	}
 	void Entity::setPosition(Math::CoordF pos) {
 		position = pos;

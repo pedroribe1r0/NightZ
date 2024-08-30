@@ -1,4 +1,5 @@
 #include "Enemy.h"
+#include "Projectile.h"
 
 namespace Entities {
 	namespace Characters {
@@ -26,11 +27,49 @@ namespace Entities {
 		Enemy::~Enemy() {
 		}
 		void Enemy::chasePlayer(Player* p) {
-			if (p->getPosition().x > position.x) {
-				move(false);
+			if (fabs(p->getPosition().x - position.x) < MAX_DISTANCE) {
+				if (p->getPosition().x > position.x) {
+					move(false);
+				}
+				else {
+					move(true);
+				}
 			}
-			else {
-				move(true);
+		}
+		void Enemy::collide(Entity* ent, Math::CoordF intersection, float dt) {
+			switch (ent->getID()) {
+			case ID::obstacle:
+				moveOnCollision(ent, intersection);
+				break;
+			case enemy:
+				if(id != boss)
+					moveOnCollision(ent, intersection);
+				break;
+			case boss:
+				moveOnCollision(ent, intersection);
+			case player: {
+				Player* p = dynamic_cast<Player*>(ent);
+				if (p && !isDying) {
+					p->takeDamage(meleeDamage * dt);
+				}
+				if(id != boss)
+					moveOnCollision(ent, intersection);
+				break;
+			}
+			case projectile: {
+				cout << "t1" << endl;
+				if ((hp - PLAYER_PROJECTILE_DAMAGE) <= 0) {
+					Projectile* p = dynamic_cast<Projectile*>(ent);
+					if (p->getUser()->getID() == player) {
+						cout << "dentro do if" << endl;
+						Player* pl = dynamic_cast<Player*>(p->getUser());
+						pl->operator++();
+					}
+				}
+				break;
+			}
+			default:
+				break;
 			}
 		}
 	}

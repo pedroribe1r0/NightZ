@@ -7,36 +7,13 @@ namespace Entities {
 			attackRange = BOSS_ATTACK_RANGE;
 			attackDamage = BOSS_ATTACK_DAMAGE;
 			cooldownTimer = BOSS_COOLDOWN;
-			attackTime = ATTACK_TIME;
+			attackTime = 0;
 			isAttacking = false;
 			canAttack = true;
 			setTextures();
 		}
 		Boss::~Boss() {
 
-		}
-		void Boss::collide(Entity* ent, Math::CoordF intersection, float dt) {
-			switch (ent->getID()) {
-			case ID::obstacle:
-				moveOnCollision(ent, intersection);
-				break;
-			case enemy:
-				//moveOnCollision(ent, intersection);
-				break;
-			case boss:
-				moveOnCollision(ent, intersection);
-				break;
-			case player: {
-				Player* p = dynamic_cast<Player*>(ent);
-				if (p && !isDying) {
-					p->takeDamage(meleeDamage * dt);
-				}
-				//moveOnCollision(ent, intersection);
-				break;
-			}
-			default:
-				break;
-			}
 		}
 		void Boss::update(float dt) {
 			stop();
@@ -60,13 +37,13 @@ namespace Entities {
 				cooldownTimer += dt;
 				if (pPlayer1 && pPlayer2) {
 					if (fabs(position.x - pPlayer1->getPosition().x) < fabs(position.x - pPlayer2->getPosition().x)) {
-						if (cooldownTimer >= BOSS_COOLDOWN && fabs(position.x - pPlayer1->getPosition().x) <= (BOSS_ATTACK_RANGE + size.x + pPlayer1->getSize().x)) {
+						if (cooldownTimer >= BOSS_COOLDOWN && fabs(position.x - pPlayer1->getPosition().x) <= (BOSS_ATTACK_RANGE + pPlayer1->getSize().x)) {
 							isAttacking = true;
 						}
 						chasePlayer(pPlayer1);
 					}
 					else {
-						if (cooldownTimer >= BOSS_COOLDOWN && fabs(position.x - pPlayer1->getPosition().x) <= (BOSS_ATTACK_RANGE + size.x + pPlayer2->getSize().x)) {
+						if (cooldownTimer >= BOSS_COOLDOWN && fabs(position.x - pPlayer1->getPosition().x) <= (BOSS_ATTACK_RANGE + pPlayer2->getSize().x)) {
 							isAttacking = true;
 						}
 						chasePlayer(pPlayer2);
@@ -148,7 +125,8 @@ namespace Entities {
 				else {
 					distance2 = position.x - pPlayer2->getPosition().x + size.x / 2 + pPlayer2->getSize().x / 2;
 				}
-				if (pPlayer2->getPosition().y + pPlayer2->getSize().y / 2 == position.y + size.y / 2) {
+				float dy = pPlayer2->getPosition().y + pPlayer2->getSize().y / 2 - (position.y + size.y / 2);
+				if (dy < 80 && dy > -80) {
 					if ((facingLeft && distance2 > 0) || (!facingLeft && distance2 < 0)) {
 						if (fabs(distance2) <= attackRange) {
 							paralizePlayer(pPlayer2);
@@ -156,7 +134,7 @@ namespace Entities {
 							pPlayer2->takeDamage(attackDamage);
 						}
 					}
-				}
+				}	
 			}
 		}
 		void Boss::paralizePlayer(Player* p) {

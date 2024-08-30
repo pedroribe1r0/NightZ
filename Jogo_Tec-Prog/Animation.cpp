@@ -1,8 +1,8 @@
 #include "Animation.h"
 
 namespace GraphicalElements {
-	const float Animation::SingleAnimation::switchTime = 0.15;
-	const float Animation::SingleAnimation::attackPlayerSwitchTime = 0.07;
+	const float Animation::SingleAnimation::switchTime = 0.15f;
+	const float Animation::SingleAnimation::attackPlayerSwitchTime = 0.07f;
 	Managers::GraphicManager* Animation::pGraphic = Managers::GraphicManager::getInstance();
 
 	Animation::Animation(sf::RectangleShape* body, Math::CoordF scale) :
@@ -31,21 +31,23 @@ namespace GraphicalElements {
 		animationMap.insert(std::pair<Animation_ID, SingleAnimation*>(id, tmp));
 
 		sf::IntRect rectSize = tmp->getSize();
-		body->setSize(sf::Vector2f(rectSize.width, rectSize.height));
-		body->setOrigin(sf::Vector2f(rectSize.width, rectSize.height) / 2.0f);
+		body->setSize(sf::Vector2f((float)rectSize.width, (float)rectSize.height));
+		body->setOrigin(sf::Vector2f((float) rectSize.width, (float)rectSize.height) / 2.0f);
 	}
 
 	void Animation::update(Animation_ID id, bool isFacingLeft, Math::CoordF position, float dt) {
 		if (currentID != id) {
 			currentID = id;
-			animationMap[currentID]->reset();
+			if(animationMap[currentID])
+				animationMap[currentID]->reset();
 		}
-		if(animationMap[currentID])
+		if (animationMap[currentID]) {
 			animationMap[currentID]->update(dt, isFacingLeft, id);
-
-		body->setPosition(sf::Vector2f(position.x, position.y));
-		body->setTextureRect(animationMap[currentID]->getSize());
-		body->setTexture(animationMap[currentID]->getTexture());
+			body->setPosition(sf::Vector2f(position.x, position.y));
+			body->setTextureRect(animationMap[currentID]->getSize());
+			body->setTexture(animationMap[currentID]->getTexture());
+		}
+			
 	}
 
 	void Animation::render() {

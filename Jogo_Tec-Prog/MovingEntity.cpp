@@ -8,9 +8,6 @@ namespace Entities {
 		sprite = nullptr;
 	}
 	MovingEntity::~MovingEntity() {
-		if (sprite) {
-			delete sprite;
-		}
 	}
 	void MovingEntity::setCanMove(bool cM) {
 		canMove = cM;

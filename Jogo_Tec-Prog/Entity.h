@@ -10,6 +10,7 @@ namespace Entities {
 		Math::CoordF position;
 		Math::CoordF size;
 		bool isActive;
+		GraphicalElements::Animation* sprite;
 	public:
 		Entity(Math::CoordF pos = Math::CoordF(0, 0), Math::CoordF size = Math::CoordF(0, 0), ID id = ID::empty);
 		virtual ~Entity();
@@ -22,6 +23,7 @@ namespace Entities {
 		virtual void collide(Entity* ent, Math::CoordF intersection, float dt) = 0;
 		bool getIsActive() const;
 		void setIsActive(bool ac);
+		virtual void setTextures() = 0;
 	};
 }
 

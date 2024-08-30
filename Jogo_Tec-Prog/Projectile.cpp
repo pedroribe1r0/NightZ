@@ -57,6 +57,9 @@ namespace Entities {
 		}
 		update(dt);
 	}
+	Characters::Character* Projectile::getUser() const {
+		return user;
+	}
 	void Projectile::update(float dt) {
 		if (isActive) {
 			fireTimer += dt;

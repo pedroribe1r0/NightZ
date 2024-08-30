@@ -4,9 +4,9 @@ namespace GraphicalElements {
 	namespace Parallax {
 		Managers::GraphicManager* Layer::pGraphic = Managers::GraphicManager::getInstance();
 		Layer::Layer(sf::Texture* texture, const float speed, LID id) :
-			texture(texture), dimension(0, 0, 0, 0), speed(speed), windowSize(sf::Vector2f(pGraphic->getWindowSize().x, pGraphic->getWindowSize().y)), id(id)
+			texture(texture), dimension(0.0f, 0.0f, 0.0f, 0.0f), speed(speed), windowSize(sf::Vector2f((float)pGraphic->getWindowSize().x, (float)pGraphic->getWindowSize().y)), id(id)
 		{
-			dimension.width = -fabs(texture->getSize().x);
+			dimension.width = (float)(-fabs(texture->getSize().x));
 			dimension.height = texture->getSize().y;
 			dimension.left = texture->getSize().x;
 			background.setSize(windowSize);
@@ -45,8 +45,8 @@ namespace GraphicalElements {
 			auxBackground.setPosition(sf::Vector2f(auxBackgroundPosition.x, y));
 			const float dx = ds.x * 0.5f;
 			if (dx != 0.0f) {
-				const float rightPos = currentCameraPos.x + windowSize.x / 2.0f;
-				const float leftPos = currentCameraPos.x - windowSize.x / 2.0f;
+				const float rightPos = currentCameraPos.x + windowSize.x / 2.0008f;
+				const float leftPos = currentCameraPos.x - windowSize.x / 2.0008f;
 				if (speed != 0.0f) {
 					background.move(ds.x * -speed, 0.0f);
 					auxBackground.move(ds.x * -speed, 0.0f);
