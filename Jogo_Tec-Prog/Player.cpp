@@ -99,7 +99,7 @@ namespace Entities {
 			}
 			position.x += speed.x * dt;
 			position.y += speed.y * dt;
-
+			size.x = PLAYER_SIZE_X;
 			if (isTeleporting) {
 				teleportingCounter += dt;
 				sprite->update(GraphicalElements::teleport, teleportFaceLeft, position, dt);
@@ -222,7 +222,12 @@ namespace Entities {
 				moveOnCollision(ent, intersection);
 				break;
 			case enemy:
-				moveOnCollision(ent, intersection);
+				if (isShooting) {
+					moveOnCollision(ent, intersection);
+				}
+				else
+					moveOnCollision(ent, intersection);
+				
 				break;
 			case boss:
 				moveOnCollision(ent, intersection);

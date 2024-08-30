@@ -114,7 +114,7 @@ namespace Levels {
 	void Level::spawnEnemies() {
 		
 		Entities::Entity* ent = movingEntities->pickRandon();
-		while (ent->getID() != enemy && ent->getID() != boss) {
+		while (ent->getID() != enemy && ent->getID() != boss && !ent->getIsActive()) {
 			ent = movingEntities->pickRandon();
 		}
 		
