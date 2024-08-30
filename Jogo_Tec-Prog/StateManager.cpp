@@ -1,4 +1,4 @@
-#include "StateManager.h"
+/*#include "StateManager.h"
 
 namespace Managers {
 	
@@ -107,4 +107,4 @@ namespace Managers {
 		}
 	}
 
-}
+}*/

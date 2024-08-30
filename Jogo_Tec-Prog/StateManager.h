@@ -1,4 +1,4 @@
-#pragma once
+/*#pragma once
 #include "State.h"
 #include<stack>
 
@@ -21,4 +21,4 @@ namespace Managers {
 		void removeState();
 		States::State* getCurrentState();
 	};
-}
+}*/

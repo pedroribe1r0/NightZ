@@ -1,4 +1,4 @@
-#include "PlayState.h"
+/*#include "PlayState.h"
 
 namespace States {
 
@@ -20,10 +20,15 @@ namespace States {
 			it++;
 		}
 		levelMap.clear();
+
+		*/
+
 		/*
 		pGraphic->setLimiteCamera 
 		pGraphic->setLimiteObjeto
 		*/
+
+/*
 	}
 
 	void PlayState::createLevel() {
@@ -61,4 +66,4 @@ namespace States {
 		}
 	}
 
-}
+}*/

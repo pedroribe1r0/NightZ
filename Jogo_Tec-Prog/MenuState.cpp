@@ -1,4 +1,4 @@
-#include "MenuState.h"
+/*#include "MenuState.h"
 
 namespace States {
 
@@ -94,4 +94,4 @@ namespace States {
 		menu->run();
 	}
 
-}
+}*/

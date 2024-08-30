@@ -4,13 +4,13 @@ namespace Menu {
 	Menu::Menu(const ID id, const sf::Vector2f buttonSize, const std::string name, const unsigned int fontSize) :
 		Ente(id), textButtonList(), it(), buttonSize(),
 		windowSize(sf::Vector2f(pGraphic->getWindowSize().x, pGraphic->getWindowSize().y)),
-		title(pGraphic->loadFont("yoster.ttf"), name, fontSize),
-		menuObserver(new Observers::MenuObserver(this)), mouseSelected(false) 
+		title(pGraphic->loadFont("yoster.ttf"), name, fontSize)//,
+		//menuObserver(new Observers::MenuObserver(this)), mouseSelected(false) 
 	{
-		if (menuObserver == nullptr) {
+		/*if (menuObserver == nullptr) {
 			std::cout << "ERROR::Menu::MainMenu:: not possible to create observer to main menu" << std::endl;
 			exit(1);
-		}
+		}*/
 	}
 
 	Menu::~Menu() {
