@@ -19,4 +19,3 @@ namespace Observers {
 		void setPlayer(Entities::Characters::Player* pPlayer = nullptr);
 	};
 }
-

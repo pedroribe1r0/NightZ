@@ -1,8 +1,9 @@
 #include "CoinFlip.h"
+#include "MainMenu.h"
 
 int main()
 {
-	Levels::CoinFlip c;
+	Menu::MainMenu menu;
 	return 0;
 }
 

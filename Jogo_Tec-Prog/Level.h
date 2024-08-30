@@ -3,6 +3,7 @@
 #include "Background.h"
 
 namespace Levels {
+
 	class Level : public Ente
 	{
 	#define SPAWN_TIME 10.0f

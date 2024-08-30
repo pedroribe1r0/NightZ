@@ -31,6 +31,7 @@ namespace Managers {
 		//void render(std::string textPath, Math::CoordF position, Math::CoordF size);
 		void render(sf::RectangleShape* body);
 		void render(sf::Sprite* sprite);
+		void render(sf::Text text);
 		void display();
 		void clear();
 		~GraphicManager();
@@ -43,6 +44,7 @@ namespace Managers {
 		Math::CoordU getWindowSize() const;
 		bool pollEvent(sf::Event& e);
 		sf::Vector2f getCenterView() const;
+		sf::Font loadFont(const char* fontPath);
 	};
 }
 

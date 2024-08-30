@@ -87,11 +87,50 @@
     <ClCompile Include="PortalLevel.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
+    <ClCompile Include="Background.cpp">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
+    <ClCompile Include="Layer.cpp">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
+    <ClCompile Include="MainMenu.cpp">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu.cpp">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
+    <ClCompile Include="Text.cpp">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
+    <ClCompile Include="TextButton.cpp">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuObserver.cpp">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
+    <ClCompile Include="State.cpp">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
+    <ClCompile Include="StateManager.cpp">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuState.cpp">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayState.cpp">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
+    <ClCompile Include="States.cpp">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
+    <ClCompile Include="StateMachine.cpp">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="luffy.png">
-      <Filter>Arquivos de Recurso</Filter>
-    </Image>
     <Image Include="zoro.png">
       <Filter>Arquivos de Recurso</Filter>
     </Image>
@@ -200,6 +239,60 @@
     <Image Include="Tree_2_512b.png">
       <Filter>Arquivos de Recurso</Filter>
     </Image>
+    <Image Include="branch.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="bush.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="layer0.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="layer1.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="layer10.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="layer11.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="layer2.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="layer3.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="layer4.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="layer5.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="layer6.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="layer7.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="layer8.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="layer9.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="tree.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="tree1.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="tree2.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="treetest.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Coord.h">
@@ -275,6 +368,48 @@
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
     <ClInclude Include="PortalLevel.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="Background.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="Layer.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="MainMenu.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="Menu.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="Text.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="TextButton.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuObserver.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="State.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="StateManager.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuState.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayState.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="States.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="StateMachine.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
   </ItemGroup>
