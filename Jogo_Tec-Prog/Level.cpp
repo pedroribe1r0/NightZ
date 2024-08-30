@@ -157,10 +157,10 @@ namespace Levels {
 		Entities::Obstacles::Simple* floor = new Entities::Obstacles::Simple(Math::CoordF(960, 1030), Math::CoordF(7120, 10));
 		staticEntities->setData(floor);
 		//------------------------------------ Arvores -----------------------------------//
-		Entities::Obstacles::Simple* t1 = new Entities::Obstacles::Simple(Math::CoordF(0, 1080), Math::CoordF(250, 1080), "tree2.png", Math::CoordF(1, 2));
-		Entities::Obstacles::Simple* t2 = new Entities::Obstacles::Simple(Math::CoordF(1920, 1080), Math::CoordF(250, 1080), "tree2.png", Math::CoordF(1, 2));
-		Entities::Obstacles::Simple* t3 = new Entities::Obstacles::Simple(Math::CoordF(4520, 1080), Math::CoordF(250, 1080), "tree2.png", Math::CoordF(1, 2));
-		Entities::Obstacles::Simple* t4 = new Entities::Obstacles::Simple(Math::CoordF(-2600, 1080), Math::CoordF(250, 1080), "tree2.png", Math::CoordF(1, 2));
+		Entities::Obstacles::Simple* t1 = new Entities::Obstacles::Simple(Math::CoordF(0, 540), Math::CoordF(250, 1080), "tree2.png", Math::CoordF(1, 1));
+		Entities::Obstacles::Simple* t2 = new Entities::Obstacles::Simple(Math::CoordF(1920, 540), Math::CoordF(250, 1080), "tree2.png", Math::CoordF(1, 1));
+		Entities::Obstacles::Simple* t3 = new Entities::Obstacles::Simple(Math::CoordF(4520, 540), Math::CoordF(250, 1080), "tree2.png", Math::CoordF(1, 1));
+		Entities::Obstacles::Simple* t4 = new Entities::Obstacles::Simple(Math::CoordF(-2600, 540), Math::CoordF(250, 1080), "tree2.png", Math::CoordF(1, 1));
 		staticEntities->setData(t1);
 		staticEntities->setData(t2);
 		staticEntities->setData(t3);

@@ -57,11 +57,9 @@ namespace Entities {
 				break;
 			}
 			case projectile: {
-				cout << "t1" << endl;
 				if ((hp - PLAYER_PROJECTILE_DAMAGE) <= 0) {
 					Projectile* p = dynamic_cast<Projectile*>(ent);
 					if (p->getUser()->getID() == player) {
-						cout << "dentro do if" << endl;
 						Player* pl = dynamic_cast<Player*>(p->getUser());
 						pl->operator++();
 					}
