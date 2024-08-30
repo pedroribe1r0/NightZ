@@ -1,4 +1,6 @@
 #include "InputManager.h"
+#include "StateMachine.h"
+#include "CoinFlip.h"
 
 namespace Managers{
 	InputManager* InputManager::pInput = nullptr;
@@ -20,13 +22,23 @@ namespace Managers{
 	void InputManager::handleKeyPressed(sf::Keyboard::Key key) {
 		std::list<Observers::Observer*>::iterator it;
 		for (it = observers.begin(); it != observers.end(); it++) {
-			(*it)->notifyKeyPressed(key);
+			if((*it)->getIsActive())
+				(*it)->notifyKeyPressed(key);
+				else {
+					observers.erase(it);
+				}
 		}
 	}
 	void InputManager::handleKeyReleased(sf::Keyboard::Key key) {
 		std::list<Observers::Observer*>::iterator it;
 		for (it = observers.begin(); it != observers.end(); it++) {
-			(*it)->notifyKeyReleased(key);
+			if ((*it) != nullptr) {
+				if((*it)->getIsActive())
+					(*it)->notifyKeyReleased(key);
+				else {
+					observers.erase(it);
+				}
+			}
 		}
 	}
 	void InputManager::addObserver(Observers::Observer* obs) {

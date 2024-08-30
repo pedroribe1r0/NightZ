@@ -28,6 +28,7 @@ namespace Entities {
 			float burningCounter;
 			float healingCounter;
 			float teleportingCounter;
+			float slow;
 			bool isShooting;
 			bool canShoot;
 			bool isRunning;
@@ -51,6 +52,7 @@ namespace Entities {
 			void heal(float heal);
 			void stopHeal();
 			void setIsTeleporting(bool left);
+			void setSlow(float slow);
 		};
 	}
 }

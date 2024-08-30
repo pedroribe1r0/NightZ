@@ -8,6 +8,7 @@
 #include <time.h>
 #include <math.h>
 #include <list>
+#include <stack>
 //O codigo usado de base foi feito por Matheus Augusto Burda(Burda Canal no Youtube)
 
 namespace Managers {

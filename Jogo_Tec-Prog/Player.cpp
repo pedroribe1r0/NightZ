@@ -19,10 +19,11 @@ namespace Entities {
 			healingCounter(0),
 			isTeleporting(false),
 			teleportingCounter(0),
-			teleportFaceLeft(false)
+			teleportFaceLeft(false),
+			slow(1)
 		{
 			for (int i = 0; i < N_BULLETS; i++) {
-				Projectile* p = new Projectile(this);
+				Projectile* p = new Projectile(this); 
 				bulletVector[i] = p;
 				list->setData(p);
 			}
@@ -66,7 +67,7 @@ namespace Entities {
 			}
 
 			if (pObserver)
-				delete pObserver;
+				pObserver->setIsActive(false);
 		}
 
 		bool Player::getIsPlayer1() const{
@@ -83,15 +84,15 @@ namespace Entities {
 			if (isMoving) {
 				if (isRunning) {
 					if (facingLeft)
-						speed.x = -PLAYER_SPEED * 1.5;
+						speed.x = -PLAYER_SPEED * 1.5 * slow;
 					else
-						speed.x = PLAYER_SPEED * 1.5;
+						speed.x = PLAYER_SPEED * 1.5 * slow;
 				}
 				else {
 					if (facingLeft)
-						speed.x = -PLAYER_SPEED;
+						speed.x = -PLAYER_SPEED * slow;
 					else
-						speed.x = PLAYER_SPEED;
+						speed.x = PLAYER_SPEED * slow;
 				}
 			}
 			else {
@@ -99,7 +100,8 @@ namespace Entities {
 			}
 			position.x += speed.x * dt;
 			position.y += speed.y * dt;
-			size.x = PLAYER_SIZE_X;
+			if (slow < 1)
+				slow = 1;
 			if (isTeleporting) {
 				teleportingCounter += dt;
 				sprite->update(GraphicalElements::teleport, teleportFaceLeft, position, dt);
@@ -183,6 +185,9 @@ namespace Entities {
 		void Player::setIsTeleporting(bool left) {
 			isTeleporting = true;
 			teleportFaceLeft = left;
+		}
+		void Player::setSlow(float slow) {
+			this->slow = slow;
 		}
 		void Player::stopHeal() {
 			isHealing = false;

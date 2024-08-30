@@ -12,6 +12,7 @@ enum ID {
 	level1,
 	level2,
 	background
+	//to do
 };
 
 class Ente

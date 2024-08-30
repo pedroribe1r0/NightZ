@@ -1,7 +1,7 @@
 #pragma once
 #include "List.h"
 #include "Boss.h"
-#include "Portal.h"
+#include "SlowPlatform.h"
 
 class EntitiesList
 {

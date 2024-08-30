@@ -6,9 +6,15 @@ namespace Observers {
 		pInput = Managers::InputManager::getInstance();
 
 		pInput->addObserver(this);
+		isActive = true;
 	}
 
 	Observer::~Observer() {
-		pInput->removeObserver(this);
+	}
+	void Observer::setIsActive(bool iA) {
+		isActive = iA;
+	}
+	bool Observer::getIsActive() {
+		return isActive;
 	}
 }

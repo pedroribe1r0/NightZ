@@ -44,6 +44,7 @@ namespace Observers {
 		if (key == run) {
 			pPlayer->run();
 		}
+		
 	}
 	void PlayerObserver::notifyKeyReleased(sf::Keyboard::Key key) {
 		if (key == right && !sf::Keyboard::isKeyPressed(left)) {

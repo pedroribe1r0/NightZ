@@ -161,6 +161,9 @@
     <ClCompile Include="Boss.cpp" />
     <ClCompile Include="CoinFlip.cpp" />
     <ClCompile Include="Simple.cpp" />
+    <ClCompile Include="SlowPlatform.cpp" />
+    <ClCompile Include="State.cpp" />
+    <ClCompile Include="StateMachine.cpp" />
     <ClCompile Include="Thrower.cpp" />
     <ClCompile Include="Zombie.cpp" />
   </ItemGroup>
@@ -200,6 +203,7 @@
     <Image Include="layer7.png" />
     <Image Include="layer8.png" />
     <Image Include="layer9.png" />
+    <Image Include="mud.png" />
     <Image Include="p2_dash.png" />
     <Image Include="p2_idle.png" />
     <Image Include="p2_run.png" />
@@ -259,6 +263,9 @@
     <ClInclude Include="Boss.h" />
     <ClInclude Include="CoinFlip.h" />
     <ClInclude Include="Simple.h" />
+    <ClInclude Include="SlowPlatform.h" />
+    <ClInclude Include="State.h" />
+    <ClInclude Include="StateMachine.h" />
     <ClInclude Include="Thrower.h" />
     <ClInclude Include="Zombie.h" />
   </ItemGroup>
