@@ -43,7 +43,7 @@ namespace Entities {
 						chasePlayer(pPlayer1);
 					}
 					else {
-						if (cooldownTimer >= BOSS_COOLDOWN && fabs(position.x - pPlayer1->getPosition().x) <= (BOSS_ATTACK_RANGE + pPlayer2->getSize().x)) {
+						if (cooldownTimer >= BOSS_COOLDOWN && fabs(position.x - pPlayer2->getPosition().x) <= (BOSS_ATTACK_RANGE + pPlayer2->getSize().x)) {
 							isAttacking = true;
 						}
 						chasePlayer(pPlayer2);

@@ -10,7 +10,7 @@ namespace Entities {
 			points(0),
 			paralizeTimer(0),
 			bulletVector(N_BULLETS),
-			shootCooldown(0.2f),
+			shootCooldown(0.2),
 			isShooting(false),
 			canShoot(true),
 			isRunning(false),
@@ -19,10 +19,11 @@ namespace Entities {
 			healingCounter(0),
 			isTeleporting(false),
 			teleportingCounter(0),
-			teleportFaceLeft(false)
+			teleportFaceLeft(false),
+			slow(1)
 		{
 			for (int i = 0; i < N_BULLETS; i++) {
-				Projectile* p = new Projectile(this);
+				Projectile* p = new Projectile(this); 
 				bulletVector[i] = p;
 				list->setData(p);
 			}
@@ -31,7 +32,7 @@ namespace Entities {
 		}
 
 		void Player::setTextures() {
-			sprite = new GraphicalElements::Animation(body, Math::CoordF(1.8f, 1.8f));
+			sprite = new GraphicalElements::Animation(body, Math::CoordF(1.8, 1.8));
 			if (isPlayer1) {
 				sprite->addNewAnimation(GraphicalElements::Animation_ID::walk, "Char_knife_walk.png", 16);
 				sprite->addNewAnimation(GraphicalElements::Animation_ID::idle, "Char_knife_idle.png", 8);
@@ -51,7 +52,7 @@ namespace Entities {
 				sprite->addNewAnimation(GraphicalElements::Animation_ID::run, "p2_run.png", 8);
 				
 			}
-			body->setOrigin(size.x / 2 + 16, size.y / 2.0f - 5.0f); //numeracao na base do chute, mas funciona
+			body->setOrigin(size.x / 2 + 16, size.y / 2 - 5); //numeracao na base do chute, mas funciona
 		}
 
 		Player::~Player() {
@@ -66,7 +67,7 @@ namespace Entities {
 			}
 
 			if (pObserver)
-				delete pObserver;
+				pObserver->setIsActive(false);
 		}
 
 		bool Player::getIsPlayer1() const{
@@ -83,15 +84,15 @@ namespace Entities {
 			if (isMoving) {
 				if (isRunning) {
 					if (facingLeft)
-						speed.x = -PLAYER_SPEED * 1.5;
+						speed.x = -PLAYER_SPEED * 1.5 * slow;
 					else
-						speed.x = PLAYER_SPEED * 1.5;
+						speed.x = PLAYER_SPEED * 1.5 * slow;
 				}
 				else {
 					if (facingLeft)
-						speed.x = -PLAYER_SPEED;
+						speed.x = -PLAYER_SPEED * slow;
 					else
-						speed.x = PLAYER_SPEED;
+						speed.x = PLAYER_SPEED * slow;
 				}
 			}
 			else {
@@ -99,7 +100,8 @@ namespace Entities {
 			}
 			position.x += speed.x * dt;
 			position.y += speed.y * dt;
-
+			if (slow < 1)
+				slow = 1;
 			if (isTeleporting) {
 				teleportingCounter += dt;
 				sprite->update(GraphicalElements::teleport, teleportFaceLeft, position, dt);
@@ -161,7 +163,7 @@ namespace Entities {
 			}
 
 			if (isPlayer1) {
-				pGraphic->centerView(Math::CoordF(position.x, pGraphic->getWindowSize().y / 2.0f));
+				pGraphic->centerView(Math::CoordF(position.x, pGraphic->getWindowSize().y / 2));
 				if (otherPlayer) {
 					if (fabs(otherPlayer->getPosition().x - position.x) > 960) {
 						otherPlayer->setPosition(Math::CoordF((position.x + 50.0f), position.y));
@@ -171,11 +173,11 @@ namespace Entities {
 			else {
 				if (otherPlayer) {
 					if (!otherPlayer->getIsActive()) {
-						pGraphic->centerView(Math::CoordF(position.x, pGraphic->getWindowSize().y / 2.0f));
+						pGraphic->centerView(Math::CoordF(position.x, pGraphic->getWindowSize().y / 2));
 					}
 				}
 				else {
-					pGraphic->centerView(Math::CoordF(position.x, pGraphic->getWindowSize().y / 2.0f));
+					pGraphic->centerView(Math::CoordF(position.x, pGraphic->getWindowSize().y / 2));
 				}
 			}
 			//cout << "hp: " << hp << endl;
@@ -183,6 +185,9 @@ namespace Entities {
 		void Player::setIsTeleporting(bool left) {
 			isTeleporting = true;
 			teleportFaceLeft = left;
+		}
+		void Player::setSlow(float slow) {
+			this->slow = slow;
 		}
 		void Player::stopHeal() {
 			isHealing = false;
@@ -202,7 +207,7 @@ namespace Entities {
 
 		void Player::operator++() {
 			points++;
-			cout << isPlayer1 << " teste " << points << endl;
+			cout << isPlayer1 << " " << points << endl;
 		}
 
 		void Player::setIsParalized() {
@@ -222,7 +227,12 @@ namespace Entities {
 				moveOnCollision(ent, intersection);
 				break;
 			case enemy:
-				moveOnCollision(ent, intersection);
+				if (isShooting) {
+					moveOnCollision(ent, intersection);
+				}
+				else
+					moveOnCollision(ent, intersection);
+				
 				break;
 			case boss:
 				moveOnCollision(ent, intersection);

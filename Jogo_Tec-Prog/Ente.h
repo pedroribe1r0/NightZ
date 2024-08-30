@@ -11,8 +11,8 @@ enum ID {
 	projectile,
 	level1,
 	level2,
-	background,
-	main_menu
+	background
+	//to do
 };
 
 class Ente

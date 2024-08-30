@@ -1,4 +1,4 @@
-#include "Game.h"
+#include "Ente.h"
 
 namespace GraphicalElements {
 	enum LID {

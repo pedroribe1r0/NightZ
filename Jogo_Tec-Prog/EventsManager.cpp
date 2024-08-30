@@ -28,7 +28,7 @@ namespace Managers {
 				pGraphic->closeWindow();
 			if (e.type == sf::Event::KeyPressed)
 				pInput->handleKeyPressed(e.key.code);
-			if(e.type == sf::Event::KeyReleased)
+			if (e.type == sf::Event::KeyReleased)
 				pInput->handleKeyReleased(e.key.code);
 		}
 	}

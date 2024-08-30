@@ -1,13 +1,12 @@
 #pragma once
-#include "EventsManager.h"
+#include "PortalLevel.h"
 class Game
 {
 private:
 	Managers::EventsManager* pEvent;
-	Managers::GraphicManager* pGraphic;
 	Managers::CollisionManager* pColision;
-	EntitiesList staticEntities;
-	EntitiesList movingEntities;
+	Managers::GraphicManager* pGraphic;
+	States::StateMachine* pMachine;
 public:
 	Game();
 	~Game();
