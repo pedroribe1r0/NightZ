@@ -11,7 +11,7 @@ namespace Entities {
 
 		}
 		void Bonfire::setTextures() {
-			sprite = new GraphicalElements::Animation(body, Math::CoordF(0.15, 0.15));
+			sprite = new GraphicalElements::Animation(body, Math::CoordF(0.15f, 0.15f));
 			sprite->addNewAnimation(GraphicalElements::Animation_ID::idle, "bonfire.png", 12);
 		}
 		void Bonfire::update(float dt) {

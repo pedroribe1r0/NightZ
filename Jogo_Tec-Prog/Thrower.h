@@ -22,7 +22,6 @@ namespace Entities {
 			~Thrower();
 			void damage();
 			void update(float dt);
-			void collide(Entity* ent, Math::CoordF intersection, float dt);
 			void takeDistance(Player* p);
 			void setTextures();
 		};

@@ -16,7 +16,7 @@ namespace Entities {
 			isAttacking = true;
 		}
 		void Thrower::setTextures() {
-			sprite = new GraphicalElements::Animation(body, Math::CoordF(2.8, 2.8));
+			sprite = new GraphicalElements::Animation(body, Math::CoordF(2.8f, 2.8f));
 			sprite->addNewAnimation(GraphicalElements::Animation_ID::walk, "SpittingZombie - Walk.png", 10);
 			sprite->addNewAnimation(GraphicalElements::Animation_ID::dmg, "SpittingZombie - Hit.png", 5);
 			sprite->addNewAnimation(GraphicalElements::Animation_ID::attack, "SpittingZombie - Attack.png", 19);
@@ -103,28 +103,6 @@ namespace Entities {
 			}
 			position.x += speed.x * dt;
 			position.y += speed.y * dt;
-		}
-		void Thrower::collide(Entity* ent, Math::CoordF intersection, float dt) {
-			switch (ent->getID()) {
-			case ID::obstacle:
-				moveOnCollision(ent, intersection);
-				break;
-			case enemy:
-				moveOnCollision(ent, intersection);
-				break;
-			case boss:
-				moveOnCollision(ent, intersection);
-			case player: {
-				Player* p = dynamic_cast<Player*>(ent);
-				if (p && !isDying) {
-					p->takeDamage(meleeDamage * dt);
-				}
-				moveOnCollision(ent, intersection);
-				break;
-			}
-			default:
-				break;
-			}
 		}
 	}
 }

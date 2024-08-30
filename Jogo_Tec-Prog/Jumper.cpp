@@ -28,14 +28,14 @@ namespace Entities {
 			if (fabs(position.y + size.y/2 - ent->getPosition().y) >= ent->getSize().y ) {
 				ent->setCanJump(true);
 				if (fabs(ent->getSpeedY()) < 700)
-					ent->jump(-ent->getSpeedY() / JUMP + 0.5);
+					ent->jump(-ent->getSpeedY() / JUMP + 0.5f);
 				else
 					ent->jump(-ent->getSpeedY() / JUMP);
 				isColiding = true;
 			}
 		}
 		void Jumper::setTextures() {
-			sprite = new GraphicalElements::Animation(body, Math::CoordF(0.1, 0.075));
+			sprite = new GraphicalElements::Animation(body, Math::CoordF(0.1f, 0.075f));
 			sprite->addNewAnimation(GraphicalElements::Animation_ID::jump, "tirestack.png", 3);
 			sprite->update(GraphicalElements::jump, true, position, 0);
 		}
