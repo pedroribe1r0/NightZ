@@ -30,7 +30,7 @@ namespace Levels {
 		background.addLayer("layer7.png", 0.00006f, GraphicalElements::LID::empty);
 		background.addLayer("layer6.png", 0.0007f, GraphicalElements::LID::empty);
 		background.addLayer("layer5.png", 0.0008f, GraphicalElements::LID::empty);
-		background.addLayer("layer4.png", 0.0009, GraphicalElements::LID::empty);
+		background.addLayer("layer4.png", 0.0009f, GraphicalElements::LID::empty);
 		background.addLayer("layer3.png", 0.005f, GraphicalElements::LID::empty);
 		background.addLayer("layer2.png", 0.06f, GraphicalElements::LID::empty);
 		background.addLayer("layer1.png", 0.08f, GraphicalElements::LID::empty);

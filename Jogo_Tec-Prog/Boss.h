@@ -24,7 +24,6 @@ namespace Entities {
 		public:
 			Boss(Math::CoordF pos = Math::CoordF(0, 0));
 			~Boss();
-			void collide(Entity* ent, Math::CoordF intersection, float dt);
 			void update(float dt);
 			void damage();
 			void paralizePlayer(Player* p);

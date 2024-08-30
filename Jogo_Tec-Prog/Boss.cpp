@@ -15,29 +15,6 @@ namespace Entities {
 		Boss::~Boss() {
 
 		}
-		void Boss::collide(Entity* ent, Math::CoordF intersection, float dt) {
-			switch (ent->getID()) {
-			case ID::obstacle:
-				moveOnCollision(ent, intersection);
-				break;
-			case enemy:
-				//moveOnCollision(ent, intersection);
-				break;
-			case boss:
-				moveOnCollision(ent, intersection);
-				break;
-			case player: {
-				Player* p = dynamic_cast<Player*>(ent);
-				if (p && !isDying) {
-					p->takeDamage(meleeDamage * dt);
-				}
-				//moveOnCollision(ent, intersection);
-				break;
-			}
-			default:
-				break;
-			}
-		}
 		void Boss::update(float dt) {
 			stop();
 			srand(time(NULL));

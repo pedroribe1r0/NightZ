@@ -4,9 +4,9 @@ namespace GraphicalElements {
 	namespace Parallax {
 		Managers::GraphicManager* Layer::pGraphic = Managers::GraphicManager::getInstance();
 		Layer::Layer(sf::Texture* texture, const float speed, LID id) :
-			texture(texture), dimension(0, 0, 0, 0), speed(speed), windowSize(sf::Vector2f(pGraphic->getWindowSize().x, pGraphic->getWindowSize().y)), id(id)
+			texture(texture), dimension(0.0f, 0.0f, 0.0f, 0.0f), speed(speed), windowSize(sf::Vector2f((float)pGraphic->getWindowSize().x, (float)pGraphic->getWindowSize().y)), id(id)
 		{
-			dimension.width = -fabs(texture->getSize().x);
+			dimension.width = (float)(-fabs(texture->getSize().x));
 			dimension.height = texture->getSize().y;
 			dimension.left = texture->getSize().x;
 			background.setSize(windowSize);

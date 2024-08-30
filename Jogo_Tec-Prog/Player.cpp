@@ -10,7 +10,7 @@ namespace Entities {
 			points(0),
 			paralizeTimer(0),
 			bulletVector(N_BULLETS),
-			shootCooldown(0.2),
+			shootCooldown(0.2f),
 			isShooting(false),
 			canShoot(true),
 			isRunning(false),
@@ -31,7 +31,7 @@ namespace Entities {
 		}
 
 		void Player::setTextures() {
-			sprite = new GraphicalElements::Animation(body, Math::CoordF(1.8, 1.8));
+			sprite = new GraphicalElements::Animation(body, Math::CoordF(1.8f, 1.8f));
 			if (isPlayer1) {
 				sprite->addNewAnimation(GraphicalElements::Animation_ID::walk, "Char_knife_walk.png", 16);
 				sprite->addNewAnimation(GraphicalElements::Animation_ID::idle, "Char_knife_idle.png", 8);
@@ -51,7 +51,7 @@ namespace Entities {
 				sprite->addNewAnimation(GraphicalElements::Animation_ID::run, "p2_run.png", 8);
 				
 			}
-			body->setOrigin(size.x / 2 + 16, size.y / 2 - 5); //numeracao na base do chute, mas funciona
+			body->setOrigin(size.x / 2 + 16, size.y / 2.0f - 5.0f); //numeracao na base do chute, mas funciona
 		}
 
 		Player::~Player() {
@@ -161,7 +161,7 @@ namespace Entities {
 			}
 
 			if (isPlayer1) {
-				pGraphic->centerView(Math::CoordF(position.x, pGraphic->getWindowSize().y / 2));
+				pGraphic->centerView(Math::CoordF(position.x, pGraphic->getWindowSize().y / 2.0f));
 				if (otherPlayer) {
 					if (fabs(otherPlayer->getPosition().x - position.x) > 960) {
 						otherPlayer->setPosition(Math::CoordF((position.x + 50.0f), position.y));
@@ -171,11 +171,11 @@ namespace Entities {
 			else {
 				if (otherPlayer) {
 					if (!otherPlayer->getIsActive()) {
-						pGraphic->centerView(Math::CoordF(position.x, pGraphic->getWindowSize().y / 2));
+						pGraphic->centerView(Math::CoordF(position.x, pGraphic->getWindowSize().y / 2.0f));
 					}
 				}
 				else {
-					pGraphic->centerView(Math::CoordF(position.x, pGraphic->getWindowSize().y / 2));
+					pGraphic->centerView(Math::CoordF(position.x, pGraphic->getWindowSize().y / 2.0f));
 				}
 			}
 			//cout << "hp: " << hp << endl;
@@ -202,6 +202,7 @@ namespace Entities {
 
 		void Player::operator++() {
 			points++;
+			cout << isPlayer1 << " teste " << points << endl;
 		}
 
 		void Player::setIsParalized() {

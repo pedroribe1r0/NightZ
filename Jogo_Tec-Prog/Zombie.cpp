@@ -15,7 +15,7 @@ namespace Entities {
 
 		}
 		void Zombie::setTextures() {
-			sprite = new GraphicalElements::Animation(body, Math::CoordF(2.8, 2.8));
+			sprite = new GraphicalElements::Animation(body, Math::CoordF(2.8f, 2.8f));
 			sprite->addNewAnimation(GraphicalElements::Animation_ID::walk, "Zombie _Walk.png", 9);
 			sprite->addNewAnimation(GraphicalElements::Animation_ID::dmg, "Zombie _Hit.png", 4);
 			sprite->addNewAnimation(GraphicalElements::Animation_ID::attack, "Zombie_Attack.png", 17);
@@ -75,28 +75,6 @@ namespace Entities {
 			}
 			else
 				sprite->update(GraphicalElements::Animation_ID::idle, facingLeft, position, dt);
-		}
-		void Zombie::collide(Entity* ent, Math::CoordF intersection, float dt) {
-			switch (ent->getID()) {
-			case ID::obstacle:
-				moveOnCollision(ent, intersection);
-				break;
-			case enemy:
-				moveOnCollision(ent, intersection);
-				break;
-			case boss:
-				moveOnCollision(ent, intersection);
-			case player: {
-				Player* p = dynamic_cast<Player*>(ent);
-				if (p && !isDying) {
-					p->takeDamage(meleeDamage * dt);
-				}
-				moveOnCollision(ent, intersection);
-				break;
-			}
-			default:
-				break;
-			}
 		}
 	}
 }

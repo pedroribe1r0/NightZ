@@ -16,7 +16,7 @@ namespace Entities {
 			static void setPlayer2(Player* p2 = nullptr);
 			static Player* getPlayer1();
 			static Player* getPlayer2();
-			virtual void collide(Entity* ent, Math::CoordF intersection, float dt) = 0;
+			void collide(Entity* ent, Math::CoordF intersection, float dt);
 			virtual void update(float dt) = 0;
 			virtual void damage() = 0;
 			void chasePlayer(Player* p);
