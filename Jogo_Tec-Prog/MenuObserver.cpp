@@ -9,7 +9,7 @@ namespace Observers {
 			down = sf::Keyboard::Down;
 			right = sf::Keyboard::Right;
 			left = sf::Keyboard::Left;
-			goBack = sf::Keyboard::Escape;
+			esc = sf::Keyboard::Escape;
 		};
 
 		MenuObserver::~MenuObserver() {
@@ -67,8 +67,20 @@ namespace Observers {
 					else if (key == down) {
 						menu->selectBelow();
 					}
-					else if (key == goBack) {
-						pMachine->popState();
+					else if (key == esc) {
+						if (pMachine->getCurrentState()->getID() == main_menu ||
+							pMachine->getCurrentState()->getID() == pause_menu) {
+							pMachine->popState();
+						}
+
+						else /*if (pMachine->getCurrentState()->getID() == round_singleplayer_button ||
+								pMachine->getCurrentState()->getID() == round_multiplayer_button ||
+								pMachine->getCurrentState()->getID() == time_singleplayer_button || 
+								pMachine->getCurrentState()->getID() == time_multiplayer_button ) */
+						{
+							Menu::PauseMenu* p = new Menu::PauseMenu();
+
+						}
 					}
 				}
 			}

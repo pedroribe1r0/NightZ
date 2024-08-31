@@ -14,7 +14,7 @@ namespace Menu {
 		NewGameMenu();
 		NewGameMenu(const ID id, std::string name, const unsigned int fontSize = 180);
 		virtual ~NewGameMenu();
-		virtual void createButtons();
+		void createButtons();
 		void createBackground();
 		void execute(float dt);
 		void render();

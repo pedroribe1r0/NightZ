@@ -38,10 +38,11 @@ namespace Menu {
 	NewGameMenu::~NewGameMenu() {}
 
 	void NewGameMenu::createButtons() {
-		const float buttonPosX = windowSize.x / 2.0f - buttonSize.x / 2.0f;
-		std::cout << buttonPosX << std::endl;
-		addButton("Round Singleplayer", sf::Vector2f(1650, 800), ID::round_singleplayer_button, sf::Color{ 62, 127, 93 });
-		addButton("Round Multiplayer", sf::Vector2f(1650, 950), ID::round_multiplayer_button, sf::Color{ 62, 127, 93 });
+		//const float buttonPosX = windowSize.x / 2.0f - buttonSize.x / 2.0f;
+		addButton("Round Level - Singleplayer", sf::Vector2f(1650, 800), ID::round_singleplayer_button, sf::Color{ 62, 127, 93 });
+		addButton("Round Level - Multiplayer", sf::Vector2f(1650, 950), ID::round_multiplayer_button, sf::Color{ 62, 127, 93 });
+		addButton("Time Level - SinglePlayer", sf::Vector2f(1650, 1100), ID::time_singleplayer_button, sf::Color{ 62, 127, 93 });
+		addButton("Time Level - Multiplayer", sf::Vector2f(1650, 1250), ID::time_multiplayer_button, sf::Color{ 62, 127, 93 });
 		initializeIterator();
 	}
 

@@ -23,6 +23,7 @@ enum ID {
 	leaderboards_menu,
 	exit_button,
 	pause_menu,
+	resumegame_button
 	
 	//to do
 };

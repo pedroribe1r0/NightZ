@@ -1,5 +1,5 @@
 #pragma once
-#include "NewGameMenu.h"
+#include "PauseMenu.h"
 
 namespace State {
 	class StateMachine;
@@ -14,7 +14,7 @@ namespace Observers {
 		sf::Keyboard::Key down;
 		sf::Keyboard::Key right;
 		sf::Keyboard::Key left;
-		sf::Keyboard::Key goBack;
+		sf::Keyboard::Key esc;
 
 	public:
 		MenuObserver(Menu::Menu* menu);

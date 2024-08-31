@@ -38,8 +38,7 @@ namespace Menu {
 	MainMenu::~MainMenu() {}
 
 	void MainMenu::createButtons() {
-		const float buttonPosX = windowSize.x / 2.0f - buttonSize.x / 2.0f;
-		std::cout << buttonPosX << std::endl;
+		//const float buttonPosX = windowSize.x / 2.0f - buttonSize.x / 2.0f;
 		addButton("New Game", sf::Vector2f(1650, 900), ID::newgame_menu, sf::Color{ 62, 127, 93 });
 		addButton("Load Game", sf::Vector2f(1650, 1050), ID::loadgame_button, sf::Color{ 62, 127, 93 });
 		addButton("Leaderboards", sf::Vector2f(1650, 1200), ID::leaderboards_menu, sf::Color{ 62, 127, 93 });

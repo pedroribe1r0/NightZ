@@ -1,5 +1,5 @@
 #pragma once
-#include "NewGameMenu.h"
+#include "PauseMenu.h"
 class Game
 {
 private:
