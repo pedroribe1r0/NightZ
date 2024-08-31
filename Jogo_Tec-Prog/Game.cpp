@@ -6,7 +6,7 @@ Game::Game() {
 	pGraphic = Managers::GraphicManager::getInstance();
 	pEvent = Managers::EventsManager::getInstance();
 	//adicionar o primeiro estado(main menu)
-	pMachine->pushState(new States::Levels::RoundLevel());
+	pMachine->pushState(new States::Levels::TimeLevel());
 	run();
 }
 Game::~Game() {

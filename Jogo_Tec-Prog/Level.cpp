@@ -46,7 +46,7 @@ namespace States {
 			spots[4] = Math::CoordF(-1140, 900);
 			spots[5] = Math::CoordF(3800, 540);
 			spots[6] = Math::CoordF(2240, 900);
-			spots[7] = Math::CoordF(4000, 540);
+			spots[7] = Math::CoordF(3800, 540);
 			spots[8] = Math::CoordF(2900, 900);
 			spots[9] = Math::CoordF(2400, 900);
 		}
@@ -70,7 +70,7 @@ namespace States {
 		}
 		void Level::createZombies() {
 			int cont = 0;
-			for (int i = 0; i < 30; i++) {
+			for (int i = 0; i < 50; i++) {
 				if ((rand() % 10)) {
 					Entities::Characters::Zombie* t = new Entities::Characters::Zombie(Math::CoordF(-99999, -9999));
 					t->setIsActive(false);

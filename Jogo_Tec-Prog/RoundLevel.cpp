@@ -3,7 +3,6 @@
 namespace States {
 	namespace Levels {
 		RoundLevel::RoundLevel() {
-			bosses = new EntitiesList();
 			createLevel();
 			createPlayers(false);
 			createBonfires();
@@ -17,7 +16,7 @@ namespace States {
 			nonEnemies = movingEntities->getSize() - enemiesNumber;
 		}
 		RoundLevel::~RoundLevel() {
-			delete bosses;
+			
 		}
 
 		void RoundLevel::createBonfires() {
@@ -33,27 +32,14 @@ namespace States {
 			}
 		}
 		void RoundLevel::spawnEnemies() {
-			List<Entities::Entity>::iterator it;
 			Entities::Entity* ent = nullptr;
-			if (currentRound > 2 && rand() % 2) {
-				it = bosses->begin();
-				ent = *it;
-				while (it != zombies->end() && (*it)->getIsActive()) {
-					++it;
-				}
-			}
-			else  {
-				it = zombies->begin();
-				ent = *it;
-				while (it != zombies->end() && (*it)->getIsActive()) {
-					++it;
-				}
-			}
-			if (*it && !(*it)->getIsActive()) {
-				ent = *it;
-			}
+			do {
+				ent = movingEntities->pickRandon();
+				if (ent->getID() == boss && currentRound >= 3 && ent->getIsActive())
+					break;
+			} while (ent->getID() != enemy && !(ent->getIsActive()));
 			if (ent) {
-				if (ent->getID() == enemy || ent->getID() == boss) {
+				if (ent->getID() == enemy || (ent->getID() == boss && currentRound >= 3)) {
 					Entities::Characters::Enemy* e = dynamic_cast<Entities::Characters::Enemy*>(ent);
 					Entities::Characters::Player* p1 = e->getPlayer1();
 					Entities::Characters::Player* p2 = e->getPlayer2();
@@ -62,7 +48,7 @@ namespace States {
 						if (p1->getPosition().x < -80) {
 							randSpot = rand() % 5;
 						}
-						else if (p1->getPosition().x > 1360) {
+						else if (p1->getPosition().x > 1920) {
 							randSpot = rand() % 5 + 5;
 						}
 						else {
@@ -70,8 +56,8 @@ namespace States {
 						}
 					}
 					if (randSpot >= 0) {
-						e->setPosition(spots[randSpot]);
 						e->setIsActive(true);
+						e->setPosition(spots[randSpot]);
 						currentEnemies++;
 					}
 				}
@@ -90,30 +76,30 @@ namespace States {
 			currentTime += dt;
 			
 			deadEnemies = enemiesNumber - movingEntities->getSize() + nonEnemies;
-			if (currentTime >= spawnTime) {
-				cout << "Round:  " << currentRound << endl << "  Enemies:  " << currentEnemies - deadEnemies << endl << "  Max Round:  " << currentRound * enemiesNumber / 15 << endl;
-			}
-			if (currentEnemies <= currentRound * enemiesNumber / 15 && currentTime >= spawnTime) {
+			if (currentEnemies <= currentRound * ((enemiesNumber - 35)/ 15) && currentTime >= spawnTime) {
 				spawnEnemies();
 				currentTime = 0;
-				
+				cout << "Round:  " << currentRound << endl << "  Enemies:  " << currentEnemies - deadEnemies << endl << "  Max Round:  " << currentRound * ((enemiesNumber-40) / 15) << endl;
 			}
-			if (deadEnemies >= currentRound * enemiesNumber / 15) {
+			if (deadEnemies >= currentRound * (enemiesNumber - 35)/ 15) {
 				enemiesNumber = enemiesNumber - deadEnemies;
 				currentRound++;
 				deadEnemies = 0;
 				currentEnemies = 0;
 				spawnTime--;
 			}
+			if (currentRound > 5) {
+				//empilhar o menu final
+				cout << "acabou" << endl;
+			}
 		}
 		void RoundLevel::createBosses() {
 			int cont = 0;
-			for (int i = 0; i < 30; i++) {
+			for (int i = 0; i < 50; i++) {
 				if ((rand() % 10)) {
 					Entities::Characters::Boss* t = new Entities::Characters::Boss(Math::CoordF(-99999, -9999));
 					t->setIsActive(false);
 					movingEntities->setData(t);
-					bosses->setData(t);
 					cont++;
 					enemiesNumber++;
 				}

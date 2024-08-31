@@ -4,7 +4,7 @@ namespace States {
 	class StateMachine;
 	class State : public Ente
 	{
-	private:
+	protected:
 		static StateMachine* pMachine;
 		bool isActive;
 	public:

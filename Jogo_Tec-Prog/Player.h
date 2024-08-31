@@ -36,6 +36,7 @@ namespace Entities {
 			bool isTeleporting;
 			bool teleportFaceLeft;
 			std::vector<Projectile*> bulletVector;
+			sf::RectangleShape hud[11];
 		public:
 			Player(Math::CoordF pos = Math::CoordF(0, 0), bool isPlayer1 = true, EntitiesList* list = nullptr, Player* other = nullptr);
 			~Player();

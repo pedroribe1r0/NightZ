@@ -6,7 +6,7 @@ namespace States {
 	namespace Levels {
 		class Level : public State
 		{
-#define SPAWN_TIME 10.0f
+#define SPAWN_TIME 5.0f
 		protected:
 			static Managers::EventsManager* pEvent;
 			Managers::CollisionManager* pColision;

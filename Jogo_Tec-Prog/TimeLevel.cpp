@@ -3,13 +3,14 @@
 namespace States {
 	namespace Levels {
 		TimeLevel::TimeLevel() {
-			throwers = new EntitiesList();
 			createLevel();
 			createPlayers(false);
 			createMud();
+			createThrowers();
+			finalTime = 120;
+			currentTime = 0;
 		}
 		TimeLevel::~TimeLevel() {
-			delete throwers;
 		}
 		void TimeLevel::createMud() {
 			if (rand() % 2) {
@@ -22,7 +23,7 @@ namespace States {
 				Entities::Obstacles::SlowPlatform* s3 = new Entities::Obstacles::SlowPlatform(Math::CoordF(-2192, 1010));
 				staticEntities->setData(s3);
 			}
-				
+
 		}
 		void TimeLevel::render() {
 			background.run();
@@ -33,15 +34,24 @@ namespace States {
 		void TimeLevel::execute(float dt) {
 			movingEntities->execute(dt);
 			staticEntities->execute(dt);
+			currentTime += dt;
+			cout << currentTime << endl;
+			spawnTime += dt;
+			if (spawnTime >= SPAWN_TIME) {
+				spawnTime = 0;
+				spawnEnemies();
+			}
+			if (currentTime >= finalTime) {
+				//empilhar estado
+			}
 		}
 		void TimeLevel::createThrowers() {
 			int cont = 0;
-			for (int i = 0; i < 30; i++) {
+			for (int i = 0; i < 50; i++) {
 				if ((rand() % 10)) {
 					Entities::Characters::Thrower* t = new Entities::Characters::Thrower(Math::CoordF(-99999, -9999), movingEntities);
 					t->setIsActive(false);
 					movingEntities->setData(t);
-					throwers->setData(t);
 					cont++;
 					enemiesNumber++;
 				}
@@ -50,24 +60,9 @@ namespace States {
 			}
 		}
 		void TimeLevel::spawnEnemies() {
-			List<Entities::Entity>::iterator it;
-			Entities::Entity* ent = nullptr;
-			if (rand() % 2) {
-				it = zombies->begin();
-				Entities::Entity* ent = *it;
-				while (it != zombies->end() && (*it)->getIsActive()) {
-					++it;
-				}
-			}
-			else {
-				it = throwers->begin();
-				Entities::Entity* ent = *it;
-				while (it != zombies->end() && (*it)->getIsActive()) {
-					++it;
-				}
-			}
-			if (*it && !(*it)->getIsActive()) {
-				ent = *it;
+			Entities::Entity* ent = movingEntities->pickRandon();
+			while (ent->getID() != enemy && !(ent->getIsActive())) {
+				ent = movingEntities->pickRandon();
 			}
 			if (ent) {
 				if (ent->getID() == enemy) {
@@ -87,8 +82,8 @@ namespace States {
 						}
 					}
 					if (randSpot >= 0) {
-						e->setPosition(spots[randSpot]);
 						e->setIsActive(true);
+						e->setPosition(spots[randSpot]);
 					}
 				}
 			}

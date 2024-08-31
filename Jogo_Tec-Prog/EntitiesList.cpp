@@ -47,8 +47,6 @@ void EntitiesList::execute(float dt) {
 }
 Entities::Entity* EntitiesList::pickRandon() {
 	int index = rand() % getSize();
-	std::cout << index << " index" << endl;
-	std::cout << entitiesList.getSize() << " size" << endl;
 	List<Entities::Entity>::iterator it = entitiesList.begin();
 	for (int i = 0; i < index && it != entitiesList.end(); i++) {
 		++it;
