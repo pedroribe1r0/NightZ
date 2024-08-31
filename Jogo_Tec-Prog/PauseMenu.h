@@ -11,7 +11,7 @@ namespace Menu {
 
 	public:
 		PauseMenu(States::Levels::Level* level = nullptr);
-		PauseMenu(const ID id, std::string name, States::Levels::Level* level = nullptr);
+		//PauseMenu(const ID id, std::string name, States::Levels::Level* level = nullptr);
 		~PauseMenu();
 		void createButtons();
 		void setLevel(States::Levels::Level* level);

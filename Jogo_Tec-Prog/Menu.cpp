@@ -82,6 +82,7 @@ namespace Menu {
 	void Menu::setIsActive(bool iA) {
 		menuObserver->setIsMoreActive(iA);
 		pGraphic->centerView(Math::CoordF(windowSize.x / 2.0f, windowSize.y / 2.0f));
+		
 	}
 	bool Menu::getIsActive() {
 		return menuObserver->getIsMoreActive();

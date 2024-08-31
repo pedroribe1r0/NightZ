@@ -66,24 +66,18 @@ namespace Observers {
 					else if (key == down) {
 						menu->selectBelow();
 					}
+					else if (key == sf::Keyboard::Key::P) {
+						Menu::PauseMenu* p = new Menu::PauseMenu();
+					}
 					else if (key == esc) {
-						if (pMachine->getCurrentState()->getID() == main_menu ||
-							pMachine->getCurrentState()->getID() == pause_menu) {
+						if (pMachine->getCurrentState()->getID() == pause_menu ||
+							pMachine->getCurrentState()->getID() == newgame_menu){
 							pMachine->popState();
-						}
-
-						else /*if (pMachine->getCurrentState()->getID() == round_singleplayer_button ||
-								pMachine->getCurrentState()->getID() == round_multiplayer_button ||
-								pMachine->getCurrentState()->getID() == time_singleplayer_button || 
-								pMachine->getCurrentState()->getID() == time_multiplayer_button ) */
-						{
-							Menu::PauseMenu* p = new Menu::PauseMenu();
-
 						}
 					}
 				}
 			}
-	}
+	
 			
 
 		void MenuObserver::notifyKeyReleased(const sf::Keyboard::Key key) {

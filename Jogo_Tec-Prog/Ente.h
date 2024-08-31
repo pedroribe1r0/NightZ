@@ -9,8 +9,7 @@ enum ID {
 	boss,
 	obstacle,
 	projectile,
-	level1,
-	level2,
+	level,
 	background,
 	main_menu,
 	newgame_menu, //no main menu, quando selecionado vai para o menu onde escolhe o número de players

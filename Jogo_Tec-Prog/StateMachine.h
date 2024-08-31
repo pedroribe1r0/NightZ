@@ -20,6 +20,7 @@ namespace States {
 		void manageCollision(float dt);
 		void popState(int qnt);
 		State* getCurrentState() const;
+		State* getPreviousState();
 	};
 }
 

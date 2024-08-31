@@ -10,7 +10,7 @@ namespace Menu {
 		level(level), panelBackground(sf::Vector2f(windowSize.x / 2.0f, windowSize.y))
 	{
 
-		panelBackground.setFillColor(sf::Color{ 0, 0, 0, 180 });
+		panelBackground.setFillColor(sf::Color{ 0, 0, 0, 100 });
 		panelBackground.setPosition(windowSize.x - panelBackground.getSize().x / 2.0f, windowSize.y - panelBackground.getSize().y / 2.0f);
 
 		title.setPos(sf::Vector2f(windowSize.x / 2.0f - title.getSize().x / 2.0f, 220.0f));
@@ -19,7 +19,6 @@ namespace Menu {
 		title.setBorderSize(8);
 
 		createButtons();
-
 	}
 
 	/*PauseMenu::PauseMenu(const ID id, std::string name, States::Levels::Level* level = ) :
@@ -49,8 +48,16 @@ namespace Menu {
 	}
 
 	void PauseMenu::render() {
-		level->render();
+		if (level) {
+			level->render();
+		}
 		pGraphic->render(&panelBackground);
+		std::list<Button::TextButton*>::iterator aux;
+		for (aux = textButtonList.begin(); aux != textButtonList.end(); aux++) {
+			Button::TextButton* button = *aux;
+			button->render();
+			button = nullptr;
+		}
 		pGraphic->render(title.getText());
 	}
 

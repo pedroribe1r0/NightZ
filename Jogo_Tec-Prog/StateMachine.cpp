@@ -21,8 +21,16 @@ namespace States {
 		if (s) {
 			//s->setIsActive(true);
 			statesStack.push(s);
+			//cout << s->getID() << endl;
 		}
 			
+	}
+	State* StateMachine::getPreviousState() {
+		States::State* s = statesStack.top();
+		statesStack.pop();
+		States::State* s2 = statesStack.top();
+		statesStack.push(s);
+		return s2;
 	}
 	void StateMachine::popState() {
 		if (!statesStack.empty()) {
