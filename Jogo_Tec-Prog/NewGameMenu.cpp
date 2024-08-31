@@ -41,8 +41,8 @@ namespace Menu {
 	void NewGameMenu::createButtons() {
 		const float buttonPosX = windowSize.x / 2.0f - buttonSize.x / 2.0f;
 		std::cout << buttonPosX << std::endl;
-		addButton("Singleplayer", sf::Vector2f(1650, 800), ID::singleplayer_button, sf::Color{ 255, 255, 255 });
-		addButton("Multiplayer", sf::Vector2f(1650, 950), ID::multiplayer_button, sf::Color{ 255, 255, 255 });
+		addButton("Singleplayer", sf::Vector2f(1650, 800), ID::singleplayer_button, sf::Color{ 62, 127, 93 });
+		addButton("Multiplayer", sf::Vector2f(1650, 950), ID::multiplayer_button, sf::Color{ 62, 127, 93 });
 		initializeIterator();
 	}
 

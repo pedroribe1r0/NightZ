@@ -41,8 +41,8 @@ namespace Menu {
 	void LevelMenu::createButtons() {
 		const float buttonPosX = windowSize.x / 2.0f - buttonSize.x / 2.0f;
 		std::cout << buttonPosX << std::endl;
-		addButton("Round Level", sf::Vector2f(1650, 800), ID::round_button, sf::Color{ 255, 255, 255 });
-		addButton("Portal Level", sf::Vector2f(1650, 950), ID::portal_button, sf::Color{ 255, 255, 255 });
+		addButton("Round Level", sf::Vector2f(1650, 800), ID::round_button, sf::Color{ 62, 127, 93 });
+		addButton("Portal Level", sf::Vector2f(1650, 950), ID::portal_button, sf::Color{ 62, 127, 93 });
 		initializeIterator();
 	}
 

@@ -29,7 +29,6 @@ namespace Menu {
 		void TextButton::setSelected(bool selected) {
 			text.setTextColor(selected ? selectedColor : sf::Color::White);
 			this->selected = selected;
-			//text.reset();
 		}
 
 		const bool TextButton::getSelected() const {

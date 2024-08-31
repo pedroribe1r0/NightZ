@@ -40,7 +40,6 @@ namespace Menu {
 			std::cout << "ERROR::Menu:: not possible to create button" << std::endl;
 			exit(1);
 		}
-		std::cout << "teste addbutton" << std::endl;
 		textButtonList.push_back(button);
 	}
 

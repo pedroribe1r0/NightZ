@@ -2,7 +2,7 @@
 
 int main()
 {
-	Menu::LevelMenu menu;
+	Menu::MainMenu menu;
 
 	return 0;
 }

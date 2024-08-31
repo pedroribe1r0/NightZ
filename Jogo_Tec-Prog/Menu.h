@@ -16,7 +16,7 @@ namespace Menu {
 		const sf::Vector2f buttonSize;
 		const sf::Vector2f windowSize;
 		Button::Text title;
-		bool mouseSelected;
+		//bool mouseSelected;
 
 		virtual void createButtons() = 0;
 		void initializeIterator();
