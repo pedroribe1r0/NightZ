@@ -1,4 +1,5 @@
 #include "StateMachine.h"
+#include "Menu.h"
 
 namespace States {
 	StateMachine* StateMachine::pMachine = nullptr;
@@ -30,7 +31,7 @@ namespace States {
 				statesStack.top() = nullptr;
 				statesStack.pop();
 				if (!statesStack.empty())
-					statesStack.top()->setIsActive(true);
+					statesStack.top()->setIsActive(false);
 			}
 		}
 	}
@@ -48,12 +49,12 @@ namespace States {
 		}
 	}
 	void StateMachine::renderState() {
-		if (!statesStack.empty() && statesStack.top()->getIsActive()) {
+		if (!statesStack.empty()) {
 			statesStack.top()->render();
 		}
 	}
 	void StateMachine::executeState(float dt) {
-		if (!statesStack.empty() && statesStack.top()->getIsActive()) {
+		if (!statesStack.empty()) {
 			statesStack.top()->execute(dt);
 		}
 	}

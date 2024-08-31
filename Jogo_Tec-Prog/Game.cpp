@@ -23,6 +23,5 @@ void Game::run() {
 		pEvent->pollEvents();
 		pMachine->renderState();
 		pGraphic->display();
-		cout << pMachine->getCurrentState()->getID() << endl;
 	}
 }

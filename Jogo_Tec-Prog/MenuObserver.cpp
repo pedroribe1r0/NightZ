@@ -84,9 +84,8 @@ namespace Observers {
 					}
 				}
 			}
-			else {
+			else
 				isMoreActive = true;
-			}
 			
 		}
 

@@ -6,12 +6,11 @@ namespace States {
 	{
 	protected:
 		static StateMachine* pMachine;
-		bool isActive;
 	public:
 		State(ID id = ID::empty);
 		virtual ~State();
-		void setIsActive(bool iA);
-		bool getIsActive();
+		virtual void setIsActive(bool iA);
+		virtual bool getIsActive();
 		virtual void manageCollisions(float dt);
 		virtual void render() = 0;
 		virtual void execute(float dt) = 0;

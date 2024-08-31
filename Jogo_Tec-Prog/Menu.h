@@ -33,5 +33,7 @@ namespace Menu {
 		//void mouseEvent(const sf::Vector2f mousePos);
 		//const bool getMouseSelected() const;
 		virtual void render(); //desenha os botões
+		virtual void setIsActive(bool iA);
+		virtual bool getIsActive();
 	};
 }
