@@ -12,19 +12,17 @@ enum ID {
 	level,
 	background,
 	main_menu,
-	newgame_menu, //no main menu, quando selecionado vai para o menu onde escolhe o número de players
-	round_singleplayer_button, // vai para o seletor de fase
-	round_multiplayer_button, // vai para o seletor de fase
+	newgame_menu, 
+	round_singleplayer_button,
+	round_multiplayer_button,
 	time_singleplayer_button, 
 	time_multiplayer_button,
-	level_menu, // menu seletor de fase
 	loadgame_button,
 	leaderboards_menu,
 	exit_button,
 	pause_menu,
-	resumegame_button
-	
-	//to do
+	resumegame_button,
+	save_button
 };
 
 class Ente

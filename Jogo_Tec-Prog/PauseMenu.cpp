@@ -34,8 +34,8 @@ namespace Menu {
 
 	void PauseMenu::createButtons() {
 		addButton("Resume Game", sf::Vector2f(1650, 800), ID::resumegame_button, sf::Color{ 62, 127, 93 });
-		addButton("Save Progress", sf::Vector2f(1650, 950), ID::round_multiplayer_button, sf::Color{ 62, 127, 93 });
-		addButton("Exit to Main Menu", sf::Vector2f(1650, 1100), ID::time_singleplayer_button, sf::Color{ 62, 127, 93 });
+		addButton("Save Progress", sf::Vector2f(1650, 950), ID::save_button, sf::Color{ 62, 127, 93 });
+		addButton("Exit to Main Menu", sf::Vector2f(1650, 1100), ID::exit_button, sf::Color{ 62, 127, 93 });
 		initializeIterator();
 	}
 

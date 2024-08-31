@@ -51,7 +51,7 @@ namespace States {
 					statesStack.top() = nullptr;
 					statesStack.pop();
 					if (!statesStack.empty())
-						statesStack.top()->setIsActive(true);
+						statesStack.top()->setIsActive(false);
 				}
 			}
 		}

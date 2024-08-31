@@ -39,7 +39,21 @@ namespace Observers {
 						}
 						}
 					}
-					if (pMachine->getCurrentState()->getID() == main_menu) {
+					else if (pMachine->getCurrentState()->getID() == pause_menu) {
+						switch (menu->getSelectedButtonID()) {
+						case ID::save_button: {
+							//save
+							break;
+						}
+						case ID::exit_button: {
+							pMachine->popState(3);
+						}
+						case ID::resumegame_button: {
+							pMachine->popState();
+						}
+						}
+					}
+					else if (pMachine->getCurrentState()->getID() == main_menu) {
 						switch (menu->getSelectedButtonID()) {
 						case ID::newgame_menu: {
 							Menu::NewGameMenu* n = new Menu::NewGameMenu();
@@ -67,16 +81,18 @@ namespace Observers {
 						menu->selectBelow();
 					}
 					else if (key == sf::Keyboard::Key::P) {
-						Menu::PauseMenu* p = new Menu::PauseMenu();
-					}
+					Menu::PauseMenu* p = new Menu::PauseMenu();
+				    }
 					else if (key == esc) {
+					if (pMachine->getCurrentState()) {
 						if (pMachine->getCurrentState()->getID() == pause_menu ||
-							pMachine->getCurrentState()->getID() == newgame_menu){
+							pMachine->getCurrentState()->getID() == newgame_menu) {
 							pMachine->popState();
 						}
 					}
 				}
 			}
+		}
 	
 			
 
