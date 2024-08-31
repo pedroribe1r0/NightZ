@@ -80,7 +80,12 @@ namespace Menu {
 	const ID Menu::getSelectedButtonID() const {
 		return (*it)->getID();
 	}
-	
+	void Menu::setIsActive(bool iA) {
+		menuObserver->setIsMoreActive(iA);
+	}
+	bool Menu::getIsActive() {
+		return menuObserver->getIsMoreActive();
+	}
 
 	/*
 	void Menu::mouseEvent(const sf::Vector2f mousePos) {

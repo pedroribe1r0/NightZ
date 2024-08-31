@@ -35,7 +35,6 @@ namespace States {
 			movingEntities->execute(dt);
 			staticEntities->execute(dt);
 			currentTime += dt;
-			cout << currentTime << endl;
 			spawnTime += dt;
 			if (spawnTime >= SPAWN_TIME) {
 				spawnTime = 0;
