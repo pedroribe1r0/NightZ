@@ -7,7 +7,7 @@ namespace Menu {
 }
 namespace States {
 	namespace Levels {
-		#define ROUND_MAX_TIME 25.0f
+		#define ROUND_MAX_TIME 80.0f
 		class RoundLevel : public Level
 		{
 		private:

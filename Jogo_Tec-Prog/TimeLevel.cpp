@@ -1,4 +1,5 @@
 #include "TimeLevel.h"
+#include "Text.h"
 
 namespace States {
 	namespace Levels {
@@ -9,6 +10,8 @@ namespace States {
 			createThrowers();
 			finalTime = 120;
 			currentTime = 0;
+			std::string s = "Time Remaining : " + to_string((int)(finalTime - currentTime));
+			text = new Menu::Button::Text(pGraphic->loadFont("yoster.ttf"), s, 50);
 		}
 		TimeLevel::~TimeLevel() {
 		}
@@ -30,6 +33,7 @@ namespace States {
 			movingEntities->render();
 			staticEntities->render();
 			background.renderFloor();
+			pGraphic->render(text->getText());
 		}
 		void TimeLevel::execute(float dt) {
 			movingEntities->execute(dt);
@@ -42,6 +46,14 @@ namespace States {
 			}
 			if (currentTime >= finalTime) {
 				//empilhar estado
+			}
+			std::string s = "Time Remaining : " + to_string((int)(finalTime - currentTime));
+			text->setString(s);
+			if (pPlayer1) {
+				text->setPos(sf::Vector2f(pPlayer1->getPosition().x - 800, 50));
+			}
+			else if (pPlayer2) {
+				text->setPos(sf::Vector2f(pPlayer2->getPosition().x - 700, 200));
 			}
 		}
 		void TimeLevel::createThrowers() {

@@ -1,5 +1,10 @@
 #pragma once
 #include "RoundLevel.h"
+namespace Menu {
+	namespace Button {
+		class Text;
+	}
+}
 namespace States {
 	namespace Levels {
 		class TimeLevel : public Level
@@ -7,6 +12,7 @@ namespace States {
 		private:
 			float finalTime;
 			float currentTime;
+			Menu::Button::Text* text;
 		public:
 			TimeLevel(bool player2);
 			~TimeLevel();

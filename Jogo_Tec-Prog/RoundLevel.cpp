@@ -17,7 +17,8 @@ namespace States {
 			currentTime = 0;
 			enemiesNumber -= 35;
 			nonEnemies = movingEntities->getSize() - enemiesNumber;
-			text = new Menu::Button::Text(pGraphic->loadFont("yoster.ttf"), to_string(currentRound), 50);
+			std::string s = "Round : " + to_string(currentRound);
+			text = new Menu::Button::Text(pGraphic->loadFont("yoster.ttf"), s, 50);
 		}
 		RoundLevel::~RoundLevel() {
 			
@@ -87,7 +88,7 @@ namespace States {
 				currentTime = 0;
 				cout << "Round:  " << currentRound << endl << "  Enemies:  " << currentEnemies - deadEnemies << endl << "  Max Round:  " << currentRound * (enemiesNumber) / 15 << endl;
 			}
-			if ((deadEnemies >= currentRound * enemiesNumber/ 15) || roundTimeCounter >= ROUND_MAX_TIME) {
+			if ((deadEnemies >= currentRound * enemiesNumber/ 15) || (roundTimeCounter >= ROUND_MAX_TIME && currentRound < 5)) {
 				enemiesNumber = enemiesNumber - deadEnemies;
 				currentRound++;
 				deadEnemies = 0;
@@ -99,7 +100,8 @@ namespace States {
 				//empilhar o menu final
 				pMachine->popState(2);
 			}
-			text->setString(to_string(currentRound));
+			std::string s = "Round : " + to_string(currentRound);
+			text->setString(s);
 			if (pPlayer1) {
 				text->setPos(sf::Vector2f(pPlayer1->getPosition().x - 800, 50));
 			}
