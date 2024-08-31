@@ -1,5 +1,6 @@
 #include "RoundLevel.h"
 #include "Text.h"
+#include "GameOverMenu.h"
 
 namespace States {
 	namespace Levels {
@@ -86,7 +87,6 @@ namespace States {
 			if (currentEnemies <= currentRound * (enemiesNumber/ 15) && currentTime >= spawnTime) {
 				spawnEnemies();
 				currentTime = 0;
-				cout << "Round:  " << currentRound << endl << "  Enemies:  " << currentEnemies - deadEnemies << endl << "  Max Round:  " << currentRound * (enemiesNumber) / 15 << endl;
 			}
 			if ((deadEnemies >= currentRound * enemiesNumber/ 15) || (roundTimeCounter >= ROUND_MAX_TIME && currentRound < 5)) {
 				enemiesNumber = enemiesNumber - deadEnemies;
@@ -96,9 +96,11 @@ namespace States {
 				roundTimeCounter = 0;
 				spawnTime--;
 			}
-			if ((!pPlayer1 && !pPlayer2) || currentRound > 5) {
-				//empilhar o menu final
-				pMachine->popState(2);
+			if ((!pPlayer1 && !pPlayer2)) {
+				Menu::GameOverMenu* g = new Menu::GameOverMenu();
+			}
+			if (currentRound > 5) {
+				//empilhar final
 			}
 			std::string s = "Round : " + to_string(currentRound);
 			text->setString(s);

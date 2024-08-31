@@ -15,7 +15,7 @@ Game::~Game() {
 	delete pEvent;
 }
 void Game::run() {
-	while (pGraphic->isWindowOpen()) {
+	while (pGraphic->isWindowOpen() && pMachine->getCurrentState()) {
 		pGraphic->clear();
 		pGraphic->updateDeltaTime();
 		pMachine->manageCollision(pGraphic->getDeltaTime());

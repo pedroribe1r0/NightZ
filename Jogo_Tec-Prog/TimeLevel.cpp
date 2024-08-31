@@ -1,5 +1,6 @@
 #include "TimeLevel.h"
 #include "Text.h"
+#include "GameOverMenu.h"
 
 namespace States {
 	namespace Levels {
@@ -46,6 +47,10 @@ namespace States {
 			}
 			if (currentTime >= finalTime) {
 				//empilhar estado
+			}
+			if ((!pPlayer1 && !pPlayer2)) {
+				//empilhar o menu final
+				Menu::GameOverMenu* g = new Menu::GameOverMenu();
 			}
 			std::string s = "Time Remaining : " + to_string((int)(finalTime - currentTime));
 			text->setString(s);

@@ -38,5 +38,7 @@ namespace Menu {
 		pGraphic->render(title.getText());
 	}
 
-	void GameOverMenu::execute(float dt) {}
+	void GameOverMenu::execute(float dt) {
+		pGraphic->centerView(Math::CoordF(windowSize.x / 2.0f, windowSize.y / 2.0f));
+	}
 }
