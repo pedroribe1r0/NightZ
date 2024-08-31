@@ -14,6 +14,7 @@ namespace States {
 		virtual void manageCollisions(float dt);
 		virtual void render() = 0;
 		virtual void execute(float dt) = 0;
+		
 	};
 }
 

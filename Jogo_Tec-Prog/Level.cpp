@@ -57,15 +57,13 @@ namespace States {
 				p2->setOther(p1);
 				movingEntities->setData(p2);
 				movingEntities->setData(p1);
-				Entities::Characters::Enemy::setPlayer1(p1);
-				Entities::Characters::Enemy::setPlayer2(p2);
-				Entities::Obstacles::Bonfire::setPlayers(p1, p2);
+				Ente::setPlayers(p1, p2);
 			}
 			else {
 				Entities::Characters::Player* p1 = new Entities::Characters::Player(Math::CoordF(800, 960), true, movingEntities);
+				//this->p1 = p1;
 				movingEntities->setData(p1);
-				Entities::Characters::Enemy::setPlayer1(p1);
-				Entities::Obstacles::Bonfire::setPlayers(p1);
+				Ente::setPlayers(p1);
 			}
 		}
 		void Level::createZombies() {

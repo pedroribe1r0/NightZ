@@ -2,8 +2,6 @@
 
 namespace Entities {
 	namespace Obstacles {
-		Characters::Player* Bonfire::p1 = nullptr;
-		Characters::Player* Bonfire::p2 = nullptr;
 		Bonfire::Bonfire(Math::CoordF pos) : Obstacle(pos, Math::CoordF(BONFIRE_SIZE_X, BONFIRE_SIZE_Y), true, BONFIRE_DAMAGE), isHealing1(false), isHealing2(false), healRatio(5.0f){
 			setTextures();
 		}
@@ -16,17 +14,17 @@ namespace Entities {
 		}
 		void Bonfire::update(float dt) {
 			position.y -= GRAVIDADE * dt;
-			if (p1) {
+			if (pPlayer1) {
 				
-				if (fabs(p1->getPosition().x - position.x) < 150 && fabs(p1->getPosition().x - position.x) > 50 && fabs(p1->getPosition().y - position.y) < 150) {
+				if (fabs(pPlayer1->getPosition().x - position.x) < 150 && fabs(pPlayer1->getPosition().x - position.x) > 50 && fabs(pPlayer1->getPosition().y - position.y) < 150) {
 					isHealing1 = true;
 				}
 				else
 					isHealing1 = false;
 			}
 
-			if (p2) {
-				if (fabs(p2->getPosition().x - position.x) < 150 && fabs(p2->getPosition().x - position.x) > 50 && fabs(p2->getPosition().y - position.y) < 200) {
+			if (pPlayer2) {
+				if (fabs(pPlayer2->getPosition().x - position.x) < 150 && fabs(pPlayer2->getPosition().x - position.x) > 50 && fabs(pPlayer2->getPosition().y - position.y) < 200) {
 					isHealing2 = true;
 				}
 				else
@@ -36,24 +34,24 @@ namespace Entities {
 		void Bonfire::execute(float dt) {
 			position.y += GRAVIDADE * dt;
 			update(dt);
-			if (p1) {
+			if (pPlayer1) {
 				if (isHealing1) {
-					if (p1->getHp() < 100) {
-						p1->heal(healRatio * dt);
+					if (pPlayer1->getHp() < 100) {
+						pPlayer1->heal(healRatio * dt);
 					}
 				}
 				else
-					p1->stopHeal();
+					pPlayer1->stopHeal();
 			}
-			if (p2) {
+			if (pPlayer2) {
 				if (isHealing2) {
-					if (p2->getHp() < 100) {
-						p2->heal(healRatio * dt);
+					if (pPlayer2->getHp() < 100) {
+						pPlayer2->heal(healRatio * dt);
 					}
 				}
 
 				else
-					p2->stopHeal();
+					pPlayer2->stopHeal();
 			}
 			sprite->update(GraphicalElements::Animation_ID::idle, true, position, dt);
 		}
@@ -62,14 +60,6 @@ namespace Entities {
 				isHealing1 = false;
 			else
 				isHealing2 = false;
-		}
-		void Bonfire::setPlayers(Entities::Characters::Player* pP1, Entities::Characters::Player* pP2) {
-			if (pP1) {
-				p1 = pP1;
-			}
-			if (pP2) {
-				p2 = pP2;
-			}
 		}
 	}
 }

@@ -66,14 +66,12 @@ namespace States {
 			if (ent) {
 				if (ent->getID() == enemy) {
 					Entities::Characters::Enemy* e = dynamic_cast<Entities::Characters::Enemy*>(ent);
-					Entities::Characters::Player* p1 = e->getPlayer1();
-					Entities::Characters::Player* p2 = e->getPlayer2();
 					int randSpot = 0;
-					if (p1) {
-						if (p1->getPosition().x < -80) {
+					if (pPlayer1) {
+						if (pPlayer1->getPosition().x < -80) {
 							randSpot = rand() % 5;
 						}
-						else if (p1->getPosition().x > 1360) {
+						else if (pPlayer1->getPosition().x > 1360) {
 							randSpot = rand() % 5 + 5;
 						}
 						else {

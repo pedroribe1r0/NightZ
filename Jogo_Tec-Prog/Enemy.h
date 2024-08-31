@@ -6,14 +6,10 @@ namespace Entities {
 		class Enemy : public Character
 		{
 		protected:
-			static Player* pPlayer1;
-			static Player* pPlayer2;
 			float meleeDamage;
 		public:
 			Enemy(Math::CoordF pos = Math::CoordF(0, 0), Math::CoordF size = Math::CoordF(0, 0), ID id = ID::empty, float hp = 0);
 			virtual ~Enemy();
-			static void setPlayer1(Player* p1 = nullptr);
-			static void setPlayer2(Player* p2 = nullptr);
 			static Player* getPlayer1();
 			static Player* getPlayer2();
 			void collide(Entity* ent, Math::CoordF intersection, float dt);

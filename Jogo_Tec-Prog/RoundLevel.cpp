@@ -1,4 +1,5 @@
 #include "RoundLevel.h"
+#include "Text.h"
 
 namespace States {
 	namespace Levels {
@@ -7,13 +8,16 @@ namespace States {
 			createPlayers(player2);
 			createBonfires();
 			createBosses();
+			roundTimeCounter = 0;
 			currentRound = 1;
 			finalRound = 5;
 			currentEnemies = 0;
 			spawnTime = 8;
 			deadEnemies = 0;
 			currentTime = 0;
+			enemiesNumber -= 35;
 			nonEnemies = movingEntities->getSize() - enemiesNumber;
+			text = new Menu::Button::Text(pGraphic->loadFont("yoster.ttf"), to_string(currentRound), 50);
 		}
 		RoundLevel::~RoundLevel() {
 			
@@ -35,7 +39,7 @@ namespace States {
 			Entities::Entity* ent = nullptr;
 			do {
 				ent = movingEntities->pickRandon();
-				if (ent->getID() == boss && currentRound >= 3 && ent->getIsActive())
+				if (ent->getID() == boss && currentRound >= 3 && !ent->getIsActive())
 					break;
 			} while (ent->getID() != enemy && !(ent->getIsActive()));
 			if (ent) {
@@ -69,28 +73,38 @@ namespace States {
 			movingEntities->render();
 			staticEntities->render();
 			background.renderFloor();
+			pGraphic->render(text->getText());
 		}
 		void RoundLevel::execute(float dt) {
 			movingEntities->execute(dt);
 			staticEntities->execute(dt);
 			currentTime += dt;
+			roundTimeCounter += dt;
 			
 			deadEnemies = enemiesNumber - movingEntities->getSize() + nonEnemies;
-			if (currentEnemies <= currentRound * ((enemiesNumber - 35)/ 15) && currentTime >= spawnTime) {
+			if (currentEnemies <= currentRound * (enemiesNumber/ 15) && currentTime >= spawnTime) {
 				spawnEnemies();
 				currentTime = 0;
-				cout << "Round:  " << currentRound << endl << "  Enemies:  " << currentEnemies - deadEnemies << endl << "  Max Round:  " << currentRound * ((enemiesNumber-40) / 15) << endl;
+				cout << "Round:  " << currentRound << endl << "  Enemies:  " << currentEnemies - deadEnemies << endl << "  Max Round:  " << currentRound * (enemiesNumber) / 15 << endl;
 			}
-			if (deadEnemies >= currentRound * (enemiesNumber - 35)/ 15) {
+			if ((deadEnemies >= currentRound * enemiesNumber/ 15) || roundTimeCounter >= ROUND_MAX_TIME) {
 				enemiesNumber = enemiesNumber - deadEnemies;
 				currentRound++;
 				deadEnemies = 0;
 				currentEnemies = 0;
+				roundTimeCounter = 0;
 				spawnTime--;
 			}
-			if (currentRound > 5) {
+			if ((!pPlayer1 && !pPlayer2) || currentRound > 5) {
 				//empilhar o menu final
-				cout << "acabou" << endl;
+				pMachine->popState(2);
+			}
+			text->setString(to_string(currentRound));
+			if (pPlayer1) {
+				text->setPos(sf::Vector2f(pPlayer1->getPosition().x - 800, 50));
+			}
+			else if (pPlayer2) {
+				text->setPos(sf::Vector2f(pPlayer2->getPosition().x - 420, 200));
 			}
 		}
 		void RoundLevel::createBosses() {

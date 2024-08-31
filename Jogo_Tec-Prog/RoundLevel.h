@@ -1,16 +1,24 @@
 #pragma once
 #include "Level.h"
+namespace Menu {
+	namespace Button {
+		class Text;
+	}
+}
 namespace States {
 	namespace Levels {
+		#define ROUND_MAX_TIME 25.0f
 		class RoundLevel : public Level
 		{
 		private:
+			Menu::Button::Text* text;
 			int currentRound;
 			int finalRound;
 			int currentEnemies;
 			int deadEnemies;
 			float currentTime;
 			int nonEnemies;
+			float roundTimeCounter;
 		public:
 			RoundLevel(bool player2);
 			~RoundLevel();
