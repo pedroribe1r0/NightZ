@@ -23,8 +23,7 @@ namespace Menu {
 			textButtonList.clear();
 		}
 		if (menuObserver) {
-			delete(menuObserver);
-			menuObserver = nullptr;
+			menuObserver->setIsActive(false);
 		}
 	}
 
@@ -82,35 +81,11 @@ namespace Menu {
 	}
 	void Menu::setIsActive(bool iA) {
 		menuObserver->setIsMoreActive(iA);
+		pGraphic->centerView(Math::CoordF(windowSize.x / 2.0f, windowSize.y / 2.0f));
 	}
 	bool Menu::getIsActive() {
 		return menuObserver->getIsMoreActive();
 	}
-
-	/*
-	void Menu::mouseEvent(const sf::Vector2f mousePos) {
-		std::list<Button::TextButton*>::iterator aux;
-		mouseSelected = false;
-
-		for (aux = textButtonList.begin(); aux != textButtonList.end(); aux++) {
-			Button::TextButton* button = *aux;
-			sf::Vector2f buttonPos = button->getPos();
-			sf::Vector2f cameraPos = pGraphic->getCenterView();
-			if (mousePos.x + cameraPos.x - windowSize.x / 2.0f > buttonPos.x && mousePos.x + cameraPos.x - windowSize.x / 2.0f < buttonPos.x + buttonSize.x &&
-				mousePos.y + cameraPos.y - windowSize.y / 2.0f > buttonPos.y && mousePos.y + cameraPos.y - windowSize.y / 2.0f < buttonPos.y + buttonSize.y) {
-				(*it)->setSelected(false);
-				it = aux;
-				(*it)->setSelected(true);
-				mouseSelected = true;
-				break;
-			}
-		}
-	}
-
-	const bool Menu::getMouseSelected() const {
-		return mouseSelected;
-	}
-	*/
 
 	void Menu::render() {
 		std::list<Button::TextButton*>::iterator aux;

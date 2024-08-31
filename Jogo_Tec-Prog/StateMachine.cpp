@@ -19,7 +19,7 @@ namespace States {
 			statesStack.top()->setIsActive(false);
 		}
 		if (s) {
-			s->setIsActive(true);
+			//s->setIsActive(true);
 			statesStack.push(s);
 		}
 			
