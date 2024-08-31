@@ -69,13 +69,14 @@ namespace Menu {
 			pCollision->collide(pGraphic->getDeltaTime());
 			background.render();
 			render();
-			background.renderFloor();
+
 			pGraphic->render(title.getText());
 			pEvent->pollEvents();
 			movingEntities.execute(pGraphic->getDeltaTime());
 			staticEntities.execute(pGraphic->getDeltaTime());
 			movingEntities.render();
 			staticEntities.render();
+			background.renderFloor();
 			pGraphic->display();
 		}
 	}
