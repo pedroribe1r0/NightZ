@@ -29,7 +29,7 @@ namespace Entities {
 			else
 				position.x = user->getPosition().x +user->getSize().x / 2 + 30;
 			if (user->getID() == player) {
-				position.y = user->getPosition().y - 5;
+				position.y = user->getPosition().y - 10;
 			}
 			else {
 				position.y = user->getPosition().y - 20;

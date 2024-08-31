@@ -12,26 +12,24 @@ namespace States {
 			Managers::CollisionManager* pColision;
 			EntitiesList* staticEntities;
 			EntitiesList* movingEntities;
-			float spawnTime;
 			Math::CoordF spots[10];
 			GraphicalElements::Parallax::Background background;
+			float spawnTime;
+			float enemiesNumber;
 		public:
 			Level();
 			~Level();
-			virtual void run() = 0;
 			virtual void execute(float dt) = 0;
 			virtual void render() = 0;
 			void createLevel();
 			void manageCollisions(float dt);
-			void createThrowers();
 			void createZombies();
-			void createBosses();
-			void createJumpers();
 			void createPortals();
-			void spawnEnemies();
+			virtual void spawnEnemies() = 0;
 			void setRandSpots();
 			void createBackground();
 			void createPlayers(bool Player2);
+			void createJumpers();
 		};
 	}
 }

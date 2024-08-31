@@ -15,7 +15,7 @@ namespace Entities {
 		#define PLAYER_HP 100.0f
 		#define N_BULLETS 5
 		#define SHOOT_COOLDOWN 0.63f
-		#define EFFECT_TIME 0.6f
+		#define EFFECT_TIME 0.8f
 		class Player : public Character
 		{
 		private:
@@ -53,6 +53,7 @@ namespace Entities {
 			void stopHeal();
 			void setIsTeleporting(bool left);
 			void setSlow(float slow);
+			float getHp() const;
 		};
 	}
 }

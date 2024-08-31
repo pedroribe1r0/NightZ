@@ -2,8 +2,9 @@
 
 namespace Entities {
 	namespace Obstacles {
-		SlowPlatform::SlowPlatform(Math::CoordF pos, Math::CoordF size) : Obstacle(pos, size, false, 0){
+		SlowPlatform::SlowPlatform(Math::CoordF pos) : Obstacle(pos, Math::CoordF(MUD_SIZE_X, MUD_SIZE_Y), false, 0) {
 			slow = 0.5;
+			setTextures();
 		}
 		SlowPlatform::~SlowPlatform() {
 
@@ -19,7 +20,9 @@ namespace Entities {
 			ent->setSlow(slow);
 		}
 		void SlowPlatform::setTextures() {
-
+			if (body) {
+				body->setTexture(pGraphic->loadTexture("mud.png"));
+			}
 		}
 	}
 }
