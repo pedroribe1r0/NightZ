@@ -4,8 +4,7 @@
 namespace Menu {
 	class PauseMenu : public Menu {
 	private:
-		sf::RectangleShape panelBackground;
-
+		GraphicalElements::Parallax::Background background;
 	protected:
 		States::Levels::Level* level;
 

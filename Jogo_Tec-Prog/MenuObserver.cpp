@@ -73,6 +73,18 @@ namespace Observers {
 						}
 					}
 
+					else if (pMachine->getCurrentState()->getID() == gameover_menu) {
+						switch (menu->getSelectedButtonID()) {
+						case ID::save_button: {
+							//save
+							break;
+						}
+						case ID::exit_button: {
+							pMachine->popState(3);
+						}
+						}
+					}
+
 					}
 					else if (key == up) {
 						menu->selectAbove();

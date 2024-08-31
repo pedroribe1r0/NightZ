@@ -22,7 +22,8 @@ enum ID {
 	exit_button,
 	pause_menu,
 	resumegame_button,
-	save_button
+	save_button,
+	gameover_menu
 };
 namespace Entities {
 	namespace Characters {
