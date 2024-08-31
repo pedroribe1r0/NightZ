@@ -17,7 +17,8 @@ namespace Entities {
 		void Bonfire::update(float dt) {
 			position.y -= GRAVIDADE * dt;
 			if (p1) {
-				if (fabs(p1->getPosition().x - position.x) < 150 && fabs(p1->getPosition().x - position.x) > 50 && fabs(p1->getPosition().y - position.y) < 200) {
+				
+				if (fabs(p1->getPosition().x - position.x) < 150 && fabs(p1->getPosition().x - position.x) > 50 && fabs(p1->getPosition().y - position.y) < 150) {
 					isHealing1 = true;
 				}
 				else
@@ -37,14 +38,18 @@ namespace Entities {
 			update(dt);
 			if (p1) {
 				if (isHealing1) {
-					p1->heal(healRatio * dt);
+					if (p1->getHp() < 100) {
+						p1->heal(healRatio * dt);
+					}
 				}
 				else
 					p1->stopHeal();
 			}
 			if (p2) {
 				if (isHealing2) {
-					p2->heal(healRatio * dt);
+					if (p2->getHp() < 100) {
+						p2->heal(healRatio * dt);
+					}
 				}
 
 				else

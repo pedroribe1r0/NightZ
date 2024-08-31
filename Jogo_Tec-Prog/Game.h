@@ -1,6 +1,5 @@
 #pragma once
-#include "LevelMenu.h"
-
+#include "TimeLevel.h"
 class Game
 {
 private:

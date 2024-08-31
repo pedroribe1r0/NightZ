@@ -10,13 +10,11 @@ namespace States {
 			staticEntities = new EntitiesList();
 			pColision = new Managers::CollisionManager(movingEntities, staticEntities);
 			spawnTime = 0;
+			enemiesNumber = 0;
 			setRandSpots();
-			createBosses();
-			createThrowers();
 			createZombies();
 			createBackground();
 			createJumpers();
-
 		}
 		Level::~Level() {
 			delete movingEntities;
@@ -33,7 +31,7 @@ namespace States {
 			background.addLayer("layer5.png", 0.0008f, GraphicalElements::LID::empty);
 			background.addLayer("layer4.png", 0.0009f, GraphicalElements::LID::empty);
 			background.addLayer("layer3.png", 0.005f, GraphicalElements::LID::empty);
-			background.addLayer("layer2.png", 0.06f, GraphicalElements::LID::empty);
+			background.addLayer("layer2.png", 0.1f, GraphicalElements::LID::empty);
 			background.addLayer("layer1.png", 0.08f, GraphicalElements::LID::empty);
 			background.addLayer("layer0.png", 0.1f, GraphicalElements::LID::floor);
 		}
@@ -48,111 +46,43 @@ namespace States {
 			spots[4] = Math::CoordF(-1140, 900);
 			spots[5] = Math::CoordF(3800, 540);
 			spots[6] = Math::CoordF(2240, 900);
-			spots[7] = Math::CoordF(4000, 540);
+			spots[7] = Math::CoordF(3800, 540);
 			spots[8] = Math::CoordF(2900, 900);
 			spots[9] = Math::CoordF(2400, 900);
 		}
 		void Level::createPlayers(bool Player2) {
 			if (Player2) {
-				Entities::Characters::Player* p2 = new Entities::Characters::Player(Math::CoordF(800, 980), false, movingEntities);
-				Entities::Characters::Player* p1 = new Entities::Characters::Player(Math::CoordF(900, 980), true, movingEntities, p2);
+				Entities::Characters::Player* p2 = new Entities::Characters::Player(Math::CoordF(800, 960), false, movingEntities);
+				Entities::Characters::Player* p1 = new Entities::Characters::Player(Math::CoordF(900, 960), true, movingEntities, p2);
 				p2->setOther(p1);
 				movingEntities->setData(p2);
 				movingEntities->setData(p1);
 				Entities::Characters::Enemy::setPlayer1(p1);
 				Entities::Characters::Enemy::setPlayer2(p2);
+				Entities::Obstacles::Bonfire::setPlayers(p1, p2);
 			}
 			else {
-				Entities::Characters::Player* p1 = new Entities::Characters::Player(Math::CoordF(800, 980), true, movingEntities);
+				Entities::Characters::Player* p1 = new Entities::Characters::Player(Math::CoordF(800, 800), true, movingEntities);
 				movingEntities->setData(p1);
 				Entities::Characters::Enemy::setPlayer1(p1);
+				Entities::Obstacles::Bonfire::setPlayers(p1);
 			}
-		}
-		void Level::createThrowers() {
-			int cont = 0;
-			for (int i = 0; i < 30; i++) {
-				if ((rand() % 10)) {
-					Entities::Characters::Thrower* t = new Entities::Characters::Thrower(Math::CoordF(-99999, -9999), movingEntities);
-					t->setIsActive(false);
-					movingEntities->setData(t);
-					cont++;
-				}
-				if (cont < 10 && i == 29)
-					i--;
-			}
-			cout << cont << endl;
-
 		}
 		void Level::createZombies() {
 			int cont = 0;
-			for (int i = 0; i < 30; i++) {
+			for (int i = 0; i < 50; i++) {
 				if ((rand() % 10)) {
 					Entities::Characters::Zombie* t = new Entities::Characters::Zombie(Math::CoordF(-99999, -9999));
 					t->setIsActive(false);
 					movingEntities->setData(t);
 					cont++;
+					enemiesNumber++;
 				}
 				if (cont < 10 && i == 29)
 					i--;
 			}
-			cout << cont << endl;
 		}
-		void Level::createBosses() {
-			int cont = 0;
-			for (int i = 0; i < 30; i++) {
-				if ((rand() % 10)) {
-					Entities::Characters::Boss* t = new Entities::Characters::Boss(Math::CoordF(-99999, -9999));
-					t->setIsActive(false);
-					movingEntities->setData(t);
-					cont++;
-				}
-				if (cont < 10 && i == 29)
-					i--;
-			}
-			cout << cont << endl;
-		}
-
-		void Level::spawnEnemies() {
-
-			Entities::Entity* ent = movingEntities->pickRandon();
-			while (ent->getID() != enemy && ent->getID() != boss && !(ent->getIsActive())) {
-				ent = movingEntities->pickRandon();
-			}
-
-			/*Entities::Entity* ent = nullptr;
-			List<Entities::Entity>::iterator it = movingEntities->begin();
-			int i = 0;
-			while (it != movingEntities->end()) {
-				if (((*it)->getID() == enemy || (*it)->getID() == boss) && i > enemiesCounter) {
-					ent = (*it);
-					break;
-				}
-				else if (((*it)->getID() == enemy || (*it)->getID() == boss))
-					i++;
-				++it;
-			}*/
-			if (ent) {
-				if (ent->getID() == enemy || ent->getID() == boss) {
-					Entities::Characters::Enemy* e = dynamic_cast<Entities::Characters::Enemy*>(ent);
-					Entities::Characters::Player* p1 = e->getPlayer1();
-					Entities::Characters::Player* p2 = e->getPlayer2();
-					int randSpot = 0;
-					if (p1) {
-						if (p1->getPosition().x < -80) {
-							randSpot = rand() % 5;
-						}
-						else if (p1->getPosition().x > 1360) {
-							randSpot = rand() % 5 + 5;
-						}
-						else {
-							randSpot = rand() % 10;
-						}
-					}
-					e->setIsActive(true);
-					e->setPosition(spots[randSpot]);
-				}
-			}
-		}
+		
 		void Level::createLevel() {
 			//-------------------------------------- Chao ------------------------------------//
 			Entities::Obstacles::Simple* floor = new Entities::Obstacles::Simple(Math::CoordF(960, 1030), Math::CoordF(7120, 10));
@@ -166,7 +96,7 @@ namespace States {
 			staticEntities->setData(t2);
 			staticEntities->setData(t3);
 			staticEntities->setData(t4);
-			//---------------------------------------- Basic Portals ------------------------------------//
+			//---------------------------------------- Portals ------------------------------------//
 			createPortals();
 			//---------------------------------- Galhos ---------------------------------------//
 			Entities::Obstacles::Simple* g1 = new Entities::Obstacles::Simple(Math::CoordF(480, 864), Math::CoordF(760, 50), "bushplatform.png", Math::CoordF(1, 1));
@@ -191,10 +121,14 @@ namespace States {
 			staticEntities->setData(j3);
 			Entities::Obstacles::Jumper* j4 = new Entities::Obstacles::Jumper(Math::CoordF(830, 432 - JUMPER_SIZE_Y));
 			staticEntities->setData(j4);
-			Entities::Obstacles::Jumper* j5 = new Entities::Obstacles::Jumper(Math::CoordF(-1700, 990));
+			Entities::Obstacles::Jumper* j5 = new Entities::Obstacles::Jumper(Math::CoordF(-1678, 990));
 			staticEntities->setData(j5);
+			Entities::Obstacles::Jumper* j9 = new Entities::Obstacles::Jumper(Math::CoordF(-2023, 990));
+			staticEntities->setData(j9);
 			Entities::Obstacles::Jumper* j6 = new Entities::Obstacles::Jumper(Math::CoordF(3620, 990));
 			staticEntities->setData(j6);
+			Entities::Obstacles::Jumper* j10 = new Entities::Obstacles::Jumper(Math::CoordF(3275, 990));
+			staticEntities->setData(j10);
 			if (rand() % 2) {
 				Entities::Obstacles::Jumper* j7 = new Entities::Obstacles::Jumper(Math::CoordF(-1200, 990));
 				staticEntities->setData(j7);
@@ -205,9 +139,9 @@ namespace States {
 			}
 		}
 		void Level::createPortals() {
-			Entities::Obstacles::Portal* P1 = new Entities::Obstacles::Portal(Math::CoordF(125, 380), true);
+			Entities::Obstacles::Portal* P1 = new Entities::Obstacles::Portal(Math::CoordF(125, 365), true);
 			Entities::Obstacles::Portal* P2 = new Entities::Obstacles::Portal(Math::CoordF(-125, 970), false);
-			Entities::Obstacles::Portal* P3 = new Entities::Obstacles::Portal(Math::CoordF(1795, 168), false);
+			Entities::Obstacles::Portal* P3 = new Entities::Obstacles::Portal(Math::CoordF(1795, 153), false);
 			Entities::Obstacles::Portal* P4 = new Entities::Obstacles::Portal(Math::CoordF(2045, 970), true);
 			P1->connectPortal(P2);
 			P3->connectPortal(P4);
@@ -215,17 +149,23 @@ namespace States {
 			staticEntities->setData(P2);
 			staticEntities->setData(P3);
 			staticEntities->setData(P4);
+			Entities::Obstacles::Portal* P5 = new Entities::Obstacles::Portal(Math::CoordF(-2475, 590), true);
+			staticEntities->setData(P5);
+			Entities::Obstacles::Portal* P6 = new Entities::Obstacles::Portal(Math::CoordF(4395, 590), false);
+			staticEntities->setData(P6);
+			P5->connectPortal(P6);
+			P6->connectPortal(P5);
 			if (rand() % 2) {
-				Entities::Obstacles::Portal* P5 = new Entities::Obstacles::Portal(Math::CoordF(-2475, 970), true);
-				P5->connectPortal(P2);
-				P2->connectPortal(P5);
-				staticEntities->setData(P5);
+				Entities::Obstacles::Portal* P7 = new Entities::Obstacles::Portal(Math::CoordF(-2475, 970), true);
+				P7->connectPortal(P2);
+				P2->connectPortal(P7);
+				staticEntities->setData(P7);
 			}
 			if (rand() % 2) {
-				Entities::Obstacles::Portal* P6 = new Entities::Obstacles::Portal(Math::CoordF(4395, 970), false);
-				P6->connectPortal(P4);
-				P4->connectPortal(P6);
-				staticEntities->setData(P6);
+				Entities::Obstacles::Portal* P8 = new Entities::Obstacles::Portal(Math::CoordF(4395, 970), false);
+				P8->connectPortal(P4);
+				P4->connectPortal(P8);
+				staticEntities->setData(P8);
 			}
 		}
 	}

@@ -1,6 +1,4 @@
 #include "InputManager.h"
-#include "StateMachine.h"
-#include "CoinFlip.h"
 
 namespace Managers{
 	InputManager* InputManager::pInput = nullptr;

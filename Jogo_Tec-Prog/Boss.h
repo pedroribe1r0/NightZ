@@ -2,7 +2,7 @@
 #include "Projectile.h"
 namespace Entities {
 	namespace Characters {
-		#define BOSS_SIZE_X 80.0f
+		#define BOSS_SIZE_X 60.0f
 		#define BOSS_SIZE_Y 120.0f
 		#define BOSS_HP 400.0f
 		#define BOSS_DAMAGE 50.0f

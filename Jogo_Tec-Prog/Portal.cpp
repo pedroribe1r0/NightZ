@@ -28,6 +28,18 @@ namespace Entities {
 					ent->setIsTeleporting(false);
 				}
 			}
+			else {
+				if (facingRight) {
+					ent->takeDamage(10.0f * dt);
+					ent->setPosition(Math::CoordF((position.x + 170), position.y));
+					ent->setIsTeleporting(true);
+				}
+				else {
+					ent->takeDamage(10.0f * dt);
+					ent->setPosition(Math::CoordF((position.x - 170), position.y));
+					ent->setIsTeleporting(false);
+				}
+			}
 		}
 		void Portal::connectPortal(Portal* p) {
 			if (p)

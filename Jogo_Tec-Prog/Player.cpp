@@ -207,7 +207,7 @@ namespace Entities {
 
 		void Player::operator++() {
 			points++;
-			cout << isPlayer1 << " " << points << endl;
+			//cout << isPlayer1 << " " << points << endl;
 		}
 
 		void Player::setIsParalized() {
@@ -217,6 +217,9 @@ namespace Entities {
 		void Player::heal(float heal) {
 			hp += heal;
 			isHealing = true;
+		}
+		float Player::getHp() const {
+			return hp;
 		}
 		void Player::collide(Entity* ent, Math::CoordF intersection, float dt) {
 			switch (ent->getID()) {

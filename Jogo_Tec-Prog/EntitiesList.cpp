@@ -25,22 +25,28 @@ void EntitiesList::render() {
 void EntitiesList::execute(float dt) {
 	List<Entities::Entity>::iterator it = entitiesList.begin();
 	while (it != entitiesList.end()) {
-		if ((*it)->getIsActive()) {
-			(*it)->execute(dt);
-		}
-		if ((*it)->getID() == player || (*it)->getID() == enemy || (*it)->getID() == boss) {
-			Entities::Characters::Character* pChar = dynamic_cast<Entities::Characters::Character*>(*it);
-			if (!pChar->getIsAlive()) {
-				removeData(pChar);
+		if ((*it)) {
+			if ((*it)->getIsActive()) {
+				(*it)->execute(dt);
 			}
+			if ((*it)->getID() == player || (*it)->getID() == enemy || (*it)->getID() == boss) {
+				Entities::Characters::Character* pChar = dynamic_cast<Entities::Characters::Character*>(*it);
+				if (!pChar->getIsAlive()) {
+					++it;
+					removeData(pChar);
+				}
+				else
+					++it;
+			}
+			else
+				++it;
 		}
-		it.operator++();
+		else
+			++it;
 	}
 }
 Entities::Entity* EntitiesList::pickRandon() {
 	int index = rand() % getSize();
-	std::cout << index << " index" << endl;
-	std::cout << entitiesList.getSize() << " size" << endl;
 	List<Entities::Entity>::iterator it = entitiesList.begin();
 	for (int i = 0; i < index && it != entitiesList.end(); i++) {
 		++it;
