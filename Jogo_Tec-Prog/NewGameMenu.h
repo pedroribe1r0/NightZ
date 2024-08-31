@@ -1,9 +1,8 @@
 #pragma once
-#include "Menu.h"
+#include "MainMenu.h"
 
 namespace Menu {
-	class MainMenu : public Menu
-	{
+	class NewGameMenu : public Menu {
 	private:
 		EntitiesList staticEntities;
 		EntitiesList movingEntities;
@@ -12,12 +11,13 @@ namespace Menu {
 		GraphicalElements::Parallax::Background background;
 
 	public:
-		MainMenu();
-		MainMenu(const ID id, std::string name, const unsigned int fontSize = 180);
-		virtual ~MainMenu();
+		NewGameMenu();
+		NewGameMenu(const ID id, std::string name, const unsigned int fontSize = 180);
+		virtual ~NewGameMenu();
 		virtual void createButtons();
 		void createBackground();
 		virtual void run();
 		void execute(float dt);
 	};
+
 }

@@ -1,4 +1,4 @@
-#pragma once
+/*#pragma once
 #include "Menu.h"
 
 namespace State {
@@ -24,4 +24,4 @@ namespace Observers {
 		void moveMouse(const sf::Vector2f mousePos);
 		void notifyMouseButtonReleased(const sf::Mouse::Button mouseButton);
 	};
-}
+}*/

@@ -31,6 +31,7 @@ namespace Menu {
 			void setString(std::string name);
 			const std::string getString() const;
 			void setFontSize(const unsigned int fontSize);
+			void setBorderColor(const sf::Color borderColor);
 		};
 	}
 }

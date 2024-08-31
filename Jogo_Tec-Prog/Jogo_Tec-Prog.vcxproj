@@ -148,11 +148,12 @@
     <ClCompile Include="Jumper.cpp" />
     <ClCompile Include="Layer.cpp" />
     <ClCompile Include="Level.cpp" />
+    <ClCompile Include="LevelMenu.cpp" />
     <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="MenuObserver.cpp" />
-    <ClCompile Include="MenuState.cpp" />
     <ClCompile Include="MovingEntity.cpp" />
+    <ClCompile Include="NewGameMenu.cpp" />
     <ClCompile Include="Observer.cpp" />
     <ClCompile Include="Obstacle.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -160,7 +161,6 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Jogo_Tec-Prog.cpp" />
     <ClCompile Include="PlayerObserver.cpp" />
-    <ClCompile Include="PlayState.cpp" />
     <ClCompile Include="Portal.cpp" />
     <ClCompile Include="PortalLevel.cpp" />
     <ClCompile Include="Projectile.cpp" />
@@ -169,8 +169,6 @@
     <ClCompile Include="Simple.cpp" />
     <ClCompile Include="State.cpp" />
     <ClCompile Include="StateMachine.cpp" />
-    <ClCompile Include="StateManager.cpp" />
-    <ClCompile Include="States.cpp" />
     <ClCompile Include="Text.cpp" />
     <ClCompile Include="TextButton.cpp" />
     <ClCompile Include="Thrower.cpp" />
@@ -248,12 +246,13 @@
     <ClInclude Include="Jumper.h" />
     <ClInclude Include="Layer.h" />
     <ClInclude Include="Level.h" />
+    <ClInclude Include="LevelMenu.h" />
     <ClInclude Include="List.h" />
     <ClInclude Include="MainMenu.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="MenuObserver.h" />
-    <ClInclude Include="MenuState.h" />
     <ClInclude Include="MovingEntity.h" />
+    <ClInclude Include="NewGameMenu.h" />
     <ClInclude Include="Observer.h" />
     <ClInclude Include="Obstacle.h" />
     <ClInclude Include="Player.h" />
@@ -261,7 +260,6 @@
     <ClInclude Include="Entity.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="PlayerObserver.h" />
-    <ClInclude Include="PlayState.h" />
     <ClInclude Include="Portal.h" />
     <ClInclude Include="PortalLevel.h" />
     <ClInclude Include="Projectile.h" />
@@ -270,8 +268,6 @@
     <ClInclude Include="Simple.h" />
     <ClInclude Include="State.h" />
     <ClInclude Include="StateMachine.h" />
-    <ClInclude Include="StateManager.h" />
-    <ClInclude Include="States.h" />
     <ClInclude Include="Text.h" />
     <ClInclude Include="TextButton.h" />
     <ClInclude Include="Thrower.h" />

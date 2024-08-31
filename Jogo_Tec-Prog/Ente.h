@@ -11,7 +11,19 @@ enum ID {
 	projectile,
 	level1,
 	level2,
-	background
+	background,
+	main_menu,
+	newgame_menu, //no main menu, quando selecionado vai para o menu onde escolhe o número de players
+	singleplayer_button, // vai para o seletor de fase
+	multiplayer_button, // vai para o seletor de fase
+	level_menu, // menu seletor de fase
+	loadgame_menu,
+	leaderboards_menu,
+	exit_button,
+	pause_menu,
+	round_button,
+	portal_button
+	
 	//to do
 };
 

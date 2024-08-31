@@ -2,7 +2,7 @@
 
 namespace Menu {
 	Menu::Menu(const ID id, const sf::Vector2f buttonSize, const std::string name, const unsigned int fontSize) :
-		Ente(id), textButtonList(), it(), buttonSize(),
+		Ente(id), textButtonList(), it(), buttonSize(buttonSize),
 		windowSize(sf::Vector2f(pGraphic->getWindowSize().x, pGraphic->getWindowSize().y)),
 		title(pGraphic->loadFont("yoster.ttf"), name, fontSize)//,
 		//menuObserver(new Observers::MenuObserver(this)), mouseSelected(false) 
@@ -34,12 +34,13 @@ namespace Menu {
         }
 	*/
 
-	void Menu::addButton(const std::string info, const sf::Vector2f pos, const Button::buttonID id, const sf::Color selectedColor) {
-		Button::TextButton* button = new Button::TextButton(info, buttonSize, pos, id, selectedColor);
+	void Menu::addButton(const std::string info, const sf::Vector2f pos, const ID id, const sf::Color selectedColor) {
+		Button::TextButton* button = new Button::TextButton(info, pos, buttonSize, id, selectedColor);
 		if (button == nullptr) {
 			std::cout << "ERROR::Menu:: not possible to create button" << std::endl;
 			exit(1);
 		}
+		std::cout << "teste addbutton" << std::endl;
 		textButtonList.push_back(button);
 	}
 
@@ -80,6 +81,7 @@ namespace Menu {
 		return (*it)->getID();
 	}
 
+	/*
 	void Menu::mouseEvent(const sf::Vector2f mousePos) {
 		std::list<Button::TextButton*>::iterator aux;
 		mouseSelected = false;
@@ -102,6 +104,7 @@ namespace Menu {
 	const bool Menu::getMouseSelected() const {
 		return mouseSelected;
 	}
+	*/
 
 	void Menu::render() {
 		std::list<Button::TextButton*>::iterator aux;
@@ -112,7 +115,4 @@ namespace Menu {
 		}
 	}
 
-	void Menu::changeObserverState() {
-
-	}
 }

@@ -1,5 +1,6 @@
 #pragma once
-#include "PortalLevel.h"
+#include "LevelMenu.h"
+
 class Game
 {
 private:

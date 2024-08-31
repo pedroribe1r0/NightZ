@@ -28,6 +28,11 @@ namespace Menu {
 			text.setFillColor(textColor);
 		}
 
+		void Text::setBorderColor(const sf::Color borderColor) {
+			this->borderColor = borderColor;
+			text.setOutlineColor(borderColor);
+		}
+
 		const sf::Text Text::getText() const {
 			return text;
 		}

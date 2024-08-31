@@ -2,7 +2,8 @@
 
 int main()
 {
-	Game g;
+	Menu::LevelMenu menu;
+
 	return 0;
 }
 

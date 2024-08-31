@@ -2,8 +2,8 @@
 
 namespace Menu {
 	namespace Button {
-		Button::Button(const sf::Vector2f size, const sf::Vector2f pos, const buttonID id) :
-			Ente(), size(size), pos(pos), texture(new sf::Texture())
+		Button::Button(const sf::Vector2f size, const sf::Vector2f pos, const ID id) :
+			Ente(id), size(size), pos(pos), texture(new sf::Texture())
 		{
 			box.setPosition(pos);
 			box.setSize(size);

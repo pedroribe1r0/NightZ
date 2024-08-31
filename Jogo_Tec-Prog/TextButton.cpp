@@ -2,7 +2,7 @@
 
 namespace Menu {
 	namespace Button {
-		TextButton::TextButton(const std::string info, const sf::Vector2f size, const sf::Vector2f pos, const buttonID id, const sf::Color selectedColor) :
+		TextButton::TextButton(const std::string info, const sf::Vector2f size, const sf::Vector2f pos, const ID id, const sf::Color selectedColor) :
 			Button(size, pos, id), selectedColor(selectedColor),
 			text(pGraphic->loadFont("yoster.ttf"), info), selected(false)
 		{

@@ -23,16 +23,16 @@ namespace Menu {
 	public:
 		Menu(const ID id, const sf::Vector2f buttonSize, const std::string name, const unsigned int fontSize);
 		~Menu();
-		void addButton(const std::string info, const sf::Vector2f pos, const Button::buttonID id, const sf::Color selectedColor);
-		void changeObserverState();
+		void addButton(const std::string info, const sf::Vector2f pos, const ID id, const sf::Color selectedColor);
+		//void changeObserverState();
 		void selectAbove();
 		void selectBelow();
 		virtual void selectRight() {};
 		virtual void selectLeft() {};
 		const ID getSelectedButtonID() const;
-		void mouseEvent(const sf::Vector2f mousePos);
-		const bool getMouseSelected() const;
+		//void mouseEvent(const sf::Vector2f mousePos);
+		//const bool getMouseSelected() const;
 		virtual void run() = 0;
-		void render();
+		void render(); //desenha os botões
 	};
 }
