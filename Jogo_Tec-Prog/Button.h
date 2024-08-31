@@ -1,20 +1,8 @@
 #pragma once
-#include "PortalLevel.h"
+#include "TimeLevel.h"
 
 namespace Menu {
 	namespace Button {
-		
-		enum buttonID {
-			newgame_button,
-			loadgame_button,
-			leaderboards_button,
-			exit_button,
-			coinflip_button,
-			portal_button,
-			singleplayer,
-			multiplayer
-		};
-
 		class Button : public Ente
 		{
 		protected:

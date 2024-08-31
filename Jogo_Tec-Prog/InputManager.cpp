@@ -31,7 +31,7 @@ namespace Managers{
 		std::list<Observers::Observer*>::iterator it;
 		for (it = observers.begin(); it != observers.end(); it++) {
 			if ((*it) != nullptr) {
-				if((*it)->getIsActive())
+				if ((*it)->getIsActive())
 					(*it)->notifyKeyReleased(key);
 				else {
 					observers.erase(it);

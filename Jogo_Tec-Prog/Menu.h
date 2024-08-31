@@ -7,7 +7,7 @@ namespace Observers {
 }
 
 namespace Menu {
-	class Menu : public Ente
+	class Menu : public States::State
 	{
 	protected:
 		Observers::MenuObserver* menuObserver;
@@ -32,7 +32,6 @@ namespace Menu {
 		const ID getSelectedButtonID() const;
 		//void mouseEvent(const sf::Vector2f mousePos);
 		//const bool getMouseSelected() const;
-		virtual void run() = 0;
-		void render(); //desenha os botões
+		virtual void render(); //desenha os botões
 	};
 }

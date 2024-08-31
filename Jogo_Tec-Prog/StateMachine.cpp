@@ -34,6 +34,19 @@ namespace States {
 			}
 		}
 	}
+	void StateMachine::popState(int qnt) {
+		for (int i = 0; i < qnt; i++) {
+			if (!statesStack.empty()) {
+				if (statesStack.top()) {
+					delete statesStack.top();
+					statesStack.top() = nullptr;
+					statesStack.pop();
+					if (!statesStack.empty())
+						statesStack.top()->setIsActive(true);
+				}
+			}
+		}
+	}
 	void StateMachine::renderState() {
 		if (!statesStack.empty() && statesStack.top()->getIsActive()) {
 			statesStack.top()->render();
@@ -48,5 +61,10 @@ namespace States {
 		if (!statesStack.empty()) {
 			statesStack.top()->manageCollisions(dt);
 		}
+	}
+	State* StateMachine::getCurrentState() const {
+		if (!statesStack.empty())
+			return statesStack.top();
+		return nullptr;
 	}
 }

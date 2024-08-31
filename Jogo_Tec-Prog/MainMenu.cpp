@@ -14,7 +14,7 @@ namespace Menu {
 		movingEntities.setData(z1);
 		movingEntities.setData(t1);
 		movingEntities.setData(b1);
-		Entities::Obstacles::Simple* floor = new Entities::Obstacles::Simple(Math::CoordF(900, 1080), Math::CoordF(1200, 100));
+		Entities::Obstacles::Simple* floor = new Entities::Obstacles::Simple(Math::CoordF(900, 1030), Math::CoordF(1200, 20));
 		staticEntities.setData(floor);
 		pCollision = new Managers::CollisionManager(&movingEntities, &staticEntities);
 		
@@ -26,7 +26,6 @@ namespace Menu {
 		
 		createButtons();
 		pEvent = Managers::EventsManager::getInstance();
-		run();
 	}
 
 	MainMenu::MainMenu(const ID id, std::string name, const unsigned int fontSize) :
@@ -42,7 +41,7 @@ namespace Menu {
 		const float buttonPosX = windowSize.x / 2.0f - buttonSize.x / 2.0f;
 		std::cout << buttonPosX << std::endl;
 		addButton("New Game", sf::Vector2f(1650, 900), ID::newgame_menu, sf::Color{ 62, 127, 93 });
-		addButton("Load Game", sf::Vector2f(1650, 1050), ID::loadgame_menu, sf::Color{ 62, 127, 93 });
+		addButton("Load Game", sf::Vector2f(1650, 1050), ID::loadgame_button, sf::Color{ 62, 127, 93 });
 		addButton("Leaderboards", sf::Vector2f(1650, 1200), ID::leaderboards_menu, sf::Color{ 62, 127, 93 });
 		addButton("Exit", sf::Vector2f(1650, 1350), ID::exit_button, sf::Color{ 62, 127, 93 });
 		initializeIterator();
@@ -63,27 +62,24 @@ namespace Menu {
 		background.addLayer("layer0.png", 0.1f, GraphicalElements::LID::floor);
 	}
 
-	void MainMenu::run() {
-		
-		while (pGraphic->isWindowOpen()) {
-			pGraphic->clear();
-			pGraphic->updateDeltaTime();
-			pCollision->collide(pGraphic->getDeltaTime());
-			background.render();
-			render();
-			
-			pGraphic->render(title.getText());
-			pEvent->pollEvents();
-			movingEntities.execute(pGraphic->getDeltaTime());
-			staticEntities.execute(pGraphic->getDeltaTime());
-			movingEntities.render();
-			staticEntities.render();
-			background.renderFloor();
-			pGraphic->display();
-		}
-	}
-
 	void MainMenu::execute(float dt) {
-
+		movingEntities.execute(pGraphic->getDeltaTime());
+		staticEntities.execute(pGraphic->getDeltaTime());
+	}
+	void MainMenu::render() {
+		background.render();
+		pGraphic->render(title.getText());
+		std::list<Button::TextButton*>::iterator aux;
+		for (aux = textButtonList.begin(); aux != textButtonList.end(); aux++) {
+			Button::TextButton* button = *aux;
+			button->render();
+			button = nullptr;
+		}
+		movingEntities.render();
+		staticEntities.render();
+		background.renderFloor();
+	}
+	void MainMenu::manageCollisions(float dt) {
+		pCollision->collide(dt);
 	}
 }

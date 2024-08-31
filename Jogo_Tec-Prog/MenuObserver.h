@@ -1,5 +1,5 @@
-/*#pragma once
-#include "Menu.h"
+#pragma once
+#include "NewGameMenu.h"
 
 namespace State {
 	class StateMachine;
@@ -21,7 +21,7 @@ namespace Observers {
 		~MenuObserver();
 		void notifyKeyPressed(const sf::Keyboard::Key key);
 		void notifyKeyReleased(const sf::Keyboard::Key key);
-		void moveMouse(const sf::Vector2f mousePos);
-		void notifyMouseButtonReleased(const sf::Mouse::Button mouseButton);
+		//void moveMouse(const sf::Vector2f mousePos);
+		//void notifyMouseButtonReleased(const sf::Mouse::Button mouseButton);
 	};
-}*/
+}

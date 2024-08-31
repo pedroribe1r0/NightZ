@@ -1,16 +1,17 @@
 #include "Menu.h"
+#include "MenuObserver.h"
 
 namespace Menu {
 	Menu::Menu(const ID id, const sf::Vector2f buttonSize, const std::string name, const unsigned int fontSize) :
-		Ente(id), textButtonList(), it(), buttonSize(buttonSize),
+		State(id), textButtonList(), it(), buttonSize(buttonSize),
 		windowSize(sf::Vector2f(pGraphic->getWindowSize().x, pGraphic->getWindowSize().y)),
-		title(pGraphic->loadFont("yoster.ttf"), name, fontSize)//,
-		//menuObserver(new Observers::MenuObserver(this)), mouseSelected(false) 
+		title(pGraphic->loadFont("yoster.ttf"), name, fontSize),
+		menuObserver(new Observers::MenuObserver(this))
 	{
-		/*if (menuObserver == nullptr) {
+		if (menuObserver == nullptr) {
 			std::cout << "ERROR::Menu::MainMenu:: not possible to create observer to main menu" << std::endl;
 			exit(1);
-		}*/
+		}
 	}
 
 	Menu::~Menu() {
@@ -70,7 +71,7 @@ namespace Menu {
 		button->setSelected(false);
 		it++;
 		if (it == textButtonList.end()) {
-			it = textButtonList.end();
+			it = textButtonList.begin();
 		}
 		button = *it;
 		button->setSelected(true);
@@ -79,6 +80,7 @@ namespace Menu {
 	const ID Menu::getSelectedButtonID() const {
 		return (*it)->getID();
 	}
+	
 
 	/*
 	void Menu::mouseEvent(const sf::Vector2f mousePos) {

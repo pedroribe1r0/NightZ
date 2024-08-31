@@ -14,15 +14,15 @@ enum ID {
 	background,
 	main_menu,
 	newgame_menu, //no main menu, quando selecionado vai para o menu onde escolhe o número de players
-	singleplayer_button, // vai para o seletor de fase
-	multiplayer_button, // vai para o seletor de fase
+	round_singleplayer_button, // vai para o seletor de fase
+	round_multiplayer_button, // vai para o seletor de fase
+	time_singleplayer_button, 
+	time_multiplayer_button,
 	level_menu, // menu seletor de fase
-	loadgame_menu,
+	loadgame_button,
 	leaderboards_menu,
 	exit_button,
 	pause_menu,
-	round_button,
-	portal_button
 	
 	//to do
 };

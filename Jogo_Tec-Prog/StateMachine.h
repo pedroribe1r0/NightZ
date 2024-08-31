@@ -18,6 +18,8 @@ namespace States {
 		void renderState();
 		void executeState(float dt);
 		void manageCollision(float dt);
+		void popState(int qnt);
+		State* getCurrentState() const;
 	};
 }
 

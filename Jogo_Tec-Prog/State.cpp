@@ -14,4 +14,5 @@ namespace States {
 	void State::setIsActive(bool iA) {
 		isActive = iA;
 	}
+	void State::manageCollisions(float dt){}
 }

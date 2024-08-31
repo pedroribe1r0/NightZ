@@ -12,7 +12,7 @@ namespace States {
 		virtual ~State();
 		void setIsActive(bool iA);
 		bool getIsActive();
-		virtual void manageCollisions(float dt) = 0;
+		virtual void manageCollisions(float dt);
 		virtual void render() = 0;
 		virtual void execute(float dt) = 0;
 	};

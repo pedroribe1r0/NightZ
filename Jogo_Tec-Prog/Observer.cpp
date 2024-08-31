@@ -1,5 +1,6 @@
 #include "Observer.h"
 #include "InputManager.h"
+#include "StateMachine.h"
 
 namespace Observers {
 	Observer::Observer(){
@@ -7,6 +8,8 @@ namespace Observers {
 
 		pInput->addObserver(this);
 		isActive = true;
+		isMoreActive = false;
+		pMachine = States::StateMachine::getInstance();
 	}
 
 	Observer::~Observer() {
@@ -16,5 +19,11 @@ namespace Observers {
 	}
 	bool Observer::getIsActive() {
 		return isActive;
+	}
+	void Observer::setIsMoreActive(bool isMA) {
+		isMoreActive = isMA;
+	}
+	bool Observer::getIsMoreActive() {
+		return isMoreActive;
 	}
 }

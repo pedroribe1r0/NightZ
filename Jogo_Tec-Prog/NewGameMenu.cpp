@@ -26,7 +26,6 @@ namespace Menu {
 
 		createButtons();
 		pEvent = Managers::EventsManager::getInstance();
-		run();
 	}
 
 	NewGameMenu::NewGameMenu(const ID id, std::string name, const unsigned int fontSize) :
@@ -41,8 +40,8 @@ namespace Menu {
 	void NewGameMenu::createButtons() {
 		const float buttonPosX = windowSize.x / 2.0f - buttonSize.x / 2.0f;
 		std::cout << buttonPosX << std::endl;
-		addButton("Singleplayer", sf::Vector2f(1650, 800), ID::singleplayer_button, sf::Color{ 62, 127, 93 });
-		addButton("Multiplayer", sf::Vector2f(1650, 950), ID::multiplayer_button, sf::Color{ 62, 127, 93 });
+		addButton("Round Singleplayer", sf::Vector2f(1650, 800), ID::round_singleplayer_button, sf::Color{ 62, 127, 93 });
+		addButton("Round Multiplayer", sf::Vector2f(1650, 950), ID::round_multiplayer_button, sf::Color{ 62, 127, 93 });
 		initializeIterator();
 	}
 
@@ -61,27 +60,24 @@ namespace Menu {
 		background.addLayer("layer0.png", 0.1f, GraphicalElements::LID::floor);
 	}
 
-	void NewGameMenu::run() {
-
-		while (pGraphic->isWindowOpen()) {
-			pGraphic->clear();
-			pGraphic->updateDeltaTime();
-			pCollision->collide(pGraphic->getDeltaTime());
-			background.render();
-			render();
-
-			pGraphic->render(title.getText());
-			pEvent->pollEvents();
-			movingEntities.execute(pGraphic->getDeltaTime());
-			staticEntities.execute(pGraphic->getDeltaTime());
-			movingEntities.render();
-			staticEntities.render();
-			background.renderFloor();
-			pGraphic->display();
-		}
-	}
-
 	void NewGameMenu::execute(float dt) {
-
+		movingEntities.execute(pGraphic->getDeltaTime());
+		staticEntities.execute(pGraphic->getDeltaTime());
+	}
+	void NewGameMenu::render() {
+		background.render();
+		pGraphic->render(title.getText());
+		std::list<Button::TextButton*>::iterator aux;
+		for (aux = textButtonList.begin(); aux != textButtonList.end(); aux++) {
+			Button::TextButton* button = *aux;
+			button->render();
+			button = nullptr;
+		}
+		movingEntities.render();
+		staticEntities.render();
+		background.renderFloor();
+	}
+	void NewGameMenu::manageCollisions(float dt) {
+		pCollision->collide(dt);
 	}
 }

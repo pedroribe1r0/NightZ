@@ -2,9 +2,9 @@
 
 namespace States {
 	namespace Levels {
-		TimeLevel::TimeLevel() {
+		TimeLevel::TimeLevel(bool player2) {
 			createLevel();
-			createPlayers(false);
+			createPlayers(player2);
 			createMud();
 			createThrowers();
 			finalTime = 120;

@@ -2,7 +2,7 @@
 
 int main()
 {
-	Menu::MainMenu menu;
+	Game menu;
 
 	return 0;
 }

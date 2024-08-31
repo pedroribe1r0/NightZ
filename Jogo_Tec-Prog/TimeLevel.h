@@ -8,9 +8,8 @@ namespace States {
 			float finalTime;
 			float currentTime;
 		public:
-			TimeLevel();
+			TimeLevel(bool player2);
 			~TimeLevel();
-			void run();
 			void render();
 			void execute(float dt);
 			void createMud();

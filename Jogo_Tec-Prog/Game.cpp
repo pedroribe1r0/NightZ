@@ -6,7 +6,7 @@ Game::Game() {
 	pGraphic = Managers::GraphicManager::getInstance();
 	pEvent = Managers::EventsManager::getInstance();
 	//adicionar o primeiro estado(main menu)
-	pMachine->pushState(new States::Levels::TimeLevel());
+	new Menu::MainMenu();
 	run();
 }
 Game::~Game() {
@@ -23,5 +23,6 @@ void Game::run() {
 		pEvent->pollEvents();
 		pMachine->renderState();
 		pGraphic->display();
+		cout << pMachine->getCurrentState()->getID() << endl;
 	}
 }

@@ -12,9 +12,8 @@ namespace States {
 			float currentTime;
 			int nonEnemies;
 		public:
-			RoundLevel();
+			RoundLevel(bool player2);
 			~RoundLevel();
-			void run();
 			void render();
 			void execute(float dt);
 			void createBosses();

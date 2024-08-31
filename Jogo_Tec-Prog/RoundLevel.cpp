@@ -2,9 +2,9 @@
 
 namespace States {
 	namespace Levels {
-		RoundLevel::RoundLevel() {
+		RoundLevel::RoundLevel(bool player2) {
 			createLevel();
-			createPlayers(false);
+			createPlayers(player2);
 			createBonfires();
 			createBosses();
 			currentRound = 1;

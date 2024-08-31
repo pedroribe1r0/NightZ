@@ -17,7 +17,8 @@ namespace Menu {
 		virtual ~MainMenu();
 		virtual void createButtons();
 		void createBackground();
-		virtual void run();
 		void execute(float dt);
+		void render();
+		void manageCollisions(float dt);
 	};
 }
