@@ -6,12 +6,11 @@
 
 namespace Menu {
 	PauseMenu::PauseMenu(States::Levels::Level* level):
-		Menu(ID::pause_menu, sf::Vector2f(BUTTON_SIZE_X, BUTTON_SIZE_Y), "Game Paused", 105),
-		level(level), panelBackground(sf::Vector2f(windowSize.x / 2.0f, windowSize.y))
+		Menu(ID::pause_menu, sf::Vector2f(BUTTON_SIZE_X, BUTTON_SIZE_Y), "Game Paused", 100),
+		level(level)
 	{
 
-		panelBackground.setFillColor(sf::Color{ 0, 0, 0, 100 });
-		panelBackground.setPosition(windowSize.x - panelBackground.getSize().x / 2.0f, windowSize.y - panelBackground.getSize().y / 2.0f);
+		background.addLayer("menubg.png", 0.0f, GraphicalElements::LID::empty);
 
 		title.setPos(sf::Vector2f(windowSize.x / 2.0f - title.getSize().x / 2.0f, 220.0f));
 		title.setTextColor(sf::Color{ 255, 255, 255 });
@@ -21,13 +20,6 @@ namespace Menu {
 		createButtons();
 	}
 
-	/*PauseMenu::PauseMenu(const ID id, std::string name, States::Levels::Level* level = ) :
-		Menu(id, sf::Vector2f(BUTTON_SIZE_X, BUTTON_SIZE_Y), name, 90), level(level)
-	{
-		title.setPos(sf::Vector2f(windowSize.x / 2.0f - title.getSize().x / 2.0f, 25.0f));
-		title.setTextColor(sf::Color{ 0, 200, 0 });
-	}*/
-
 	PauseMenu::~PauseMenu() {
 
 	}
@@ -35,7 +27,7 @@ namespace Menu {
 	void PauseMenu::createButtons() {
 		addButton("Resume Game", sf::Vector2f(1650, 800), ID::resumegame_button, sf::Color{ 62, 127, 93 });
 		addButton("Save Progress", sf::Vector2f(1650, 950), ID::save_button, sf::Color{ 62, 127, 93 });
-		addButton("Exit to Main Menu", sf::Vector2f(1650, 1100), ID::exit_button, sf::Color{ 62, 127, 93 });
+		addButton("Exit to Main Menu", sf::Vector2f(1650, 1070), ID::exit_button, sf::Color{ 62, 127, 93 });
 		initializeIterator();
 	}
 
@@ -51,7 +43,7 @@ namespace Menu {
 		if (level) {
 			level->render();
 		}
-		pGraphic->render(&panelBackground);
+		background.render();
 		std::list<Button::TextButton*>::iterator aux;
 		for (aux = textButtonList.begin(); aux != textButtonList.end(); aux++) {
 			Button::TextButton* button = *aux;

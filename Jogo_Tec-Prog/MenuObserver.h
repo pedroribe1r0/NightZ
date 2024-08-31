@@ -1,5 +1,5 @@
 #pragma once
-#include "PauseMenu.h"
+#include "GameOverMenu.h"
 
 namespace State {
 	class StateMachine;

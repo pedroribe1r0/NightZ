@@ -1,5 +1,6 @@
 #pragma once
-#include "PauseMenu.h"
+#include "GameOverMenu.h"
+
 class Game
 {
 private:
