@@ -8,14 +8,14 @@ namespace Menu {
 		Menu(ID::newgame_menu, sf::Vector2f(BUTTON_SIZE_X, BUTTON_SIZE_Y), "New Game", 105)
 	{
 
-		Entities::Characters::Zombie* z1 = new Entities::Characters::Zombie(Math::CoordF(500, 1000));
-		Entities::Characters::Thrower* t1 = new Entities::Characters::Thrower(Math::CoordF(600, 1000), &movingEntities);
-		Entities::Characters::Boss* b1 = new Entities::Characters::Boss(Math::CoordF(400, 1000));
-		movingEntities.setData(z1);
-		movingEntities.setData(t1);
-		movingEntities.setData(b1);
-		Entities::Obstacles::Simple* floor = new Entities::Obstacles::Simple(Math::CoordF(900, 1080), Math::CoordF(1200, 100));
-		staticEntities.setData(floor);
+		//Entities::Characters::Zombie* z1 = new Entities::Characters::Zombie(Math::CoordF(500, 1000));
+	//	Entities::Characters::Thrower* t1 = new Entities::Characters::Thrower(Math::CoordF(600, 1000), &movingEntities);
+		//Entities::Characters::Boss* b1 = new Entities::Characters::Boss(Math::CoordF(400, 1000));
+	//	movingEntities.setData(z1);
+		//movingEntities.setData(t1);
+		//movingEntities.setData(b1);
+		//Entities::Obstacles::Simple* floor = new Entities::Obstacles::Simple(Math::CoordF(900, 1080), Math::CoordF(1200, 100));
+		//staticEntities.setData(floor);
 		pCollision = new Managers::CollisionManager(&movingEntities, &staticEntities);
 
 		title.setPos(sf::Vector2f(windowSize.x / 2.0f - title.getSize().x / 2.0f, 220.0f));
