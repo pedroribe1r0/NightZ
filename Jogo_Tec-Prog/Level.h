@@ -17,7 +17,7 @@ namespace States {
 			float spawnTime;
 			float enemiesNumber;
 		public:
-			Level();
+			Level(const ID id);
 			~Level();
 			virtual void execute(float dt) = 0;
 			virtual void render() = 0;

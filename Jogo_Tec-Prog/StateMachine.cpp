@@ -12,7 +12,9 @@ namespace States {
 		
 	}
 	StateMachine::~StateMachine() {
-
+		while (!statesStack.empty()) {
+			popState();
+		}
 	}
 	void StateMachine::pushState(State* s) {
 		if (!statesStack.empty()) {
@@ -32,6 +34,7 @@ namespace States {
 		statesStack.push(s);
 		return s2;
 	}
+
 	void StateMachine::popState() {
 		if (!statesStack.empty()) {
 			if (statesStack.top()) {

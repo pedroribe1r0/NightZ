@@ -4,7 +4,7 @@ namespace States {
 	namespace Levels {
 		Managers::EventsManager* Level::pEvent = Managers::EventsManager::getInstance();
 
-		Level::Level() : State(ID::level) {
+		Level::Level(const ID id) : State(id) {
 			srand(time(NULL));
 			movingEntities = new EntitiesList();
 			staticEntities = new EntitiesList();

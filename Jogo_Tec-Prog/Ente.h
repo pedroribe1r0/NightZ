@@ -9,13 +9,16 @@ enum ID {
 	boss,
 	obstacle,
 	projectile,
-	level,
+	roundsingleplayer_id,
+	timesingleplayer_id,
+	roundmultiplayer_id,
+	timemultiplayer_id,
 	background,
 	main_menu,
-	newgame_menu, 
+	newgame_menu,
 	round_singleplayer_button,
 	round_multiplayer_button,
-	time_singleplayer_button, 
+	time_singleplayer_button,
 	time_multiplayer_button,
 	loadgame_button,
 	leaderboards_menu,
@@ -23,7 +26,8 @@ enum ID {
 	pause_menu,
 	resumegame_button,
 	save_button,
-	gameover_menu
+	gameover_menu,
+	levelcomplete_menu
 };
 namespace Entities {
 	namespace Characters {

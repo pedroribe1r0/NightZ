@@ -85,6 +85,35 @@ namespace Observers {
 						}
 					}
 
+					else if (pMachine->getCurrentState()->getID() == levelcomplete_menu) {
+						switch (menu->getSelectedButtonID()) {
+						case ID::round_singleplayer_button: {
+							pMachine->popState(2);
+							States::Levels::RoundLevel* r = new States::Levels::RoundLevel(false);
+							break;
+						}
+						case ID::round_multiplayer_button: {
+							pMachine->popState(2);
+							States::Levels::RoundLevel* r = new States::Levels::RoundLevel(true);
+							break;
+						}
+						case ID::time_singleplayer_button: {
+							pMachine->popState(2);
+							States::Levels::TimeLevel* t = new States::Levels::TimeLevel(false);
+							break;
+						}
+						case ID::time_multiplayer_button: {
+							pMachine->popState(2);
+							States::Levels::TimeLevel* t = new States::Levels::TimeLevel(true);
+							break;
+						}
+						case ID::exit_button: {
+							pMachine->popState(3);
+
+						}
+						}
+					}
+
 					}
 					else if (key == up) {
 						menu->selectAbove();

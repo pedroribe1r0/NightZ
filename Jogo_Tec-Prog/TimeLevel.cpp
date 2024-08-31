@@ -1,15 +1,16 @@
 #include "TimeLevel.h"
 #include "Text.h"
-#include "GameOverMenu.h"
+#include "LevelCompleteMenu.h"
 
 namespace States {
 	namespace Levels {
-		TimeLevel::TimeLevel(bool player2) {
+		TimeLevel::TimeLevel(bool player2) : Level(player2 ? timemultiplayer_id : timesingleplayer_id)
+		{
 			createLevel();
 			createPlayers(player2);
 			createMud();
 			createThrowers();
-			finalTime = 120;
+			finalTime = 5;
 			currentTime = 0;
 			std::string s = "Time Remaining : " + to_string((int)(finalTime - currentTime));
 			text = new Menu::Button::Text(pGraphic->loadFont("yoster.ttf"), s, 50);
@@ -47,6 +48,7 @@ namespace States {
 			}
 			if (currentTime >= finalTime) {
 				//empilhar estado
+				Menu::LevelCompleteMenu* c = new Menu::LevelCompleteMenu();
 			}
 			if ((!pPlayer1 && !pPlayer2)) {
 				//empilhar o menu final

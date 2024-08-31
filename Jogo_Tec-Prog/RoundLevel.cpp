@@ -1,10 +1,11 @@
 #include "RoundLevel.h"
 #include "Text.h"
-#include "GameOverMenu.h"
+#include "LevelCompleteMenu.h"
 
 namespace States {
 	namespace Levels {
-		RoundLevel::RoundLevel(bool player2) {
+		RoundLevel::RoundLevel(bool player2) : Level(player2 ? roundmultiplayer_id : roundsingleplayer_id)
+		{
 			createLevel();
 			createPlayers(player2);
 			createBonfires();
@@ -100,7 +101,7 @@ namespace States {
 				Menu::GameOverMenu* g = new Menu::GameOverMenu();
 			}
 			if (currentRound > 5) {
-				//empilhar final
+				Menu::LevelCompleteMenu* c = new Menu::LevelCompleteMenu();
 			}
 			std::string s = "Round : " + to_string(currentRound);
 			text->setString(s);
