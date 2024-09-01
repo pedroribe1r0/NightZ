@@ -159,7 +159,7 @@ namespace States {
 			do {
 				ent = movingEntities->pickRandon();
 			} while (ent->getID() != enemy && ent->getID() != thrower && !(ent->getIsActive()));
-			if (ent) {
+			if (ent && ent->getPosition().x < -5000) {
 				if (ent->getID() == enemy || ent->getID() == thrower) {
 					Entities::Characters::Enemy* e = dynamic_cast<Entities::Characters::Enemy*>(ent);
 					int randSpot = 0;

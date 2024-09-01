@@ -18,33 +18,38 @@ namespace Managers{
 	}
 
 	void InputManager::handleKeyPressed(sf::Keyboard::Key key) {
-		std::list<Observers::Observer*>::iterator it;
-		for (it = observers.begin(); it != observers.end(); it++) {
+		std::list<Observers::Observer*>::iterator it = observers.begin();
+		while (it != observers.end()) {
 			if ((*it)->getCanPress()) {
-				if ((*it)->getIsActive())
+				if ((*it)->getIsActive()) {
 					(*it)->notifyKeyPressed(key);
+					++it;  // Incrementa o iterador
+				}
 				else {
-					observers.erase(it);
+					it = observers.erase(it);  // Apaga e recebe o próximo elemento
 				}
 			}
 			else {
 				(*it)->setCanPress(true);
+				++it;  // Incrementa o iterador
 			}
 		}
 	}
 	void InputManager::handleKeyReleased(sf::Keyboard::Key key) {
-		std::list<Observers::Observer*>::iterator it;
-		for (it = observers.begin(); it != observers.end(); it++) {
-			if ((*it) != nullptr) {
-				if ((*it)->getIsMoreActive()) {
-					if ((*it)->getIsActive())
-						(*it)->notifyKeyReleased(key);
-					else {
-						observers.erase(it);
-					}
+		std::list<Observers::Observer*>::iterator it = observers.begin();
+		while (it != observers.end()) {
+			if ((*it)->getCanPress()) {
+				if ((*it)->getIsActive()) {
+					(*it)->notifyKeyReleased(key);
+					++it;  // Incrementa o iterador
 				}
-				else
-					(*it)->setIsMoreActive(true);
+				else {
+					it = observers.erase(it);  // Apaga e recebe o próximo elemento
+				}
+			}
+			else {
+				(*it)->setCanPress(true);
+				++it;  // Incrementa o iterador
 			}
 		}
 	}

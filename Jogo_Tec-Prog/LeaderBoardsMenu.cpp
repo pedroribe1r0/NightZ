@@ -23,7 +23,6 @@ namespace Menu {
 		title.setBorderSize(8);
 
 		createLeaderBoard();
-		
 	}
 	LeaderBoardsMenu::~LeaderBoardsMenu() {
 		for (int i = 0; i < textVector.size(); i++) {

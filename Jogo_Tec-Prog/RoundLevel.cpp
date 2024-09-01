@@ -18,7 +18,7 @@ namespace States {
 			roundTimeCounter = 0;
 			finalRound = 5;
 			currentEnemies = 0;
-			spawnTime = 8;
+			spawnTime = 9 - currentRound;
 			deadEnemies = 0;
 			currentTime = 0;
 			enemiesNumber -= 35;
@@ -124,7 +124,7 @@ namespace States {
 				if (ent->getID() == boss && currentRound >= 3 && !ent->getIsActive())
 					break;
 			} while (ent->getID() != enemy && !(ent->getIsActive()));
-			if (ent) {
+			if (ent && ent->getPosition().x < -5000) {
 				if (ent->getID() == enemy || (ent->getID() == boss && currentRound >= 3)) {
 					Entities::Characters::Enemy* e = dynamic_cast<Entities::Characters::Enemy*>(ent);
 					Entities::Characters::Player* p1 = e->getPlayer1();
