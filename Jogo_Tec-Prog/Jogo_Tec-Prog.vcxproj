@@ -143,6 +143,7 @@
     <ClCompile Include="Ente.cpp" />
     <ClCompile Include="EntitiesList.cpp" />
     <ClCompile Include="EventsManager.cpp" />
+    <ClCompile Include="FileManager.cpp" />
     <ClCompile Include="GameOverMenu.cpp" />
     <ClCompile Include="GraphicManager.cpp" />
     <ClCompile Include="InputManager.cpp" />
@@ -248,6 +249,7 @@
     <ClInclude Include="Ente.h" />
     <ClInclude Include="EntitiesList.h" />
     <ClInclude Include="EventsManager.h" />
+    <ClInclude Include="FileManager.h" />
     <ClInclude Include="GameOverMenu.h" />
     <ClInclude Include="GraphicManager.h" />
     <ClInclude Include="InputManager.h" />

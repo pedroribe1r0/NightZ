@@ -9,6 +9,7 @@
 #include <math.h>
 #include <list>
 #include <stack>
+#include <sstream>
 //O codigo usado de base foi feito por Matheus Augusto Burda(Burda Canal no Youtube)
 
 namespace Managers {

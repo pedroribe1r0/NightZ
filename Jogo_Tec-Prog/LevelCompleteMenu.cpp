@@ -24,7 +24,7 @@ namespace Menu {
 	}
 
 	void LevelCompleteMenu::createButtons() {
-		/*if (pMachine->getPreviousState()->getID() == roundsingleplayer_id) {
+		if (pMachine->getPreviousState()->getID() == roundsingleplayer_id) {
 			addButton("Play Again", sf::Vector2f(1650, 800), ID::round_singleplayer_button, sf::Color{ 62, 127, 93 });
 			addButton("Play Time Level", sf::Vector2f(1650, 950), ID::time_singleplayer_button, sf::Color{ 62, 127, 93 });
 		}
@@ -42,7 +42,7 @@ namespace Menu {
 		else if (pMachine->getPreviousState()->getID() == timemultiplayer_id) {
 			addButton("Play Again", sf::Vector2f(1650, 800), ID::time_multiplayer_button, sf::Color{ 62, 127, 93 });
 			addButton("Play Round Level", sf::Vector2f(1650, 950), ID::round_multiplayer_button, sf::Color{ 62, 127, 93 });
-		}*/
+		}
 		//addButton("Play Again", sf::Vector2f(1650, 800), ID::time_singleplayer_button, sf::Color{ 62, 127, 93 });
 		//addButton("Play Round Level", sf::Vector2f(1650, 950), ID::round_singleplayer_button, sf::Color{ 62, 127, 93 });
 

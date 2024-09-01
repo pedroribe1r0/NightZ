@@ -55,6 +55,8 @@ namespace Entities {
 			void setIsTeleporting(bool left);
 			void setSlow(float slow);
 			float getHp() const;
+			string save();
+			void setPoints(int points);
 		};
 	}
 }

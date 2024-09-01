@@ -20,13 +20,15 @@ namespace States {
 			int nonEnemies;
 			float roundTimeCounter;
 		public:
-			RoundLevel(bool player2);
+			RoundLevel(bool player2 = false, bool load = false);
 			~RoundLevel();
 			void render();
 			void execute(float dt);
 			void createBosses();
 			void createBonfires();
 			void spawnEnemies();
+			void loadLevel();
+			void saveLevel();
 		};
 	}
 }

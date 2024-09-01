@@ -76,5 +76,13 @@ namespace Entities {
 			else
 				sprite->update(GraphicalElements::Animation_ID::idle, facingLeft, position, dt);
 		}
+		string Zombie::save() {
+			string line;
+			line += to_string(static_cast<int>(id)) + ' ';
+			line += to_string(position.x) + ' ';
+			line += to_string(position.y) + ' ';
+			line += to_string(hp) + ' ';
+			return line;
+		}
 	}
 }

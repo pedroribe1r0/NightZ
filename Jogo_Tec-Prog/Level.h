@@ -16,8 +16,9 @@ namespace States {
 			GraphicalElements::Parallax::Background background;
 			float spawnTime;
 			float enemiesNumber;
+			Managers::FileManager file;
 		public:
-			Level(const ID id);
+			Level(const ID id = ID::empty, bool load = false);
 			~Level();
 			virtual void execute(float dt) = 0;
 			virtual void render() = 0;
@@ -30,6 +31,8 @@ namespace States {
 			void createBackground();
 			void createPlayers(bool Player2);
 			void createJumpers();
+			virtual void loadLevel();
+			virtual void saveLevel();
 		};
 	}
 }

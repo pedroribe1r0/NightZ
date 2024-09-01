@@ -4,14 +4,16 @@
 
 namespace States {
 	namespace Levels {
-		RoundLevel::RoundLevel(bool player2) : Level(player2 ? roundmultiplayer_id : roundsingleplayer_id)
+		RoundLevel::RoundLevel(bool player2, bool load) : Level(player2 ? roundmultiplayer_id : roundsingleplayer_id, load)
 		{
 			createLevel();
-			createPlayers(player2);
+			if (!load) {
+				createBosses();
+				createPlayers(player2);
+				currentRound = 1;
+			}
 			createBonfires();
-			createBosses();
 			roundTimeCounter = 0;
-			currentRound = 1;
 			finalRound = 5;
 			currentEnemies = 0;
 			spawnTime = 8;
@@ -24,6 +26,81 @@ namespace States {
 		}
 		RoundLevel::~RoundLevel() {
 			
+		}
+
+		void RoundLevel::loadLevel() {
+			vector<string> lines = file.lerArquivo("./levelSave.txt");
+			currentRound = stoi(lines[2]);
+			cout << currentRound << endl;
+			for (int i = 0; i < lines.size(); i++) {
+				int id;
+				stringstream ss(lines[i]);
+				ss >> id;
+				if (id == static_cast<int>(player)) {
+					float posx, posy, hp;
+					int points;
+					bool isPlayer1;
+					ss >> posx >> posy >> hp >> points >> isPlayer1;
+					Entities::Characters::Player* p = new Entities::Characters::Player(Math::CoordF(posx, posy), isPlayer1, movingEntities);
+					movingEntities->setData(p);
+					p->setHp(hp);
+					p->setPoints(points);
+					if (isPlayer1) {
+						Ente::setP1(p);
+					}
+					else
+						Ente::setP2(p);
+				}
+				else if (id == static_cast<int>(enemy)) {
+					float posx, posy, hp;
+					ss >> posx >> posy >> hp;
+					Entities::Characters::Zombie* z = new Entities::Characters::Zombie(Math::CoordF(posx, posy));
+					z->setHp(hp);
+					movingEntities->setData(z);
+					enemiesNumber++;
+				}
+				else if (id == static_cast<int>(thrower)) {
+					float posx, posy, hp;
+					ss >> posx >> posy >> hp;
+					Entities::Characters::Thrower* z = new Entities::Characters::Thrower(Math::CoordF(posx, posy), movingEntities);
+					z->setHp(hp);
+					movingEntities->setData(z);
+					enemiesNumber++;
+				}
+				else if (id == static_cast<int>(boss)) {
+					float posx, posy, hp;
+					ss >> posx >> posy >> hp;
+					Entities::Characters::Boss* z = new Entities::Characters::Boss(Math::CoordF(posx, posy));
+					z->setHp(hp);
+					movingEntities->setData(z);
+					enemiesNumber++;
+				}
+			}
+			if (pPlayer1 && pPlayer2) {
+				pPlayer1->setOther(pPlayer2);
+				pPlayer2->setOther(pPlayer1);
+			}
+		}
+		void RoundLevel::saveLevel() {
+			file.removeFile("./levelSave.txt");
+			vector<string> lines;
+			string s = "";
+			s += to_string(static_cast<int>(id)) + ' ';
+			lines.push_back(s);
+			s = "";
+			s += to_string(currentRound) + ' ';
+			lines.push_back(s);
+			List<Entities::Entity>::iterator it = staticEntities->begin();
+			while (it != staticEntities->end()) {
+				lines.push_back((*it)->save());
+				++it;
+			}
+			it = movingEntities->begin();
+			while (it != movingEntities->end()) {
+				lines.push_back((*it)->save());
+				++it;
+			}
+			file.saveContent("./levelSave.txt", lines);
 		}
 
 		void RoundLevel::createBonfires() {
@@ -89,6 +166,7 @@ namespace States {
 				spawnEnemies();
 				currentTime = 0;
 			}
+			cout << deadEnemies << endl;
 			if ((deadEnemies >= currentRound * enemiesNumber/ 15) || (roundTimeCounter >= ROUND_MAX_TIME && currentRound < 5)) {
 				enemiesNumber = enemiesNumber - deadEnemies;
 				currentRound++;
@@ -97,14 +175,13 @@ namespace States {
 				roundTimeCounter = 0;
 				spawnTime--;
 			}
+			/*
 			if ((!pPlayer1 && !pPlayer2)) {
 				Menu::GameOverMenu* g = new Menu::GameOverMenu();
-				cout << "teste" << endl;
 			}
 			else if (currentRound > 5) {
 				Menu::LevelCompleteMenu* c = new Menu::LevelCompleteMenu();
-				cout << "teste" << endl;
-			}
+			}*/
 			std::string s = "Round : " + to_string(currentRound);
 			text->setString(s);
 			if (pPlayer1) {

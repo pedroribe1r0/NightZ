@@ -13,6 +13,7 @@ namespace Observers {
 		Managers::InputManager* pInput;
 		bool isDeleting;
 		bool isActive;
+		bool canPress;
 		States::StateMachine* pMachine;
 	public:
 		Observer();
@@ -24,6 +25,8 @@ namespace Observers {
 		bool getIsActive();
 		void setIsMoreActive(bool isMA);
 		bool getIsMoreActive();
+		bool getCanPress();
+		void setCanPress(bool cP);
 	};
 }
 

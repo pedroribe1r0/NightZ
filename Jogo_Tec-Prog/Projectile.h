@@ -29,6 +29,7 @@ namespace Entities {
 		//void updateRange(Characters::Player* p);
 		void collide(Entity* ent, Math::CoordF intersection, float dt);
 		void setTextures();
+		string save();
 	};
 }
 

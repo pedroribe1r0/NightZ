@@ -14,13 +14,15 @@ namespace States {
 			float currentTime;
 			Menu::Button::Text* text;
 		public:
-			TimeLevel(bool player2);
+			TimeLevel(bool player2 = false, bool load = false);
 			~TimeLevel();
 			void render();
 			void execute(float dt);
 			void createMud();
 			void createThrowers();
 			void spawnEnemies();
+			void loadLevel();
+			void saveLevel();
 		};
 	}
 }

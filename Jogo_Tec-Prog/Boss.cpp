@@ -142,5 +142,13 @@ namespace Entities {
 				p->setIsParalized();
 			}
 		}
+		string Boss::save() {
+			string line = "";
+			line += to_string(static_cast<int>(id)) + ' ';
+			line += to_string(position.x) + ' ';
+			line += to_string(position.y) + ' ';
+			line += to_string(hp) + ' ';
+			return line;
+		}
 	}
 }

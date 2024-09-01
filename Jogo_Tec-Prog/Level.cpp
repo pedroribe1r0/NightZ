@@ -4,15 +4,24 @@ namespace States {
 	namespace Levels {
 		Managers::EventsManager* Level::pEvent = Managers::EventsManager::getInstance();
 
-		Level::Level(const ID id) : State(id) {
+		Level::Level(const ID id, bool load) : State(id) {
+			setLevel(this);
 			srand(time(NULL));
 			movingEntities = new EntitiesList();
 			staticEntities = new EntitiesList();
 			pColision = new Managers::CollisionManager(movingEntities, staticEntities);
 			spawnTime = 0;
 			enemiesNumber = 0;
+			if (load) {
+				loadLevel();
+			}
+			else {
+				
+				createZombies();
+				
+			}
+			createPortals();
 			setRandSpots();
-			createZombies();
 			createBackground();
 			createJumpers();
 		}
@@ -20,6 +29,75 @@ namespace States {
 			delete movingEntities;
 			delete staticEntities;
 			delete pColision;
+		}
+		void Level::loadLevel() {
+			vector<string> lines = file.lerArquivo("./levelSave.txt");
+			for (int i = 0; i < lines.size(); i++) {
+				int id;
+				stringstream ss(lines[i]);
+				ss >> id;
+				if (id == static_cast<int>(player)) {
+					float posx, posy, hp;
+					int points;
+					bool isPlayer1;
+					ss >> posx >> posy >> hp >> points >> isPlayer1;
+					Entities::Characters::Player* p = new Entities::Characters::Player(Math::CoordF(posx, posy), isPlayer1, movingEntities);
+					movingEntities->setData(p);
+					p->setHp(hp);
+					p->setPoints(points);
+					if (isPlayer1) {
+						Ente::setP1(p);
+					}
+					else
+						Ente::setP2(p);
+				}
+				else if (id == static_cast<int>(enemy)) {
+					float posx, posy, hp;
+					ss >> posx >> posy >> hp;
+					Entities::Characters::Zombie* z = new Entities::Characters::Zombie(Math::CoordF(posx, posy));
+					z->setHp(hp);
+					movingEntities->setData(z);
+					enemiesNumber++;
+				}
+				else if (id == static_cast<int>(thrower)) {
+					float posx, posy, hp;
+					ss >> posx >> posy >> hp;
+					Entities::Characters::Thrower* z = new Entities::Characters::Thrower(Math::CoordF(posx, posy), movingEntities);
+					z->setHp(hp);
+					movingEntities->setData(z);
+					enemiesNumber++;
+				}
+				else if (id == static_cast<int>(boss)) {
+					float posx, posy, hp;
+					ss >> posx >> posy >> hp;
+					Entities::Characters::Boss* z = new Entities::Characters::Boss(Math::CoordF(posx, posy));
+					z->setHp(hp);
+					movingEntities->setData(z);
+					enemiesNumber++;
+				}
+			}
+			if (pPlayer1 && pPlayer2) {
+				pPlayer1->setOther(pPlayer2);
+				pPlayer2->setOther(pPlayer1);
+			}
+		}
+		void Level::saveLevel() {
+			file.removeFile("./levelSave.txt");
+			vector<string> lines;
+			string s = "";
+			s += to_string(static_cast<int>(id)) + ' ';
+			lines.push_back(s);
+			List<Entities::Entity>::iterator it = staticEntities->begin();
+			while (it != staticEntities->end()) {
+				lines.push_back((*it)->save());
+				++it;
+			}
+			it = movingEntities->begin();
+			while (it != movingEntities->end()) {
+				lines.push_back((*it)->save());
+				++it;
+			}
+			file.saveContent("./levelSave.txt", lines);
 		}
 		void Level::createBackground() {
 			background.addLayer("layer11.png", 0.0f, GraphicalElements::LID::empty);
@@ -93,9 +171,7 @@ namespace States {
 			staticEntities->setData(t1);
 			staticEntities->setData(t2);
 			staticEntities->setData(t3);
-			staticEntities->setData(t4);
-			//---------------------------------------- Portals ------------------------------------//
-			createPortals();
+			staticEntities->setData(t4);	
 			//---------------------------------- Galhos ---------------------------------------//
 			Entities::Obstacles::Simple* g1 = new Entities::Obstacles::Simple(Math::CoordF(480, 864), Math::CoordF(760, 50), "bushplatform.png", Math::CoordF(1, 1));
 			Entities::Obstacles::Simple* g2 = new Entities::Obstacles::Simple(Math::CoordF(1460, 648), Math::CoordF(760, 50), "bushplatform.png", Math::CoordF(1, 1));

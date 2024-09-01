@@ -19,6 +19,7 @@ namespace Entities {
 			void update(float dt);
 			void execute(float dt);
 			void block(Characters::Player* ent, float dt);
+			string save();
 		};
 	}
 }

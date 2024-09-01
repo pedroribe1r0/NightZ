@@ -7,6 +7,7 @@ enum ID {
 	player,
 	enemy,
 	boss,
+	thrower,
 	obstacle,
 	projectile,
 	roundsingleplayer_id,
@@ -34,6 +35,11 @@ namespace Entities {
 		class Player;
 	}
 }
+namespace States {
+	namespace Levels {
+		class Level;
+	}
+}
 class Ente
 {
 protected:
@@ -42,6 +48,7 @@ protected:
 	sf::RectangleShape* body;
 	static Entities::Characters::Player* pPlayer1;
 	static Entities::Characters::Player* pPlayer2;
+	static States::Levels::Level* level;
 public:
 	Ente(ID id = ID::empty);
 	virtual ~Ente();
@@ -50,7 +57,8 @@ public:
 	virtual void render() = 0;
 	virtual void execute(float dt) = 0;
 	static void setPlayers(Entities::Characters::Player* p1 = nullptr, Entities::Characters::Player* p2 = nullptr);
-	static void setP1Null();
-	static void setP2Null();
+	static void setP1(Entities::Characters::Player* p);
+	static void setP2(Entities::Characters::Player* p);
+	static void setLevel(States::Levels::Level* lvl);
 };
 

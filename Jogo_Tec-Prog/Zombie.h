@@ -20,6 +20,7 @@ namespace Entities {
 			void update(float dt);
 			void setTextures();
 			void increaseSpeed(float speed);
+			string save();
 		};
 	}
 }

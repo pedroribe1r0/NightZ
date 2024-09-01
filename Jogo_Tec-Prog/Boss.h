@@ -28,6 +28,7 @@ namespace Entities {
 			void damage();
 			void paralizePlayer(Player* p);
 			void setTextures();
+			string save();
 		};
 	}
 }

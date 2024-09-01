@@ -19,6 +19,7 @@ namespace Entities {
 			void connectPortal(Portal* p);
 			void setTextures();
 			bool isFacingRight() const;
+			string save();
 		};
 	}
 }

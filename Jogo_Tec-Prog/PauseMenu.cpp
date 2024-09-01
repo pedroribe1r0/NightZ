@@ -6,10 +6,9 @@
 
 namespace Menu {
 	PauseMenu::PauseMenu(States::Levels::Level* level):
-		Menu(ID::pause_menu, sf::Vector2f(BUTTON_SIZE_X, BUTTON_SIZE_Y), "Game Paused", 100),
-		level(level)
+		Menu(ID::pause_menu, sf::Vector2f(BUTTON_SIZE_X, BUTTON_SIZE_Y), "Game Paused", 100)
 	{
-
+		
 		background.addLayer("menubg.png", 0.0f, GraphicalElements::LID::empty);
 
 		title.setPos(sf::Vector2f(windowSize.x / 2.0f - title.getSize().x / 2.0f, 220.0f));
@@ -22,6 +21,10 @@ namespace Menu {
 
 	PauseMenu::~PauseMenu() {
 
+	}
+
+	void PauseMenu::saveLevel() {
+		level->saveLevel();
 	}
 
 	void PauseMenu::createButtons() {

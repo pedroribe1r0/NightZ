@@ -32,6 +32,7 @@ namespace Entities {
 			void moveOnCollision(Entity* ent, Math::CoordF intersection);
 			bool getIsAlive() const;
 			float getSpeedY() const;
+			void setHp(float hp);
 		};
 	}
 }

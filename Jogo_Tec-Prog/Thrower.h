@@ -24,6 +24,7 @@ namespace Entities {
 			void update(float dt);
 			void takeDistance(Player* p);
 			void setTextures();
+			string save();
 		};
 	}
 }

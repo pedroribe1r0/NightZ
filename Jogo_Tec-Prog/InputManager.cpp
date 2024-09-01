@@ -20,15 +20,16 @@ namespace Managers{
 	void InputManager::handleKeyPressed(sf::Keyboard::Key key) {
 		std::list<Observers::Observer*>::iterator it;
 		for (it = observers.begin(); it != observers.end(); it++) {
-			if ((*it)->getIsMoreActive()) {
+			if ((*it)->getCanPress()) {
 				if ((*it)->getIsActive())
 					(*it)->notifyKeyPressed(key);
 				else {
 					observers.erase(it);
 				}
 			}
-			else
-				(*it)->setIsMoreActive(true);
+			else {
+				(*it)->setCanPress(true);
+			}
 		}
 	}
 	void InputManager::handleKeyReleased(sf::Keyboard::Key key) {

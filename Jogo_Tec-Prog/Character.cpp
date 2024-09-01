@@ -58,6 +58,10 @@ namespace Entities {
 			}
 		}
 
+		void Character::setHp(float hp) {
+			this->hp = hp;
+		}
+
 		void Character::moveOnCollision(Entity* ent, Math::CoordF intersection) {
 			if (!isDying) {
 				Math::CoordF otherPos = ent->getPosition();

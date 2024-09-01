@@ -4,7 +4,7 @@
 
 namespace Entities {
 	namespace Characters {
-		Thrower::Thrower(Math::CoordF pos, EntitiesList* list) : Enemy(pos,Math::CoordF(THROWER_SIZE_X, THROWER_SIZE_Y),enemy, THROWER_HP), isAttacking(false), attackTime(0) {
+		Thrower::Thrower(Math::CoordF pos, EntitiesList* list) : Enemy(pos,Math::CoordF(THROWER_SIZE_X, THROWER_SIZE_Y),thrower, THROWER_HP), isAttacking(false), attackTime(0) {
 			p = new Projectile(this);
 			list->setData(p);
 			meleeDamage = THROWER_DAMAGE;
@@ -103,6 +103,14 @@ namespace Entities {
 			}
 			position.x += speed.x * dt;
 			position.y += speed.y * dt;
+		}
+		string Thrower::save() {
+			string line = "";
+			line += to_string(static_cast<int>(id)) + ' ';
+			line += to_string(position.x) + ' ';
+			line += to_string(position.y) + ' ';
+			line += to_string(hp) + ' ';
+			return line;
 		}
 	}
 }

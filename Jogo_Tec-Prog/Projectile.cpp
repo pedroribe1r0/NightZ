@@ -95,7 +95,7 @@ namespace Entities {
 		
 	}*/
 	void Projectile::collide(Entity* ent, Math::CoordF intersection, float dt) {
-		if (user->getID() == enemy) {
+		if (user->getID() == thrower) {
 			if (ent->getID() == player) {
 				Entities::Characters::Character* pChar = dynamic_cast<Entities::Characters::Character*>(ent);
 				pChar->takeDamage(THROWER_PROJECTILE_DAMAGE);
@@ -110,7 +110,7 @@ namespace Entities {
 			}
 		}
 		else if (user->getID() == player) {
-			if (ent->getID() == enemy || ent->getID() == boss) {
+			if (ent->getID() == enemy || ent->getID() == boss || ent->getID() == thrower) {
 				Entities::Characters::Character* pChar = dynamic_cast<Entities::Characters::Character*>(ent);
 				pChar->takeDamage(PLAYER_PROJECTILE_DAMAGE);
 				isActive = false;
@@ -124,5 +124,12 @@ namespace Entities {
 			}
 		}
 		
+	}
+	string Projectile::save() {
+		string line = "";
+		line += to_string(static_cast<int>(id)) + ' ';
+		line += to_string(position.x) + ' ';
+		line += to_string(position.y) + ' ';
+		return line;
 	}
 }

@@ -1,5 +1,6 @@
 #pragma once
 #include "Ente.h"
+#include "FileManager.h"
 class EntitiesList;
 namespace Entities {
 	#define GRAVIDADE 600.0f
@@ -11,6 +12,7 @@ namespace Entities {
 		Math::CoordF size;
 		bool isActive;
 		GraphicalElements::Animation* sprite;
+		//Managers::FileManager file;
 	public:
 		Entity(Math::CoordF pos = Math::CoordF(0, 0), Math::CoordF size = Math::CoordF(0, 0), ID id = ID::empty);
 		virtual ~Entity();
@@ -24,6 +26,7 @@ namespace Entities {
 		bool getIsActive() const;
 		void setIsActive(bool ac);
 		virtual void setTextures() = 0;
+		virtual string save() = 0;
 	};
 }
 

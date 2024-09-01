@@ -21,7 +21,7 @@ namespace States {
 			statesStack.top()->setIsActive(false);
 		}
 		if (s) {
-			//s->setIsActive(true);
+			s->setIsActive(true);
 			statesStack.push(s);
 			//cout << s->getID() << endl;
 		}
@@ -43,7 +43,7 @@ namespace States {
 				statesStack.top() = nullptr;
 				statesStack.pop();
 				if (!statesStack.empty())
-					statesStack.top()->setIsActive(false);
+					statesStack.top()->setIsActive(true);
 			}
 		}
 	}

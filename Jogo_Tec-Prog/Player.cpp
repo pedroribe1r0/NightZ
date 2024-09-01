@@ -58,9 +58,9 @@ namespace Entities {
 		Player::~Player() {
 			position = Math::CoordF(0, 0);
 			if (isPlayer1)
-				Ente::setP1Null();
+				Ente::setP1(nullptr);
 			else
-				Ente::setP2Null();
+				Ente::setP2(nullptr);
 
 			if (otherPlayer) {
 				otherPlayer->setOther(nullptr);
@@ -73,7 +73,9 @@ namespace Entities {
 		bool Player::getIsPlayer1() const{
 			return isPlayer1;
 		}
-
+		void Player::setPoints(int points) {
+			this->points = points;
+		}
 		void Player::update(float dt) {
 			if (!canMove) {
 				paralizeTimer += dt;
@@ -230,19 +232,26 @@ namespace Entities {
 				moveOnCollision(ent, intersection);
 				break;
 			case enemy:
-				if (isShooting) {
-					moveOnCollision(ent, intersection);
-				}
-				else
-					moveOnCollision(ent, intersection);
-				
+				moveOnCollision(ent, intersection);
 				break;
 			case boss:
+				moveOnCollision(ent, intersection);
+			case thrower:
 				moveOnCollision(ent, intersection);
 			default:
 				break;
 			}
 
+		}
+		string Player::save() {
+			string line = "";
+			line += to_string(static_cast<int>(id)) + ' ';
+			line += to_string(position.x) + ' ';
+			line += to_string(position.y) + ' ';
+			line += to_string(hp) + ' ';
+			line += to_string(points) + ' ';
+			line += to_string(isPlayer1) + ' ';
+			return line;
 		}
 	}
 }

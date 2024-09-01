@@ -12,6 +12,7 @@ namespace Entities {
 			void execute(float dt);
 			void block(Characters::Player* ent, float dt);
 			void setTextures();
+			string save();
 		};
 	}
 }

@@ -9,6 +9,7 @@ namespace Observers {
 		pInput->addObserver(this);
 		isDeleting = true;
 		isActive = false;
+		canPress = false;
 		pMachine = States::StateMachine::getInstance();
 	}
 
@@ -25,5 +26,11 @@ namespace Observers {
 	}
 	bool Observer::getIsMoreActive() {
 		return isActive;
+	}
+	bool Observer::getCanPress() {
+		return canPress;
+	}
+	void Observer::setCanPress(bool cP) {
+		canPress = cP;
 	}
 }

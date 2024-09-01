@@ -61,5 +61,12 @@ namespace Entities {
 			else
 				isHealing2 = false;
 		}
+		string Bonfire::save() {
+			string line = "";
+			line += to_string(static_cast<int>(id)) + ' ';
+			line += to_string(position.x) + ' ';
+			line += to_string(position.y) + ' ';
+			return line;
+		}
 	}
 }

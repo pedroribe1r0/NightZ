@@ -4,14 +4,16 @@
 
 namespace States {
 	namespace Levels {
-		TimeLevel::TimeLevel(bool player2) : Level(player2 ? timemultiplayer_id : timesingleplayer_id)
+		TimeLevel::TimeLevel(bool player2, bool load) : Level(player2 ? timemultiplayer_id : timesingleplayer_id, load)
 		{
 			createLevel();
-			createPlayers(player2);
+			if (!load) {
+				createPlayers(player2);
+				createThrowers();
+				currentTime = 0;
+			}
 			createMud();
-			createThrowers();
-			finalTime = 5;
-			currentTime = 0;
+			finalTime = 120;
 			std::string s = "Time Remaining : " + to_string((int)(finalTime - currentTime));
 			text = new Menu::Button::Text(pGraphic->loadFont("yoster.ttf"), s, 50);
 		}
@@ -30,6 +32,79 @@ namespace States {
 			}
 
 		}
+		void TimeLevel::loadLevel() {
+			vector<string> lines = file.lerArquivo("./levelSave.txt");
+			currentTime = stoi(lines[1]);
+			for (int i = 2; i < lines.size(); i++) {
+				int id;
+				stringstream ss(lines[i]);
+				ss >> id;
+				if (id == static_cast<int>(player)) {
+					float posx, posy, hp;
+					int points;
+					bool isPlayer1;
+					ss >> posx >> posy >> hp >> points >> isPlayer1;
+					Entities::Characters::Player* p = new Entities::Characters::Player(Math::CoordF(posx, posy), isPlayer1, movingEntities);
+					movingEntities->setData(p);
+					p->setHp(hp);
+					p->setPoints(points);
+					if (isPlayer1) {
+						Ente::setP1(p);
+					}
+					else
+						Ente::setP2(p);
+				}
+				else if (id == static_cast<int>(enemy)) {
+					float posx, posy, hp;
+					ss >> posx >> posy >> hp;
+					Entities::Characters::Zombie* z = new Entities::Characters::Zombie(Math::CoordF(posx, posy));
+					z->setHp(hp);
+					movingEntities->setData(z);
+					enemiesNumber++;
+				}
+				else if (id == static_cast<int>(thrower)) {
+					float posx, posy, hp;
+					ss >> posx >> posy >> hp;
+					Entities::Characters::Thrower* z = new Entities::Characters::Thrower(Math::CoordF(posx, posy), movingEntities);
+					z->setHp(hp);
+					movingEntities->setData(z);
+					enemiesNumber++;
+				}
+				else if (id == static_cast<int>(boss)) {
+					float posx, posy, hp;
+					ss >> posx >> posy >> hp;
+					Entities::Characters::Boss* z = new Entities::Characters::Boss(Math::CoordF(posx, posy));
+					z->setHp(hp);
+					movingEntities->setData(z);
+					enemiesNumber++;
+				}
+			}
+			if (pPlayer1 && pPlayer2) {
+				pPlayer1->setOther(pPlayer2);
+				pPlayer2->setOther(pPlayer1);
+			}
+		}
+		void TimeLevel::saveLevel() {
+			file.removeFile("./levelSave.txt");
+			vector<string> lines;
+			string s = "";
+			s += to_string(static_cast<int>(id)) + ' ';
+			lines.push_back(s);
+			s = "";
+			s += to_string(currentTime) + ' ';
+			lines.push_back(s);
+			List<Entities::Entity>::iterator it = staticEntities->begin();
+			while (it != staticEntities->end()) {
+				lines.push_back((*it)->save());
+				++it;
+			}
+			it = movingEntities->begin();
+			while (it != movingEntities->end()) {
+				lines.push_back((*it)->save());
+				++it;
+			}
+			file.saveContent("./levelSave.txt", lines);
+		}
 		void TimeLevel::render() {
 			background.run();
 			movingEntities->render();
@@ -46,14 +121,14 @@ namespace States {
 				spawnTime = 0;
 				spawnEnemies();
 			}
-			if (currentTime >= finalTime) {
+			/*if (currentTime >= finalTime) {
 				//empilhar estado
 				Menu::LevelCompleteMenu* c = new Menu::LevelCompleteMenu();
 			}
 			if ((!pPlayer1 && !pPlayer2)) {
 				//empilhar o menu final
 				Menu::GameOverMenu* g = new Menu::GameOverMenu();
-			}
+			}*/
 			std::string s = "Time Remaining : " + to_string((int)(finalTime - currentTime));
 			text->setString(s);
 			if (pPlayer1) {
@@ -78,12 +153,12 @@ namespace States {
 			}
 		}
 		void TimeLevel::spawnEnemies() {
-			Entities::Entity* ent = movingEntities->pickRandon();
-			while (ent->getID() != enemy && !(ent->getIsActive())) {
+			Entities::Entity* ent = nullptr;
+			do {
 				ent = movingEntities->pickRandon();
-			}
+			} while (ent->getID() != enemy && ent->getID() != thrower && !(ent->getIsActive()));
 			if (ent) {
-				if (ent->getID() == enemy) {
+				if (ent->getID() == enemy || ent->getID() == thrower) {
 					Entities::Characters::Enemy* e = dynamic_cast<Entities::Characters::Enemy*>(ent);
 					int randSpot = 0;
 					if (pPlayer1) {
