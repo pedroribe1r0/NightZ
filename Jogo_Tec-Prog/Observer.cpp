@@ -7,23 +7,23 @@ namespace Observers {
 		pInput = Managers::InputManager::getInstance();
 
 		pInput->addObserver(this);
-		isActive = true;
-		isMoreActive = false;
+		isDeleting = true;
+		isActive = false;
 		pMachine = States::StateMachine::getInstance();
 	}
 
 	Observer::~Observer() {
 	}
 	void Observer::setIsActive(bool iA) {
-		isActive = iA;
+		isDeleting = iA;
 	}
 	bool Observer::getIsActive() {
-		return isActive;
+		return isDeleting;
 	}
 	void Observer::setIsMoreActive(bool isMA) {
-		isMoreActive = isMA;
+		isActive = isMA;
 	}
 	bool Observer::getIsMoreActive() {
-		return isMoreActive;
+		return isActive;
 	}
 }

@@ -11,8 +11,8 @@ namespace Observers {
 	class Observer {
 	protected:
 		Managers::InputManager* pInput;
+		bool isDeleting;
 		bool isActive;
-		bool isMoreActive;
 		States::StateMachine* pMachine;
 	public:
 		Observer();

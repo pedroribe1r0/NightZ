@@ -47,9 +47,11 @@ namespace Observers {
 						}
 						case ID::exit_button: {
 							pMachine->popState(3);
+							break;
 						}
 						case ID::resumegame_button: {
 							pMachine->popState();
+							break;
 						}
 						}
 					}
@@ -69,6 +71,7 @@ namespace Observers {
 						}
 						case ID::exit_button: {
 							pMachine->popState();
+							break;
 						}
 						}
 					}
@@ -81,11 +84,13 @@ namespace Observers {
 						}
 						case ID::exit_button: {
 							pMachine->popState(3);
+							break;
 						}
 						}
 					}
 
 					else if (pMachine->getCurrentState()->getID() == levelcomplete_menu) {
+						cout << menu->getSelectedButtonID() << endl;
 						switch (menu->getSelectedButtonID()) {
 						case ID::round_singleplayer_button: {
 							pMachine->popState(2);
@@ -109,7 +114,7 @@ namespace Observers {
 						}
 						case ID::exit_button: {
 							pMachine->popState(3);
-
+							break;
 						}
 						}
 					}
@@ -121,7 +126,8 @@ namespace Observers {
 					else if (key == down) {
 						menu->selectBelow();
 					}
-					else if (key == sf::Keyboard::Key::P) {
+					else if (key == sf::Keyboard::Key::P && ((pMachine->getCurrentState()->getID() == roundmultiplayer_id ) || pMachine->getCurrentState()->getID() == roundsingleplayer_id 
+						|| pMachine->getCurrentState()->getID() == timemultiplayer_id || pMachine->getCurrentState()->getID() == timesingleplayer_id)) {
 					Menu::PauseMenu* p = new Menu::PauseMenu();
 				    }
 					else if (key == esc) {

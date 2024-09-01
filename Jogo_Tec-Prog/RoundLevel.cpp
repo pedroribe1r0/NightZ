@@ -34,7 +34,7 @@ namespace States {
 				staticEntities->setData(b2);
 			}
 			if (rand() % 2) {
-				Entities::Obstacles::Bonfire* b3 = new Entities::Obstacles::Bonfire(Math::CoordF(-1200, 985));
+				Entities::Obstacles::Bonfire* b3 = new Entities::Obstacles::Bonfire(Math::CoordF(-900, 985));
 				staticEntities->setData(b3);
 			}
 		}
@@ -99,9 +99,11 @@ namespace States {
 			}
 			if ((!pPlayer1 && !pPlayer2)) {
 				Menu::GameOverMenu* g = new Menu::GameOverMenu();
+				cout << "teste" << endl;
 			}
-			if (currentRound > 5) {
+			else if (currentRound > 5) {
 				Menu::LevelCompleteMenu* c = new Menu::LevelCompleteMenu();
+				cout << "teste" << endl;
 			}
 			std::string s = "Round : " + to_string(currentRound);
 			text->setString(s);

@@ -51,6 +51,7 @@ namespace Menu {
 			button = nullptr;
 		}
 		pGraphic->render(title.getText());
+		pGraphic->centerView(Math::CoordF(windowSize.x / 2.0f, windowSize.y / 2.0f));
 	}
 
 	void PauseMenu::execute(float dt) {}

@@ -2,7 +2,7 @@
 
 namespace Observers {
 	PlayerObserver::PlayerObserver(Entities::Characters::Player* pPlayer) : Observer(), pPlayer(pPlayer) {
-		isMoreActive = true;
+		isActive = true;
 		if (pPlayer) {
 			if (pPlayer->getIsPlayer1()) {
 				jump = sf::Keyboard::W;

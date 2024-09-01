@@ -14,8 +14,8 @@ namespace Menu {
 		title.setFontSize(90);
 		title.setBorderSize(8);
 
-		cout << pMachine->getPreviousState()->getID() << endl;
-
+		//cout << pMachine->getPreviousState()->getID() << endl;
+		
 		createButtons();
 	}
 
@@ -24,7 +24,7 @@ namespace Menu {
 	}
 
 	void LevelCompleteMenu::createButtons() {
-		if (pMachine->getPreviousState()->getID() == roundsingleplayer_id) {
+		/*if (pMachine->getPreviousState()->getID() == roundsingleplayer_id) {
 			addButton("Play Again", sf::Vector2f(1650, 800), ID::round_singleplayer_button, sf::Color{ 62, 127, 93 });
 			addButton("Play Time Level", sf::Vector2f(1650, 950), ID::time_singleplayer_button, sf::Color{ 62, 127, 93 });
 		}
@@ -42,7 +42,9 @@ namespace Menu {
 		else if (pMachine->getPreviousState()->getID() == timemultiplayer_id) {
 			addButton("Play Again", sf::Vector2f(1650, 800), ID::time_multiplayer_button, sf::Color{ 62, 127, 93 });
 			addButton("Play Round Level", sf::Vector2f(1650, 950), ID::round_multiplayer_button, sf::Color{ 62, 127, 93 });
-		}
+		}*/
+		//addButton("Play Again", sf::Vector2f(1650, 800), ID::time_singleplayer_button, sf::Color{ 62, 127, 93 });
+		//addButton("Play Round Level", sf::Vector2f(1650, 950), ID::round_singleplayer_button, sf::Color{ 62, 127, 93 });
 
 		addButton("Save Progress", sf::Vector2f(1650, 1100), ID::save_button, sf::Color{ 62, 127, 93 });
 		addButton("Exit to Main Menu", sf::Vector2f(1650, 1250), ID::exit_button, sf::Color{ 62, 127, 93 });

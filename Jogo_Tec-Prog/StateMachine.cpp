@@ -38,6 +38,7 @@ namespace States {
 	void StateMachine::popState() {
 		if (!statesStack.empty()) {
 			if (statesStack.top()) {
+				
 				delete statesStack.top();
 				statesStack.top() = nullptr;
 				statesStack.pop();
@@ -50,6 +51,7 @@ namespace States {
 		for (int i = 0; i < qnt; i++) {
 			if (!statesStack.empty()) {
 				if (statesStack.top()) {
+					//cout << statesStack.top()->getID() << endl;
 					delete statesStack.top();
 					statesStack.top() = nullptr;
 					statesStack.pop();
