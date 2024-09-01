@@ -12,8 +12,10 @@ namespace States {
 				createThrowers();
 				currentTime = 0;
 			}
+			else
+				loadLevel();
 			createMud();
-			finalTime = 120;
+			finalTime = 120.0f;
 			std::string s = "Time Remaining : " + to_string((int)(finalTime - currentTime));
 			text = new Menu::Button::Text(pGraphic->loadFont("yoster.ttf"), s, 50);
 		}
@@ -121,14 +123,14 @@ namespace States {
 				spawnTime = 0;
 				spawnEnemies();
 			}
-			/*if (currentTime >= finalTime) {
+			if (currentTime >= finalTime) {
 				//empilhar estado
 				Menu::LevelCompleteMenu* c = new Menu::LevelCompleteMenu();
 			}
 			if ((!pPlayer1 && !pPlayer2)) {
 				//empilhar o menu final
 				Menu::GameOverMenu* g = new Menu::GameOverMenu();
-			}*/
+			}
 			std::string s = "Time Remaining : " + to_string((int)(finalTime - currentTime));
 			text->setString(s);
 			if (pPlayer1) {

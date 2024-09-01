@@ -1,6 +1,7 @@
 #include "Player.h"
 #include "PlayerObserver.h"
 #include "Projectile.h"
+#include "Level.h"
 
 namespace Entities {
 	namespace Characters {
@@ -68,6 +69,9 @@ namespace Entities {
 
 			if (pObserver)
 				pObserver->setIsActive(false);
+			if (level) {
+				level->setPlayerPoints(points);
+			}
 		}
 
 		bool Player::getIsPlayer1() const{
@@ -183,6 +187,9 @@ namespace Entities {
 				}
 			}
 			//cout << "hp: " << hp << endl;
+		}
+		int Player::getPoints() const {
+			return points;
 		}
 		void Player::setIsTeleporting(bool left) {
 			isTeleporting = true;

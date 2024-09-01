@@ -53,11 +53,8 @@ namespace Entities {
 			sprite->addNewAnimation(GraphicalElements::Animation_ID::idle, "portalfinal.png", 8);
 		}
 		string Portal::save() {
-			string line = "";
-			line += to_string(static_cast<int>(id)) + ' ';
-			line += to_string(position.x) + ' ';
-			line += to_string(position.y) + ' ';
-			return line;
+			string s = "";
+			return s;
 		}
 	}
 }

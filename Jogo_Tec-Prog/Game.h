@@ -1,5 +1,5 @@
 #pragma once
-#include "LevelCompleteMenu.h"
+#include "LeaderboardsMenu.h"
 
 class Game
 {

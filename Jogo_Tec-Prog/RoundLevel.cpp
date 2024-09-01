@@ -12,6 +12,8 @@ namespace States {
 				createPlayers(player2);
 				currentRound = 1;
 			}
+			else
+				loadLevel();
 			createBonfires();
 			roundTimeCounter = 0;
 			finalRound = 5;
@@ -30,9 +32,9 @@ namespace States {
 
 		void RoundLevel::loadLevel() {
 			vector<string> lines = file.lerArquivo("./levelSave.txt");
-			currentRound = stoi(lines[2]);
+			currentRound = stoi(lines[1]);
 			cout << currentRound << endl;
-			for (int i = 0; i < lines.size(); i++) {
+			for (int i = 2; i < lines.size(); i++) {
 				int id;
 				stringstream ss(lines[i]);
 				ss >> id;
@@ -166,7 +168,7 @@ namespace States {
 				spawnEnemies();
 				currentTime = 0;
 			}
-			cout << deadEnemies << endl;
+			
 			if ((deadEnemies >= currentRound * enemiesNumber/ 15) || (roundTimeCounter >= ROUND_MAX_TIME && currentRound < 5)) {
 				enemiesNumber = enemiesNumber - deadEnemies;
 				currentRound++;
@@ -175,13 +177,13 @@ namespace States {
 				roundTimeCounter = 0;
 				spawnTime--;
 			}
-			/*
+			
 			if ((!pPlayer1 && !pPlayer2)) {
 				Menu::GameOverMenu* g = new Menu::GameOverMenu();
 			}
 			else if (currentRound > 5) {
 				Menu::LevelCompleteMenu* c = new Menu::LevelCompleteMenu();
-			}*/
+			}
 			std::string s = "Round : " + to_string(currentRound);
 			text->setString(s);
 			if (pPlayer1) {

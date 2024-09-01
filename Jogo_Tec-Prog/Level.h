@@ -17,6 +17,7 @@ namespace States {
 			float spawnTime;
 			float enemiesNumber;
 			Managers::FileManager file;
+			int playerPoints;
 		public:
 			Level(const ID id = ID::empty, bool load = false);
 			~Level();
@@ -31,8 +32,10 @@ namespace States {
 			void createBackground();
 			void createPlayers(bool Player2);
 			void createJumpers();
-			virtual void loadLevel();
-			virtual void saveLevel();
+			virtual void loadLevel() = 0;
+			virtual void saveLevel() = 0;
+			void setPlayerPoints(int p);
+			int getPlayerPoints() const;
 		};
 	}
 }

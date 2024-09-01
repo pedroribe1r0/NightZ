@@ -57,6 +57,7 @@ namespace Entities {
 			float getHp() const;
 			string save();
 			void setPoints(int points);
+			int getPoints() const;
 		};
 	}
 }

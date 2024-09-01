@@ -5,7 +5,7 @@
 namespace Menu {
 
 	LevelCompleteMenu::LevelCompleteMenu() :
-		Menu(ID::levelcomplete_menu, sf::Vector2f(BUTTON_SIZE_X, BUTTON_SIZE_Y), "Level Complete", 100)
+		Menu(ID::levelcomplete_menu, sf::Vector2f(BUTTON_SIZE_X, BUTTON_SIZE_Y), "Level Complete", 100), text(pGraphic->loadFont("yoster.ttf"), "", 40)
 	{
 		background.addLayer("menubg.png", 0.0f, GraphicalElements::LID::empty);
 
@@ -14,13 +14,39 @@ namespace Menu {
 		title.setFontSize(90);
 		title.setBorderSize(8);
 
-		//cout << pMachine->getPreviousState()->getID() << endl;
+		text.setTextColor(sf::Color{ 255, 255, 255 });
+		text.setFontSize(60);
+		text.setBorderSize(8);
+		text.setPos(sf::Vector2f((windowSize.x / 2.0f - text.getSize().x / 2.0f), windowSize.y / 2 + 300));
 		
 		createButtons();
 	}
 
 	LevelCompleteMenu::~LevelCompleteMenu() {
 
+	}
+
+	string LevelCompleteMenu::getText() {
+		return text.getString();
+	}
+
+	void LevelCompleteMenu::setText(string s) {
+		string st = text.getString();
+		st += s;
+		text.setString(st);
+	}
+
+	void LevelCompleteMenu::saveLeaderboards() {
+		Managers::FileManager file;
+		string s = "";
+		s += text.getString() + " " + to_string(level->getPlayerPoints());
+		file.saveContent("./leaderboards.txt", s);
+	}
+
+	void LevelCompleteMenu::backspace() {
+		string st = text.getString();
+		st.pop_back();
+		text.setString(st);
 	}
 
 	void LevelCompleteMenu::createButtons() {
@@ -59,7 +85,9 @@ namespace Menu {
 			button->render();
 			button = nullptr;
 		}
+		text.setPos(sf::Vector2f((windowSize.x / 2.0f - text.getSize().x / 2.0f), windowSize.y / 2 + 300));
 		pGraphic->render(title.getText());
+		pGraphic->render(text.getText());
 	}
 
 	void LevelCompleteMenu::execute(float dt) {

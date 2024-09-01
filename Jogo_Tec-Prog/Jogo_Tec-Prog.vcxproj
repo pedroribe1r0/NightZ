@@ -149,6 +149,7 @@
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="Jumper.cpp" />
     <ClCompile Include="Layer.cpp" />
+    <ClCompile Include="LeaderBoardsMenu.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="LevelCompleteMenu.cpp" />
     <ClCompile Include="MainMenu.cpp" />
@@ -255,6 +256,7 @@
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="Jumper.h" />
     <ClInclude Include="Layer.h" />
+    <ClInclude Include="LeaderBoardsMenu.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="LevelCompleteMenu.h" />
     <ClInclude Include="List.h" />
