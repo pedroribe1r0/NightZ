@@ -1,4 +1,5 @@
 #include "Ente.h"
+//codigo baseado no codigo de Giovane Limas Salvi
 
 namespace GraphicalElements {
 	enum LID {

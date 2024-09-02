@@ -1,5 +1,5 @@
 #include "MenuObserver.h"
-#include "LeaderboardsMenu.h"
+#include "LeaderBoardsMenu.h"
 
 namespace Observers {
 		MenuObserver::MenuObserver(Menu::Menu* menu) :

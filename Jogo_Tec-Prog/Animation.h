@@ -1,5 +1,6 @@
 #pragma once
 #include "GraphicManager.h"
+//Codigo Adaptado do codigo de Matheus Augusto Burda
 
 namespace GraphicalElements {
 

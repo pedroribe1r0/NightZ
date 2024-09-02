@@ -1,5 +1,6 @@
 #pragma once
 #include "Layer.h"
+//Codigo Baseado no codigo de Giovane Limas Salvi
 
 namespace GraphicalElements {
 	namespace Parallax {

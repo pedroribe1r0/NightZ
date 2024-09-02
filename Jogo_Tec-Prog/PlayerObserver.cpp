@@ -13,10 +13,10 @@ namespace Observers {
 				run = sf::Keyboard::LShift;
 			}
 			else {
-				jump = sf::Keyboard::I;
-				right = sf::Keyboard::L;
-				left = sf::Keyboard::J;
-				attack = sf::Keyboard::H;
+				jump = sf::Keyboard::Up;
+				right = sf::Keyboard::Right;
+				left = sf::Keyboard::Left;
+				attack = sf::Keyboard::RControl;
 				run = sf::Keyboard::RShift;
 			}
 		}
