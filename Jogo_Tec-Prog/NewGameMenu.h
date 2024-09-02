@@ -4,11 +4,7 @@
 namespace Menu {
 	class NewGameMenu : public Menu {
 	private:
-		EntitiesList staticEntities;
-		EntitiesList movingEntities;
-		Managers::CollisionManager* pCollision;
-		Managers::EventsManager* pEvent;
-		GraphicalElements::Parallax::Background background;
+		
 
 	public:
 		NewGameMenu();

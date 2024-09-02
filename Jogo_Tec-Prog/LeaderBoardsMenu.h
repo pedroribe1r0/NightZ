@@ -4,7 +4,7 @@ namespace Menu {
 	class LeaderBoardsMenu : public Menu
 	{
 	private:
-		GraphicalElements::Parallax::Background background;
+		
 		vector<Button::Text*> textVector;
 	public:
 		LeaderBoardsMenu();

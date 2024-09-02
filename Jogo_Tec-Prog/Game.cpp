@@ -5,13 +5,11 @@ Game::Game() {
 	
 	pGraphic = Managers::GraphicManager::getInstance();
 	pEvent = Managers::EventsManager::getInstance();
-	//adicionar o primeiro estado(main menu)
 	new Menu::MainMenu();
 	run();
 }
 Game::~Game() {
 	delete pMachine;
-	delete pColision;
 	delete pEvent;
 }
 void Game::run() {

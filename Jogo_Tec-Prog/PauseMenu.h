@@ -4,7 +4,7 @@
 namespace Menu {
 	class PauseMenu : public Menu {
 	private:
-		GraphicalElements::Parallax::Background background;
+		
 	public:
 		PauseMenu(States::Levels::Level* level = nullptr);
 		//PauseMenu(const ID id, std::string name, States::Levels::Level* level = nullptr);

@@ -39,6 +39,15 @@ namespace Menu {
 	void LevelCompleteMenu::saveLeaderboards() {
 		Managers::FileManager file;
 		string s = "";
+		if (pPlayer1 && pPlayer2) {
+			level->setPlayerPoints(pPlayer1->getPoints() + pPlayer2->getPoints());
+		}
+		else if (pPlayer1) {
+			level->setPlayerPoints(pPlayer1->getPoints());
+		}
+		else if (pPlayer2) {
+			level->setPlayerPoints(pPlayer2->getPoints());
+		}
 		s += text.getString() + " " + to_string(level->getPlayerPoints());
 		file.saveContent("./leaderboards.txt", s);
 	}

@@ -186,7 +186,7 @@ namespace Entities {
 					pGraphic->centerView(Math::CoordF(position.x, pGraphic->getWindowSize().y / 2));
 				}
 			}
-			//cout << "hp: " << hp << endl;
+			
 		}
 		int Player::getPoints() const {
 			return points;

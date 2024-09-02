@@ -11,20 +11,20 @@
 
         class FileManager {
         private:
-            std::ifstream arquivoLeitura;
-            std::ofstream arquivoGravar;
+            std::ifstream readFile;
+            std::ofstream saveFile;
 
-            void openFileRead(const char* caminhoArquivo);
+            void openFileRead(const char* filePath);
             void closeFileRead();
-            void openFileSave(const char* caminhoArquivo);
+            void openFileSave(const char* filePath);
             void closeFileSave();
         public:
             FileManager();
             ~FileManager();
-            std::vector<std::string> lerArquivo(const char* caminhoArquivo);
-            void saveContent(const char* caminhoArquivo, std::vector<std::string> linhas);
-            void saveContent(const char* caminhoArquivo, const std::string linha);
-            void removeFile(const char* caminhoArquivo);
+            std::vector<std::string> lerArquivo(const char* filePath);
+            void saveContent(const char* filePath, std::vector<std::string> lines);
+            void saveContent(const char* filePath, const std::string lines);
+            void removeFile(const char* filePath);
         };
 
     }

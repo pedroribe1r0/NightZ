@@ -11,7 +11,6 @@ namespace States {
 		class RoundLevel : public Level
 		{
 		private:
-			Menu::Button::Text* text;
 			int currentRound;
 			int finalRound;
 			int currentEnemies;

@@ -16,7 +16,6 @@ namespace Menu {
 		//movingEntities.setData(b1);
 		//Entities::Obstacles::Simple* floor = new Entities::Obstacles::Simple(Math::CoordF(900, 1080), Math::CoordF(1200, 100));
 		//staticEntities.setData(floor);
-		pCollision = new Managers::CollisionManager(&movingEntities, &staticEntities);
 
 		title.setPos(sf::Vector2f(windowSize.x / 2.0f - title.getSize().x / 2.0f, 220.0f));
 		title.setTextColor(sf::Color{ 255, 255, 255 });
@@ -25,7 +24,6 @@ namespace Menu {
 		createBackground();
 
 		createButtons();
-		pEvent = Managers::EventsManager::getInstance();
 	}
 
 	NewGameMenu::NewGameMenu(const ID id, std::string name, const unsigned int fontSize) :
@@ -61,8 +59,6 @@ namespace Menu {
 	}
 
 	void NewGameMenu::execute(float dt) {
-		movingEntities.execute(pGraphic->getDeltaTime());
-		staticEntities.execute(pGraphic->getDeltaTime());
 	}
 	void NewGameMenu::render() {
 		background.render();
@@ -73,11 +69,8 @@ namespace Menu {
 			button->render();
 			button = nullptr;
 		}
-		movingEntities.render();
-		staticEntities.render();
 		background.renderFloor();
 	}
 	void NewGameMenu::manageCollisions(float dt) {
-		pCollision->collide(dt);
 	}
 }

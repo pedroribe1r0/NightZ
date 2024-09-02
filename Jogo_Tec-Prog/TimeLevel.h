@@ -12,7 +12,6 @@ namespace States {
 		private:
 			float finalTime;
 			float currentTime;
-			Menu::Button::Text* text;
 		public:
 			TimeLevel(bool player2 = false, bool load = false);
 			~TimeLevel();

@@ -4,7 +4,7 @@
 namespace Menu {
 	class LevelCompleteMenu : public Menu {
 	private:
-		GraphicalElements::Parallax::Background background;
+		
 		Button::Text text;
 	public:
 		LevelCompleteMenu();

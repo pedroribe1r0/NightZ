@@ -10,6 +10,7 @@ namespace Menu {
 	class Menu : public States::State
 	{
 	protected:
+		GraphicalElements::Parallax::Background background;
 		Observers::MenuObserver* menuObserver;
 		std::list<Button::TextButton*> textButtonList;
 		std::list<Button::TextButton*>::iterator it;

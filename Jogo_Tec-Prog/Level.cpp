@@ -2,8 +2,6 @@
 
 namespace States {
 	namespace Levels {
-		Managers::EventsManager* Level::pEvent = Managers::EventsManager::getInstance();
-
 		Level::Level(const ID id, bool load) : State(id) {
 			setLevel(this);
 			srand(time(NULL));
@@ -11,6 +9,7 @@ namespace States {
 			staticEntities = new EntitiesList();
 			pColision = new Managers::CollisionManager(movingEntities, staticEntities);
 			spawnTime = 0;
+			playerPoints = 0;
 			enemiesNumber = 0;
 			if (!load) {
 				createZombies();
@@ -26,7 +25,7 @@ namespace States {
 			delete pColision;
 		}
 		void Level::setPlayerPoints(int p) {
-			playerPoints = p;
+			playerPoints += p;
 		}
 		int Level::getPlayerPoints() const {
 			return playerPoints;

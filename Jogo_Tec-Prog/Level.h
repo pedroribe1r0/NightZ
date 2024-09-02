@@ -1,14 +1,17 @@
 #pragma once
 #include "StateMachine.h"
 #include "Background.h"
-
+namespace Menu {
+	namespace Button {
+		class Text;
+	}
+}
 namespace States {
 	namespace Levels {
 		class Level : public State
 		{
 #define SPAWN_TIME 5.0f
 		protected:
-			static Managers::EventsManager* pEvent;
 			Managers::CollisionManager* pColision;
 			EntitiesList* staticEntities;
 			EntitiesList* movingEntities;
@@ -18,6 +21,7 @@ namespace States {
 			float enemiesNumber;
 			Managers::FileManager file;
 			int playerPoints;
+			Menu::Button::Text* text;
 		public:
 			Level(const ID id = ID::empty, bool load = false);
 			~Level();
