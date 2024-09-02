@@ -168,8 +168,8 @@ namespace States {
 				spawnEnemies();
 				currentTime = 0;
 			}
-			
-			if ((deadEnemies >= currentRound * enemiesNumber/ 15) || (roundTimeCounter >= ROUND_MAX_TIME && currentRound < 5)) {
+			//|| (roundTimeCounter >= ROUND_MAX_TIME && currentRound != 5)
+			if ((deadEnemies >= currentRound * enemiesNumber/ 15)) {
 				enemiesNumber = enemiesNumber - deadEnemies;
 				currentRound++;
 				deadEnemies = 0;
