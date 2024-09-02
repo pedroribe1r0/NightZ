@@ -1,5 +1,6 @@
 #pragma once
 #include "CollisionManager.h"
+//Codigo baseado no Matheus Augusto Burda(Burda Canal no Youtube)
 
 namespace Managers {
 	class InputManager;

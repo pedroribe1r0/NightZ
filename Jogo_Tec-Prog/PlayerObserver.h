@@ -1,5 +1,6 @@
 #pragma once
 #include "Observer.h"
+//Codigo baseado no Matheus Augusto Burda(Burda Canal no Youtube)
 
 namespace Observers {
 	class PlayerObserver : public Observer

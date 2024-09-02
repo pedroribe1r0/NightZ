@@ -1,5 +1,6 @@
 #pragma once
 #include "GameOverMenu.h"
+//Codigo baseado no Matheus Augusto Burda(Burda Canal no Youtube)
 
 namespace State {
 	class StateMachine;
