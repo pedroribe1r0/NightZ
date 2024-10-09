@@ -54,8 +54,10 @@ namespace Menu {
 
 	void LevelCompleteMenu::backspace() {
 		string st = text.getString();
-		st.pop_back();
-		text.setString(st);
+		if (!st.empty()) {
+			st.pop_back();
+			text.setString(st);
+		}
 	}
 
 	void LevelCompleteMenu::createButtons() {

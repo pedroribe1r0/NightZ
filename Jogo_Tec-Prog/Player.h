@@ -19,7 +19,6 @@ namespace Entities {
 		class Player : public Character
 		{
 		private:
-			Player* otherPlayer;
 			Observers::PlayerObserver* pObserver;
 			const bool isPlayer1;
 			int points;
@@ -48,7 +47,6 @@ namespace Entities {
 			void setTextures();
 			void run();
 			void stopRunning();
-			void setOther(Player* p);
 			void heal(float heal);
 			void stopHeal();
 			void setIsTeleporting(bool left);
@@ -57,6 +55,8 @@ namespace Entities {
 			string save();
 			void setPoints(int points);
 			int getPoints() const;
+			void updateSprite(float dt);
+			void centerCamera();
 		};
 	}
 }

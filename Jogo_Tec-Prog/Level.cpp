@@ -13,7 +13,6 @@ namespace States {
 			enemiesNumber = 0;
 			if (!load) {
 				createZombies();
-				
 			}
 			setRandSpots();
 			createBackground();
@@ -64,7 +63,6 @@ namespace States {
 			if (Player2) {
 				Entities::Characters::Player* p2 = new Entities::Characters::Player(Math::CoordF(800, 960), false, movingEntities);
 				Entities::Characters::Player* p1 = new Entities::Characters::Player(Math::CoordF(900, 960), true, movingEntities, p2);
-				p2->setOther(p1);
 				movingEntities->setData(p2);
 				movingEntities->setData(p1);
 				Ente::setPlayers(p1, p2);

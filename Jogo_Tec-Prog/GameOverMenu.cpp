@@ -55,8 +55,10 @@ namespace Menu {
 
 	void GameOverMenu::backspace() {
 		string st = text.getString();
-		st.pop_back();
-		text.setString(st);
+		if (!st.empty()) {
+			st.pop_back();
+			text.setString(st);
+		}
 	}
 
 	void GameOverMenu::execute(float dt) {

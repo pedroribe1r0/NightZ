@@ -15,7 +15,6 @@ namespace Entities {
 			isShooting(false),
 			canShoot(true),
 			isRunning(false),
-			otherPlayer(other),
 			isHealing(false),
 			healingCounter(0),
 			isTeleporting(false),
@@ -63,10 +62,11 @@ namespace Entities {
 			else
 				Ente::setP2(nullptr);
 
-			if (otherPlayer) {
-				otherPlayer->setOther(nullptr);
-			}
-
+			if (isPlayer1)
+				pPlayer1 = nullptr;
+			else
+				pPlayer2 = nullptr;
+			
 			if (pObserver)
 				pObserver->setIsActive(false);
 			if (level) {
@@ -106,8 +106,49 @@ namespace Entities {
 			}
 			position.x += speed.x * dt;
 			position.y += speed.y * dt;
+
 			if (slow < 1)
 				slow = 1;
+			
+			if (isHealing) {
+				healingCounter += dt;
+				if (healingCounter >= EFFECT_TIME * 2) {
+					healingCounter = 0;
+				}
+				else if (healingCounter >= EFFECT_TIME) {
+					body->setFillColor(sf::Color::White);
+				}
+				else {
+					body->setFillColor(sf::Color(119, 221, 119));
+				}
+			}
+			else {
+				body->setFillColor(sf::Color::White);
+			}
+			updateSprite(dt);
+			centerCamera();
+		}
+		void Player::centerCamera() {
+			if (isPlayer1) {
+				pGraphic->centerView(Math::CoordF(position.x, pGraphic->getWindowSize().y / 2));
+				if (pPlayer2) {
+					if (fabs(pPlayer2->getPosition().x - position.x) > 960) {
+						pPlayer2->setPosition(Math::CoordF((position.x + 50.0f), position.y));
+					}
+				}
+			}
+			else {
+				if (pPlayer2) {
+					if (!pPlayer2->getIsActive()) {
+						pGraphic->centerView(Math::CoordF(position.x, pGraphic->getWindowSize().y / 2));
+					}
+				}
+				else {
+					pGraphic->centerView(Math::CoordF(position.x, pGraphic->getWindowSize().y / 2));
+				}
+			}
+		}
+		void Player::updateSprite(float dt) {
 			if (isTeleporting) {
 				teleportingCounter += dt;
 				sprite->update(GraphicalElements::teleport, teleportFaceLeft, position, dt);
@@ -151,42 +192,6 @@ namespace Entities {
 			else {
 				sprite->update(GraphicalElements::Animation_ID::idle, facingLeft, position, dt);
 			}
-			
-			if (isHealing) {
-				healingCounter += dt;
-				if (healingCounter >= EFFECT_TIME * 2) {
-					healingCounter = 0;
-				}
-				else if (healingCounter >= EFFECT_TIME) {
-					body->setFillColor(sf::Color::White);
-				}
-				else {
-					body->setFillColor(sf::Color(119, 221, 119));
-				}
-			}
-			else {
-				body->setFillColor(sf::Color::White);
-			}
-
-			if (isPlayer1) {
-				pGraphic->centerView(Math::CoordF(position.x, pGraphic->getWindowSize().y / 2));
-				if (otherPlayer) {
-					if (fabs(otherPlayer->getPosition().x - position.x) > 960) {
-						otherPlayer->setPosition(Math::CoordF((position.x + 50.0f), position.y));
-					}
-				}
-			}
-			else {
-				if (otherPlayer) {
-					if (!otherPlayer->getIsActive()) {
-						pGraphic->centerView(Math::CoordF(position.x, pGraphic->getWindowSize().y / 2));
-					}
-				}
-				else {
-					pGraphic->centerView(Math::CoordF(position.x, pGraphic->getWindowSize().y / 2));
-				}
-			}
-			
 		}
 		int Player::getPoints() const {
 			return points;
@@ -200,9 +205,6 @@ namespace Entities {
 		}
 		void Player::stopHeal() {
 			isHealing = false;
-		}
-		void Player::setOther(Player* p) {
-			otherPlayer = p;
 		}
 		void Player::run() {
 			isRunning = true;

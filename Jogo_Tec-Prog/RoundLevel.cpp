@@ -78,10 +78,6 @@ namespace States {
 					enemiesNumber++;
 				}
 			}
-			if (pPlayer1 && pPlayer2) {
-				pPlayer1->setOther(pPlayer2);
-				pPlayer2->setOther(pPlayer1);
-			}
 		}
 		void RoundLevel::saveLevel() {
 			file.removeFile("./levelSave.txt");
